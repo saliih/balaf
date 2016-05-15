@@ -1,0 +1,118 @@
+sonata_core:
+    form_type: horizontal
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.block.service.text:
+        sonata.block.service.rss:
+        onata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+
+sonata_admin:
+    security:
+        handler:              sonata.admin.security.handler.noop
+        acl_user_manager:     null
+    title:                'Tounsia Net'
+    title_logo:           bundles/sonataadmin/logo_title.png
+
+
+    templates:
+        user_block:           'SonataAdminBundle:Core:user_block.html.twig'
+        add_block:            'SonataAdminBundle:Core:add_block.html.twig'
+        layout:               'SonataAdminBundle::standard_layout.html.twig'
+        ajax:                 'SonataAdminBundle::ajax_layout.html.twig'
+        dashboard:            'SonataAdminBundle:Core:dashboard.html.twig'
+        search:               'SonataAdminBundle:Core:search.html.twig'
+        list:                 'SonataAdminBundle:CRUD:list.html.twig'
+        filter:               'SonataAdminBundle:Form:filter_admin_fields.html.twig'
+        show:                 'SonataAdminBundle:CRUD:show.html.twig'
+        show_compare:         'SonataAdminBundle:CRUD:show_compare.html.twig'
+        edit:                 'SonataAdminBundle:CRUD:edit.html.twig'
+        preview:              'SonataAdminBundle:CRUD:preview.html.twig'
+        history:              'SonataAdminBundle:CRUD:history.html.twig'
+        acl:                  'SonataAdminBundle:CRUD:acl.html.twig'
+        history_revision_timestamp:  'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig'
+        action:               'SonataAdminBundle:CRUD:action.html.twig'
+        select:               'SonataAdminBundle:CRUD:list__select.html.twig'
+        list_block:           'SonataAdminBundle:Block:block_admin_list.html.twig'
+        search_result_block:  'SonataAdminBundle:Block:block_search_result.html.twig'
+        short_object_description:  'SonataAdminBundle:Helper:short-object-description.html.twig'
+        delete:               'SonataAdminBundle:CRUD:delete.html.twig'
+        batch:                'SonataAdminBundle:CRUD:list__batch.html.twig'
+        batch_confirmation:   'SonataAdminBundle:CRUD:batch_confirmation.html.twig'
+        base_list_field:      'SonataAdminBundle:CRUD:base_list_field.html.twig'
+        pager_links:          'SonataAdminBundle:Pager:links.html.twig'
+        pager_results:        'SonataAdminBundle:Pager:results.html.twig'
+
+sonata_doctrine_orm_admin:
+    # default value is null, so doctrine uses the value defined in the configuration
+    entity_manager: ~
+    templates:
+        form:
+            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+        filter:
+            - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+
+sonata_user:
+    security_acl:           false
+
+    manager_type: orm # Can be orm for mongodb
+
+    table:
+        user_group: "user_group_association"
+
+    impersonating:
+        route:                page_slug
+        parameters:           { path: / }
+
+    class:                  # Entity Classes
+        user:               Application\Sonata\UserBundle\Entity\User
+        group:              Application\Sonata\UserBundle\Entity\Group
+
+    admin:                  # Admin Classes
+        user:
+            class:          Sonata\UserBundle\Admin\Entity\UserAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+        group:
+            class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+    profile:
+
+        register:
+            # You may customize the registration forms over here
+            form:
+                type:                 sonata_user_registration
+                handler:              sonata.user.registration.form.handler.default
+                name:                 sonata_user_registration_form
+                validation_groups:
+
+                    # Defaults:
+                    - Registration
+                    - Default
+            # This allows you to specify where you want your user redirected once he activated his account
+            confirm:
+                redirect:
+                    # Set it to false to disable redirection
+                    route: 'sonata_user_profile_show'
+                    route_parameters: ~
+
+        # Customize user portal menu by setting links
+        menu:
+            - { route: 'sonata_user_profile_edit', label: 'link_edit_profile', domain: 'SonataUserBundle'}
+            - { route: 'sonata_user_profile_edit_authentication', label: 'link_edit_authentication', domain: 'SonataUserBundle'}
+
+        # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
+

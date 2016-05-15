@@ -1,0 +1,18 @@
+services:
+#    post.example:
+#        class: PostBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    admin.category:
+        class: PostBundle\Admin\CategoryAdmin
+        arguments: [~, PostBundle\Entity\Category, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Catégories', icon:'<i class="fa fa-envelope"></i>' }
+        calls:
+            #- [ setTemplate, [edit, MainFactBundle:Projects:edit.html.twig]]
+    admin.posts:
+        class: PostBundle\Admin\PostsAdmin
+        arguments: [~, PostBundle\Entity\Post, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Articles', icon:'<i class="fa fa-envelope"></i>' }
+        calls:
+            - [ setTemplate, [edit, PostBundle:Post:edit.html.twig]]

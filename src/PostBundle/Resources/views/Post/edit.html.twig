@@ -1,0 +1,38 @@
+{% extends 'SonataAdminBundle:CRUD:edit.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{asset('tinymce/tinymce.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/jquery.fancybox.js?v=2.1.5')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/jquery.fancybox.css?v=2.1.5')}}" media="screen" />
+    <script>
+
+        $(function () {
+
+
+            $('.iframe-btn').fancybox({
+                'width': 880,
+                'height': '80%',
+                'type': 'iframe',
+                'autoScale': false
+            });
+
+        });
+
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $inputs = $('input[id$=_pic]') ;
+            var id = $inputs.attr('id');
+            var html = htmlbt(id);
+            $inputs.after(html);
+        })
+        function htmlbt(id){
+            var html = '';
+            html +=' <span class="input-group-addon">';
+            html +=' <a class="iframe-btn" href="/tinymce/plugins/filemanager/dialog.php?type=2&amp;field_id='+id+'"><i class="icon-upload bigger-110"></i>image</a>';
+            html +='</span>';
+            return html;
+        }
+    </script>
+{% endblock %}
