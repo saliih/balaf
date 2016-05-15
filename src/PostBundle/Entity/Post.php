@@ -30,13 +30,13 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="alias", type="string", length=255)
+     * @ORM\Column(name="alias", type="string", length=255,nullable=true)
      */
     private $alias;
     /**
      * @var string
      *
-     * @ORM\Column(name="pic", type="string", length=255)
+     * @ORM\Column(name="pic", type="string", length=255,nullable=true)
      */
     private $pic;
     /**
@@ -54,7 +54,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="article", type="text")
+     * @ORM\Column(name="article", type="text",nullable=true)
      */
     private $article;
 

@@ -45,14 +45,20 @@ class PostsAdmin extends Admin
         // $collection->remove('create');
         //$collection->remove('delete');
     }
+    public function prePersist($object)
+    {
+        $local = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
+        $object->setLocale($local);
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('title')
             ->add('category')
-            ->add('pic')
-            ->add('accroche','textarea',array("label"=>"Description"))
-            ->add('article','textarea',array())
+            ->add('pic',null,array('required'=>false))
+            ->add('accroche','textarea',array("label"=>"Description",'required'=>false))
+            ->add('article','textarea',array('required'=>false))
         ;
 
     }
