@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             //new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
 
             new PostBundle\PostBundle(),
+            new FrontBundle\FrontBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -1,0 +1,1068 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="breaking-news">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <h3>Breaking News</h3>
+                <div id="b-news">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</li>
+                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="search">
+                    <input type="text" class="input-block-level" placeholder="search entire store here...">
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {#
+
+    <div class="banner">
+        <ul class="bxslider">
+            <li>
+                <img src="{{ asset('public/images/banner1.jpg') }}') }}">
+                <div class="banner-caps">
+                    <h2>Silent Beauty...</h2>
+                    <p>quis nostrud exercitation ullamco laboris nisi ut</p>
+                </div>
+            </li>
+            <li>
+                <img src="{{ asset('public/images/banner2.jpg') }}') }}">
+                <div class="banner-caps">
+                    <h2>Colors Of Life...</h2>
+                    <p>quis nostrud exercitation ullamco laboris nisi ut</p>
+                </div>
+            </li>
+            <li>
+                <img src="{{ asset('public/images/banner3.jpg') }}') }}">
+                <div class="banner-caps">
+                    <h2>Behind the Smile...</h2>
+                    <p>quis nostrud exercitation ullamco laboris nisi ut</p>
+                </div>
+            </li>
+            <li>
+                <img src="{{ asset('public/images/banner4.jpg') }}Whats New
+    ') }}">
+                <div class="banner-caps">
+                    <h2>Dream Girl...</h2>
+                    <p>quis nostrud exercitation ullamco laboris nisi ut</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    #}
+
+<div class="main-contant">
+    <div class="container">
+
+        <section>
+            <div class="row">
+                <div class="span4">
+                    <div class="tabs">
+                        <h2 class="h-style">Don't Miss</h2>
+                        <div class="tabs-widget">
+
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Recent" data-toggle="tab">Recent</a></li>
+                                <li><a href="#Papular" data-toggle="tab">Papular</a></li>
+                                <li><a href="#all" data-toggle="tab">All</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane tab-pane fade in active" id="Recent">
+                                    <div class="text">
+                                        <h4>Photos/<span class="color"> What the Stars Wore</span></h4>
+                                        <p class="link">Morbi condimentum tempus tincidunt</p>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
+                                    </div>
+                                    <div class="event-image">
+                                        <a href="#"><img src="{{ asset('public/images/event-image.png') }}" alt=""></a>
+                                        <div class="caption">
+                                            <ul>
+                                                <li><a href="#">3 weeks ago</a></li>
+                                                <li><a href="#">John Doe</a></li>
+                                                <li><a href="#">Style</a></li>
+                                                <li><a href="#">200</a></li>
+                                            </ul>
+                                            <h4>This concerns her</h4>
+                                        </div>
+                                    </div>
+                                    <div class="text-cap">
+                                        <p>Vestibulum nec venenatis erat, et adipiscing ipsum. Duis ac nisl vel magna imperdiet gravida. </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="Papular">
+                                    <div class="text">
+                                        <h4>Photos/<span class="color"> What the Stars Wore</span></h4>
+                                        <p class="link">Morbi condimentum tempus tincidunt</p>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </p>
+                                    </div>
+                                    <div class="event-image">
+                                        <a href="#"><img src="{{ asset('public/images/event-image2.png') }}" alt=""></a>
+                                        <div class="caption">
+                                            <ul>
+                                                <li><a href="#">3 weeks ago</a></li>
+                                                <li><a href="#">John Doe</a></li>
+                                                <li><a href="#">Style</a></li>
+                                                <li><a href="#">200</a></li>
+                                            </ul>
+                                            <h4>This concerns her</h4>
+                                        </div>
+                                    </div>
+                                    <div class="text-cap">
+                                        <p>Vestibulum nec venenatis erat, et adipiscing ipsum. Duis ac nisl vel magna imperdiet gravida. </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="all">
+                                    <div class="text">
+                                        <h4>Photos/<span class="color"> What the Stars Wore</span></h4>
+                                        <p class="link">Morbi condimentum tempus tincidunt</p>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </p>
+                                    </div>
+                                    <div class="event-image">
+                                        <a href="#"><img src="{{ asset('public/images/event-image3.png') }}" alt=""></a>
+                                        <div class="caption">
+                                            <ul>
+                                                <li><a href="#">3 weeks ago</a></li>
+                                                <li><a href="#">John Doe</a></li>
+                                                <li><a href="#">Style</a></li>
+                                                <li><a href="#">200</a></li>
+                                            </ul>
+                                            <h4>This concerns her</h4>
+                                        </div>
+                                    </div>
+                                    <div class="text-cap">
+                                        <p>Vestibulum nec venenatis erat, et adipiscing ipsum. Duis ac nisl vel magna imperdiet gravida. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="mycarousel jcarousel-skin-tango">
+                            <li><img src="{{ asset('public/images/slide-img.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img2.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img3.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img4.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img5.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img2.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img3.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img4.png') }}" alt=""></li>
+                            <li><img src="{{ asset('public/images/slide-img5.png') }}" alt=""></li>
+                        </ul>
+                        <a href="#" class="read-more">Find Our More</a>
+                    </div>
+                </div>
+                <div class="span8">
+
+                    <div class="page-slider">
+                        <div class=" slider flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img1.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img2.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img3.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img4.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img1.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img2.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img3.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img4.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img1.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img2.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img3.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+                                <li>
+                                    <figure><img src="{{ asset('public/images/slider-img4.png') }}" alt="">
+                                        <div class="caption">
+                                            <div class="reviews">
+                                                <p class="color">/ REVIEWS /</p>
+                                                <div class="rating">
+                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                </div>
+                                            </div>
+                                            <p class="text">Desperate Housewives: Marcia Corss reveals!</p>
+                                        </div>
+                                    </figure>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div id="carousel" class="flexslider">
+                            <ul class="slides">
+                                <li><img src="{{ asset('public/images/slider-img1.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img2.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img3.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img4.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img1.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img2.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img3.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img4.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img1.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img2.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img3.png') }}" alt=""></li>
+                                <li><img src="{{ asset('public/images/slider-img4.png') }}" alt=""></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <article>
+                        <div class="row">
+                            <div class="span6 span-8">
+                                <div class="latest-news">
+                                    <h2 class="h-style">Latest Headlines</h2>
+                                    <ul class="headlines">
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img src="{{ asset('public/images/headline-img.png') }}" alt=""></a>
+                                            </figure>
+                                            <div class="text">
+                                                <h5>Speaker Boehner Fails Upwards</h5>
+                                                <p>Vestibulum nec venenatis erat, et adipiscing ipsum. Duis ac nisl....</p>
+                                                <div class="headline-review">
+                                                    <a href="#"><i class="fa fa-calendar"></i>14th January 2013</a>
+                                                    <a href="#"><i class="fa fa-comments-o"></i>32 Comments</a>
+                                                    <a href="#"><i class="fa fa-user"></i>124 Votes</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img src="{{ asset('public/images/headline-img.png') }}" alt=""></a>
+                                            </figure>
+                                            <div class="text">
+                                                <h5>Speaker Boehner Fails Upwards</h5>
+                                                <p>Vestibulum nec venenatis erat, et adipiscing ipsum. Duis ac nisl....</p>
+                                                <div class="headline-review">
+                                                    <a href="#"><i class="fa fa-calendar"></i>14th January 2013</a>
+                                                    <a href="#"><i class="fa fa-comments-o"></i>32 Comments</a>
+                                                    <a href="#"><i class="fa fa-user"></i>124 Votes</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img src="{{ asset('public/images/headline-img.png') }}" alt=""></a>
+                                            </figure>
+                                            <div class="text">
+                                                <h5>Speaker Boehner Fails Upwards</h5>
+                                                <p>Vestibulum nec venenatis erat, et adipiscing ipsum. Duis ac nisl....</p>
+                                                <div class="headline-review">
+                                                    <a href="#"><i class="fa fa-calendar"></i>14th January 2013</a>
+                                                    <a href="#"><i class="fa fa-comments-o"></i>32 Comments</a>
+                                                    <a href="#"><i class="fa fa-user"></i>124 Votes</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="read-more">Find Our More</a>
+                                </div>
+                            </div>
+                            <div class="span2 visible-desktop">
+                                <div class="new-ad">
+                                    <img src="{{ asset('public/images/new-ad1.jpg') }}" alt="">
+                                </div>
+                                <div class="new-ad">
+                                    <img src="{{ asset('public/images/new-ad1.jpg') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="image-gallery">
+                <h2 class="h-style">Gallery</h2>
+                <ul class="mycarousel jcarousel-skin-tango gallery">
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image2.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image2.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image3.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image3.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image4.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image4.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image5.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image5.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image2.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image2.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="i{{ asset('public/mages/gallery-image3.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image3.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image4.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image4.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image5.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image5.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image2.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image2.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image3.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image3.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image4.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image4.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ asset('public/images/gallery-image5.png') }}" alt="">
+                        <div class="caption">
+                            <a href="#"><i class="fa fa-link"></i></a>
+                            <a href="images/gallery-image5.png') }}" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                            <h4>Gov’t reviewing money lending laws</h4>
+                            <p>Lorem ipsum dolor slo onsec tueraliquet vidicus pannel impirus sadintas velisur lreaoreet nisl lorem in pellente vidicus</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="row">
+                <div class="span8">
+                    <div class="row sports-section">
+                        <div class="span6 span-8">
+                            <div class="sports">
+                                <h2 class="h-style">Sports</h2>
+                                <div class="sports-event">
+                                    <div class="thumb hover-style">
+                                        <a href="#"><img src="{{ asset('public/images/sports.png') }}" alt=""></a>
+                                    </div>
+                                    <div class="text">
+                                        <h4>Pricey fashion staples that are worth the investment</h4>
+                                        <div class="rating">
+                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                        </div>
+                                        <p>Integer ornare libero nisi. Duis ac magna urna. Nulla facilisi. iaculis, ligula arcu ultrices metus, ac venenatis dui leo ut odio. Phasellus a augue congue, faucibus dolor eu, auctor dolor...</p>
+                                        <a href="#" class="color pull-right">Continue Reading</a>
+                                        <ul class="post-comments">
+                                            <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                            <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                            <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="sports-thumbs-list">
+                                    <ul>
+                                        <li>
+                                            <div class="sports-thumbs">
+                                                <figure>
+                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb.png') }}" alt=""></a>
+                                                </figure>
+                                                <div class="text">
+                                                    <a href="#">Speaker Boehner Fails </a>
+                                                    <p>12 december 2014</p>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="sports-thumbs">
+                                                <figure>
+                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb4.png') }}" alt=""></a>
+                                                </figure>
+                                                <div class="text">
+                                                    <a href="#">Speaker Boehner Fails </a>
+                                                    <p>12 december 2014</p>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="sports-thumbs">
+                                                <figure>
+                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb2.png') }}" alt=""></a>
+                                                </figure>
+                                                <div class="text">
+                                                    <a href="#">Speaker Boehner Fails </a>
+                                                    <p>12 december 2014</p>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="sports-thumbs">
+                                                <figure>
+                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb3.png') }}" alt=""></a>
+                                                </figure>
+                                                <div class="text">
+                                                    <a href="#">Speaker Boehner Fails </a>
+                                                    <p>12 december 2014</p>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="span2 visible-desktop">
+                            <div class="add2">
+                                <img alt="" src="{{ asset('public/images/add3.png') }}">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="entertainment">
+                        <div class="row">
+                            <div class="span6 span-8">
+                                <h2 class="h-style">Entertainment</h2>
+                                <div class="entertainment-sec">
+                                    <div class="row">
+                                        <div class="span3">
+                                            <div class="business">
+                                                <figure class="hover-style">
+                                                    <a href="#"><img src="{{ asset('public/images/entertainment.png') }}" alt=""></a>
+                                                    <div class="like-icon"><i class="fa fa-heart-o"></i></div>
+                                                </figure>
+                                                <div class="text">
+                                                    <h4>Pricey fashion staples</h4>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                    <ul class="post-comments">
+                                                        <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                                        <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                                        <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                                    </ul>
+                                                    <p>Integer ornare libero nisi. Duis ac magna urna. Nulla facilisi. Phasellus at ante magna. Quisque nec porta nulla. Suspendisse nec orci vel elit aliquet blandit in non orci. Vivamus posuere dui eget iaculis, ligula arcu ultrices metus, ac venenatis dui leo ut odio. Phasellus a augue congue...</p>
+                                                    <a href="#" class="read-more">Find Out More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span3">
+                                            <div class="sports-thumbs-list">
+                                                <ul>
+                                                    <li>
+                                                        <div class="sports-thumbs">
+                                                            <figure>
+                                                                <a href="#"><img src="{{ asset('public/images/sports-thumb.png') }}" alt=""></a>
+                                                            </figure>
+                                                            <div class="text">
+                                                                <a href="#">Speaker Boehner Fails </a>
+                                                                <p>12 december 2014</p>
+                                                                <div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sports-thumbs">
+                                                            <figure>
+                                                                <a href="#"><img src="{{ asset('public/images/sports-thumb4.png') }}" alt=""></a>
+                                                            </figure>
+                                                            <div class="text">
+                                                                <a href="#">Speaker Boehner Fails </a>
+                                                                <p>12 december 2014</p>
+                                                                <div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sports-thumbs">
+                                                            <figure>
+                                                                <a href="#"><img src="{{ asset('public/images/sports-thumb2.png') }}" alt=""></a>
+                                                            </figure>
+                                                            <div class="text">
+                                                                <a href="#">Speaker Boehner Fails </a>
+                                                                <p>12 december 2014</p>
+                                                                <div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sports-thumbs">
+                                                            <figure>
+                                                                <a href="#"><img src="{{ asset('public/images/sports-thumb3.png') }}" alt=""></a>
+                                                            </figure>
+                                                            <div class="text">
+                                                                <a href="#">Speaker Boehner Fails </a>
+                                                                <p>12 december 2014</p>
+                                                                <div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sports-thumbs">
+                                                            <figure>
+                                                                <a href="#"><img src="{{ asset('public/images/sports-thumb4.png') }}" alt=""></a>
+                                                            </figure>
+                                                            <div class="text">
+                                                                <a href="#">Speaker Boehner Fails </a>
+                                                                <p>12 december 2014</p>
+                                                                <div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2 visible-desktop">
+                                <div class="new-ad">
+                                    <img alt="" src="{{ asset('public/images/new-ad2.jpg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="travel-section">
+                        <h2 class="h-style">Travel</h2>
+                        <article class="travel">
+
+                            <div class="treval-thumb">
+                                <figure class="hover-style">
+                                    <a href="#"><img alt="" src="{{ asset('public/images/travel.png') }}"></a>
+                                </figure>
+                                <div class="text">
+                                    <h2>Fresh apricot with huge sale</h2>
+                                    <ul class="post-comments">
+                                        <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                        <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                        <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                    </ul>
+                                    <p>Integer ornare libero nisi. Duis ac magna urna. Nulla facilisi. Phasellus at ante magna. Quisque nec porta nulla. Suspendisse nec orci vel elit aliquet blandit in non orci. Vivamus posuere dui eget lacinia rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus...</p>
+                                    <a class="read-more" href="#">Find Out More</a>
+                                </div>
+                            </div>
+
+                            <div class="travel-listing">
+                                <ul>
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img alt="" src="{{ asset('public/images/travel-listing.png') }}"></a>
+                                        </figure>
+                                        <div class="text">
+                                            <h2><a href="#">Speaker Boehner Fails Upwards</a></h2>
+                                            <p>Vestibulum nec venenatis erat, et adipiscing ipsumvamus posue eget lacinia rutrum..</p>
+                                            <ul class="post-comments">
+                                                <li><a href="#">14th January 2013</a></li>
+                                                <li><a href="#">32 Comments</a></li>
+                                                <li>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                    124 Votes
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img alt="" src="{{ asset('public/images/travel-listing2.png') }}"></a>
+                                        </figure>
+                                        <div class="text">
+                                            <h2><a href="#">Speaker Boehner Fails Upwards</a></h2>
+                                            <p>Vestibulum nec venenatis erat, et adipiscing ipsumvamus posue eget lacinia rutrum..</p>
+                                            <ul class="post-comments">
+                                                <li><a href="#">14th January 2013</a></li>
+                                                <li><a href="#">32 Comments</a></li>
+                                                <li>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                    124 Votes
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img alt="" src="{{ asset('public/images/travel-listing3.png') }}"></a>
+                                        </figure>
+                                        <div class="text">
+                                            <h2><a href="#">Speaker Boehner Fails Upwards</a></h2>
+                                            <p>Vestibulum nec venenatis erat, et adipiscing ipsumvamus posue eget lacinia rutrum..</p>
+                                            <ul class="post-comments">
+                                                <li><a href="#">14th January 2013</a></li>
+                                                <li><a href="#">32 Comments</a></li>
+                                                <li>
+                                                    <div class="rating">
+                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    </div>
+                                                    124 Votes
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+
+
+                    <div class="multimedia">
+                        <header>
+                            <h2 class="h-style">Mutimedia</h2>
+                            <div class="rating">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            </div>
+                            <ul class="post-comments">
+                                <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                            </ul>
+                        </header>
+                        <div class="multimedia-thumb">
+                            <figure>
+                                <img alt="" src="{{ asset('public/images/multimedia.png') }}">
+                                <div class="multimedia-tabs">
+                                    <ul>
+                                        <li class="pink"><a href="#"><i class="fa fa-camera"></i>Photos</a></li>
+                                        <li class="green"><a href="#"><i class="fa fa-video-camera"></i>Videos</a></li>
+                                        <li class="orange"><a href="#"><i class="fa fa-music"></i>Audio</a></li>
+                                        <li class="blue"><a href="#"><i class="fa fa-picture-o"></i>Gallery</a></li>
+                                    </ul>
+                                </div>
+                            </figure>
+                            <div class="text">
+                                <h3>Shin</h3>
+                                <h3 class="border">Street dance pereormance</h3>
+                            </div>
+                        </div>
+                        <div class="image-thumbs">
+                            <ul>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb1.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb2.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb3.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb4.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb5.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb1.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb2.png') }}"></a></li>
+                                <li><a href="#"><img alt="" src="{{ asset('public/images/multimedia-thumb3.png') }}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="tech">
+                        <div class="row">
+                            <div class="span2">
+                                <div class="new-ad">
+                                    <img src="{{ asset('public/images/new-ad2.jpg') }}" alt="">
+                                </div>
+                                <div class="new-ad">
+                                    <img src="{{ asset('public/images/new-ad2.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="tech">
+                                    <h2 class="h-style">Tech</h2>
+                                    <div class="tech-section no-margin row-fluid">
+                                        <div class="span7">
+                                            <h4 class="color">Duis sapien turpis, tempus ,,</h4>
+                                            <ul class="post-comments">
+                                                <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                                <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                                <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                            </ul>
+                                            <p>Integer ornare libero nisi. Duis ac magna urna. Nulla facilisi. Phasellus at magna. Quisque nec porta nulla. Suspendisse nec is Quisque nec porta nulla. Suspendisse nec Integer...</p>
+                                            <a class="read-more" href="#">Find Out More</a>
+                                        </div>
+                                        <div class="span5">
+                                            <img src="{{ asset('public/images/travel-section.jpg') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="entertainment">
+                                    <h2 class="h-style">Entertainment</h2>
+                                    <div class="entertainment-sec">
+                                        <div class="row">
+                                            <div class="span3">
+                                                <div class="business">
+                                                    <figure class="hover-style">
+                                                        <a href="#"><img src="{{ asset('public/images/entertainment.png') }}" alt=""></a>
+                                                        <div class="like-icon"><i class="fa fa-heart-o"></i></div>
+                                                    </figure>
+                                                    <div class="text">
+                                                        <h4>Pricey fashion staples</h4>
+                                                        <div class="rating">
+                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                        </div>
+                                                        <ul class="post-comments">
+                                                            <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                                            <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                                            <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                                        </ul>
+                                                        <p>Integer ornare libero nisi. Suspendisse nec orci vel elit aliquet blandit in non orci. Vivamus posuere dui eget iaculis, ligula arcu ultrices metus, ac venenatis dui leo ut odio. Phasellus a augue congue...</p>
+                                                        <a href="#" class="read-more">Find Out More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="span3">
+                                                <div class="sports-thumbs-list">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="sports-thumbs">
+                                                                <figure>
+                                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb.png') }}" alt=""></a>
+                                                                </figure>
+                                                                <div class="text">
+                                                                    <a href="#">Speaker Boehner Fails </a>
+                                                                    <p>12 december 2014</p>
+                                                                    <div class="rating">
+                                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="sports-thumbs">
+                                                                <figure>
+                                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb4.png') }}" alt=""></a>
+                                                                </figure>
+                                                                <div class="text">
+                                                                    <a href="#">Speaker Boehner Fails </a>
+                                                                    <p>12 december 2014</p>
+                                                                    <div class="rating">
+                                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="sports-thumbs">
+                                                                <figure>
+                                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb2.png') }}" alt=""></a>
+                                                                </figure>
+                                                                <div class="text">
+                                                                    <a href="#">Speaker Boehner Fails </a>
+                                                                    <p>12 december 2014</p>
+                                                                    <div class="rating">
+                                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="sports-thumbs">
+                                                                <figure>
+                                                                    <a href="#"><img src="{{ asset('public/images/sports-thumb3.png') }}" alt=""></a>
+                                                                </figure>
+                                                                <div class="text">
+                                                                    <a href="#">Speaker Boehner Fails </a>
+                                                                    <p>12 december 2014</p>
+                                                                    <div class="rating">
+                                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="life">
+                                    <h2 class="h-style">Life Style</h2>
+                                    <div class="life-style">
+                                        <h3>This week special</h3>
+                                        <p class="color"><strong>Philip Seymour expected soon</strong></p>
+                                        <ul class="post-comments">
+                                            <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                            <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                            <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                        </ul>
+                                        <div class="row-fluid">
+                                            <div class="span4">
+                                                <div class="life-style-thums">
+                                                    <a href="#"><img src="{{ asset('public/images/life-style1.png') }}" alt=""></a>
+                                                    <div class="caption">
+                                                        <p>Quisque libero sem, dignissim, dignissim sit amet nulla</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="span4">
+                                                <div class="life-style-thums">
+                                                    <a href="#"><img src="{{ asset('public/images/life-style2.png') }}" alt=""></a>
+                                                    <div class="caption">
+                                                        <p>Quisque libero sem, dignissim, dignissim sit amet nulla</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="span4">
+                                                <div class="life-style-thums">
+                                                    <a href="#"><img src="{{ asset('public/images/life-style3.png') }}" alt=""></a>
+                                                    <div class="caption">
+                                                        <p>Quisque libero sem, dignissim, dignissim sit amet nulla</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {{ render(controller('FrontBundle:Default:sidebar')) }}
+            </div>
+        </section>
+    </div>
+</div>
+
+
+{% endblock %}
