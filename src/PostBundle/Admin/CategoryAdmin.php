@@ -21,6 +21,8 @@ class CategoryAdmin extends Admin
         $listMapper
             ->addIdentifier('title', null, array('label' => 'Titre'))
             ->add('Category', null, array('label' => 'Catégorie'))
+            ->add('color')
+            ->add('ord')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     // 'view' => array(),
@@ -30,6 +32,11 @@ class CategoryAdmin extends Admin
                 )
             ));
 
+    }
+    public function prePersist($object)
+    {
+        $locale = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
+        $object->setLocale($locale);
     }
     protected function configureRoutes(RouteCollection $collection)
     {
@@ -41,6 +48,16 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('title')
+            ->add('color', "choice", array('label' => 'Couleur','choices'  => array(
+                'carrot' => 'carrot',
+                'blue2' => 'blue2',
+                'blue' => 'blue',
+                'red' => 'red',
+                'yellow' => 'yellow',
+                'green' => 'green',
+                'pink' => 'pink',
+                'purple' => 'purple',
+            )))
             ->add('description','textarea',array())
         ;
 

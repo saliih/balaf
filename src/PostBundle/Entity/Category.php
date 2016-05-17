@@ -32,6 +32,18 @@ class Category
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=20, nullable=true)
+     */
+    private $color;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ord", type="integer", nullable=true)
+     */
+    private $ord;
 
     /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy="category", cascade={"persist"})
@@ -41,12 +53,18 @@ class Category
     /**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="children", cascade={"persist"})
      */
-    private $parent;
+    private $children;
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="parent")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      **/
-    private $children;
+    private $parent;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="locale", type="string", length=2)
+     */
+    private $locale;
     public function __toString()
     {
         return $this->title;
@@ -61,13 +79,14 @@ class Category
     {
         return $this->id;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->parent = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -117,6 +136,75 @@ class Category
     }
 
     /**
+     * Set color
+     *
+     * @param string $color
+     * @return Category
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set ord
+     *
+     * @param integer $ord
+     * @return Category
+     */
+    public function setOrd($ord)
+    {
+        $this->ord = $ord;
+
+        return $this;
+    }
+
+    /**
+     * Get ord
+     *
+     * @return integer 
+     */
+    public function getOrd()
+    {
+        return $this->ord;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return Category
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
      * Add posts
      *
      * @param \PostBundle\Entity\Post $posts
@@ -150,58 +238,58 @@ class Category
     }
 
     /**
-     * Add parent
-     *
-     * @param \PostBundle\Entity\Category $parent
-     * @return Category
-     */
-    public function addParent(\PostBundle\Entity\Category $parent)
-    {
-        $this->parent[] = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Remove parent
-     *
-     * @param \PostBundle\Entity\Category $parent
-     */
-    public function removeParent(\PostBundle\Entity\Category $parent)
-    {
-        $this->parent->removeElement($parent);
-    }
-
-    /**
-     * Get parent
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * Set children
+     * Add children
      *
      * @param \PostBundle\Entity\Category $children
      * @return Category
      */
-    public function setChildren(\PostBundle\Entity\Category $children = null)
+    public function addChild(\PostBundle\Entity\Category $children)
     {
-        $this->children = $children;
+        $this->children[] = $children;
 
         return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \PostBundle\Entity\Category $children
+     */
+    public function removeChild(\PostBundle\Entity\Category $children)
+    {
+        $this->children->removeElement($children);
     }
 
     /**
      * Get children
      *
-     * @return \PostBundle\Entity\Category 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \PostBundle\Entity\Category $parent
+     * @return Category
+     */
+    public function setParent(\PostBundle\Entity\Category $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \PostBundle\Entity\Category 
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }
