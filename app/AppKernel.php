@@ -23,11 +23,14 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Sonata\UserBundle\SonataUserBundle(),
+           // new Sonata\UserBundle\SonataUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
 
-            //new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
 
             new PostBundle\PostBundle(),
             new FrontBundle\FrontBundle(),

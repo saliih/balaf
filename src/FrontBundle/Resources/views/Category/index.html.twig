@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="bg-color breadcrumbs">
+        <div class="container">
+            <h4>Your are here:</h4>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">Library</a> <span class="divider">/</span></li>
+                <li class="active">{{ category.title }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-contant">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <section class="blog-listing">
+                        {% for article in posts %}
+                            <article>
+                                <figure>
+                                    <a href="blog-detail.html"><img src="{{ asset(article.pic) }}" alt=""></a>
+                                </figure>
+                                <div class="text">
+                                    <div class="post-type">
+                                        <a href="blog-detail.html" class="type"><i class="fa fa-comments-o"></i></a>
+                                        <a href="blog-detail.html" class="post-date">
+                                            <p>{{ article.publieddate|date('M') }}</p>
+                                            <p class="post-m">{{ article.publieddate|date('d') }}</p>
+                                        </a>
+                                    </div>
+                                    <h4><a href="blog-detail.html">{{ article.title }}</a></h4>
+                                    <p>
+                                        {{ (article.article)|shortdesc }}
+                                    </p>
+                                    <a href="#" class="color pull-right">Voir plus</a>
+                                </div>
+                                <div class="post-footer">
+                                   <!-- <ul class="post-comments">
+                                        <li><a href="blog-detail.html"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                        <li><a href="blog-detail.html"><i class="fa fa-heart-o"></i>1205</a></li>
+                                        <li><a href="blog-detail.html"><i class="fa fa-comment-o"></i>125</a></li>
+                                    </ul>-->
+                                    <div class="rating">
+                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                </div>
+                            </article>
+                        {% endfor %}
+
+                        {{ knp_pagination_render(posts) }}
+
+                    </section>
+                </div>
+
+
+                {{ render(controller('FrontBundle:Default:sidebar')) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

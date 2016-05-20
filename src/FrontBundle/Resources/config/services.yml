@@ -2,3 +2,8 @@ services:
 #    front.example:
 #        class: FrontBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    frontbundle.twig_extension:
+        class: FrontBundle\Twig\AppExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }

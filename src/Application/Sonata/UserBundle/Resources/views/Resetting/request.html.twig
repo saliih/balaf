@@ -1,0 +1,25 @@
+{% extends "ApplicationSonataUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <style>
+        .englob {
+            width: 570px;
+            margin: 100px auto;
+        }
+    </style>
+    <div class="englob">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ "title_user_resetting" | trans({}, 'SonataUserBundle') }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

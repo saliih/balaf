@@ -64,10 +64,10 @@
                         <ul class="nav">
                             {% set i = 0 %}
                             {% set nb  = category|length  %}
-                            <li class="first carrot"><a href=""><i class="fa fa-home" aria-hidden="true"></i></a> </li>
+                            <li class="first carrot"><a href="{{ path('front_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i></a> </li>
                             {% for item in category %}
                                 <li class="{{ item.color }} {% if i==nb-1 %}last{% endif %}">
-                                    <a href="#">{{ item.title }}</a>
+                                    <a href="{{ path('front_category',{'locale':'fr','slug':item.slug}) }}">{{ item.title }}</a>
                                     {% if (item.children)|length > 0 %}
                                         <ul class="{{ item.color }}">
                                             {% for entry in item.children %}
@@ -87,3 +87,25 @@
     </div>
 
 </header>
+<div class="breaking-news">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <h3>Breaking News</h3>
+                <div id="b-news">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</li>
+                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="search">
+                    <input type="text" class="input-block-level" placeholder="search entire store here...">
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

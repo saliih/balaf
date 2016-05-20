@@ -26,7 +26,7 @@ class DefaultController extends Controller
             'parent' => null,
             'locale'=>$locale
         ));
-        return $this->render('FrontBundle:Default:hearder.html.twig', array("category" => $category));
+        return $this->render('FrontBundle:Default:header.html.twig', array("category" => $category));
     }
 
     public function footerAction()

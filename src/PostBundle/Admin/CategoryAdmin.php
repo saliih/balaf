@@ -34,10 +34,13 @@ class CategoryAdmin extends Admin
             ));
 
     }
+
     public function prePersist($object)
     {
         $locale = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
+        $service = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $object->setLocale($locale);
+        $object->setSlug($service->slugify($object->getTitle()));
     }
     protected function configureRoutes(RouteCollection $collection)
     {
