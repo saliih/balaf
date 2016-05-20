@@ -2,6 +2,10 @@ services:
 #    post.example:
 #        class: PostBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    Tools.utils:
+        class: PostBundle\Services\NewsServices
+
+
     admin.category:
         class: PostBundle\Admin\CategoryAdmin
         arguments: [~, PostBundle\Entity\Category, ~] #MailingBundle:CRUD

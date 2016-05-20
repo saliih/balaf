@@ -28,6 +28,10 @@ class PostsAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title', null, array('label' => 'Titre'))
+            ->add('created')
+            ->add('publieddate')
+            ->add('updated')
+            ->add('enabled',null,array('editable'=>true))
             ->add('Category', null, array('label' => 'Catégorie'))
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -48,17 +52,27 @@ class PostsAdmin extends Admin
     public function prePersist($object)
     {
         $local = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
+        $service = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $object->setLocale($local);
+        $object->setAlias($service->slugify($object->getTitle()));
+    }
+    public function preUpdate($object)
+    {
+        $object->setUpdated(new \DateTime());
     }
 
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->with('Artcile',array('class'=>'col-md-8'))
             ->add('title')
-            ->add('category')
-            ->add('pic',null,array('required'=>false))
-            ->add('accroche','textarea',array("label"=>"Description",'required'=>false))
             ->add('article','textarea',array('required'=>false))
+            ->end()
+            ->with('Status',array('class'=>'col-md-4'))
+            ->add('enabled',null,array('required'=>false))
+            ->add('publieddate','sonata_type_date_picker',array('dp_language'=>'fr','format'=>'dd/MM/yyyy','label'=>'date de publication'))
+            ->add('pic',null,array('required'=>false))
+            ->add('category')
         ;
 
     }

@@ -51,11 +51,11 @@ class Category
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="children", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist"})
      */
     private $children;
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="parent")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      **/
     private $parent;
@@ -79,7 +79,6 @@ class Category
     {
         return $this->id;
     }
-
     /**
      * Constructor
      */

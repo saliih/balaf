@@ -68,13 +68,13 @@
                             {% for item in category %}
                                 <li class="{{ item.color }} {% if i==nb-1 %}last{% endif %}">
                                     <a href="#">{{ item.title }}</a>
-                                   {# {% if (item.children)|length>0 %}
+                                    {% if (item.children)|length > 0 %}
                                         <ul class="{{ item.color }}">
                                             {% for entry in item.children %}
                                                 <li><a href="">{{ entry.title }}</a></li>
                                             {% endfor %}
                                         </ul>
-                                    {% endif %}#}
+                                    {% endif %}
                                 </li>
                                 {% set i = i + 1 %}
                             {% endfor %}

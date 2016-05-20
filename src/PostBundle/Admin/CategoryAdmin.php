@@ -19,6 +19,7 @@ class CategoryAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('parent')
             ->addIdentifier('title', null, array('label' => 'Titre'))
             ->add('Category', null, array('label' => 'Catégorie'))
             ->add('color')
@@ -48,6 +49,8 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('title')
+            ->add('ord')
+            ->add('parent',null,array('required'=>false))
             ->add('color', "choice", array('label' => 'Couleur','choices'  => array(
                 'carrot' => 'carrot',
                 'blue2' => 'blue2',

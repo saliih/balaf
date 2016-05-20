@@ -30,7 +30,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="alias", type="string", length=255,nullable=true)
+     * @ORM\Column(name="alias", type="string", length=255,nullable=true,unique=true)
      */
     private $alias;
     /**
@@ -45,12 +45,7 @@ class Post
      * @ORM\Column(name="locale", type="string", length=2)
      */
     private $locale;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="accroche", type="string", length=255)
-     */
-    private $accroche;
+
     /**
      * @var string
      *
@@ -80,17 +75,27 @@ class Post
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publied", type="datetime",nullable=true)
+     * @ORM\Column(name="publieddate", type="datetime",nullable=true)
      */
-    private $publied;
+    private $publieddate;
+    /**
+     * @var Boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean",nullable=true)
+     */
+    private $enabled;
+
     public function __construct()
     {
+        $this->enabled = false;
         $this->created = new \DateTime();
     }
+
     public function __toString()
     {
         return $this->title;
     }
+
     /**
      * Get id
      *
@@ -125,26 +130,72 @@ class Post
     }
 
     /**
-     * Set accroche
+     * Set alias
      *
-     * @param string $accroche
+     * @param string $alias
      * @return Post
      */
-    public function setAccroche($accroche)
+    public function setAlias($alias)
     {
-        $this->accroche = $accroche;
+        $this->alias = $alias;
 
         return $this;
     }
 
     /**
-     * Get accroche
+     * Get alias
      *
      * @return string 
      */
-    public function getAccroche()
+    public function getAlias()
     {
-        return $this->accroche;
+        return $this->alias;
+    }
+
+    /**
+     * Set pic
+     *
+     * @param string $pic
+     * @return Post
+     */
+    public function setPic($pic)
+    {
+        $this->pic = $pic;
+
+        return $this;
+    }
+
+    /**
+     * Get pic
+     *
+     * @return string 
+     */
+    public function getPic()
+    {
+        return $this->pic;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return Post
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 
     /**
@@ -217,26 +268,49 @@ class Post
     }
 
     /**
-     * Set publied
+     * Set publieddate
      *
-     * @param \DateTime $publied
+     * @param \DateTime $publieddate
      * @return Post
      */
-    public function setPublied($publied)
+    public function setPublieddate($publieddate)
     {
-        $this->publied = $publied;
+        $this->publieddate = $publieddate;
 
         return $this;
     }
 
     /**
-     * Get publied
+     * Get publieddate
      *
      * @return \DateTime 
      */
-    public function getPublied()
+    public function getPublieddate()
     {
-        return $this->publied;
+        return $this->publieddate;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Post
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 
     /**
@@ -260,74 +334,5 @@ class Post
     public function getCategory()
     {
         return $this->category;
-    }
-
-    /**
-     * Set alias
-     *
-     * @param string $alias
-     * @return Post
-     */
-    public function setAlias($alias)
-    {
-        $this->alias = $alias;
-
-        return $this;
-    }
-
-    /**
-     * Get alias
-     *
-     * @return string 
-     */
-    public function getAlias()
-    {
-        return $this->alias;
-    }
-
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     * @return Post
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
-    /**
-     * Set pic
-     *
-     * @param string $pic
-     * @return Post
-     */
-    public function setPic($pic)
-    {
-        $this->pic = $pic;
-
-        return $this;
-    }
-
-    /**
-     * Get pic
-     *
-     * @return string 
-     */
-    public function getPic()
-    {
-        return $this->pic;
     }
 }
