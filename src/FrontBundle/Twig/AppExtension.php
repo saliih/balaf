@@ -23,7 +23,8 @@ class AppExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc')
+            'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
+            'treenav' => new \Twig_Filter_Method($this, 'treenav')
         );
     }
 
@@ -36,6 +37,13 @@ class AppExtension extends \Twig_Extension
             $text = substr($text,0,$espace);
         }
         return $text;
+    }
+    public function treenav($cat){
+        $html = "";
+        if($cat->getParent()!=null){
+            $html .= '<li><a href="#">'.$cat->getParent()->getTitle().'</a> <span class="divider">/</span></li>';
+        }
+        return $html .=' <li class="active">'.$cat->getTitle().'</li>';
     }
     public function getName()
     {

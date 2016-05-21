@@ -1,12 +1,15 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/color-'~category.color~'.css') }}" rel="stylesheet">
+    {% endblock %}
 {% block body %}
     <div class="bg-color breadcrumbs">
         <div class="container">
-            <h4>Your are here:</h4>
+            <h4>Vous êtes ici:</h4>
             <ul class="breadcrumb">
-                <li><a href="#">Home</a> <span class="divider">/</span></li>
-                <li><a href="#">Library</a> <span class="divider">/</span></li>
-                <li class="active">{{ category.title }}</li>
+                <li><a href="{{ path('front_homepage') }}"><i class="fa fa-home"></i></a> <span class="divider">/</span></li>
+                {{ (category|treenav)|raw }}
             </ul>
         </div>
     </div>
@@ -17,19 +20,22 @@
                 <div class="span8">
                     <section class="blog-listing">
                         {% for article in posts %}
+                            {% set year =  article.publieddate|date('Y') %}
+                            {% set month =  article.publieddate|date('m') %}
+                            {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':category.slug}) %}
                             <article>
                                 <figure>
-                                    <a href="blog-detail.html"><img src="{{ asset(article.pic) }}" alt=""></a>
+                                    <a href="{{ path }}"><img src="{{ (article.pic)| imagine_filter('category_page') }}" alt=""></a>
                                 </figure>
                                 <div class="text">
                                     <div class="post-type">
-                                        <a href="blog-detail.html" class="type"><i class="fa fa-comments-o"></i></a>
-                                        <a href="blog-detail.html" class="post-date">
-                                            <p>{{ article.publieddate|date('M') }}</p>
+                                        <a href="{{ path }}" class="type"><i class="fa fa-comments-o"></i></a>
+                                        <a href="{{ path }}" class="post-date">
+                                            <p>{{ (article.publieddate|date('M'))|trans }}</p>
                                             <p class="post-m">{{ article.publieddate|date('d') }}</p>
                                         </a>
                                     </div>
-                                    <h4><a href="blog-detail.html">{{ article.title }}</a></h4>
+                                    <h4><a href="{{ path }}">{{ article.title }}</a></h4>
                                     <p>
                                         {{ (article.article)|shortdesc }}
                                     </p>
@@ -37,12 +43,13 @@
                                 </div>
                                 <div class="post-footer">
                                    <!-- <ul class="post-comments">
-                                        <li><a href="blog-detail.html"><i class="fa fa-user"></i>M-Elgendy</a></li>
-                                        <li><a href="blog-detail.html"><i class="fa fa-heart-o"></i>1205</a></li>
-                                        <li><a href="blog-detail.html"><i class="fa fa-comment-o"></i>125</a></li>
+                                        <li><a href="{{ path }}"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                        <li><a href="{{ path }}"><i class="fa fa-heart-o"></i>1205</a></li>
+                                        <li><a href="{{ path }}"><i class="fa fa-comment-o"></i>125</a></li>
                                     </ul>-->
                                     <div class="rating">
-                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                      {#  {% include 'DCSRatingBundle:Rating:control.html.twig' with {'id' :  article.id, 'role' : 'IS_AUTHENTICATED_ANONYMOUSLY'} %}
+                                        #}<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
                                 </div>
                             </article>

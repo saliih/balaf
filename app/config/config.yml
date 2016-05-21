@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: sonata.yml }
+    - { resource: liip.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -116,3 +117,11 @@ knp_paginator:
     template:
         pagination: :Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: :Pagination:sortable_link.html.twig # sort link template
+
+dcs_rating:
+    db_driver: orm
+    base_path_to_redirect: / # when the permalink is not configured
+    max_value: 5 # maximum value for the vote (stars displayed)
+    model:
+        rating: PostBundle\Entity\Rating
+        vote: PostBundle\Entity\Vote

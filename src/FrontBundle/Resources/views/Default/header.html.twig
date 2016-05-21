@@ -3,7 +3,7 @@
     <div class="top-strip">
         <div class="container relative">
 
-            <ul class="top-nav">
+            {#<ul class="top-nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#">Online Store</a></li>
                 <li><a href="gallery.html">Gallery</a>
@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li><a href="contact-us.html">Contacts</a></li>
-            </ul>
+            </ul>#}
 
 
             <div class="signup">
@@ -45,7 +45,16 @@
                 <a href="index.html"><img src="{{ asset('public/images/logo.png') }}" alt=""></a>
             </div>
             <div class="add">
-                <a href="#"><img src="{{ asset('public/images/add.png') }}" alt=""></a>
+                <script type="text/javascript">
+                    google_ad_client = "ca-pub-6877324570550574";
+                    google_ad_slot = "7845020631";
+                    google_ad_width = 728;
+                    google_ad_height = 90;
+                </script>
+                <!-- header -->
+                <script type="text/javascript"
+                        src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
             </div>
         </div>
     </div>
@@ -67,7 +76,7 @@
                             <li class="first carrot"><a href="{{ path('front_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i></a> </li>
                             {% for item in category %}
                                 <li class="{{ item.color }} {% if i==nb-1 %}last{% endif %}">
-                                    <a href="{{ path('front_category',{'locale':'fr','slug':item.slug}) }}">{{ item.title }}</a>
+                                    <a href="{{ path('front_category',{'locale':app.request.locale ,'slug':item.slug}) }}">{{ item.title }}</a>
                                     {% if (item.children)|length > 0 %}
                                         <ul class="{{ item.color }}">
                                             {% for entry in item.children %}
@@ -90,8 +99,8 @@
 <div class="breaking-news">
     <div class="container">
         <div class="row">
-            <div class="span8">
-                <h3>Breaking News</h3>
+            <div class="span12">
+                <h3>Dernières nouvelles</h3>
                 <div id="b-news">
                     <ul>
                         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</li>
@@ -100,12 +109,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="span4">
+            {#<div class="span4">
                 <div class="search">
                     <input type="text" class="input-block-level" placeholder="search entire store here...">
                     <button>Search</button>
                 </div>
-            </div>
+            </div>#}
         </div>
     </div>
 </div>

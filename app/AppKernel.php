@@ -30,7 +30,8 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-
+            new DCS\RatingBundle\DCSRatingBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
 
             new PostBundle\PostBundle(),
             new FrontBundle\FrontBundle(),

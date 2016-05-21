@@ -2,5 +2,8 @@ front_homepage:
     path:     /
     defaults: { _controller: FrontBundle:Default:index }
 front_category:
-    path: /{locale}/category/{slug}.html
+    path: /{locale}/category/{slug}
     defaults : { _controller: FrontBundle:Category:index }
+front_article:
+    path: /{locale}/{categoryname}/{year}/{month}/article/{slug}/
+    defaults : { _controller: FrontBundle:Article:index }

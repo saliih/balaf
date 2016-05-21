@@ -38,3 +38,10 @@ sonata_user_change_password:
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
+
+dcs_rating:
+    resource: "@DCSRatingBundle/Resources/config/routing.xml"
+    prefix:   /
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
