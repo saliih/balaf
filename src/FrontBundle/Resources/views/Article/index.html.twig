@@ -27,7 +27,7 @@
                         <article>
                             {% if article.pic!="" %}
                             <figure>
-                                <img src="{{ (article.pic) }}" class="img-responsive" alt="{{ article.title }}">
+                                <img src="{{ asset(article.pic) }}" class="img-responsive" alt="{{ article.title }}">
                             </figure>
                                 {% endif %}
                             <div class="text">
