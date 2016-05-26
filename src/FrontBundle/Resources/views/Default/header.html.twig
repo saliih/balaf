@@ -80,7 +80,7 @@
                                     {% if (item.children)|length > 0 %}
                                         <ul class="{{ item.color }}">
                                             {% for entry in item.children %}
-                                                <li><a href="">{{ entry.title }}</a></li>
+                                                <li><a href="{{ path('front_category',{'locale':app.request.locale ,'slug':entry.slug}) }}">{{ entry.title }}</a></li>
                                             {% endfor %}
                                         </ul>
                                     {% endif %}

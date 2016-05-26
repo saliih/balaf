@@ -28,8 +28,7 @@ class AppExtension extends \Twig_Extension
         );
     }
 
-    public function shortdesc($str){
-        $size = 500;
+    public function shortdesc($str,$size = 500){
         $text = strip_tags($str);
         if(strlen($text)>=$size){
             $text = substr($text,0,$size);

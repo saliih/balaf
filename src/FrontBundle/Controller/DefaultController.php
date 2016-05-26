@@ -8,7 +8,22 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig', array());
+        // Nos séléction
+        $selection  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("enabled"=>true));
+        $nbselection = count($selection);
+        $tab = array();
+        for($i=0;$i<10;$i++){
+            $index = rand(0,$nbselection);
+            $tab[$index] = $index;
+        }
+        $selection2 = array();
+        foreach($selection as $key=>$value){
+            if(in_array($key,$tab)){
+                $selection2[] = $value;
+            }
+        }
+
+        return $this->render('FrontBundle:Default:index.html.twig', array("selection"=>$selection2));
     }
 
     public function sidebarAction()
