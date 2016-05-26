@@ -405,7 +405,7 @@
                         <div class="caption">
                             <a href="{{ path }}"><i class="fa fa-link"></i></a>
                             <h4>{{ item.title }}</h4>
-                            <p>{{ (item.article)|shortdesc(100) }}</p>
+                            <p>{{ ((item.article)|shortdesc(100))|raw }}</p>
                         </div>
                     </li>
                     {% endif %}

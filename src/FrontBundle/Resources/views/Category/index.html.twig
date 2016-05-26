@@ -37,7 +37,7 @@
                                     </div>
                                     <h4><a href="{{ path }}">{{ article.title }}</a></h4>
                                     <p>
-                                        {{ (article.article)|shortdesc }}
+                                        {{ ((article.article)|shortdesc)|raw }}
                                     </p>
                                     <a href="#" class="color pull-right">Voir plus</a>
                                 </div>
