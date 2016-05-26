@@ -8,8 +8,8 @@ liip_imagine:
         category_page:
             quality: 100
             filters:
-                thumbnail: { size: [796, 321], mode: outbound }
+                thumbnail: { size: [796, 321], mode: inset , format: png  }
         galery:
             quality: 100
             filters:
-                thumbnail: { size: [220, 200], mode: outbound }
+                thumbnail: { size: [220, 200], mode: inset  , format: png }

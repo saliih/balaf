@@ -12,7 +12,7 @@ class DefaultController extends Controller
         $selection  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("enabled"=>true));
         $nbselection = count($selection);
         $tab = array();
-        for($i=0;$i<10;$i++){
+        for($i=0;$i<20;$i++){
             $index = rand(0,$nbselection);
             $tab[$index] = $index;
         }
