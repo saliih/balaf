@@ -103,9 +103,13 @@
                 <h3>Dernières nouvelles</h3>
                 <div id="b-news">
                     <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</li>
-                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut</li>
-                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
+                        {% for article in newsbar %}
+                            {% set year =  article.publieddate|date('Y') %}
+                            {% set month =  article.publieddate|date('m') %}
+                            {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
+                        <li><a href="{{ path }}">{{ article.title }}</a></li>
+                        {% endfor %}
+
                     </ul>
                 </div>
             </div>

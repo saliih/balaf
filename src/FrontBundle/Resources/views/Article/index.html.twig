@@ -27,7 +27,7 @@
                         <article>
                             {% if article.pic!="" %}
                             <figure>
-                                <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="">
+                                <img src="{{ (article.pic) }}" class="img-responsive" alt="{{ article.title }}">
                             </figure>
                                 {% endif %}
                             <div class="text">
@@ -42,7 +42,7 @@
                                 {#<a class="color">Integer ornare libero nisi. Duis ac magna urna.</a>#}
                                 {{ article.article|raw }}
                             </div>
-                            <ul class="social-icons2">
+                           <!-- <ul class="social-icons2">
                                 <li><a class="facebook" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="github" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-github"></i></a></li>
                                 <li><a class="linkedin" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-linkedin"></i></a></li>
@@ -52,7 +52,7 @@
                                 <li><a class="tumblr" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-tumblr"></i></a></li>
                                 <li><a class="twitter" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-twitter"></i></a></li>
                                 <li><a class="youtube" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-youtube-square"></i></a></li>
-                            </ul>
+                            </ul>-->
                         </article>
 
                     </section>

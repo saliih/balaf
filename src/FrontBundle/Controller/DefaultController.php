@@ -26,7 +26,11 @@ class DefaultController extends Controller
             'parent' => null,
             'locale'=>$locale
         ));
-        return $this->render('FrontBundle:Default:header.html.twig', array("category" => $category));
+        $newsbar  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true),array("id"=>"DESC"),3);
+        return $this->render('FrontBundle:Default:header.html.twig', array(
+            "category" => $category,
+            "newsbar" => $newsbar,
+        ));
     }
 
     public function footerAction()
