@@ -6,6 +6,10 @@ liip_imagine:
     filter_sets:
         cache: ~
         category_page:
-            quality: 75
+            quality: 100
             filters:
                 thumbnail: { size: [796, 321], mode: outbound }
+        galery:
+            quality: 100
+            filters:
+                thumbnail: { size: [220, 200], mode: outbound }
