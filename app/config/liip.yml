@@ -14,4 +14,4 @@ liip_imagine:
             quality: 100
             filters:
                 upscale: { min: [220, 220] }
-                thumbnail: { size: [220, 220], mode: outbound  , format: png }
+                thumbnail: { size: [220, 220], mode: inset  , format: png }
