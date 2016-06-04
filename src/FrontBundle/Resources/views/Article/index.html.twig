@@ -7,216 +7,244 @@
     {% set year =  article.publieddate|date('Y') %}
     {% set month =  article.publieddate|date('m') %}
     {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
-    <div class="bg-color breadcrumbs">
-        <div class="container">
-            <h4>Vous êtes ici:</h4>
-            <ul class="breadcrumb">
-                <li><a href="{{ path('front_homepage') }}"><i class="fa fa-home"></i></a> <span class="divider">/</span></li>
-                {{ (article.category|treenav)|raw }}
-                <li><span class="divider">/</span> {{ article.title }}</li>
-            </ul>
-        </div>
-    </div>
+    <div class="row blog-content" data-stickyparent>
+        <div class="col-md-8" data-stickycolumn>
 
-    <div class="main-contant">
-        <div class="container">
-            <div class="row">
-                <div class="span8">
-                    <section class="blog-listing">
+            <article class="post-wrapper clearfix">
 
-                        <article>
-                            {% if article.pic!="" %}
-                            <figure>
-                                <img src="{{ asset(article.pic) }}" class="img-responsive" alt="{{ article.title }}">
-                            </figure>
-                                {% endif %}
-                            <div class="text">
-                                <div class="post-type">
-                                    <a href="{{ path }}#comment" class="type"><i class="fa fa-comments-o"></i></a>
-                                    <a href="{{ path }}" class="post-date">
-                                        <p>{{ (article.publieddate|date('M'))|trans }}</p>
-                                        <p class="post-m">{{ article.publieddate|date('d') }}</p>
-                                    </a>
+                <header class="post-header">
+
+                    <h1 class="post-title">
+                        {{ article.title }}
+                    </h1><!-- .post-title -->
+
+                    <a href="#" class="category bgcolor2">
+                        {{ article.category.title }}
+                    </a>
+
+                    <p class="simple-share">
+
+                        <span>
+                            <span class="article-date"><i class="fa fa-clock-o"></i> 2 hours ago</span>
+                        </span>
+                        <span><i class="fa fa-eye"></i> 1349 views</span>
+
+                    </p>
+
+                    <figure class="image-overlay">
+                        <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="">
+                    </figure>
+                </header><!-- .post-header -->
+
+                <div class="post-content clearfix">
+                    {{ article.article|raw }}
+                </div><!-- .post-content -->
+
+                <footer class="post-meta">
+                   <!-- <div class="tags-wrapper">
+                        <ul class="tags-widget clearfix">
+                            <li class="trending">TAGS:</li>
+                            <li><a href="#">Creative</a></li>
+                            <li><a href="#">Wood</a></li>
+                            <li><a href="#">Advice</a></li>
+                        </ul>
+                    </div>--><!-- .tags-wrapper -->
+
+                    <div class="share-wrapper clearfix">
+                        <div class="total-shares">
+                            <em id="countUp" data-count="267">267</em>
+                            <div class="caption">Shares</div>
+                        </div>
+
+                        <div class="share-buttons">
+                            <a class="social-share facebook" href="#">
+                                <i class="fa fa-facebook"></i>
+                                <span class="alt-text">Share</span>
+                            </a>
+                            <a class="social-share twitter" href="#">
+                                <i class="fa fa-twitter"></i>
+                                <span class="alt-text">Tweet</span>
+                            </a>
+                            <a class="social-share google-plus" href="#">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a class="social-share linked_in" href="#">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a class="social-share pinterest" href="#">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+{#
+                    <div class="row">
+                        <div class="post-nav-wrapper clearfix">
+                            <div class="col-md-6 omega">
+                                <div class="previous-post">
+                                    <div class="post-nav-label">
+                                        <i class="fa fa-angle-left"></i>
+                                        Previous post
+                                    </div>
+                                    <a href="#" class="post-nav-title">4 apps that every smartphone must get right</a>
                                 </div>
-                                <h4><a href="#">{{ article.title }}</a></h4>
-                                {#<a class="color">Integer ornare libero nisi. Duis ac magna urna.</a>#}
-                                {{ article.article|raw }}
                             </div>
-                           <!-- <ul class="social-icons2">
-                                <li><a class="facebook" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="github" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-github"></i></a></li>
-                                <li><a class="linkedin" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="pinterest" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-pinterest"></i></a></li>
-                                <li><a class="dribbble" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-dribbble"></i></a></li>
-                                <li><a class="google" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-google-plus-square"></i></a></li>
-                                <li><a class="tumblr" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-tumblr"></i></a></li>
-                                <li><a class="twitter" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="youtube" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-youtube-square"></i></a></li>
-                            </ul>-->
-                        </article>
 
-                    </section>
-                    {#
-                    <section>
-                        <div class="comments">
-                            <h2>10 Comments</h2>
-                            <ul>
-
-                                <li>
-                                    <figure>
-                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                    </figure>
-                                    <div class="comment-heading">
-                                        <h5><a href="#"> Jhon Doe</a></h5>
-                                        <p>26 June 2013, 15:20</p>
-                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                            <div class="col-md-6 alpha">
+                                <div class="next-post">
+                                    <div class="post-nav-label">
+                                        Next post
+                                        <i class="fa fa-angle-right"></i>
                                     </div>
-                                    <div class="text">
-                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                    </div>
+                                    <a href="#" class="post-nav-title">What the Viny "Comeback" Really Looks Like</a>
+                                </div>
+                            </div>
+                        </div><!-- .post-nav-wrapper -->
+                    </div>
 
-                                    <ul>
-                                        <li>
-                                            <figure>
-                                                <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                            </figure>
-                                            <div class="comment-heading">
-                                                <h5><a href="#"> Jhon Doe</a></h5>
-                                                <p>26 June 2013, 15:20</p>
-                                                <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                            </div>
-                                            <div class="text">
-                                                <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                </li>
-
-
-                                <li>
-                                    <figure>
-                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                    </figure>
-                                    <div class="comment-heading">
-                                        <h5><a href="#"> Jhon Doe</a></h5>
-                                        <p>26 June 2013, 15:20</p>
-                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                    </div>
-                                    <div class="text">
-                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                    </div>
-
-                                    <ul>
-                                        <li>
-                                            <figure>
-                                                <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                            </figure>
-                                            <div class="comment-heading">
-                                                <h5><a href="#"> Jhon Doe</a></h5>
-                                                <p>26 June 2013, 15:20</p>
-                                                <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                            </div>
-                                            <div class="text">
-                                                <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                            </figure>
-                                            <div class="comment-heading">
-                                                <h5><a href="#"> Jhon Doe</a></h5>
-                                                <p>26 June 2013, 15:20</p>
-                                                <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                            </div>
-                                            <div class="text">
-                                                <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                            </div>
-                                            <ul>
-                                                <li>
-                                                    <figure>
-                                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                                    </figure>
-                                                    <div class="comment-heading">
-                                                        <h5><a href="#"> Jhon Doe</a></h5>
-                                                        <p>26 June 2013, 15:20</p>
-                                                    </div>
-                                                    <div class="text">
-                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-
-                                </li>
-
-
-                                <li>
-                                    <figure>
-                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                    </figure>
-                                    <div class="comment-heading">
-                                        <h5><a href="#"> Jhon Doe</a></h5>
-                                        <p>26 June 2013, 15:20</p>
-                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                    </div>
-                                    <div class="text">
-                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                    </div>
-                                </li>
-
-
-                                <li>
-                                    <figure>
-                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                    </figure>
-                                    <div class="comment-heading">
-                                        <h5><a href="#"> Jhon Doe</a></h5>
-                                        <p>26 June 2013, 15:20</p>
-                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                    </div>
-                                    <div class="text">
-                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                    </div>
-                                </li>
-
-
-                                <li>
-                                    <figure>
-                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
-                                    </figure>
-                                    <div class="comment-heading">
-                                        <h5><a href="#"> Jhon Doe</a></h5>
-                                        <p>26 June 2013, 15:20</p>
-                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
-                                    </div>
-                                    <div class="text">
-                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
-                                    </div>
-                                </li>
-
-                            </ul>
+                    <div class="author-box clearfix">
+                        <div class="author-avatar">
+                            <a href="page_author.php">
+                                <img alt="" src="img/author4.jpg" class="avatar" height="110" width="110">
+                            </a>
                         </div>
-                    </section>
-                    <section>
-                        <div class="leave-reply">
-                            <h2>Leave Comment</h2>
-                            <ul>
-                                <li><input type="text" class="input-block-level" placeholder="Enter your Name"><i class="fa fa-user"></i></li>
-                                <li><input type="text" class="input-block-level" placeholder="Enter E-mail ID"><i class="fa fa-envelope-o"></i></li>
-                                <li><input type="text" class="input-block-level" placeholder="Website"><i class="fa fa-link"></i></li>
-                                <li><textarea class="input-block-level"></textarea></li>
-                                <li><a href="#" class="btn-style">Post Comment</a></li>
-                            </ul>
+                        <div class="author-info">
+                            <h3><a href="page_author.php">John Doe</a></h3>
+                            <p class="author-bio">
+                                He is here. All right. Well, take care of yourself, Han. I guess that's what you're best at, ain't it? What?! Don't act so surprised, Your Highness. You weren't on any mercy mission this time.
+                            </p>
+                            <div class="author-contact">
+                                <a href="#"><i class="fa fa-envelope fa-lg" title="Email"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-globe fa-lg" title="Website"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-twitter fa-lg" title="Twitter"></i></a>
+                                <a href="#" rel="publisher" target="_blank"><i title="Google+" class="fa fa-google-plus fa-lg"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-facebook fa-lg" title="Facebook"></i></a>
+                            </div>
                         </div>
-                    </section>
+                    </div>
                     #}
+                </footer>
+
+            </article><!-- .post-wrapper -->
+
+            <div class="related-posts clearfix">
+                <h3 class="block-title"><span>Related Posts</span></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <article class="news-block small-block">
+                            <a href="#" class="overlay-link">
+                                <figure class="image-overlay">
+                                    <img src="img/big-thumb/big_thumb44.jpg" alt="">
+                                </figure>
+                            </a>
+                            <a href="#" class="category">
+                                Fashion
+                            </a>
+                            <header class="news-details">
+                                <h3 class="news-title">
+                                    <a href="#">
+                                        5 Spring Outfits For Under $200
+                                    </a>
+                                </h3>
+                                <p class="simple-share">
+                                    by <a href="#"><b>John Doe</b></a> -
+                                    <span class="article-date"><i class="fa fa-clock-o"></i> 4 hours ago</span>
+                                </p>
+                            </header>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="news-block small-block">
+                            <a href="#" class="overlay-link">
+                                <figure class="image-overlay">
+                                    <img src="img/big-thumb/big_thumb42.jpg" alt="">
+                                </figure>
+                            </a>
+                            <a href="#" class="category">
+                                Travel
+                            </a>
+                            <header class="news-details">
+                                <h3 class="news-title">
+                                    <a href="#">
+                                        6 Tips Before Traveling Internationally
+                                    </a>
+                                </h3>
+                                <p class="simple-share">
+                                    by <a href="#"><b>John Doe</b></a> -
+                                    <span class="article-date"><i class="fa fa-clock-o"></i> 46 minutes ago</span>
+                                </p>
+                            </header>
+                        </article>
+                    </div>
+                </div><!-- .row -->
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <article class="news-block small-block">
+                            <a href="#" class="overlay-link">
+                                <figure class="image-overlay">
+                                    <span class="play-button"><i class="fa fa-play"></i></span>
+                                    <img src="img/big-thumb/big_thumb47.jpg" alt="">
+                                </figure>
+                            </a>
+                            <a href="#" class="category">
+                                Food
+                            </a>
+                            <header class="news-details">
+                                <h3 class="news-title">
+                                    <a href="#">
+                                        How to Make Perfect Homemade Pizza
+                                    </a>
+                                </h3>
+                                <p class="simple-share">
+                                    by <a href="#"><b>John Doe</b></a> -
+                                    <span class="article-date"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                </p>
+                            </header>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="news-block small-block">
+                            <a href="#" class="overlay-link">
+                                <figure class="image-overlay">
+                                    <img src="img/big-thumb/big_thumb48.jpg" alt="">
+                                </figure>
+                            </a>
+                            <a href="#" class="category">
+                                Advice
+                            </a>
+                            <header class="news-details">
+                                <h3 class="news-title">
+                                    <a href="#">
+                                        10 Tips for Taking Great Outdoor Photos
+                                    </a>
+                                </h3>
+                                <p class="simple-share">
+                                    by <a href="#"><b>John Doe</b></a> -
+                                    <span class="article-date"><i class="fa fa-clock-o"></i> 13 hours ago</span>
+                                </p>
+                            </header>
+                        </article>
+                    </div>
+                </div><!-- .row -->
+
+            </div><!-- .related-post -->
+            <!-- Mid ad -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ad728-wrapper mid-wrapper">
+                        <a href="#">
+                            <img src="img/ban728.jpg" alt="">
+                        </a>
+                    </div>
                 </div>
-                {{ render(controller('FrontBundle:Default:sidebar')) }}
             </div>
-        </div>
-    </div>
+
+        </div><!-- End Left big column -->
+        {{ render(controller('FrontBundle:Default:sidebar')) }}
+
+    </div><!-- .blog-content -->
+
 
 {% endblock %}

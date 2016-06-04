@@ -1,0 +1,219 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% set year =  article.publieddate|date('Y') %}
+    {% set month =  article.publieddate|date('m') %}
+    {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
+    <div class="bg-color breadcrumbs">
+        <div class="container">
+            <h4>Vous êtes ici:</h4>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('front_homepage') }}"><i class="fa fa-home"></i></a> <span class="divider">/</span></li>
+                {{ (article.category|treenav)|raw }}
+                <li><span class="divider">/</span> {{ article.title }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-contant">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <section class="blog-listing">
+
+                        <article>
+                            {% if article.pic!="" %}
+                            <figure>
+                                <img src="{{ asset(article.pic) }}" class="img-responsive" alt="{{ article.title }}">
+                            </figure>
+                                {% endif %}
+                            <div class="text">
+                                <div class="post-type">
+                                    <a href="{{ path }}#comment" class="type"><i class="fa fa-comments-o"></i></a>
+                                    <a href="{{ path }}" class="post-date">
+                                        <p>{{ (article.publieddate|date('M'))|trans }}</p>
+                                        <p class="post-m">{{ article.publieddate|date('d') }}</p>
+                                    </a>
+                                </div>
+                                <h4><a href="#">{{ article.title }}</a></h4>
+                                {#<a class="color">Integer ornare libero nisi. Duis ac magna urna.</a>#}
+                                {{ article.article|raw }}
+                            </div>
+                           <!-- <ul class="social-icons2">
+                                <li><a class="facebook" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="github" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-github"></i></a></li>
+                                <li><a class="linkedin" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="pinterest" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-pinterest"></i></a></li>
+                                <li><a class="dribbble" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-dribbble"></i></a></li>
+                                <li><a class="google" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-google-plus-square"></i></a></li>
+                                <li><a class="tumblr" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-tumblr"></i></a></li>
+                                <li><a class="twitter" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="youtube" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-youtube-square"></i></a></li>
+                            </ul>-->
+                        </article>
+
+                    </section>
+                    {#
+                    <section>
+                        <div class="comments">
+                            <h2>10 Comments</h2>
+                            <ul>
+
+                                <li>
+                                    <figure>
+                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                    </figure>
+                                    <div class="comment-heading">
+                                        <h5><a href="#"> Jhon Doe</a></h5>
+                                        <p>26 June 2013, 15:20</p>
+                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                    </div>
+                                    <div class="text">
+                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                    </div>
+
+                                    <ul>
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                            </figure>
+                                            <div class="comment-heading">
+                                                <h5><a href="#"> Jhon Doe</a></h5>
+                                                <p>26 June 2013, 15:20</p>
+                                                <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                            </div>
+                                            <div class="text">
+                                                <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </li>
+
+
+                                <li>
+                                    <figure>
+                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                    </figure>
+                                    <div class="comment-heading">
+                                        <h5><a href="#"> Jhon Doe</a></h5>
+                                        <p>26 June 2013, 15:20</p>
+                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                    </div>
+                                    <div class="text">
+                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                    </div>
+
+                                    <ul>
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                            </figure>
+                                            <div class="comment-heading">
+                                                <h5><a href="#"> Jhon Doe</a></h5>
+                                                <p>26 June 2013, 15:20</p>
+                                                <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                            </div>
+                                            <div class="text">
+                                                <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                            </figure>
+                                            <div class="comment-heading">
+                                                <h5><a href="#"> Jhon Doe</a></h5>
+                                                <p>26 June 2013, 15:20</p>
+                                                <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                            </div>
+                                            <div class="text">
+                                                <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <figure>
+                                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                                    </figure>
+                                                    <div class="comment-heading">
+                                                        <h5><a href="#"> Jhon Doe</a></h5>
+                                                        <p>26 June 2013, 15:20</p>
+                                                    </div>
+                                                    <div class="text">
+                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                </li>
+
+
+                                <li>
+                                    <figure>
+                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                    </figure>
+                                    <div class="comment-heading">
+                                        <h5><a href="#"> Jhon Doe</a></h5>
+                                        <p>26 June 2013, 15:20</p>
+                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                    </div>
+                                    <div class="text">
+                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                    </div>
+                                </li>
+
+
+                                <li>
+                                    <figure>
+                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                    </figure>
+                                    <div class="comment-heading">
+                                        <h5><a href="#"> Jhon Doe</a></h5>
+                                        <p>26 June 2013, 15:20</p>
+                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                    </div>
+                                    <div class="text">
+                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                    </div>
+                                </li>
+
+
+                                <li>
+                                    <figure>
+                                        <a href="#"><img src="public/images/comments-thumb.png" alt=""></a>
+                                    </figure>
+                                    <div class="comment-heading">
+                                        <h5><a href="#"> Jhon Doe</a></h5>
+                                        <p>26 June 2013, 15:20</p>
+                                        <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                    </div>
+                                    <div class="text">
+                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="leave-reply">
+                            <h2>Leave Comment</h2>
+                            <ul>
+                                <li><input type="text" class="input-block-level" placeholder="Enter your Name"><i class="fa fa-user"></i></li>
+                                <li><input type="text" class="input-block-level" placeholder="Enter E-mail ID"><i class="fa fa-envelope-o"></i></li>
+                                <li><input type="text" class="input-block-level" placeholder="Website"><i class="fa fa-link"></i></li>
+                                <li><textarea class="input-block-level"></textarea></li>
+                                <li><a href="#" class="btn-style">Post Comment</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                    #}
+                </div>
+                {{ render(controller('FrontBundle:Default:sidebar')) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

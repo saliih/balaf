@@ -6,6 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
+    public function ad300Action(){
+        return $this->render('FrontBundle:Default:ad300.html.twig', array());
+    }
+    public function ad728Action(){
+        return $this->render('FrontBundle:Default:ad728.html.twig', array());
+    }
     public function indexAction()
     {
         // Nos séléction

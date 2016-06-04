@@ -1,68 +1,69 @@
 {% extends '::base.html.twig' %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('public/css/color-'~category.color~'.css') }}" rel="stylesheet">
-    {% endblock %}
+
 {% block body %}
-    <div class="bg-color breadcrumbs">
-        <div class="container">
-            <h4>Vous êtes ici:</h4>
-            <ul class="breadcrumb">
-                <li><a href="{{ path('front_homepage') }}"><i class="fa fa-home"></i></a> <span class="divider">/</span></li>
-                {{ (category|treenav)|raw }}
-            </ul>
-        </div>
-    </div>
+    <div class="row blog-content">
+        <div class="col-md-8">
+            <h3 class="block-title"><span>{{ category }}</span></h3>
+    {% set i =0 %}
+    {% for article in posts %}
+        {% set year =  article.publieddate|date('Y') %}
+        {% set month =  article.publieddate|date('m') %}
+        {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':category.slug}) %}
+    {% if i == 0 %}
+        <article class="news-block big-block">
+                <a href="{{ path }}" class="overlay-link">
+                    <figure class="image-overlay">
+                        <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="">
+                    </figure>
+                </a>
+                <a href="{{ path }}" class="category">
+                    {{ article.category.title }}
+                </a>
+                <header class="news-details">
+                    <h3 class="news-title">
+                        <a href="{{ path }}">
+                            {{ article.title }}
+                        </a>
+                    </h3>
+                    <p> {{ ((article.article)|shortdesc(80))|raw }}</p>
+                   <!-- <p class="simple-share">
+                        by <a href="{{ path }}"><b>John Doe</b></a> -
+                        <span class="article-date"><i class="fa fa-clock-o"></i> 10 minutes ago</span>
+                    </p>-->
+                </header>
+            </article>
+{% else %}
+            <article class="simple-post simple-big clearfix">
+                <div class="simple-thumb">
 
-    <div class="main-contant">
-        <div class="container">
-            <div class="row">
-                <div class="span8">
-                    <section class="blog-listing">
-                        {% for article in posts %}
-                            {% set year =  article.publieddate|date('Y') %}
-                            {% set month =  article.publieddate|date('m') %}
-                            {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':category.slug}) %}
-                            <article>
-                                <figure>
-                                    <a href="{{ path }}"><img src="{{ (article.pic)| imagine_filter('category_page') }}" alt=""></a>
-                                </figure>
-                                <div class="text">
-                                    <div class="post-type">
-                                        <a href="{{ path }}" class="type"><i class="fa fa-comments-o"></i></a>
-                                        <a href="{{ path }}" class="post-date">
-                                            <p>{{ (article.publieddate|date('M'))|trans }}</p>
-                                            <p class="post-m">{{ article.publieddate|date('d') }}</p>
-                                        </a>
-                                    </div>
-                                    <h4><a href="{{ path }}">{{ article.title }}</a></h4>
-                                    <p>
-                                        {{ ((article.article)|shortdesc)|raw }}
-                                    </p>
-                                    <a href="#" class="color pull-right">Voir plus</a>
-                                </div>
-                                <div class="post-footer">
-                                   <!-- <ul class="post-comments">
-                                        <li><a href="{{ path }}"><i class="fa fa-user"></i>M-Elgendy</a></li>
-                                        <li><a href="{{ path }}"><i class="fa fa-heart-o"></i>1205</a></li>
-                                        <li><a href="{{ path }}"><i class="fa fa-comment-o"></i>125</a></li>
-                                    </ul>-->
-                                    <div class="rating">
-                                      {#  {% include 'DCSRatingBundle:Rating:control.html.twig' with {'id' :  article.id, 'role' : 'IS_AUTHENTICATED_ANONYMOUSLY'} %}
-                                        #}<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                    </div>
-                                </div>
-                            </article>
-                        {% endfor %}
-
-                        {{ knp_pagination_render(posts) }}
-
-                    </section>
+                    <a href="{{ path }}">
+                        <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="">
+                    </a>
                 </div>
+                <header>
+                    <p class="simple-share">
+                        <a href="{{ path }}"> {{ article.category.title }}</a><!-- /
+                        by <a href="{{ path }}">John Doe</a> -
+                        <span><i class="fa fa-clock-o"></i> 23 minutes ago</span>-->
+                    </p>
 
+                    <h3>
+                        <a href="{{ path }}">{{ article.title }}</a>
+                    </h3>
 
-                {{ render(controller('FrontBundle:Default:sidebar')) }}
-            </div>
-        </div>
-    </div>
+                    <p class="excerpt">
+                        {{ ((article.article)|shortdesc(80))|raw }}
+                    </p>
+                </header>
+            </article>
+{% endif %}
+        {% set i = i + 1 %}
+    {% endfor %}
+
+            {{ knp_pagination_render(posts) }}
+
+        </div><!-- End Left big column -->
+
+        {{ render(controller('FrontBundle:Default:sidebar')) }}
+    </div><!-- .main-body -->
 {% endblock %}
