@@ -248,15 +248,7 @@
 
             </div><!-- .related-post -->
             <!-- Mid ad -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ad728-wrapper mid-wrapper">
-                        <a href="#">
-                            <img src="img/ban728.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
+           {{ render(controller('FrontBundle:Default:ad728')) }}
 
         </div><!-- End Left big column -->
         {{ render(controller('FrontBundle:Default:sidebar')) }}
