@@ -1,0 +1,23 @@
+<div class="col-md-3">
+    <div class="news-feed">
+        <h3 class="block-title"><span>Vient de paraitre</span></h3>
+        <ul class="widget-content">
+            {% for item in article %}
+                {% set year =  item.publieddate|date('Y') %}
+                {% set month =  item.publieddate|date('m') %}
+                {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+
+                <li>
+                <article>
+                    <h3>
+                        <a href="{{ path }}">{{ item.title }}</a>
+                    </h3>
+                    <p><span><i class="fa fa-clock-o"></i>{{ item.publieddate|date('d/m/Y') }}</span></p>
+                </article>
+            </li>
+{% endfor %}
+
+
+        </ul>
+    </div>
+</div>
