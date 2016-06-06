@@ -84,6 +84,12 @@ class Post
      * @ORM\Column(name="enabled", type="boolean",nullable=true)
      */
     private $enabled;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbview", type="integer",nullable=true)
+     */
+    private $nbview;
 
     public function __construct()
     {
@@ -334,5 +340,28 @@ class Post
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set nbview
+     *
+     * @param integer $nbview
+     * @return Post
+     */
+    public function setNbview($nbview)
+    {
+        $this->nbview = $nbview;
+
+        return $this;
+    }
+
+    /**
+     * Get nbview
+     *
+     * @return integer 
+     */
+    public function getNbview()
+    {
+        return $this->nbview;
     }
 }

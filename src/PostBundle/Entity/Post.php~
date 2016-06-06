@@ -84,6 +84,12 @@ class Post
      * @ORM\Column(name="enabled", type="boolean",nullable=true)
      */
     private $enabled;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbview", type="integer",nullable=true)
+     */
+    private $nbview;
 
     public function __construct()
     {
