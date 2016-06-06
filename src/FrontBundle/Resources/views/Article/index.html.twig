@@ -10,8 +10,7 @@
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "6cb992fa-dd0d-4fc2-8acf-0dd65cec3aa0", doNotHash: true, doNotCopy: false, hashAddressBar: false});</script>
+
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
@@ -264,5 +263,7 @@
 
     </div><!-- .blog-content -->
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5755594c8743465a"></script>
 
 {% endblock %}
