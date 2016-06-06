@@ -25,7 +25,7 @@
                             {{ article.title }}
                         </a>
                     </h3>
-                    <p> {{ ((article.article)|shortdesc(80))|raw }}</p>
+                    <p> {{ ((article.article)|shortdesc(250))|raw }}</p>
                    <!-- <p class="simple-share">
                         by <a href="{{ path }}"><b>John Doe</b></a> -
                         <span class="article-date"><i class="fa fa-clock-o"></i> 10 minutes ago</span>
@@ -52,7 +52,7 @@
                     </h3>
 
                     <p class="excerpt">
-                        {{ ((article.article)|shortdesc(80))|raw }}
+                        {{ ((article.article)|shortdesc(150))|raw }}
                     </p>
                 </header>
             </article>
