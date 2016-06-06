@@ -17,6 +17,14 @@
     <link href="{{ asset('public/css/color-'~article.category.color~'.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=1788355211393444";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     {% set year =  article.publieddate|date('Y') %}
     {% set month =  article.publieddate|date('m') %}
     {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
@@ -249,6 +257,13 @@
             </div><!-- .related-post -->
             <!-- Mid ad -->
            {{ render(controller('FrontBundle:Default:ad728')) }}
+<div id="comments" class="comments-wrapper clearfix">
+                        <h3 class="block-title"><span>Comments</span></h3>
+
+                       <div class="fb-comments" data-href="{{app.request.uri}}" data-numposts="5"></div>
+                    
+                    </div>
+                </div><!-- End Left big column -->
 
         </div><!-- End Left big column -->
         {{ render(controller('FrontBundle:Default:sidebar')) }}
