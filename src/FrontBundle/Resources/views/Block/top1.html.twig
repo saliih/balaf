@@ -1,0 +1,76 @@
+{% if article|length>0 %}
+    <section class="admag-block">
+        {% set i = 0 %}
+        <div class="row">
+            {% for item in article %}
+                {% set year =  item.publieddate|date('Y') %}
+                {% set month =  item.publieddate|date('m') %}
+                {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+
+
+                {% if i == 0 %}
+                    <div class="col-md-8">
+
+                        <article class="featured-small box-news box-big">
+                            <a href="{{ path }}">
+                                <img src="{{ (item.pic)| imagine_filter('hug') }}" alt="">
+                            </a>
+                            <header class="featured-header">
+                                <a class="category bgcolor2" href="{{ path }}">{{ item.category }}</a>
+                                <h2><a href="{{ path }}">{{ item.title }}</a></h2>
+                                <p class="simple-share">
+                                  <!--  by <a href="#"><b>John Doe</b></a> --->
+                                    <span class="article-date">{{ item.publieddate|date('m/d/Y') }}</span>
+                                </p>
+                            </header>
+                        </article>
+                    </div>
+                {% elseif i<2 %}
+                    <div class="col-md-4">
+                        <article class="featured-small box-news">
+                            <a href="{{ path }}">
+                                <img src="{{ (item.pic)| imagine_filter('hug') }}" alt="">
+                            </a>
+                            <header class="featured-header">
+                                <a class="category bgcolor2" href="#">{{ item.category }}</a>
+                                <h2><a href="{{ path }}">{{ item.title }}</a></h2>
+                                <p class="simple-share">
+                                   <!-- by <a href="#"><b>John Doe</b></a> --->
+                                    <span class="article-date">{{ item.publieddate|date('m/d/Y') }}</span>
+
+                                </p>
+                            </header>
+                        </article>
+                    </div>
+                {% endif %}{% set i =i+1 %}
+            {% endfor %}
+        </div><!--End small box -->
+
+        <div class="row">
+            {% set i = 0 %}
+    {% for item in article %}
+        {% set year =  item.publieddate|date('Y') %}
+        {% set month =  item.publieddate|date('m') %}
+        {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+    {% if i>=2 and i<5 %}
+        <div class="col-md-4">
+            <article class="featured-small box-news">
+                <a href="{{ path }}">
+                    <img src="{{ (item.pic)| imagine_filter('hug') }}" alt="">
+                </a>
+                <header class="featured-header">
+                    <a class="category bgcolor2" href="#">{{ item.category }}</a>
+                    <h2><a href="{{ path }}">{{ item.title }}</a></h2>
+                    <p class="simple-share">
+                        <!-- by <a href="#"><b>John Doe</b></a> --->
+                        <span class="article-date">{{ item.publieddate|date('m/d/Y') }}</span>
+
+                    </p>
+                </header>
+            </article>
+        </div>
+{% endif %}{% set i = i+1  %}{% endfor %}
+
+        </div><!-- End big box -->
+    </section><!-- .admag-block -->
+{% endif %}

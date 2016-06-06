@@ -15,3 +15,13 @@ liip_imagine:
             filters:
                 upscale: { min: [220, 220] }
                 thumbnail: { size: [220, 220], mode: inset  , format: png }
+        hug:
+            quality: 100
+            filters:
+                upscale: { min: [730, 320] }
+                thumbnail: { size: [730, 320], mode: inset  , format: png }
+        hug2:
+            quality: 100
+            filters:
+                upscale: { min: [730, 480] }
+                thumbnail: { size: [730, 480], mode: inset  , format: png }
