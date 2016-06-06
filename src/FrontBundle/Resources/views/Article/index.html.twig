@@ -1,4 +1,9 @@
 {% extends '::base.html.twig' %}
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "6cb992fa-dd0d-4fc2-8acf-0dd65cec3aa0", doNotHash: true, doNotCopy: false, hashAddressBar: false});</script>
+{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('public/css/color-'~article.category.color~'.css') }}" rel="stylesheet">
@@ -51,7 +56,7 @@
                     </div>--><!-- .tags-wrapper -->
 
                     <div class="share-wrapper clearfix">
-                        <div class="total-shares">
+                       {# <div class="total-shares">
                             <em id="countUp" data-count="267">267</em>
                             <div class="caption">Shares</div>
                         </div>
@@ -74,7 +79,11 @@
                             <a class="social-share pinterest" href="#">
                                 <i class="fa fa-pinterest"></i>
                             </a>
-                        </div>
+                        </div>#}
+                        <span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
+<span class='st_pinterest_large' displayText='Pinterest'></span>
                     </div>
 {#
                     <div class="row">
