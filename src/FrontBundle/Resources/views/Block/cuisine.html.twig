@@ -1,54 +1,55 @@
-   <div class="col-md-9">
-   {% set i = 0 %}
-							{% for item in article %}
-							{% set year =  item.publieddate|date('Y') %}
-                {% set month =  item.publieddate|date('m') %}
-                {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+<div class="col-md-9">
+    {% set i = 0 %}
+    {% for item in article %}
+        {% set year =  item.publieddate|date('Y') %}
+        {% set month =  item.publieddate|date('m') %}
+        {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
 
-							{% if i ==0 %}
-                            <article class="news-block">
-                                <a href="{{ path }}" class="overlay-link">
-                                    <figure class="image-overlay">
-                                        <img src="{{ (item.pic)| imagine_filter('cuisine1') }}" alt="">
-                                    </figure>
-                                </a>
-                                <a href="{{ path }}" class="category">
-                                    {{ item.category }}
-                                </a>
-                                <div class="news-details">
-                                    <h3 class="news-title">
-                                        <a href="{{ path }}">
-                                           {{ item.title }}
-                                        </a>
-                                    </h3>
-                                    <p>{{ ((item.article)|shortdesc(200))|raw }}</p>
-                                    <p class="simple-share">
-                                       <!-- by <a href="#"><b>John Doe</b></a> --->
-                                        <span class="article-date"><i class="fa fa-clock-o"></i> {{ item.publieddate|date('m/d/Y') }}</span>
-                                    </p>
-                                </div>
-                            </article>
-{% else %}
-                            <article class="simple-post clearfix">
-							
-                                <div class="simple-thumb">
-                                    <a href="{{ path }}">
-                                        <img src="{{ (item.pic)| imagine_filter('cuisine2') }}" alt="">
-                                    </a>
-                                </div>
-                                <header>
-                                    <h3>
-                                        <a href="{{ path }}">{{ item.title }}</a>
-                                    </h3>
-                                    <p class="simple-share">
-                                        <a href="{{ path }}">{{ item.category }}</a> /
-                                      <!--  by <a href="#">John Doe</a> --->
-                                        <span><i class="fa fa-clock-o"></i> {{ item.publieddate|date('m/d/Y') }}</span>
-                                    </p>
-                                </header>
-                            </article>
-							{% endif %}
-{% set i = i+1 %}
-                          {% endfor %}
-                        </div><!-- End mid column -->
+        {% if i ==0 %}
+            <article class="news-block">
+                <a href="{{ path }}" class="overlay-link">
+                    <figure class="image-overlay">
+                        <img src="{{ (item.pic)| imagine_filter('cuisine1') }}" alt="">
+                    </figure>
+                </a>
+                <a href="{{ path }}" class="category">
+                    {{ item.category }}
+                </a>
+                <div class="news-details">
+                    <h3 class="news-title">
+                        <a href="{{ path }}">
+                            {{ item.title }}
+                        </a>
+                    </h3>
+                    <p>{{ ((item.article)|shortdesc(200))|raw }}</p>
+                    <p class="simple-share">
+                        <!-- by <a href="#"><b>John Doe</b></a> --->
+                        <span class="article-date"><i
+                                    class="fa fa-clock-o"></i> {{ item.publieddate|date('m/d/Y') }}</span>
+                    </p>
+                </div>
+            </article>
+        {% else %}
+            <article class="simple-post clearfix">
+
+                <div class="simple-thumb">
+                    <a href="{{ path }}">
+                        <img src="{{ (item.pic)| imagine_filter('cuisine2') }}" alt="">
+                    </a>
+                </div>
+                <header>
+                    <h3>
+                        <a href="{{ path }}">{{ item.title }}</a>
+                    </h3>
+                    <p class="simple-share">
+                        <a href="{{ path }}">{{ item.category }}</a> /
+                        <!--  by <a href="#">John Doe</a> --->
+                        <span><i class="fa fa-clock-o"></i> {{ item.publieddate|date('m/d/Y') }}</span>
+                    </p>
+                </header>
+            </article>
+        {% endif %}
+        {% set i = i+1 %}
+    {% endfor %}
+</div><!-- End mid column -->
                    

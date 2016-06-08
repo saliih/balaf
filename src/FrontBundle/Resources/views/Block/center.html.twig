@@ -1,0 +1,39 @@
+{% if category is not null %}
+<div class="col-md-4 news-text-block">
+    <h3 class="block-title"><span>{{ category.title }}</span></h3>
+    {% set i = 0 %}
+    {% for item in article %}
+    {% set year =  item.publieddate|date('Y') %}
+    {% set month =  item.publieddate|date('m') %}
+    {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+
+    {% if i ==0 %}
+    <article class="widget-post clearfix">
+        <div class="simple-thumb">
+            <a href="{{ path }}">
+                <img src="{{ (item.pic)| imagine_filter('small') }}" alt="">
+            </a>
+        </div>
+        <header>
+            <h3>
+                <a href="{{ path }}"> {{ item.title }}</a>
+            </h3>
+            <p class="simple-share">
+                <span><i class="fa fa-clock-o"></i> {{ item.publieddate|date('m/d/Y') }}</span>
+            </p>
+        </header>
+    </article>
+{% else %}
+    <article class="widget-post clearfix">
+        <header>
+            <h3>
+                <a href="{{ path }}"> {{ item.title }}</a>
+            </h3>
+        </header>
+    </article>
+    {% endif %}
+        {% set i = i+1 %}
+    {% endfor %}
+
+</div>
+{% endif %}

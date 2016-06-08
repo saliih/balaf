@@ -29,13 +29,24 @@ class BlockController extends Controller
 		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true,'category'=>$category),array('id'=>"DESC"),4);
 		return $this->render('FrontBundle:Block:cuisine.html.twig', array('article' => $article));
 	}
-	public function modeAction(){
-		$this->catid[] = 2;
+	public function mamanAction(){
+		$this->catid[] = 4;
 		$category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(2);
 		//$this->recurcive($category);
 		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true,'category'=>$category),array('id'=>"DESC"),5);
-		return $this->render('FrontBundle:Block:mode.html.twig', array('article' => $article));
+		return $this->render('FrontBundle:Block:maman.html.twig', array('article' => $article));
 	}
+	public function centerAction($id){
+		$this->catid[] = $id;
+		$category = $this->getDoctrine()->getRepository("PostBundle:Category")->find($id);
+		//$this->recurcive($category);
+		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true,'category'=>$category),array('id'=>"DESC"),6);
+		return $this->render('FrontBundle:Block:center.html.twig', array(
+			'article' => $article,
+			'category' => $category
+		));
+	}
+
 	/*public function recurcive($parent){
 		foreach($parent->getChildren() as $child){
 			$this->catid[] = $child->getId();

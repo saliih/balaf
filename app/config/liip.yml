@@ -40,3 +40,8 @@ liip_imagine:
             filters:
                 upscale: { min: [350, 230] }
                 thumbnail: { size: [350, 230], mode: inset  , format: png }
+        small:
+            quality: 100
+            filters:
+                upscale: { min: [95, 80] }
+                thumbnail: { size: [95, 80], mode: inset  , format: png }

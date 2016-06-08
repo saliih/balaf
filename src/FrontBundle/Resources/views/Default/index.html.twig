@@ -14,7 +14,7 @@
                       </div>
                 </section>
 
-                {{ render(controller('FrontBundle:Block:mode')) }}
+                {{ render(controller('FrontBundle:Block:maman')) }}
 
             </div><!-- End Left big column -->
 
@@ -23,189 +23,13 @@
 
         <section class="admag-block">
             <div class="row">
-                <div class="col-md-4 news-text-block">
-                    <h3 class="block-title"><span>Movies</span></h3>
+                {{ render(controller('FrontBundle:Block:center',{id:5})) }}
+                {{ render(controller('FrontBundle:Block:center',{id:2})) }}
+                {{ render(controller('FrontBundle:Block:center',{id:3})) }}
 
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb7.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Older actors still hot in Hollywood</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 3 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">How Bollywood is romancing with period films to woo modern audience</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">9 Curious Facts About Charlie Chaplin</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">5 Space Movies to Watch in 2015</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">What is the average budget for a Hollywood movie?</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">15 Of The Best Modern Movies About Selling</a>
-                            </h3>
-                        </header>
-                    </article>
-                </div>
-
-                <div class="col-md-4 news-text-block">
-                    <h3 class="block-title"><span>Musics</span></h3>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb6.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Inside U2's Ambitious Upcoming Tour Strategy</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 5 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">Mariah Carey is a spontaneous car singing hero</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">What’s Next For One Direction?</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">This DJ Makes Music From The Heart — Literally</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">11 Truths All People Who Have Dated A Musician Will Understand</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">
-                                    These K-Pop Stars Are Leading A ’90s Pop Music Revival — And We’re Totally Here For It</a>
-                            </h3>
-                        </header>
-                    </article>
-                </div>
-
-                <div class="col-md-4 news-text-block">
-                    <h3 class="block-title"><span>Sports</span></h3>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb5.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Does going to the gym count as a sport?</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 2 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">World Grand Prix schedule & scores</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">Who was man of the match and who disappeared?</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">Messi better than Ronaldo, says Pele</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">Barcelona beats Real Madrid 2-1 in El Clasico</a>
-                            </h3>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <header>
-                            <h3>
-                                <a href="#">Motor racing-Alonso cleared to fly to Malaysia-reports</a>
-                            </h3>
-                        </header>
-                    </article>
-                </div>
             </div><!-- End news list -->
         </section><!-- .admag-block -->
-
+{#
         <div class="row" data-stickyparent>
             <div class="col-md-8">
                 <section class="admag-block">
@@ -449,7 +273,7 @@
 
                 </aside><!-- End sidebar -->
             </div><!-- .col-md-4 .sticky-div -->        </div>
-
+#}
     </div><!-- .main-content -->
 
 
