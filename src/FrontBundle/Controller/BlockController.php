@@ -48,7 +48,7 @@ class BlockController extends Controller
 	}
 	public function tabAction($id){
 
-			$order =($id = "1")? array('nbview'=>'DESC'):array('nbview'=>'DESC');
+			$order =($id == 1)? array('nbview'=>'DESC'):array('nbview'=>'DESC');
 
 		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true),$order,5);
 		return $this->render('FrontBundle:Block:tab.html.twig', array(
