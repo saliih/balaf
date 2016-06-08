@@ -25,16 +25,16 @@ class BlockController extends Controller
 	public function cuisineAction(){
 		$this->catid[] = 1;
 		$category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(1);
-		$this->recurcive($category);
+		//$this->recurcive($category);
 		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findbycat($this->catid);
 		return $this->render('FrontBundle:Block:cuisine.html.twig', array('article' => $article));
 	}
-	public function recurcive($parent){
+	/*public function recurcive($parent){
 		foreach($parent->getChildren() as $child){
 			$this->catid[] = $child->getId();
-			if(count(child->getChildren())>0){
+			if(count(child->getChildren()) > 0){
 				$this->recurcive($child);
 			}
 		} 
-	}
+	}*/
 }
