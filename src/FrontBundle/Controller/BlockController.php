@@ -26,7 +26,7 @@ class BlockController extends Controller
 		$this->catid[] = 1;
 		$category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(1);
 		//$this->recurcive($category);
-		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findbycat($this->catid);
+		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true,'category'=>$category),array('id'=>"DESC"),7);
 		return $this->render('FrontBundle:Block:cuisine.html.twig', array('article' => $article));
 	}
 	/*public function recurcive($parent){
