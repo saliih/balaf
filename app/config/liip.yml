@@ -25,3 +25,13 @@ liip_imagine:
             filters:
                 upscale: { min: [730, 480] }
                 thumbnail: { size: [730, 480], mode: inset  , format: png }
+        cuisine1:
+            quality: 100
+            filters:
+                upscale: { min: [540, 335] }
+                thumbnail: { size: [540, 335], mode: inset  , format: png }
+        cuisine2:
+            quality: 100
+            filters:
+                upscale: { min: [160, 120] }
+                thumbnail: { size: [160, 120], mode: inset  , format: png }
