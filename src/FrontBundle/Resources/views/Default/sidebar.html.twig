@@ -16,177 +16,20 @@
 
         <div class="widget tabwidget">
             <ul class="nav nav-tabs" role="tablist" id="widget-tab">
-                <li role="presentation" class="active"><a href="#tab-popular" aria-controls="tab-popular" role="tab" data-toggle="tab">Popular</a></li>
-                <li role="presentation"><a href="#tab-recent" aria-controls="tab-recent" role="tab" data-toggle="tab">Recent</a></li>
-                <li role="presentation"><a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">Comments</a></li>
+                <li role="presentation" class="active"><a href="#tab-popular" aria-controls="tab-popular" role="tab" data-toggle="tab">Populaire</a></li>
+                <li role="presentation"><a href="#tab-recent" aria-controls="tab-recent" role="tab" data-toggle="tab">Nouveau</a></li>
+                <!--<li role="presentation"><a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">Comments</a></li>-->
             </ul>
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="tab-popular">
 
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb13.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">The 10 most beautiful cars money can buy</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-eye"></i> 1,129,753 views</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <span class="play-button"><i class="fa fa-play"></i></span>
-                                <img src="img/small-thumb/small_thumb12.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Asian Startup Companies Boom</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-eye"></i> 989,039 views</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb14.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">9 Apps for Transforming Your Phone into The Ultimate Toolkit</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 920,540 views</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb15.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">15 Books You Should Read Before They Become Movies This Year</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 780,540 views</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb16.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">The 20 most important Instagram pictures of all time</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 725,566 views</span>
-                            </p>
-                        </header>
-                    </article>
+                    {{ render(controller('FrontBundle:Block:tab',{id:1})) }}
 
                 </div><!-- Popular posts -->
                 <div role="tabpanel" class="tab-pane" id="tab-recent">
 
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb8.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">7 Tips for Creating a Functional Home Workspace</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 2 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb5.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Does going to the gym count as a sport?</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 2 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb7.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Older actors still hot in Hollywood</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 3 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb10.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">5 Gadget Gifts for Father's Day</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 3 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
-
-                    <article class="widget-post clearfix">
-                        <div class="simple-thumb">
-                            <a href="#">
-                                <img src="img/small-thumb/small_thumb6.jpg" alt="">
-                            </a>
-                        </div>
-                        <header>
-                            <h3>
-                                <a href="#">Inside U2's Ambitious Upcoming Tour Strategy</a>
-                            </h3>
-                            <p class="simple-share">
-                                <span><i class="fa fa-clock-o"></i> 5 minutes ago</span>
-                            </p>
-                        </header>
-                    </article>
+                    {{ render(controller('FrontBundle:Block:tab',{id:2})) }}
 
                 </div><!-- Recent Posts -->
 

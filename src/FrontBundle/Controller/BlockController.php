@@ -31,7 +31,7 @@ class BlockController extends Controller
 	}
 	public function mamanAction(){
 		$this->catid[] = 4;
-		$category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(2);
+		$category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(4);
 		//$this->recurcive($category);
 		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true,'category'=>$category),array('id'=>"DESC"),5);
 		return $this->render('FrontBundle:Block:maman.html.twig', array('article' => $article));
@@ -44,6 +44,15 @@ class BlockController extends Controller
 		return $this->render('FrontBundle:Block:center.html.twig', array(
 			'article' => $article,
 			'category' => $category
+		));
+	}
+	public function tabAction($id){
+
+			$order =($id = "1")? array('nbview'=>'DESC'):array('nbview'=>'DESC');
+
+		$article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled"=>true),$order,5);
+		return $this->render('FrontBundle:Block:tab.html.twig', array(
+			'article' => $article
 		));
 	}
 
