@@ -12,5 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-
+	public function findbycat($cat = array()){
+		$str = "";
+		foreach($cat as $value){
+			$str .= $value.", ";
+		}
+		$str = substr($str,0,-2);
+		$query = $this->getEntityManager()
+                ->createQuery("select post  from
+                                PostBundle\Entity\Post as post ,
+                                PostBundle\Entity\Category as cat
+                                where  post.category=cat.id
+								post.enabled = true
+                                and cat.id in (str)
+                            order by post.id DESC
+                            ");
+		echo $query->getSQL();exit;
+        return $query->getResult();
+	}
 }
