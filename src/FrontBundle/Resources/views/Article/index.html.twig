@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
- {% block title %}Recette {{ article.title }} de la cuisine Tunisienne sur tounsia.net{% endblock %}
- {% block descriptionMeta %}Recettes de cuisine tunisiennes :{{ article.title }}{% endblock %}
+ {% block title %} {{ article.title }} de {{ article.category.description }}  sur tounsia.net{% endblock %}
+ {% block descriptionMeta %}{{ article.category.description }} : {{ article.title }}{% endblock %}
  {% block keyMeta %}{{ article.category }}{% endblock %}
 {% block head %}
 <meta property="og:site_name" content="www.tounsia.net" /> 
