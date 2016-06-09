@@ -1,0 +1,22 @@
+<div class="widget reviewwidget">
+    <h3 class="block-title"><span>Déja Visité</span></h3>
+    {% for item in article %}
+    {% set year =  item.publieddate|date('Y') %}
+    {% set month =  item.publieddate|date('m') %}
+    {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+
+    <article class="widget-post clearfix">
+        <div class="simple-thumb">
+            <a href="{{ path }}">
+                <img src="{{ (item.pic)| imagine_filter('small') }}" alt="">
+            </a>
+        </div>
+        <header>
+            <h3>
+                <a href="{{ path }}">{{ item.title }}</a>
+            </h3>
+        </header>
+    </article>
+
+   {% endfor %}
+</div><!-- End review widget -->

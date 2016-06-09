@@ -21,6 +21,8 @@ class ArticleController extends Controller
             $this->getDoctrine()->getEntityManager()->flush();
             $session->set('pageView',$pageView);
         }
-        return $this->render('FrontBundle:Article:index.html.twig', array('article' => $article));
+        $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category"=>$article->getCategory(),'enabled'=>true),array(),2);
+        shuffle($related);
+        return $this->render('FrontBundle:Article:index.html.twig', array('article' => $article,'related'=>$related));
     }
 }

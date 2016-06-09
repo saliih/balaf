@@ -154,107 +154,36 @@
             </article><!-- .post-wrapper -->
 
             <div class="related-posts clearfix">
-                <h3 class="block-title"><span>Related Posts</span></h3>
+                <h3 class="block-title"><span>Articles Liés</span></h3>
                 <div class="row">
-                    <div class="col-md-6">
-                        <article class="news-block small-block">
-                            <a href="#" class="overlay-link">
-                                <figure class="image-overlay">
-                                    <img src="img/big-thumb/big_thumb44.jpg" alt="">
-                                </figure>
-                            </a>
-                            <a href="#" class="category">
-                                Fashion
-                            </a>
-                            <header class="news-details">
-                                <h3 class="news-title">
-                                    <a href="#">
-                                        5 Spring Outfits For Under $200
-                                    </a>
-                                </h3>
-                                <p class="simple-share">
-                                    by <a href="#"><b>John Doe</b></a> -
-                                    <span class="article-date"><i class="fa fa-clock-o"></i> 4 hours ago</span>
-                                </p>
-                            </header>
-                        </article>
-                    </div>
+                    {% for item in related %}
+                        {% set year =  item.publieddate|date('Y') %}
+                        {% set month =  item.publieddate|date('m') %}
+                        {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
 
-                    <div class="col-md-6">
+                        <div class="col-md-6">
                         <article class="news-block small-block">
-                            <a href="#" class="overlay-link">
+                            <a href="{{ path }}" class="overlay-link">
                                 <figure class="image-overlay">
-                                    <img src="img/big-thumb/big_thumb42.jpg" alt="">
+                                    <img src="{{ (item.pic)| imagine_filter('mode2') }}" alt="">
                                 </figure>
-                            </a>
-                            <a href="#" class="category">
-                                Travel
                             </a>
                             <header class="news-details">
                                 <h3 class="news-title">
-                                    <a href="#">
-                                        6 Tips Before Traveling Internationally
+                                    <a href="{{ path }}">
+                                        {{ item.title }}
                                     </a>
                                 </h3>
                                 <p class="simple-share">
-                                    by <a href="#"><b>John Doe</b></a> -
-                                    <span class="article-date"><i class="fa fa-clock-o"></i> 46 minutes ago</span>
+
+                                    <span class="article-date"><i class="fa fa-clock-o"></i> {{ item.publieddate|date('m/d/Y') }}</span>
                                 </p>
                             </header>
                         </article>
                     </div>
+{% endfor %}
                 </div><!-- .row -->
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <article class="news-block small-block">
-                            <a href="#" class="overlay-link">
-                                <figure class="image-overlay">
-                                    <span class="play-button"><i class="fa fa-play"></i></span>
-                                    <img src="img/big-thumb/big_thumb47.jpg" alt="">
-                                </figure>
-                            </a>
-                            <a href="#" class="category">
-                                Food
-                            </a>
-                            <header class="news-details">
-                                <h3 class="news-title">
-                                    <a href="#">
-                                        How to Make Perfect Homemade Pizza
-                                    </a>
-                                </h3>
-                                <p class="simple-share">
-                                    by <a href="#"><b>John Doe</b></a> -
-                                    <span class="article-date"><i class="fa fa-clock-o"></i> 12 hours ago</span>
-                                </p>
-                            </header>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6">
-                        <article class="news-block small-block">
-                            <a href="#" class="overlay-link">
-                                <figure class="image-overlay">
-                                    <img src="img/big-thumb/big_thumb48.jpg" alt="">
-                                </figure>
-                            </a>
-                            <a href="#" class="category">
-                                Advice
-                            </a>
-                            <header class="news-details">
-                                <h3 class="news-title">
-                                    <a href="#">
-                                        10 Tips for Taking Great Outdoor Photos
-                                    </a>
-                                </h3>
-                                <p class="simple-share">
-                                    by <a href="#"><b>John Doe</b></a> -
-                                    <span class="article-date"><i class="fa fa-clock-o"></i> 13 hours ago</span>
-                                </p>
-                            </header>
-                        </article>
-                    </div>
-                </div><!-- .row -->
 
             </div><!-- .related-post -->
             <!-- Mid ad -->

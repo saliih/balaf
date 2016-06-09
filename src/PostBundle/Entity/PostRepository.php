@@ -12,14 +12,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-	public function findbycat($cat = array()){
-		$str = "";
-		foreach($cat as $value){
-			$str .= $value.", ";
-		}
-		$str = substr($str,0,-2);
-		$query = $this->getEntityManager()
-                ->createQuery("select post  from
+    public function related($cat)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("select post  from
+                                PostBundle\Entity\Post as post
+                                where  post.category=" . $cat . " and
+								post.enabled = true
+                            order by rand()
+                            ");
+        echo $query->getSQL();
+        exit;
+        return $query->getResult();
+    }
+
+    public function findbycat($cat = array())
+    {
+        $str = "";
+        foreach ($cat as $value) {
+            $str .= $value . ", ";
+        }
+        $str = substr($str, 0, -2);
+        $query = $this->getEntityManager()
+            ->createQuery("select post  from
                                 PostBundle\Entity\Post as post ,
                                 PostBundle\Entity\Category as cat
                                 where  post.category=cat.id
@@ -27,7 +42,8 @@ class PostRepository extends EntityRepository
                                 and cat.id in (str)
                             order by post.id DESC
                             ");
-		echo $query->getSQL();exit;
+        echo $query->getSQL();
+        exit;
         return $query->getResult();
-	}
+    }
 }

@@ -1,21 +1,23 @@
-{% for item in article %}
-    {% set year =  item.publieddate|date('Y') %}
-    {% set month =  item.publieddate|date('m') %}
-    {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
+{% if article|length>0 %}
+    {% for item in article %}
+        {% set year =  item.publieddate|date('Y') %}
+        {% set month =  item.publieddate|date('m') %}
+        {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
 
-    <article class="widget-post clearfix">
-        <div class="simple-thumb">
-            <a href="{{ path }}">
-                <img src="{{ (item.pic)| imagine_filter('small') }}" alt="">
-            </a>
-        </div>
-        <header>
-            <h3>
-                <a href="{{ path }}"> {{ item.title }}</a>
-            </h3>
-            <p class="simple-share">
-                <span><i class="fa fa-eye"></i> {{ item.nbview }} vue</span>
-            </p>
-        </header>
-    </article>
-{% endfor %}
+        <article class="widget-post clearfix">
+            <div class="simple-thumb">
+                <a href="{{ path }}">
+                    <img src="{{ (item.pic)| imagine_filter('small') }}" alt="">
+                </a>
+            </div>
+            <header>
+                <h3>
+                    <a href="{{ path }}"> {{ item.title }}</a>
+                </h3>
+                <p class="simple-share">
+                    <span><i class="fa fa-eye"></i> {{ item.nbview }} vue</span>
+                </p>
+            </header>
+        </article>
+    {% endfor %}
+{% endif %}
