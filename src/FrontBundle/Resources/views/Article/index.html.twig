@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+ {% block title %}Recette {{ article.title }} de la cuisine Tunisienne sur tounsia.net{% endblock %}
+ {% block descriptionMeta %}Recettes de cuisine tunisiennes :{{ article.title }}{% endblock %}
+ {% block keyMeta %}{{ article.category }}{% endblock %}
 {% block head %}
 <meta property="og:site_name" content="www.tounsia.net" /> 
 <meta property="og:type" content="blog" />
@@ -47,7 +50,7 @@
                         <span>
                             <span class="article-date"><i class="fa fa-clock-o"></i> 2 hours ago</span>
                         </span>
-                        <span><i class="fa fa-eye"></i> 1349 views</span>
+                        <span><i class="fa fa-eye"></i> {{ article.nbview }} vue</span>
 
                     </p>
 
