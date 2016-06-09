@@ -40,13 +40,13 @@ class AppExtension extends \Twig_Extension
     public function sitemaps($url){
         $test = $this->container->getDoctrine()->getRepository('PostBundle:Sitemap')->findBy(array('loc'=>$url));
         $em = $this->container->get('doctrine')->getEntityManager();
-        if($test == null){
+       /* if($test == null){
             $sitemaps = new Sitemap();
             $sitemaps->setLoc($url);
             echo "<pre>";print_r($sitemaps);exit;
             $em->persist($sitemaps);
             $em->flush();
-        }
+        }*/
     }
     public function getName()
     {
