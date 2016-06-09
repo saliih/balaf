@@ -9,7 +9,7 @@
 namespace FrontBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use PostBundle\Entity\Sitemap;
 class AppExtension extends \Twig_Extension
 {
     private $container;
@@ -24,7 +24,7 @@ class AppExtension extends \Twig_Extension
     {
         return array(
             'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
-            'treenav' => new \Twig_Filter_Method($this, 'treenav')
+            'sitemaps' => new \Twig_Filter_Method($this, 'sitemap')
         );
     }
 
@@ -37,12 +37,15 @@ class AppExtension extends \Twig_Extension
         }
         return $text;
     }
-    public function treenav($cat){
-        $html = "";
-        if($cat->getParent()!=null){
-            $html .= '<li><a href="#">'.$cat->getParent()->getTitle().'</a> <span class="divider">/</span></li>';
+    public function sitemaps($url){
+        $test = $this->container->getDoctrine()->getRepository('PostBundle:Sitemap')->findBy(array('loc'=>$url));
+        $em = $this->container->get('doctrine')->getEntityManager();
+        if($test == null){
+            $sitemaps = new Sitemap();
+            $sitemaps->setLoc($url);
+            $em->persist($sitemaps);
+            $em->flush();
         }
-        return $html .=' <li class="active">'.$cat->getTitle().'</li>';
     }
     public function getName()
     {

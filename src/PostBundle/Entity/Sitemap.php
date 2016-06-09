@@ -50,6 +50,7 @@ class Sitemap
     {
         $this->changefreq = "monthly";
         $this->priority = "0.5";
+        $this->lastmod = new \DateTime();
     }
 
     /**
