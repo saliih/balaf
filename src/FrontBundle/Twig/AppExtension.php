@@ -43,6 +43,7 @@ class AppExtension extends \Twig_Extension
         if($test == null){
             $sitemaps = new Sitemap();
             $sitemaps->setLoc($url);
+            echo "<pre>";print_r($sitemaps);exit;
             $em->persist($sitemaps);
             $em->flush();
         }
