@@ -73,6 +73,7 @@ class BlockController extends Controller
         $request = $this->get('request');
         $session = $request->getSession();
         $pageView = $session->get('pageView');
+        if(!is_array($pageView))$pageView = array();
         $pageView = array_reverse($pageView);
         $article = array();
         if(count($pageView)>0) {
@@ -88,6 +89,24 @@ class BlockController extends Controller
             'article' => $article
         ));
 	}
+    public function categoriesAction(){$nb = 4;
+        $categories = $this->getDoctrine()->getRepository("PostBundle:Category")->findAll();
+        $tab = array();
+        foreach($categories as $value){
+            $tab[$value->getNbPost()] = $value;
+        }
+        ksort($tab);
+        $tab = array_reverse($tab);
+        $i = 0;
+        foreach($tab as $key=>$value){
+            if($i >$nb){
+                unset($tab[$key]);
+            }
+        }
+        return $this->render('FrontBundle:Block:categories.html.twig', array(
+            'categories' => $tab
+        ));
+    }
     /*public function recurcive($parent){
         foreach($parent->getChildren() as $child){
             $this->catid[] = $child->getId();

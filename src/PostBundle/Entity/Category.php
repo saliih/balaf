@@ -71,6 +71,7 @@ class Category
      * @ORM\Column(name="locale", type="string", length=2)
      */
     private $locale;
+    private $nbpost;
     public function __toString()
     {
         return $this->title;
@@ -84,6 +85,9 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+    public function getNbpost(){
+        return $this->nbpost = $this->getPosts()->count();
     }
     /**
      * Constructor
