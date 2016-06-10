@@ -3,6 +3,7 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -58,5 +59,16 @@ class DefaultController extends Controller
     {
         return $this->render('FrontBundle:Default:footer.html.twig', array());
     }
+    public function sitemapsAction(){
+        $categories  = $this->getDoctrine()->getRepository('PostBundle:Category')->findAll();
+        $posts  = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
+        $response = new Response();
+        $response->headers->set('Content-Type', 'xml');
+        return $this->render('FrontBundle:Default:sitemaps.xml.twig', array(
+            'categories'=>$categories,
+            'articles'=>$posts
+        ),$response);
+    }
+
 
 }

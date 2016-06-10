@@ -24,7 +24,7 @@ class AppExtension extends \Twig_Extension
     {
         return array(
             'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
-            'sitemaps' => new \Twig_Filter_Method($this, 'sitemap')
+            'sitemap' => new \Twig_Filter_Method($this, 'sitemap')
         );
     }
 
@@ -37,16 +37,16 @@ class AppExtension extends \Twig_Extension
         }
         return $text;
     }
-    public function sitemaps($url){
-        $test = $this->container->getDoctrine()->getRepository('PostBundle:Sitemap')->findBy(array('loc'=>$url));
+    public function sitemap($url){
+        $test = $this->container->get('doctrine')->getRepository('PostBundle:Sitemap')->findBy(array('loc'=>$url));
         $em = $this->container->get('doctrine')->getEntityManager();
-       /* if($test == null){
+        if($test == null){
             $sitemaps = new Sitemap();
             $sitemaps->setLoc($url);
-            echo "<pre>";print_r($sitemaps);exit;
+            //echo "<pre>";print_r($sitemaps);exit;
             $em->persist($sitemaps);
             $em->flush();
-        }*/
+        }
     }
     public function getName()
     {
