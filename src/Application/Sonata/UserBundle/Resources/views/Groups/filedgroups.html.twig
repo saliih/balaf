@@ -1,6 +1,0 @@
-{% extends 'SonataAdminBundle:CRUD:list_array.html.twig' %}
-{% block field %}
-    {% for key, val in value %}
-        - {{ val|RoleTrans }}<br>
-    {% endfor %}
-{% endblock %}

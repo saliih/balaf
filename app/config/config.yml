@@ -36,9 +36,6 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            - 'SonataCoreBundle:Form:datepicker.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -56,6 +53,8 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
@@ -69,20 +68,17 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
-        types:
-            json: Sonata\Doctrine\Types\JsonType
 
     orm:
-#        auto_generate_proxy_classes: "%kernel.debug%"
-#        naming_strategy: doctrine.orm.naming_strategy.underscore
-#        auto_mapping: true
         entity_managers:
             default:
                 mappings:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
+                    FOSUserBundle: ~
                     PostBundle: ~
                     FrontBundle: ~
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -92,26 +88,17 @@ swiftmailer:
     spool:     { type: memory }
 fos_user:
     db_driver:      orm # can be orm or odm
-    firewall_name:  main
+    firewall_name:  admin
     user_class:     Application\Sonata\UserBundle\Entity\User
+
+
     group:
         group_class:   Application\Sonata\UserBundle\Entity\Group
         group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
     service:
         user_manager: sonata.user.orm.user_manager
-    profile:
-        # Authentication Form
-        form:
-            type:               fos_user_profile
-            handler:            fos_user.profile.form.handler.default
-            name:               fos_user_profile_form
-            validation_groups:  [Authentication]
 
-#jms_serializer:
-#    metadata:
-#        directories:
-#            - { path: %kernel.root_dir%/../vendor/sonata-project/user-bundle/Sonata/UserBundle/Resources/config/serializer/FOSUserBundle, namespace_prefix: 'FOS\UserBundle' }
 
 knp_paginator:
     page_range: 6                      # default page range used in pagination control
@@ -123,11 +110,3 @@ knp_paginator:
     template:
         pagination: :Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: :Pagination:sortable_link.html.twig # sort link template
-
-dcs_rating:
-    db_driver: orm
-    base_path_to_redirect: / # when the permalink is not configured
-    max_value: 5 # maximum value for the vote (stars displayed)
-    model:
-        rating: PostBundle\Entity\Rating
-        vote: PostBundle\Entity\Vote
