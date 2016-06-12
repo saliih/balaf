@@ -95,6 +95,7 @@ class Post
     {
         $this->enabled = false;
         $this->created = new \DateTime();
+        $this->publieddate = new \DateTime();
     }
 
     public function __toString()
