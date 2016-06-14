@@ -4,6 +4,9 @@ front_homepage:
 front_sitemap:
     path:     /sitemap.xml
     defaults: { _controller: FrontBundle:Default:sitemaps }
+flux_rss:
+    path:     /rss
+    defaults: { _controller: FrontBundle:Default:rss }
 front_category:
     path: /{locale}/category/{slug}
     defaults : { _controller: FrontBundle:Category:index }

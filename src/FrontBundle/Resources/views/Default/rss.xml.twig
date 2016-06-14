@@ -1,0 +1,18 @@
+{% autoescape %}<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>TounsiaNet</title>
+        <link>http://www.tounsia.net</link>
+        <description>Tounsia.Net Le portail de la femme tunisienne, cuisine, beauté, astuces, mode</description>
+        {% for article in articles %}
+        {% set year =  article.publieddate|date('Y') %}
+        {% set month =  article.publieddate|date('m') %}
+        {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':category.slug}) %}
+        <item>
+            <title>{{ article.title }}</title>
+            <link>http://www.tounsia.net{{ path }}</link>
+            <description>{{ ((article.article)|shortdesc(450))|raw }}</description>
+        </item>
+        {% endfor %}
+    </channel>
+</rss>{% endautoescape %}

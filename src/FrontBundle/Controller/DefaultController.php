@@ -69,6 +69,14 @@ class DefaultController extends Controller
             'articles'=>$posts
         ),$response);
     }
+    public function rssAction(){
+        $posts  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true),array('id'=>'DESC'),10);
+        $response = new Response();
+        $response->headers->set('Content-Type', 'xml');
+        return $this->render('FrontBundle:Default:rss.xml.twig', array(
+            'articles'=>$posts
+        ),$response);
+    }
 
 
 }
