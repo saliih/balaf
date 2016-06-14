@@ -11,7 +11,7 @@
         <item>
             <title>{{ article.title }}</title>
             <link>http://www.tounsia.net{{ path }}</link>
-            <description>{{ ((article.article)|shortdesc(450))|raw }}</description>
+            <description><![CDATA[ {{ ((article.article)|shortdesc(450))|raw }}]]></description>
         </item>
         {% endfor %}
     </channel>
