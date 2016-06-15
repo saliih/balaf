@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block sonata_admin_content %}
+    <div class="row blog-content">
+        <div class="col-md-8">
+            <h3 class="tag-title">Ooops... <span>Erreur 404</span></h3>
+
+            <p>Désolé, la page que vous cherchez mais n'existe pas .</p>
+            
+            <div class="search-div clearfix">
+              <form class="searchwidget-form">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </form>
+            </div><!-- .search-div -->
+{#
+            <div class="row">
+              <div class="col-md-6">
+                <div class="widget categorywidget">
+                  <h3 class="block-title"><span>Categories</span></h3>
+                  <ul>
+                    <li>
+                      <a href="#">Tech <span class="count">25</span></a>
+                    </li>
+                    <li>
+                      <a href="#">Lifestyle <span class="count">23</span></a>
+                    </li>
+                    <li>
+                      <a href="#">Business <span class="count">19</span></a>
+                    </li>
+                    <li>
+                      <a href="#">Entertainment <span class="count">20</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="widget tagwidget">
+                  <h3 class="block-title"><span>Tags</span></h3>
+                  <ul class="tags-widget">
+                    <li><a href="#">Windows 10</a></li>
+                    <li><a href="#">FIFA 2015</a></li>
+                    <li><a href="#">iPhone 6</a></li>
+                    <li><a href="#">Flappy Bird</a></li>
+                    <li><a href="#">World Cup</a></li>
+                    <li><a href="#">WeChat desktop</a></li>
+                    <li><a href="#">Clash of Clans</a></li>
+                    <li><a href="#">Apple Watch</a></li>
+                    <li><a href="#">Oscar 2015</a></li>
+                    <li><a href="#">Taken 3</a></li>
+                    <li><a href="#">Dota</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+#}
+        </div><!-- End Left big column -->
+
+        <div class="col-md-4" data-stickycolumn>
+ {{ render(controller('FrontBundle:Default:sidebar')) }}
+ </div><!-- End last column -->        
+     
+{% endblock %}
