@@ -26,10 +26,10 @@
                         </a>
                     </h3>
                     <p> {{ ((article.article)|shortdesc(250))|raw }}</p>
-                   <!-- <p class="simple-share">
+                   {# <p class="simple-share">
                         by <a href="{{ path }}"><b>John Doe</b></a> -
                         <span class="article-date"><i class="fa fa-clock-o"></i> 10 minutes ago</span>
-                    </p>-->
+                    </p>#}
                 </header>
             </article>
 {% else %}
@@ -42,9 +42,9 @@
                 </div>
                 <header>
                     <p class="simple-share">
-                        <a href="{{ path }}"> {{ article.category.title }}</a><!-- /
-                        by <a href="{{ path }}">John Doe</a> -
-                        <span><i class="fa fa-clock-o"></i> 23 minutes ago</span>-->
+                        <a href="{{ path }}"> {{ article.category.title }}</a>{# /
+                        by <a href="{{ path }}">John Doe</a> -#}
+                        <span><i class="fa fa-clock-o"></i> {{ article.publieddate|date('m/d/Y') }}</span>
                     </p>
 
                     <h3>
