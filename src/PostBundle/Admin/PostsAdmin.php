@@ -25,7 +25,7 @@ class PostsAdmin extends Admin
     }
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('title')
+        $datagridMapper->add('title')->add('createdby')
 
             ->add('category');
     }
