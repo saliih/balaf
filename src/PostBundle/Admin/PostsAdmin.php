@@ -51,10 +51,12 @@ class PostsAdmin extends Admin
 
     public function prePersist($object)
     {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $local = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
         $service = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $object->setLocale($local);
         $object->setAlias($service->slugify($object->getTitle()));
+        $object->setCreatedby($user);
     }
     public function preUpdate($object)
     {
@@ -73,7 +75,7 @@ class PostsAdmin extends Admin
             ->add('publieddate','sonata_type_date_picker',array('dp_language'=>'fr','format'=>'dd/MM/yyyy','label'=>'date de publication'))
             ->add('pic',null,array('required'=>false))
             ->add('category')
-            ->add('createdby')
+            //->add('createdby')
         ;
 
     }
