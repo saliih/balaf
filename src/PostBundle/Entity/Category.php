@@ -38,12 +38,7 @@ class Category
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="color", type="string", length=20, nullable=true)
-     */
-    private $color;
+
     /**
      * @var integer
      *
@@ -98,6 +93,7 @@ class Category
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
     /**
      * Set title
      *
@@ -122,6 +118,29 @@ class Category
     }
 
     /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Category
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
@@ -142,29 +161,6 @@ class Category
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set color
-     *
-     * @param string $color
-     * @return Category
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string 
-     */
-    public function getColor()
-    {
-        return $this->color;
     }
 
     /**
@@ -300,28 +296,5 @@ class Category
     public function getParent()
     {
         return $this->parent;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Category
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 }

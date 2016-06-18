@@ -13,11 +13,9 @@ use Sonata\AdminBundle\Admin\Admin;
 class BaseAdmin extends Admin
 {
     protected $datagridValues = array(
-
         '_sort_order' => 'DESC',
         '_page' => 1,
         '_per_page' => 25,
-
     );
     protected $maxPerPage = 25;
     protected $maxPageLinks = 25;
@@ -27,17 +25,11 @@ class BaseAdmin extends Admin
         'list' => array(
             'class' => 'fa fa-list fa-fw',
         ),
-        /*'mosaic' => array(
-            'class' => 'fa fa-th-large fa-fw',
-        ),
-        /* 'tree' => array(
-             'class' => 'fa fa-sitemap fa-fw',
-         ),*/
     );
     public function getExportFormats()
     {
         return array(
-            'json', 'xml', 'csv', 'xls',
+
         );
     }
 

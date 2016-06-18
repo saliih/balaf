@@ -59,7 +59,12 @@ class Post
      **/
     private $category;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="Post")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     **/
+    private $createdby;
+    
     /**
      * @var \DateTime
      *
@@ -96,11 +101,6 @@ class Post
         $this->enabled = false;
         $this->created = new \DateTime();
         $this->publieddate = new \DateTime();
-    }
-
-    public function __toString()
-    {
-        return $this->title;
     }
 
     /**
@@ -321,6 +321,29 @@ class Post
     }
 
     /**
+     * Set nbview
+     *
+     * @param integer $nbview
+     * @return Post
+     */
+    public function setNbview($nbview)
+    {
+        $this->nbview = $nbview;
+
+        return $this;
+    }
+
+    /**
+     * Get nbview
+     *
+     * @return integer 
+     */
+    public function getNbview()
+    {
+        return $this->nbview;
+    }
+
+    /**
      * Set category
      *
      * @param \PostBundle\Entity\Category $category
@@ -344,25 +367,25 @@ class Post
     }
 
     /**
-     * Set nbview
+     * Set createdby
      *
-     * @param integer $nbview
+     * @param \Application\Sonata\UserBundle\Document\User $createdby
      * @return Post
      */
-    public function setNbview($nbview)
+    public function setCreatedby(\Application\Sonata\UserBundle\Document\User $createdby = null)
     {
-        $this->nbview = $nbview;
+        $this->createdby = $createdby;
 
         return $this;
     }
 
     /**
-     * Get nbview
+     * Get createdby
      *
-     * @return integer 
+     * @return \Application\Sonata\UserBundle\Document\User 
      */
-    public function getNbview()
+    public function getCreatedby()
     {
-        return $this->nbview;
+        return $this->createdby;
     }
 }

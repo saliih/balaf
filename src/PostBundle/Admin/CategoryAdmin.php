@@ -15,14 +15,15 @@ class CategoryAdmin extends Admin
     {
         return 'Categories';
     }
-
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper->add('title');
+    }
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->add('parent')
             ->addIdentifier('title', null, array('label' => 'Titre'))
-            ->add('Category', null, array('label' => 'Catégorie'))
-            ->add('color')
             ->add('ord')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -54,16 +55,6 @@ class CategoryAdmin extends Admin
             ->add('title')
             ->add('ord')
             ->add('parent',null,array('required'=>false))
-            ->add('color', "choice", array('label' => 'Couleur','choices'  => array(
-                'carrot' => 'carrot',
-                'blue2' => 'blue2',
-                'blue' => 'blue',
-                'red' => 'red',
-                'yellow' => 'yellow',
-                'green' => 'green',
-                'pink' => 'pink',
-                'purple' => 'purple',
-            )))
             ->add('description','textarea',array())
         ;
 

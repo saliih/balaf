@@ -23,7 +23,12 @@ class PostsAdmin extends Admin
     {
         return 'Articles';
     }
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper->add('title')
 
+            ->add('category');
+    }
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -32,7 +37,7 @@ class PostsAdmin extends Admin
             ->add('publieddate')
             ->add('updated')
             ->add('enabled',null,array('editable'=>true))
-            ->add('Category', null, array('label' => 'Catégorie'))
+            ->add('category', null, array('label' => 'Catégorie'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     // 'view' => array(),
@@ -43,12 +48,7 @@ class PostsAdmin extends Admin
             ));
 
     }
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        // to remove a single route
-        // $collection->remove('create');
-        //$collection->remove('delete');
-    }
+
     public function prePersist($object)
     {
         $local = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
@@ -73,6 +73,7 @@ class PostsAdmin extends Admin
             ->add('publieddate','sonata_type_date_picker',array('dp_language'=>'fr','format'=>'dd/MM/yyyy','label'=>'date de publication'))
             ->add('pic',null,array('required'=>false))
             ->add('category')
+            ->add('createdby')
         ;
 
     }
