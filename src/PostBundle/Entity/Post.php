@@ -369,10 +369,10 @@ class Post
     /**
      * Set createdby
      *
-     * @param \Application\Sonata\UserBundle\Document\User $createdby
+     * @param \Application\Sonata\UserBundle\Entity\User $createdby
      * @return Post
      */
-    public function setCreatedby(\Application\Sonata\UserBundle\Document\User $createdby = null)
+    public function setCreatedby(\Application\Sonata\UserBundle\Entity\User $createdby = null)
     {
         $this->createdby = $createdby;
 
@@ -382,7 +382,7 @@ class Post
     /**
      * Get createdby
      *
-     * @return \Application\Sonata\UserBundle\Document\User 
+     * @return \Application\Sonata\UserBundle\Entity\User 
      */
     public function getCreatedby()
     {
