@@ -38,7 +38,7 @@ class BlockController extends Controller
 
     public function mamanAction()
     {
-        $this->catid[] = 4;
+        $this->catid[] = 7;
         $category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(4);
         //$this->recurcive($category);
         $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'category' => $category), array('id' => "DESC"), 5);
