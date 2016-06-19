@@ -38,6 +38,7 @@ class PostsAdmin extends Admin
             ->add('updated')
             ->add('enabled',null,array('editable'=>true))
             ->add('category', null, array('label' => 'Catégorie'))
+            ->add('createdby')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     // 'view' => array(),
