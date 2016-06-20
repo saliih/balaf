@@ -2,6 +2,19 @@ services:
 #    post.example:
 #        class: PostBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    sonata.block.service.posts:
+        class: PostBundle\Block\PostsBlockService
+        arguments: [ "sonata.block.service.posts", @templating, @doctrine.orm.entity_manager ]
+        tags:
+            - { name: sonata.block }
+    sonata.block.service.myposts:
+        class: PostBundle\Block\MyPostsBlockService
+        arguments: [ "sonata.block.service.myposts", @templating, @service_container ]
+        tags:
+            - { name: sonata.block }
+
+
     Tools.utils:
         class: PostBundle\Services\NewsServices
 
