@@ -47,7 +47,7 @@
                     </p>
 
                     <figure class="image-overlay">
-                        <img src="{{ asset(article.pic) }}" alt="">{#| imagine_filter('category_page')#}
+                        <img src="{{ asset(article.pic) }}" alt="tounsia.Net : {{ article.title }}">{#| imagine_filter('category_page')#}
                     </figure>
                 </header><!-- .post-header -->
 
@@ -181,7 +181,7 @@
                         <article class="news-block small-block">
                             <a href="{{ path }}" class="overlay-link">
                                 <figure class="image-overlay">
-                                    <img src="{{ (item.pic)| imagine_filter('mode2') }}" alt="">
+                                    <img src="{{ (item.pic)| imagine_filter('mode2') }}" alt="tounsia.Net : {{ item.title }}">
                                 </figure>
                             </a>
                             <header class="news-details">
