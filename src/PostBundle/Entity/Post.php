@@ -95,7 +95,10 @@ class Post
      * @ORM\Column(name="nbview", type="integer",nullable=true)
      */
     private $nbview;
-
+    public function __toString()
+    {
+        return $this->title;
+    }
     public function __construct()
     {
         $this->enabled = false;
