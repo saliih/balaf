@@ -73,7 +73,7 @@ class PostsAdmin extends Admin
             ->add('enabled',null,array('required'=>false))
             ->add('publieddate','sonata_type_date_picker',array('dp_language'=>'fr','format'=>'dd/MM/yyyy','label'=>'date de publication'))
             ->add('pic',null,array('required'=>false))
-            ->add('category')
+            ->add('category',null,array('required'=>true))
             //->add('createdby')
         ;
 
