@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
- {% block title %} {{ article.title }} de {{ article.category.description }}  sur tounsia.net{% endblock %}
+ {% block title %}{{ article.category.description }} : {{ article.title }}  sur tounsia.net{% endblock %}
  {% block descriptionMeta %}{{ article.category.description }} : {{ article.title }}{% endblock %}
  {% block keyMeta %}{{ article.category }}{% endblock %}
 {% block head %}
