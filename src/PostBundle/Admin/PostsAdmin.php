@@ -32,6 +32,9 @@ class PostsAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('pic', null, array(
+                'template' => 'PostBundle:Post:pic.html.twig'
+            ))
             ->addIdentifier('title', null, array('label' => 'Titre'))
             ->add('publieddate')
             ->add('enabled',null,array('editable'=>true))
