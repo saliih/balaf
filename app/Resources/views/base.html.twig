@@ -81,9 +81,9 @@
         {{ render(controller('FrontBundle:Default:header')) }}
 
         <div class="container main-wrapper">
-            {{ render(controller('FrontBundle:Default:ad728')) }}
+            {{ render(controller('FrontBundle:Default:ad728',{'header':true})) }}
             {% block body %}{% endblock %}
-            {{ render(controller('FrontBundle:Default:ad728')) }}
+            {{ render(controller('FrontBundle:Default:ad728'',{'header':false})) }}
         </div>
         {{ render(controller('FrontBundle:Default:footer')) }}
 
