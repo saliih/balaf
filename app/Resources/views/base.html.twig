@@ -83,7 +83,7 @@
         <div class="container main-wrapper">
             {{ render(controller('FrontBundle:Default:ad728',{'header':true})) }}
             {% block body %}{% endblock %}
-            {{ render(controller('FrontBundle:Default:ad728'',{'header':false})) }}
+            {{ render(controller('FrontBundle:Default:ad728',{'header':false})) }}
         </div>
         {{ render(controller('FrontBundle:Default:footer')) }}
 
@@ -102,6 +102,7 @@
     <script src="{{ asset('public/js/modernizr.min.js') }}"></script>
 
     <script src="{{ asset('public/plugins/bootstrap/js/bootstrap.js') }}"></script>
+
     <script src="{{ asset('public/js/script.min.js') }}"></script>
 
 {% endblock %}
