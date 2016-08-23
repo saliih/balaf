@@ -30,7 +30,7 @@ class BlockController extends Controller
     public function cuisineAction()
     {
         $this->catid[] = 1;
-        $category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(1);
+        $category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(13);
         //$this->recurcive($category);
         $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'category' => $category), array('id' => "DESC"), 5);
         return $this->render('FrontBundle:Block:cuisine.html.twig', array('article' => $article));
