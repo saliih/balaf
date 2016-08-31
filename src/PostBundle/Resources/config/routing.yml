@@ -1,3 +1,6 @@
 post_homepage:
     path:     /hello/{name}
     defaults: { _controller: PostBundle:Default:index }
+jsonlinks:
+    path:     /jsonlinks
+    defaults: { _controller: PostBundle:Default:linkpost }

@@ -26,6 +26,7 @@
         "nelmio/api-doc-bundle": "^2.12",
         "knplabs/knp-paginator-bundle": "^2.5",
         "imagine/imagine": "^0.6.3",
+        "friendsofsymfony/jsrouting-bundle": "^1.6",
         "liip/imagine-bundle": "^1.5"
     },
     "require-dev": {

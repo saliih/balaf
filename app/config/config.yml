@@ -110,3 +110,7 @@ knp_paginator:
     template:
         pagination: :Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: :Pagination:sortable_link.html.twig # sort link template
+
+
+fos_js_routing:
+    routes_to_expose: [ jsonlinks ]

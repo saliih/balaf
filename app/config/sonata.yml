@@ -31,7 +31,8 @@ sonata_user:
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
 sonata_admin:
-
+    templates:
+        layout:               :Sonata:standard_layout.html.twig
     title:                'Tounsianet'
     title_logo:           public/logo.png
 
