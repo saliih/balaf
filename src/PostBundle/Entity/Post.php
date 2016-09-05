@@ -308,6 +308,9 @@ class Post
      */
     public function setEnabled($enabled)
     {
+        if($enabled){
+            $this->created = new \DateTime();
+        }
         $this->enabled = $enabled;
 
         return $this;
