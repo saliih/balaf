@@ -22,7 +22,7 @@ sonata_user:
 
     admin:                  # Admin Classes
         user:
-            class:          Sonata\UserBundle\Admin\Entity\UserAdmin
+            class:          Application\Sonata\UserBundle\Admin\Entity\UserAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
 
