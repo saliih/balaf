@@ -51,8 +51,13 @@ class MyPostsBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
         $user = $this->container->get('security.context')->getToken()->getUser();
         $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled'=>true,'createdby'=>$user));
+        $view = 0;
+        foreach($posts as $post){
+            $view += $post->getNbview();
+        }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'nbposts'     => count($posts),
+            'view'     => $view,
             'user'     => $user,
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings
