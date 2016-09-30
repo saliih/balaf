@@ -22,11 +22,11 @@ class TableBlockService extends BaseBlockService
     protected $em;
     protected $template;
     protected $type;
-    public function __construct($type, $templating, $dm)
+    public function __construct($type, $templating, $em)
     {
         $this->type = $type;
         $this->templating = $templating;
-        $this->em = $dm;
+        $this->em = $em;
     }
 
     public function getName()
@@ -46,7 +46,7 @@ class TableBlockService extends BaseBlockService
     {
         // merge settings
         $settings = $blockContext->getSettings();
-        $posts = $this->em->getRepository('PostBundle:Post')->findAll();
+        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled'=>true));
 		$final = array();
 		$totalpost = 0;
 		$totalview = 0;
