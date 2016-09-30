@@ -1,0 +1,56 @@
+{% extends 'SonataBlockBundle:Block:block_base.html.twig' %}
+{% block block %}
+    <style>
+        .table td, .table th {
+            text-align: center;
+        }
+    </style>
+    <div class="box ">
+
+        <div class="box-header">
+            <h3 class="box-title"> {{ title }}</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="box-body">
+            {% if final|length == 0 %}
+                <div class="callout callout-warning">
+                    <h4>There is no item!</h4>
+                </div>
+            {% endif %}
+            {% if final|length > 0 %}
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>User</th>
+                    <th width="35%">Articles</th>
+                    <th width="35%">View</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key,item in final %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ item['post'] }}</td>
+                    <td>{{ item['view'] }}</td>
+                </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <td>{{ totalpost }}</td>
+                    <td>{{ totalview }}</td>
+                </tr>
+                </tfoot>
+            </table>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}
