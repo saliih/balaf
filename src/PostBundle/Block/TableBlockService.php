@@ -55,7 +55,7 @@ class TableBlockService extends BaseBlockService
 			if(!isset($final[$user])){
 				$final[$user] = array("post"=>0,"view"=>0);
 			}
-			$totalpost++
+			$totalpost++;
 			$final[$user]["post"]++;
 			$final[$user]["view"] += $post->getNbview() ;
 			$totalview += $post->getNbview() ;
