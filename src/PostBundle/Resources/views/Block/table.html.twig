@@ -27,17 +27,25 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>User</th>
-                    <th width="35%">Articles</th>
-                    <th width="35%">View</th>
+                    <th rowspan=2>User</th>
+                    <th width="35%" colspan=2>Articles</th>
+                    <th width="35%" colspan=2>View</th>
                 </tr>
+				<tr>
+					<th>Valeur</th>
+					<th>Pourcentage</th>
+					<th>Valeur</th>
+					<th>Pourcentage</th>
+				</tr>
                 </thead>
                 <tbody>
                 {% for key,item in final %}
                 <tr>
                     <td>{{ key }}</td>
                     <td>{{ item['post'] }}</td>
+                    <td>{{ item['postpercent'] }} %</td>
                     <td>{{ item['view'] }}</td>
+                    <td>{{ item['viewpercent'] }} %</td>
                 </tr>
                     {% endfor %}
                 </tbody>

@@ -44,9 +44,8 @@ class TableBlockService extends BaseBlockService
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        // merge settings
         $settings = $blockContext->getSettings();
-        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled'=>true));
+        $posts = $this->em->getRepository('PostBundle:Post')->findAll();
 		$final = array();
 		$totalpost = 0;
 		$totalview = 0;
@@ -60,6 +59,12 @@ class TableBlockService extends BaseBlockService
 			$final[$user]["view"] += $post->getNbview() ;
 			$totalview += $post->getNbview() ;
 			
+		}
+		foreach($final as $user=>$data){
+			$percent = $data["post"] * 100 / $totalpost;
+			$final[$user]["postpercent"] = number_format($percent, 2, ',', ' ');
+			$percentv = $data["view"] * 100 / $totalpost;
+			$final[$user]["viewpercent"] = number_format($percentv, 2, ',', ' ');
 		}
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final'     => $final,
