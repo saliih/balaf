@@ -4,7 +4,7 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.block.service.posts: ~
         sonata.block.service.myposts: ~
-        #sonata.block.service.tablecompare: ~
+        sonata.block.service.tablecompare: ~
         sonata.admin.block.admin_list:
             contexts: [admin]
         sonata.user.block.menu:    # used to display the menu in profile pages
@@ -42,7 +42,7 @@ sonata_admin:
             # display a dashboard block
             - { position: left, type: sonata.block.service.posts, settings: { template: 'PostBundle:Block:Posts.html.twig'  } }
             - { position: right, type: sonata.block.service.myposts, settings: { template: 'PostBundle:Block:myPosts.html.twig'  } }
-            #- { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
+            - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             #- { position: left, type: sonata.block.service.status, settings: { title: Project Status }}
             #- { position: right,  type: sonata.admin.block.admin_list, settings: { groups: [utilisateur, Configuration] } }
             #- { position: left, type: sonata.admin.block.service.status, settings: { groups: [Projects] } }

@@ -15,7 +15,7 @@ services:
             - { name: sonata.block }
     sonata.block.service.tablecompare:
         class: PostBundle\Block\TableBlockService
-        arguments: [ "sonata.block.service.tablecompare", @templating, @service_container ]
+        arguments: [ "sonata.block.service.tablecompare", @templating, @doctrine.orm.entity_manager ]
         tags:
             - { name: sonata.block }
 
