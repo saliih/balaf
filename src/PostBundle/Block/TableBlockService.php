@@ -17,12 +17,11 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService  as BaseBlockService;
 use Sonata\BlockBundle\Util\OptionsResolver;
 
-class PostsBlockService extends BaseBlockService
+class TableBlockService extends BaseBlockService
 {
     protected $em;
     protected $template;
     protected $type;
-
     public function __construct($type, $templating, $dm)
     {
         $this->type = $type;
@@ -32,14 +31,14 @@ class PostsBlockService extends BaseBlockService
 
     public function getName()
     {
-        return 'Posts';
+        return 'Table';
     }
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'url'      => false,
-            'title'    => 'Status items',
-            'template' => 'PostBundle:Block:Posts.html.twig',
+            'title'    => 'Comparatif',
+            'template' => 'PostBundle:Block:table.html.twig',
         ));
     }
 
@@ -47,9 +46,25 @@ class PostsBlockService extends BaseBlockService
     {
         // merge settings
         $settings = $blockContext->getSettings();
-        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled'=>true));
+        $posts = $this->em->getRepository('PostBundle:Post')->findAll();
+		$final = array();
+		$totalpost = 0;
+		$totalview = 0;
+		foreach($posts as $post){
+			$user = $post->getCreatedby()->getUsername();
+			if(!isset($final[$user])){
+				$final[$user] = array("post"=>0,"view"=>0);
+			}
+			$totalpost++
+			$final[$user]["post"]++;
+			$final[$user]["view"] += $post->getNbview() ;
+			$totalview += $post->getNbview() ;
+			
+		}
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'nbposts'     => count($posts),
+            'final'     => $final,
+            'totalpost'     => $totalpost,
+            'totalview'     => $totalview,
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings
         ), $response);
