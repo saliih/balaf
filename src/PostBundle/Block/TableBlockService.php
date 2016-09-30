@@ -3,8 +3,8 @@
 /**
  * Created by PhpStorm.
  * User: sarra
- * Date: 20/06/16
- * Time: 16:19
+ * Date: 30/09/16
+ * Time: 11:00
  */
 namespace PostBundle\Block;
 
@@ -65,7 +65,7 @@ class TableBlockService extends BaseBlockService
             'final'     => $final,
             'totalpost'     => $totalpost,
             'totalview'     => $totalview,
-			'title'=>"Comparatif",
+			'title' => "Comparatif",
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings
         ), $response);
