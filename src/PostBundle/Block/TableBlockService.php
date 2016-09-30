@@ -65,6 +65,7 @@ class TableBlockService extends BaseBlockService
             'final'     => $final,
             'totalpost'     => $totalpost,
             'totalview'     => $totalview,
+			'title'=>"Comparatif",
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings
         ), $response);
