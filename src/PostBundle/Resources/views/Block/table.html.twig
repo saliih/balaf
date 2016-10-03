@@ -41,14 +41,13 @@
                 </thead>
                 <tbody>
                 {% for key,item in final %}
-                    {% set report = item['viewpercent'] - item['postpercent']  %}
                 <tr>
                     <td>{{ key }}</td>
                     <td>{{ item['post'] }}</td>
                     <td>{{ item['postpercent'] }} %</td>
                     <td>{{ item['view'] }}</td>
                     <td>{{ item['viewpercent'] }} %</td>
-                    <td>{{ report }} %</td>
+                    <td>{{ item['report'] }} %</td>
                 </tr>
                     {% endfor %}
                 </tbody>
