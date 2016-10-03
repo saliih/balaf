@@ -28,8 +28,9 @@
                 <thead>
                 <tr>
                     <th rowspan=2>User</th>
-                    <th width="35%" colspan=2>Articles</th>
-                    <th width="35%" colspan=2>View</th>
+                    <th width="30%" colspan=2>Articles</th>
+                    <th width="30%" colspan=2>View</th>
+                    <th rowspan="2" width="10%" >Conversion</th>
                 </tr>
 				<tr>
 					<th>Valeur</th>
@@ -40,12 +41,14 @@
                 </thead>
                 <tbody>
                 {% for key,item in final %}
+                    {% set report = item['viewpercent'] - item['postpercent']  %}
                 <tr>
                     <td>{{ key }}</td>
                     <td>{{ item['post'] }}</td>
                     <td>{{ item['postpercent'] }} %</td>
                     <td>{{ item['view'] }}</td>
                     <td>{{ item['viewpercent'] }} %</td>
+                    <td>{{ report }} %</td>
                 </tr>
                     {% endfor %}
                 </tbody>
@@ -55,6 +58,7 @@
                     <td>{{ totalpost }}</td>
                     <td></td>
                     <td>{{ totalview }}</td>
+                    <td></td>
                     <td></td>
                 </tr>
                 </tfoot>
