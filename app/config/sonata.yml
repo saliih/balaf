@@ -50,13 +50,13 @@ sonata_admin:
 
             article:
                 label: Article
-                icon: '<i class="fa fa-home"></i>'
+                icon: '<i class="fa fa-file-text" aria-hidden="true"></i>'
+                items:
+                    - admin.posts
+            Configuration:
+                label: Users
+                icon: '<i class="fa fa-cogs"></i>'
                 items:
                     - admin.category
-                    - admin.posts
-            utilisateur:
-                label: Users
-                icon: '<i class="fa fa-users"></i>'
-                items:
                     - sonata.user.admin.user
                     - sonata.user.admin.group
