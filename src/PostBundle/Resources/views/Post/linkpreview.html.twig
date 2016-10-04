@@ -1,0 +1,6 @@
+{% set year =  object.publieddate|date('Y') %}
+{% set month =  object.publieddate|date('m') %}
+{% set path = path('front_article',{'locale':app.request.locale ,'slug':object.alias, 'year':year,'month':month,'categoryname':object.category.slug}) %}
+<a target="_blank" class="btn btn-sm btn-default " title="Preview" href="{{ path }}">
+    <i class="fa fa-file-text" aria-hidden="true"></i>
+</a>

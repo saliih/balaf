@@ -44,8 +44,8 @@ class PostsAdmin extends Admin
                 'actions' => array(
                     // 'view' => array(),
                     'edit' => array(),
-                    'delete' => array()
-
+                    'delete' => array(),
+                    "preview"=>array('template'=>"PostBundle:Post:linkpreview.html.twig")
                 )
             ));
 
@@ -70,6 +70,7 @@ class PostsAdmin extends Admin
         $formMapper
             ->with('Artcile',array('class'=>'col-md-8'))
             ->add('title')
+            ->add('alias', null,array('required'=>false))
             ->add('article','textarea',array('required'=>false))
             ->end()
             ->with('Status',array('class'=>'col-md-4'))
