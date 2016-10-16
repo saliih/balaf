@@ -166,8 +166,7 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div>
                 </div>
-                </div>
-      {#      <div class="related-posts clearfix">
+                </div><div class="related-posts clearfix">
                 <h3 class="block-title"><span>Articles Liés</span></h3>
                 <div class="row">
                     {% for item in related %}
@@ -175,11 +174,11 @@
                         {% set month =  item.publieddate|date('m') %}
                         {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                         <article class="news-block small-block">
                             <a href="{{ path }}" class="overlay-link">
                                 <figure class="image-overlay">
-                                    <img src="{{ (item.pic)| imagine_filter('mode2') }}" alt="tounsia.Net : {{ item.title }}">
+                                    <img src="{{ (item.pic)| imagine_filter('related') }}" alt="tounsia.Net : {{ item.title }}">
                                 </figure>
                             </a>
                             <header class="news-details">
@@ -200,7 +199,7 @@
 
 
             </div><!-- .related-post -->
-            <!-- Mid ad -->#}
+            <!-- Mid ad -->
            {{ render(controller('FrontBundle:Default:ad728',{'header':false})) }}
             <div id="comments" class="comments-wrapper clearfix">
                         <h3 class="block-title"><span>Comments</span></h3>
