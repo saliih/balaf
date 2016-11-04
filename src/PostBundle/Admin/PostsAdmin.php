@@ -40,6 +40,7 @@ class PostsAdmin extends Admin
             ->add('enabled',null,array('editable'=>true))
             ->add('category', null, array('label' => 'Catégorie'))
             ->add('createdby')->add('nbview')
+            ->add('ramadan2017',null,array('editable'=>true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     // 'view' => array(),

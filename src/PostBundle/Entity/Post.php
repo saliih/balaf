@@ -90,6 +90,12 @@ class Post
      */
     private $enabled;
     /**
+     * @var Boolean
+     *
+     * @ORM\Column(name="ramadan2017", type="boolean",nullable=true)
+     */
+    private $ramadan2017;
+    /**
      * @var integer
      *
      * @ORM\Column(name="nbview", type="integer",nullable=true)
@@ -101,6 +107,7 @@ class Post
     }
     public function __construct()
     {
+        $this->ramadan2017 = false;
         $this->enabled = false;
         $this->created = new \DateTime();
         $this->publieddate = new \DateTime();
