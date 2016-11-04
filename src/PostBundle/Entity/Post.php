@@ -401,4 +401,27 @@ class Post
     {
         return $this->createdby;
     }
+
+    /**
+     * Set ramadan2017
+     *
+     * @param boolean $ramadan2017
+     * @return Post
+     */
+    public function setRamadan2017($ramadan2017)
+    {
+        $this->ramadan2017 = $ramadan2017;
+
+        return $this;
+    }
+
+    /**
+     * Get ramadan2017
+     *
+     * @return boolean 
+     */
+    public function getRamadan2017()
+    {
+        return $this->ramadan2017;
+    }
 }
