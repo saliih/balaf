@@ -6,6 +6,7 @@ sonata_block:
         sonata.block.service.myposts: ~
         sonata.block.service.tablecompare: ~
         sonata.block.service.month: ~
+        sonata.block.service.monthuser: ~
         sonata.admin.block.admin_list:
             contexts: [admin]
         sonata.user.block.menu:    # used to display the menu in profile pages
@@ -46,6 +47,7 @@ sonata_admin:
             - { position: right, type: sonata.block.service.myposts, settings: { template: 'PostBundle:Block:myPosts.html.twig'  } }
             - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             - { position: right, type: sonata.block.service.month, settings: { template: 'PostBundle:Block:month.html.twig'  } }
+            - { position: left, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
         groups:
 
             article:

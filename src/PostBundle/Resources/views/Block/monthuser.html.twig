@@ -1,0 +1,59 @@
+{% extends 'SonataBlockBundle:Block:block_base.html.twig' %}
+
+
+
+{% block block %}
+
+    <div class="box ">
+
+        <div class="box-header">
+            <h3 class="box-title"> {{ title }}</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="box-body">
+            <div id="month-user-chart" style="height: 300px;"></div>
+        </div>
+
+    </div>
+    <script>
+        $(function () {
+            var donutData = [
+                {% for key,item in final %}
+                {label: "{{ key }}", data: {{ item['percent'] }}, color: "#{{ item['color'] }}"},
+                    {% endfor %}
+
+            ];
+            $.plot("#month-user-chart", donutData, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        innerRadius: 0.5,
+                        label: {
+                            show: true,
+                            radius: 2 / 3,
+                            formatter: labelFormatter,
+                            threshold: 0.1
+                        }
+
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            });
+        });
+        function labelFormatter(label, series) {
+            return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+                    + label
+                    + "<br>"
+                    + Math.round(series.percent) + "%</div>";
+        }
+    </script>
+{% endblock %}
