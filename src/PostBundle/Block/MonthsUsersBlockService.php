@@ -60,7 +60,7 @@ class MonthsUsersBlockService extends BaseBlockService
         $final2 = array();
         foreach ($final as $key=>$value){
             $final2[$key]['percent'] =  $value * 100 / $total;
-            $final2[$key]['color'] = $this->stringToColorCode($key);
+            $final2[$key]['color'] = $this->stringToColorCode($key.rand(84,4898));
         }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final2,
