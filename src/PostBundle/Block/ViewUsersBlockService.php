@@ -17,7 +17,7 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService as BaseBlockService;
 use Sonata\BlockBundle\Util\OptionsResolver;
 
-class MonthsUsersBlockService extends BaseBlockService
+class ViewUsersBlockService extends BaseBlockService
 {
     protected $em;
     protected $template;
@@ -40,7 +40,7 @@ class MonthsUsersBlockService extends BaseBlockService
         $resolver->setDefaults(array(
             'url' => false,
             'title' => 'Articles par mois et par Auteurs',
-            'template' => 'PostBundle:Block:monthuser.html.twig',
+            'template' => 'PostBundle:Block:viewuser.html.twig',
         ));
     }
 
@@ -54,22 +54,24 @@ class MonthsUsersBlockService extends BaseBlockService
             $index = $post->getCreatedby()->getUsername();
             if (!isset($final[$index]))
                 $final[$index] = 0;
-            $final[$index]++;
-            $total ++;
+            $final[$index] += $post->getNbview();
+            $total += $post->getNbview();
         }
         $final2 = array();
-        foreach ($final as $key=>$value){
-            $final2[$key]['percent'] =  $value * 100 / $total;
-            $final2[$key]['color'] = $this->stringToColorCode($key.rand(84,4898));
+        foreach ($final as $key => $value) {
+            $final2[$key]['percent'] = $value * 100 / $total;
+            $final2[$key]['color'] = $this->stringToColorCode(rand(84, 4898) . $key);
         }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final2,
-            'title' => "Article par utilisateur",
+            'title' => "Nombre des vus par utilisateurs",
             'block' => $blockContext->getBlock(),
             'settings' => $settings
         ), $response);
     }
-    private function stringToColorCode($str) {
+
+    private function stringToColorCode($str)
+    {
         $code = dechex(crc32($str));
         $code = substr($code, 0, 6);
         return $code;
