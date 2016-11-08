@@ -45,11 +45,11 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.block.service.posts, settings: { template: 'PostBundle:Block:Posts.html.twig'  } }
-            - { position: right, type: sonata.block.service.myposts, settings: { template: 'PostBundle:Block:myPosts.html.twig'  } }
-            - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
+            - { position: left, type: sonata.block.service.myposts, settings: { template: 'PostBundle:Block:myPosts.html.twig'  } }
+            - { position: right, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             - { position: right, type: sonata.block.service.month, settings: { template: 'PostBundle:Block:month.html.twig'  } }
-            - { position: left, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
-            - { position: right, type: sonata.block.service.viewuser, settings: { template: 'PostBundle:Block:viewuser.html.twig'  } }
+            - { position: center, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
+            - { position: center, type: sonata.block.service.viewuser, settings: { template: 'PostBundle:Block:viewuser.html.twig'  } }
         groups:
 
             article:
