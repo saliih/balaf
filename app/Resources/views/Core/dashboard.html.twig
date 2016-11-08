@@ -10,7 +10,14 @@ file that was distributed with this source code.
 #}
 
 {% extends base_template %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('plugins/flot/jquery.flot.min.js') }}"></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.resize.min.js') }}"></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.pie.min.js') }}"></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.categories.min.js') }}"></script>
 
+{% endblock %}
 {% block title %}{{ 'title_dashboard'|trans({}, 'SonataAdminBundle') }}{% endblock%}
 {% block breadcrumb %}{% endblock %}
 {% block content %}
