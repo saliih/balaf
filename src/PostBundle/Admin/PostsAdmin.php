@@ -23,12 +23,16 @@ class PostsAdmin extends Admin
     {
         return 'Articles';
     }
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('title')->add('createdby')
-
+        $datagridMapper
+            ->add('title')
+            ->add('createdby')
+            ->add('ramadan2017')
             ->add('category');
     }
+
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -37,16 +41,16 @@ class PostsAdmin extends Admin
             ))
             ->addIdentifier('title', null, array('label' => 'Titre'))
             ->add('publieddate')
-            ->add('enabled',null,array('editable'=>true))
+            ->add('enabled', null, array('editable' => true))
             ->add('category', null, array('label' => 'Catégorie'))
             ->add('createdby')->add('nbview')
-            ->add('ramadan2017',null,array('editable'=>true))
+            ->add('ramadan2017', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     // 'view' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                    "preview"=>array('template'=>"PostBundle:Post:linkpreview.html.twig")
+                    "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig")
                 )
             ));
 
@@ -61,6 +65,7 @@ class PostsAdmin extends Admin
         $object->setAlias($service->slugify($object->getTitle()));
         $object->setCreatedby($user);
     }
+
     public function preUpdate($object)
     {
         $object->setUpdated(new \DateTime());
@@ -69,17 +74,16 @@ class PostsAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Artcile',array('class'=>'col-md-8'))
+            ->with('Artcile', array('class' => 'col-md-8'))
             ->add('title')
-            ->add('alias', null,array('required'=>false))
-            ->add('article','textarea',array('required'=>false))
+            ->add('alias', null, array('required' => false))
+            ->add('article', 'textarea', array('required' => false))
             ->end()
-            ->with('Status',array('class'=>'col-md-4'))
-            ->add('enabled',null,array('required'=>false))
-            ->add('publieddate','sonata_type_date_picker',array('dp_language'=>'fr','format'=>'dd/MM/yyyy','label'=>'date de publication'))
-            ->add('pic',null,array('required'=>false))
-            ->add('category',null,array('required'=>true))
-            //->add('createdby')
+            ->with('Status', array('class' => 'col-md-4'))
+            ->add('enabled', null, array('required' => false))
+            ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
+            ->add('pic', null, array('required' => false))
+            ->add('category', null, array('required' => true))//->add('createdby')
         ;
 
     }
