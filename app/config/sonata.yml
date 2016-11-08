@@ -46,9 +46,6 @@ sonata_admin:
             - { position: right, type: sonata.block.service.myposts, settings: { template: 'PostBundle:Block:myPosts.html.twig'  } }
             - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             - { position: right, type: sonata.block.service.month, settings: { template: 'PostBundle:Block:month.html.twig'  } }
-            #- { position: left, type: sonata.block.service.status, settings: { title: Project Status }}
-            #- { position: right,  type: sonata.admin.block.admin_list, settings: { groups: [utilisateur, Configuration] } }
-            #- { position: left, type: sonata.admin.block.service.status, settings: { groups: [Projects] } }
         groups:
 
             article:
