@@ -1,74 +1,22 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    <style>
-        .panel-tile {
-            padding: 0;
-        }
-        #content .panel {
-            -webkit-box-shadow: 1px 2px 0 #e5eaee;
-            box-shadow: 1px 2px 0 #e5eaee;
-            padding: 15px 25px 25px;
-        }
-        .info-block-bg-success {
-            background-color: #10cfbd;
-        }
-        .info-block {
-            color: #fff;
-        }
-        .info-block i {
-            font-size: 39px;
-            padding: 13px;
-            margin-top: 7px;
-            border-radius: 50%;
-            border: 1px solid #fff;
-        }
-        .info-block .info-block-stat {
-            position: absolute;
-            top: -8px;
-            left: -11px;
-            font-size: 13px;
-            padding: 0 14px;
-            width: 192px;
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-        .info-block h2 {
-            margin-top: 3px;
-            margin-bottom: 0;
-            font-size: 60px;
-        }
-        .info-block h2, .info-block h6 {
-            color: #fff;
-            font-weight: 400;
-        }
-        .ph10 {
-            padding-left: 10px !important;
-            padding-right: 10px !important;
-        }
-        .pl35 {
-            padding-left: 35px !important;
-        }
-        .prn {
-            padding-right: 0 !important;
-        }
-        .info-block-bg-warning {
-            background-color: #f55753;
-        }
-    </style>
-    <div class="panel panel-tile info-block info-block-bg-success">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-5 ph10 text-center ">
-                    <i class="fa fa-newspaper-o"></i>
-                </div>
-                <div class="col-xs-7 pl35 prn text-center">
-                    <h2>{{ nbposts }}</h2>
-                    <h6>Articles</h6>
+    <a class="btn btn-app" href="{{ path('admin_post_post_list') }}">
+        <span class="badge bg-yellow">{{ nbposts }}</span>
+        <i class="fa fa-newspaper-o"></i> Recettes
+    </a>
+    <a class="btn btn-app" href="{{ path('admin_post_post_list') }}">
+        <span class="badge bg-purple">{{ view }}</span>
+        <i class="fa fa-eye"></i> Nombre des vues
+    </a>
+    <a class="btn btn-app" href="{{ path('admin_post_post_list') }}?filter%5Bcreatedby%5D%5Btype%5D=&filter%5Bcreatedby%5D%5Bvalue%5D={{ app.user.id }}">
+        <span class="badge bg-green">{{ mypost }}</span>
+        <i class="fa fa-book" aria-hidden="true"></i> Mes Recettes
+    </a>
+    <a class="btn btn-app" href="{{ path('admin_post_post_list') }}?filter%5Bcreatedby%5D%5Btype%5D=&filter%5Bcreatedby%5D%5Bvalue%5D={{ app.user.id }}">
+        <span class="badge bg-red">{{ myview }}</span>
+        <i class="fa fa-bar-chart" aria-hidden="true"></i> Mes Vues
+    </a>
 
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 {% endblock %}

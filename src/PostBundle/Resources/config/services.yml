@@ -5,7 +5,7 @@ services:
 
     sonata.block.service.posts:
         class: PostBundle\Block\PostsBlockService
-        arguments: [ "sonata.block.service.posts", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.posts", @templating, @service_container ]
         tags:
             - { name: sonata.block }
     sonata.block.service.month:
@@ -23,11 +23,7 @@ services:
         arguments: [ "sonata.block.service.viewuser", @templating, @doctrine.orm.entity_manager ]
         tags:
             - { name: sonata.block }
-    sonata.block.service.myposts:
-        class: PostBundle\Block\MyPostsBlockService
-        arguments: [ "sonata.block.service.myposts", @templating, @service_container ]
-        tags:
-            - { name: sonata.block }
+
     sonata.block.service.tablecompare:
         class: PostBundle\Block\TableBlockService
         arguments: [ "sonata.block.service.tablecompare", @templating, @doctrine.orm.entity_manager ]

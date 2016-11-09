@@ -14,7 +14,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 #use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\BaseBlockService  as BaseBlockService;
+use Sonata\BlockBundle\Block\BaseBlockService as BaseBlockService;
 use Sonata\BlockBundle\Util\OptionsResolver;
 
 class PostsBlockService extends BaseBlockService
@@ -22,23 +22,26 @@ class PostsBlockService extends BaseBlockService
     protected $em;
     protected $template;
     protected $type;
+    protected $container;
 
-    public function __construct($type, $templating, $dm)
+    public function __construct($type, $templating, $container)
     {
         $this->type = $type;
         $this->templating = $templating;
-        $this->em = $dm;
+        $this->container = $container;
+        $this->em = $container->get('doctrine');
     }
 
     public function getName()
     {
         return 'Posts';
     }
+
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'url'      => false,
-            'title'    => 'Status items',
+            'url' => false,
+            'title' => 'Status items',
             'template' => 'PostBundle:Block:Posts.html.twig',
         ));
     }
@@ -47,11 +50,25 @@ class PostsBlockService extends BaseBlockService
     {
         // merge settings
         $settings = $blockContext->getSettings();
-        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled'=>true));
+        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled' => true));
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $view = 0;
+        $myview = 0;
+        $mypost = 0;
+        foreach ($posts as $post) {
+            if ($post->getCreatedby()->getId() == $user->getId()) {
+                $mypost++;
+                $myview += $post->getNbview();
+            }
+            $view += $post->getNbview();
+        }
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'nbposts'     => count($posts),
-            'block'     => $blockContext->getBlock(),
-            'settings'  => $settings
+            'nbposts' => count($posts),
+            'view' => $view,
+            'mypost' => $mypost,
+            'myview' => $myview,
+            'block' => $blockContext->getBlock(),
+            'settings' => $settings
         ), $response);
     }
 }
