@@ -52,6 +52,7 @@ class PostsBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
         $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('enabled' => true));
         $user = $this->container->get('security.context')->getToken()->getUser();
+        $search = $this->em->getRepository('PostBundle:Search')->findAll();
         $view = 0;
         $myview = 0;
         $mypost = 0;
@@ -67,6 +68,7 @@ class PostsBlockService extends BaseBlockService
             'view' => $view,
             'mypost' => $mypost,
             'myview' => $myview,
+            'search' => count($search),
             'block' => $blockContext->getBlock(),
             'settings' => $settings
         ), $response);
