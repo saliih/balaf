@@ -43,7 +43,7 @@ sonata_admin:
     dashboard:
         blocks:
             # display a dashboard block
-            - { position: left, type: sonata.block.service.posts, settings: { template: 'PostBundle:Block:Posts.html.twig'  } }
+            - { position: center, type: sonata.block.service.posts, settings: { template: 'PostBundle:Block:Posts.html.twig'  } }
             - { position: right, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             - { position: left, type: sonata.block.service.month, settings: { template: 'PostBundle:Block:month.html.twig'  } }
             - { position: left, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
