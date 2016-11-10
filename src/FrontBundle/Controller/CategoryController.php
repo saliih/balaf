@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use PostBundle\Entity\Search;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CategoryController extends Controller
@@ -19,5 +20,30 @@ class CategoryController extends Controller
             12/*limit per page*/
         );
         return $this->render('FrontBundle:Category:index.html.twig', array("category"=>$category,'posts' => $pagination));
+    }
+    public function searchAction(){
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->get('request');
+        $search = $request->query->get('s');
+        // history search
+        $findstr = $this->getDoctrine()->getRepository('PostBundle:Search')->findOneBy(array('search'=>$search));
+        if($findstr == null){
+            $findstr = new Search();
+            $findstr->setNb(0);
+            $findstr->setSearch($search);
+        }
+        $findstr->setNb($findstr->getNb() + 1);
+        $em->persist($findstr);
+        $em->flush();
+
+        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->search($search);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $posts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            12/*limit per page*/
+        );
+        return $this->render('FrontBundle:Category:search.html.twig', array("search"=>$search,'posts' => $pagination));
+
     }
 }

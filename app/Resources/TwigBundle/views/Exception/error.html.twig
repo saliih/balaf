@@ -9,9 +9,9 @@
             <p>Désolé, la page que vous cherchez mais n'existe pas .</p>
             
             <div class="search-div clearfix">
-              <form class="searchwidget-form">
+              <form class="searchwidget-form"  method="get" action="{{ path('search_recipe') }}">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search...">
+                  <input type="text" class="form-control" placeholder="Recherche..." name="s">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                   </span>

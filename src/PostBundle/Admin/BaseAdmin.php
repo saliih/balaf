@@ -21,11 +21,7 @@ class BaseAdmin extends Admin
     protected $maxPageLinks = 25;
     protected $translationDomain = 'MainFactBundle';
     protected $perPageOptions = array(25, 50, 75, 100, 125, 150);
-    protected $listModes = array(
-        'list' => array(
-            'class' => 'fa fa-list fa-fw',
-        ),
-    );
+    protected $listModes = array();
     public function getExportFormats()
     {
         return array(

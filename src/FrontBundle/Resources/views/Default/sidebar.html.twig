@@ -4,9 +4,9 @@
         {{ render(controller('FrontBundle:Default:ad300')) }}
 
         <div class="widget searchwidget">
-            <form class="searchwidget-form">
+            <form class="searchwidget-form"  method="get" action="{{ path('search_recipe') }}">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="text" class="form-control" placeholder="Recherche..." value="" name="s" id="search">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
           </span>

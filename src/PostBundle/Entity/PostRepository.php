@@ -12,6 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function search($str){
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Post as p where p.title like '%$str%' or p.article  like '%$str%'");
+        return $query->getResult();
+    }
     public function related($cat)
     {
         $query = $this->getEntityManager()
