@@ -25,18 +25,16 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
         $search = $request->query->get('s');
+        $page = $request->query->get('page');
         // history search
-        $findstr = $this->getDoctrine()->getRepository('PostBundle:Search')->findOneBy(array('search'=>$search));
-        if($findstr == null){
-            $findstr = new Search();
-            $findstr->setNb(0);
-            $findstr->setSearch($search);
-        }
-        $findstr->setNb($findstr->getNb() + 1);
-        $em->persist($findstr);
-        $em->flush();
-
         $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->search($search);
+        if(in_array($page,array('1','',0))) {
+            $findstr = new Search();
+            $findstr->setResult(count($posts));
+            $findstr->setSearch($search);
+            $em->persist($findstr);
+            $em->flush();
+        }
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $posts, /* query NOT result */

@@ -35,6 +35,11 @@ services:
         class: PostBundle\Services\NewsServices
 
 
+    admin.alexa:
+        class: PostBundle\Admin\AlexaAdmin
+        arguments: [~, PostBundle\Entity\Alexa, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Alexa', icon:'<i class="fa fa-envelope"></i>' }
     admin.category:
         class: PostBundle\Admin\CategoryAdmin
         arguments: [~, PostBundle\Entity\Category, ~] #MailingBundle:CRUD

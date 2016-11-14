@@ -17,26 +17,30 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
-class SearchAdmin extends Admin
+class AlexaAdmin extends Admin
 {
-
     public function getname()
     {
-        return 'Search';
-    }
-
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('search');
+        return 'Alexa';
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
 
-            ->add('search', null, array('label' => 'Keywords'))
-            ->add('result');
+            ->add('value')
+            ->add('dcr')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'delete' => array(),
+                )
+            ));
+    }
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->add('value')
+        ;
 
     }
 }

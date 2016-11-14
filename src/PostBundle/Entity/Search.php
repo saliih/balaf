@@ -28,12 +28,13 @@ class Search
      */
     private $search;
 
+
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="nb", type="string", length=255)
+     * @ORM\Column(name="nbresult", type="integer", length=255)
      */
-    private $nb;
+    private $result;
 
 
     /**
@@ -70,25 +71,18 @@ class Search
     }
 
     /**
-     * Set nb
-     *
-     * @param string $nb
-     * @return Search
+     * @return int
      */
-    public function setNb($nb)
+    public function getResult()
     {
-        $this->nb = $nb;
-
-        return $this;
+        return $this->result;
     }
 
     /**
-     * Get nb
-     *
-     * @return string 
+     * @param int $result
      */
-    public function getNb()
+    public function setResult($result)
     {
-        return $this->nb;
+        $this->result = $result;
     }
 }
