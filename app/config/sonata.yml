@@ -57,12 +57,16 @@ sonata_admin:
                 icon: '<i class="fa fa-file-text" aria-hidden="true"></i>'
                 items:
                     - admin.posts
-                    - admin.search
             Configuration:
-                label: Users
+                label: Configurations
                 icon: '<i class="fa fa-cogs"></i>'
                 items:
                     - admin.alexa
+                    - admin.search
                     - admin.category
+            Users:
+                label: Users
+                icon: '<i class="fa fa-users"></i>'
+                items:
                     - sonata.user.admin.user
                     - sonata.user.admin.group
