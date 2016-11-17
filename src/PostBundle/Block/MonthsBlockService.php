@@ -8,6 +8,7 @@
  */
 namespace PostBundle\Block;
 
+use PostBundle\Entity\Post;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -51,9 +52,9 @@ class MonthsBlockService extends BaseBlockService
         $final = array();
         foreach ($posts as $post) {
             $index = $post->getPublieddate()->format('Y-m');
-            if (!isset($final[$index]))
-                $final[$index] = 0;
-            $final[$index]++;
+            if (!isset($final[$post->getCreatedby()->getUsername()][$index]))
+                $final[$post->getCreatedby()->getUsername()][$index] = 0;
+            $final[$post->getCreatedby()->getUsername()][$index]++;
         }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,

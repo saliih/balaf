@@ -23,27 +23,49 @@
     </div>
     <script>
         $(function () {
-            var bar_data = {
+            {% set i=1 %}
+            {% for user in final %}
+            var bar_data{{ i }} = {
                 data: [
-                    {% for key,item in final %}
-                        ["{{ key }}", {{ item }}],
+                    {% for key,item in user %}
+                    ["{{ key }}", {{ item }}],
                     {% endfor %}
-                   ],
-                color: "#3c8dbc"
+                ],
+                //  color: "#3c8dbc"
             };
-            $.plot("#month-chart", [bar_data], {
-                grid: {
-                    borderWidth: 1,
-                    borderColor: "#f3f3f3",
-                    tickColor: "#f3f3f3"
-                },
+            {% set i=i+1 %}
+            {% endfor %}
+            var stack = 0,
+                    bars = true,
+                    lines = false,
+                    steps = false;
+
+            $.plot("#month-chart", [{% set i=1 %}{% for user in final %}bar_data{{ i }},{% set i=i+1 %}{% endfor %}], {
                 series: {
+                    stack: stack,
+                    lines: {
+                        show: lines,
+                        fill: true,
+                        steps: steps
+                    },
                     bars: {
-                        show: true,
-                        barWidth: 0.5,
-                        align: "center"
+                        show: bars,
+                        barWidth: 0.6
                     }
                 },
+                {#
+                    grid: {
+                        borderWidth: 1,
+                        borderColor: "#f3f3f3",
+                        tickColor: "#f3f3f3"
+                    },
+                    series: {
+                        bars: {
+                            show: true,
+                            barWidth: 0.5,
+                            align: "center"
+                        }
+                    },#}
                 xaxis: {
                     mode: "categories",
                     tickLength: 0
