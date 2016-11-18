@@ -12,9 +12,11 @@ file that was distributed with this source code.
 {% extends base_template %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('plugins/flot/jquery.flot.min.js') }}"></script>
-    <script src="{{ asset('plugins/flot/jquery.flot.resize.min.js') }}"></script>
-    <script src="{{ asset('plugins/flot/jquery.flot.pie.min.js') }}"></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.min.js') }}" language="javascript" type="text/javascript" ></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.resize.min.js') }}" language="javascript" type="text/javascript" ></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.pie.min.js') }}" language="javascript" type="text/javascript" ></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.stack.js') }}" language="javascript" type="text/javascript" ></script>
+
     <script src="{{ asset('plugins/flot/jquery.flot.categories.min.js') }}"></script>
 
 {% endblock %}
