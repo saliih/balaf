@@ -66,21 +66,21 @@ class Post
     private $createdby;
     
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="created", type="datetime",nullable=true)
+     * @ORM\Column(name="created", type="date",nullable=true)
      */
     private $created;
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="updated", type="datetime",nullable=true)
+     * @ORM\Column(name="updated", type="date",nullable=true)
      */
     private $updated;
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="publieddate", type="datetime",nullable=true)
+     * @ORM\Column(name="publieddate", type="date",nullable=true)
      */
     private $publieddate;
     /**
