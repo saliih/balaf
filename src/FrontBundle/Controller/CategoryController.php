@@ -12,7 +12,7 @@ class CategoryController extends Controller
         $request = $this->get("request");
         $category = $this->getDoctrine()->getRepository('PostBundle:Category')->findOneBy(array('slug'=>$slug,'locale'=>$locale));
         if($category == null)return $this->redirect($this->generateUrl('front_homepage'));
-        $posts = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array('category'=>$category),array('id'=>'DESC'));
+        $posts = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array('category'=>$category),array('publieddate'=>'DESC'));
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $posts, /* query NOT result */

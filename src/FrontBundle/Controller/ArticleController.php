@@ -23,7 +23,7 @@ class ArticleController extends Controller
             //$session->set('pageView',$pageView);
         //}
         $related = array();
-      $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category"=>$article->getCategory(),'enabled'=>true),array());
+      $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category"=>$article->getCategory(),'enabled'=>true),array('publieddate'=>'DESC'));
         shuffle($related);
         $i = 0;
         $related2 = $related;
