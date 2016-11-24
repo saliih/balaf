@@ -47,23 +47,19 @@ class ViewUsersBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $posts = $this->em->getRepository('PostBundle:Post')->findAll();
+        $views = $this->em->getRepository('PostBundle:Views')->findAll();
         $final = array();
         $total = 0;
-        foreach ($posts as $post) {
-            $index = $post->getCreatedby()->getUsername();
-            if (!isset($final[$index]))
-                $final[$index] = 0;
-            $final[$index] += $post->getNbview();
-            $total += $post->getNbview();
+        foreach ($views as $post) {
+            $index = $post->getDv()->format("ymd");
+            $user = $post->getCreatedby()->getUsername();
+            if (!isset($final[$user][$index]))
+                $final[$user][$index] = 0;
+            $final[$user][$index] += 1;
         }
-        $final2 = array();
-        foreach ($final as $key => $value) {
-            $final2[$key]['percent'] = $value * 100 / $total;
-            $final2[$key]['color'] = $this->stringToColorCode(rand(84, 4898) . $key);
-        }
+
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'final' => $final2,
+            'final' => $final,
             'title' => "Nombre des vus par utilisateurs",
             'block' => $blockContext->getBlock(),
             'settings' => $settings
