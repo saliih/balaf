@@ -101,16 +101,24 @@ class Post
      * @ORM\Column(name="nbview", type="integer",nullable=true)
      */
     private $nbview;
+    /**
+     * @ORM\OneToMany(targetEntity="Views", mappedBy="post", cascade={"persist"})
+     */
+    private $view;
     public function __toString()
     {
         return $this->title;
     }
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->ramadan2017 = false;
         $this->enabled = false;
         $this->created = new \DateTime();
         $this->publieddate = new \DateTime();
+        $this->view = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -424,4 +432,38 @@ class Post
     {
         return $this->ramadan2017;
     }
+
+    /**
+     * Add view
+     *
+     * @param \PostBundle\Entity\Views $view
+     * @return Post
+     */
+    public function addView(\PostBundle\Entity\Views $view)
+    {
+        $this->view[] = $view;
+
+        return $this;
+    }
+
+    /**
+     * Remove view
+     *
+     * @param \PostBundle\Entity\Views $view
+     */
+    public function removeView(\PostBundle\Entity\Views $view)
+    {
+        $this->view->removeElement($view);
+    }
+
+    /**
+     * Get view
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getView()
+    {
+        return $this->view;
+    }
+
 }
