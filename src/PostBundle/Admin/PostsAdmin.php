@@ -43,7 +43,10 @@ class PostsAdmin extends Admin
             ->add('publieddate')
             ->add('enabled', null, array('editable' => true))
             ->add('category', null, array('label' => 'Catégorie'))
-            ->add('createdby')->add('nbview')
+            ->add('createdby')
+            ->add('view', null, array(
+                'template' => 'PostBundle:Post:views.html.twig'
+            ))
             ->add('ramadan2017', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
