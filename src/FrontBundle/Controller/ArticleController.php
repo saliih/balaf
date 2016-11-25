@@ -12,17 +12,13 @@ class ArticleController extends Controller
     {
         $request = $this->get('request');
         $em = $this->getDoctrine()->getEntityManager();
-        $session = $request->getSession();
-        $pageView = $session->get('pageView');
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
-        //if(!isset($pageView[$article->getId()])){
-        //  $pageView[$article->getId()] = $article->getNbview();
-        $newnb = $article->getNbview() + 1;
-        $article->setNbview($newnb);
-        $em->persist($article);
         $ip = $request->getClientIp();
         $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array('post'=>$article,'ip'=>$ip));
         if($view==null) {
+            $newnb = $article->getNbview() + 1;
+            $article->setNbview($newnb);
+            $em->persist($article);
             $view = new Views();
             $view->setPost($article);
             $view->setIp($ip);
@@ -30,9 +26,6 @@ class ArticleController extends Controller
             $em->persist($view);
         }
         $em->flush();
-        //$session->set('pageView',$pageView);
-        //}
-        $related = array();
         $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category" => $article->getCategory(), 'enabled' => true), array('publieddate' => 'DESC'));
         shuffle($related);
         $i = 0;
