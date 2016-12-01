@@ -32,7 +32,7 @@
                     label: "{{ key }}",
                     data: [
                         {% for key2,item2 in item %}
-                            ['{{ key2 }}', {{ item2 }}],
+                            [{{ key2 }}, {{ item2 }}],
                         {% endfor %}
                     ]
                 },
