@@ -30,26 +30,20 @@
             {% for key,item in final %}
                 "{{ key }}": {
                     label: "{{ key }}",
-                    data: [
+                    data: [{% set i=0 %}
                         {% for key2,item2 in item %}
-                            [{{ key2 }}, {{ item2 }}],
+                            [{{ i }}, {{ item2 }}],{% set i=i+1 %}
                         {% endfor %}
                     ]
                 },
                 {% endfor %}
 
             };
-
-            // hard-code color indices to prevent them from shifting as
-            // countries are turned on/off
-
             var i = 0;
             $.each(datasets, function(key, val) {
                 val.color = i;
                 ++i;
             });
-
-            // insert checkboxes
             var choiceContainer = $("#choices");
             $.each(datasets, function(key, val) {
                 choiceContainer.append("<div class='col-md-4'><input type='checkbox' name='" + key +
