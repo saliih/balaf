@@ -29,7 +29,7 @@ class DefaultController extends Controller
         return new JsonResponse($tab);
     }
     public function toolbarAction(){
-        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled' => true));
+        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $search = $this->getDoctrine()->getRepository('PostBundle:Search')->findAll();
         $view = 0;
