@@ -28,4 +28,27 @@ class DefaultController extends Controller
         }
         return new JsonResponse($tab);
     }
+    public function toolbarAction(){
+        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled' => true));
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $search = $this->getDoctrine()->getRepository('PostBundle:Search')->findAll();
+        $view = 0;
+        $myview = 0;
+        $mypost = 0;
+        foreach ($posts as $post) {
+            if ($post->getCreatedby()->getId() == $user->getId()) {
+                $mypost++;
+                $myview += $post->getNbview();
+            }
+            $view += $post->getNbview();
+        }
+        return $this->render('PostBundle:Default:toolbar.html.twig', array(
+            'nbposts' => count($posts),
+            'view' => $view,
+            'mypost' => $mypost,
+            'myview' => $myview,
+            'search' => count($search)
+        ));
+
+    }
 }
