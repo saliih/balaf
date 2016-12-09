@@ -6,13 +6,14 @@
 </li>
 <li>
     <a  title="Mes recettes" href="{{ path('admin_post_post_list') }}?filter%5Bcreatedby%5D%5Btype%5D=&filter%5Bcreatedby%5D%5Bvalue%5D={{ app.user.id }}">
-        <i class="fa fa-book fa-fw"></i>
-        <span class="badge bg-blue">{{ mypost }}</span>
+        <i class="fa fa-book fa-fw"></i>{% if mypost>0 %}
+        <span class="badge bg-blue">{{ mypost }}</span>{% endif %}
     </a>
 </li>
 <li>
     <a  title="Search" href="{{ path('admin_post_search_list') }}">
         <i class="fa fa-search fa-fw"></i>
-        <span class="badge bg-yellow">{{ search }}</span>
+        {% if search>0 %}
+        <span class="badge bg-yellow">{{ search }}</span>{% endif %}
     </a>
 </li>
