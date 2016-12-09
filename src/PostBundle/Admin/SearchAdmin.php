@@ -36,6 +36,7 @@ class SearchAdmin extends Admin
         $listMapper
 
             ->add('search', null, array('label' => 'Keywords'))
+            ->add('act', null, array('label' => 'traité', 'editable'=>true))
             ->add('result');
 
     }

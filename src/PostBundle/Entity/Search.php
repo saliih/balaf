@@ -36,6 +36,33 @@ class Search
      */
     private $result;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="act", type="boolean",nullable=true)
+     */
+    private $act;
+    public function __construct()
+    {
+        $this->act = false;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAct()
+    {
+        return $this->act;
+    }
+
+    /**
+     * @param boolean $act
+     */
+    public function setAct($act)
+    {
+        $this->act = $act;
+    }
+
 
     /**
      * Get id
