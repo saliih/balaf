@@ -169,6 +169,22 @@ file that was distributed with this source code.
                     {% block sonata_top_nav_menu %}
                         <div class="navbar-custom-menu">
                             <ul class="nav navbar-nav">
+                                <li>
+                                    <a title="Recettes" href="{{ path('admin_post_post_list') }}">
+                                        <i class="fa fa-newspaper-o fa-fw"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a  title="Mes recettes" href="{{ path('admin_post_post_list') }}?filter%5Bcreatedby%5D%5Btype%5D=&filter%5Bcreatedby%5D%5Bvalue%5D={{ app.user.id }}">
+                                        <i class="fa fa-book fa-fw"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a  title="Search" href="{{ path('admin_post_search_list') }}">
+                                       <!-- <span class="badge bg-red">10</span>-->
+                                        <i class="fa fa-search fa-fw"></i>
+                                    </a>
+                                </li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                         <i class="fa fa-plus-square fa-fw"></i> <i class="fa fa-caret-down"></i>
