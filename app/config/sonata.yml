@@ -63,6 +63,7 @@ sonata_admin:
                 label: Configurations
                 icon: '<i class="fa fa-cogs"></i>'
                 items:
+                    - admin.tasks
                     - admin.alexa
                     - admin.search
                     - admin.category

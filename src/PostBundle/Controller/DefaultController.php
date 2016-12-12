@@ -32,6 +32,8 @@ class DefaultController extends Controller
         $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $search = $this->getDoctrine()->getRepository('PostBundle:Search')->findBy(array('act'=>false));
+        $tasks = $this->getDoctrine()->getRepository('PostBundle:Tasks')->findBy(array('act'=>false));
+
         $view = 0;
         $myview = 0;
         $mypost = 0;
@@ -46,6 +48,7 @@ class DefaultController extends Controller
             'nbposts' => count($posts),
             'view' => $view,
             'mypost' => $mypost,
+            'tasks' => count($tasks),
             'myview' => $myview,
             'search' => count($search)
         ));
