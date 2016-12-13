@@ -44,6 +44,7 @@ class PostsAdmin extends Admin
             ->add('enabled', null, array('editable' => true))
             ->add('category', null, array('label' => 'Catégorie'))
             ->add('createdby')
+            ->add('nbview', null, array("label"=>"real view" ))
             ->add('view', null, array(
                 'template' => 'PostBundle:Post:views.html.twig'
             ))
