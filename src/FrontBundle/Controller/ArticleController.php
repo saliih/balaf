@@ -15,10 +15,10 @@ class ArticleController extends Controller
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
         $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array('post'=>$article,'ip'=>$ip));
+        $newnb = $article->getNbview() + 1;
+        $article->setNbview($newnb);
+        $em->persist($article);
         if($view==null) {
-            $newnb = $article->getNbview() + 1;
-            $article->setNbview($newnb);
-            $em->persist($article);
             $view = new Views();
             $view->setPost($article);
             $view->setIp($ip);
