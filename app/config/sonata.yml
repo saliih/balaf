@@ -40,7 +40,8 @@ sonata_admin:
         dashboard:            :Core:dashboard.html.twig
     title:                'Tounsianet'
     title_logo:           public/logo.png
-
+    security:
+        handler: sonata.admin.security.handler.role
     dashboard:
         blocks:
             # display a dashboard block
