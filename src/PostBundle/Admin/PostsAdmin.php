@@ -27,10 +27,13 @@ class PostsAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('createdby')
-            ->add('ramadan2017')
-            ->add('category');
+            ->add('title');
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            $datagridMapper->
+            add('createdby')
+                ->add('ramadan2017')
+                ->add('category');
+        }
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -48,17 +51,17 @@ class PostsAdmin extends Admin
             ->add('view', null, array(
                 'template' => 'PostBundle:Post:views.html.twig'
             ));
-        if($this->isGranted('ROLE_SUPER_ADMIN')){
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $listMapper->add('ramadan2017', null, array('editable' => true));
         }
         $listMapper->add('_action', 'actions', array(
-                'actions' => array(
-                    // 'view' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                    "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig")
-                )
-            ));
+            'actions' => array(
+                // 'view' => array(),
+                'edit' => array(),
+                'delete' => array(),
+                "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig")
+            )
+        ));
 
     }
 
@@ -92,9 +95,11 @@ class PostsAdmin extends Admin
             ->add('category', null, array('required' => true))//->add('createdby')
         ;
     }
-    public function createQuery($context = 'list'){
+
+    public function createQuery($context = 'list')
+    {
         $query = parent::createQuery($context);
-        if(!$this->isGranted('ROLE_SUPER_ADMIN')){
+        if (!$this->isGranted('ROLE_SUPER_ADMIN')) {
             $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
             $query->andWhere(
                 $query->expr()->eq($query->getRootAliases()[0] . '.createdby', ':currentuser')
