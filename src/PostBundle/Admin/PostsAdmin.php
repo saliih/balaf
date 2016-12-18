@@ -27,10 +27,13 @@ class PostsAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('createdby')
-            ->add('ramadan2017')
-            ->add('category');
+            ->add('title');
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            $datagridMapper->
+            add('createdby')
+                ->add('ramadan2017')
+                ->add('category');
+        }
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -44,25 +47,27 @@ class PostsAdmin extends Admin
             ->add('enabled', null, array('editable' => true))
             ->add('category', null, array('label' => 'Catégorie'))
             ->add('createdby')
-            ->add('nbview', null, array("label"=>"real view" ))
+            ->add('nbview', null, array("label" => "real view"))
             ->add('view', null, array(
                 'template' => 'PostBundle:Post:views.html.twig'
-            ))
-            ->add('ramadan2017', null, array('editable' => true))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    // 'view' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                    "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig")
-                )
             ));
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            $listMapper->add('ramadan2017', null, array('editable' => true));
+        }
+        $listMapper->add('_action', 'actions', array(
+            'actions' => array(
+                // 'view' => array(),
+                'edit' => array(),
+                'delete' => array(),
+                "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig")
+            )
+        ));
 
     }
 
     public function prePersist($object)
     {
-        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
         $local = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
         $service = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $object->setLocale($local);
@@ -89,6 +94,19 @@ class PostsAdmin extends Admin
             ->add('pic', null, array('required' => false))
             ->add('category', null, array('required' => true))//->add('createdby')
         ;
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        if (!$this->isGranted('ROLE_SUPER_ADMIN')) {
+            $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+            $query->andWhere(
+                $query->expr()->eq($query->getRootAliases()[0] . '.createdby', ':currentuser')
+            );
+            $query->setParameter('currentuser', $user);
+        }
+        return $query;
 
     }
 }
