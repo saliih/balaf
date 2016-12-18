@@ -40,8 +40,8 @@ class TwitterCommand extends ContainerAwareCommand
 
 
         $webpath = $this->getContainer()->get('kernel')->getRootDir() . '/../web';
-        //$response = $auth->postMedia('media/upload', $webpath.$posts);
-        $response = $auth->postMedia('media/upload', $webpath."/public/logo.png");
+        $response = $auth->postMedia('media/upload', $webpath.$posts->getPic());
+        //$response = $auth->postMedia('media/upload', $webpath."/public/logo.png");
         $media_ids[] = $response['media_id'];
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
