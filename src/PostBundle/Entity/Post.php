@@ -92,6 +92,12 @@ class Post
     /**
      * @var Boolean
      *
+     * @ORM\Column(name="twitter", type="boolean",nullable=true)
+     */
+    private $twitter;
+    /**
+     * @var Boolean
+     *
      * @ORM\Column(name="ramadan2017", type="boolean",nullable=true)
      */
     private $ramadan2017;
@@ -114,6 +120,7 @@ class Post
      */
     public function __construct()
     {
+        $this->twitter=false;
         $this->ramadan2017 = false;
         $this->enabled = false;
         $this->created = new \DateTime();
@@ -464,6 +471,22 @@ class Post
     public function getView()
     {
         return $this->view;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * @param boolean $twitter
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
     }
 
 }
