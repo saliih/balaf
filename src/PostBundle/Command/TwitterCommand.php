@@ -38,13 +38,12 @@ class TwitterCommand extends ContainerAwareCommand
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter'=>false,'enabled'=>true),array('id'=>'DESC'));
         $webpath = '/var/www/tounsia/web';
-        echo $img = $webpath.$posts->getPic();
+        echo $img = $webpath.$posts->getPic();echo "\n";
         $response = $auth->postMedia('media/upload', $img);
         $media_ids[] = $response['media_id'];
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
       // $path = r':year,'month':month,'categoryname':object.category.slug}) %}
-
 
         $url = $this->getContainer()->get('router')->generate('front_article',array(
             'locale'=>'fr',
@@ -55,11 +54,13 @@ class TwitterCommand extends ContainerAwareCommand
 
         ));
 
-        $params['status'] = '#Recette : '.$posts->getTitle()."\n http://www.tounsia.net/$url";
-        $params['media_ids'] = implode(',', $media_ids);
+        $params = array(
+            'status' => '#Recette : '.$posts->getTitle()."\n http://www.tounsia.net/$url",
+            'media_ids' => implode(',', $media_ids),
+        );
 
         $response = $auth->post('statuses/update', $params);
-$posts->setTwitter(true);
+        $posts->setTwitter(true);
         $em->persist($posts);
         $em->flush();
 
