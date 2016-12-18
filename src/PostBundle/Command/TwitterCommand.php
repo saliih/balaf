@@ -38,7 +38,7 @@ class TwitterCommand extends ContainerAwareCommand
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
         $webpath = '/var/www/tounsia/web';
-        echo $img = $webpath . $posts->getPic();
+        echo $img = /*$webpath .*/ $posts->getPic();
         echo "\n";
         $response = $auth->postMedia('media/upload', $img);
         $media_ids[] = $response['media_id'];
