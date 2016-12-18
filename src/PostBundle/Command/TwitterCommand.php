@@ -37,11 +37,9 @@ class TwitterCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter'=>false,'enabled'=>true),array('id'=>'DESC'));
-
-
         $webpath = $this->getContainer()->get('kernel')->getRootDir() . '/../web';
-        $response = $auth->postMedia('media/upload', $webpath.$posts->getPic());
-        //$response = $auth->postMedia('media/upload', $webpath."/public/logo.png");
+        echo $img = $webpath.$posts->getPic();
+        $response = $auth->postMedia('media/upload', $img);
         $media_ids[] = $response['media_id'];
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
