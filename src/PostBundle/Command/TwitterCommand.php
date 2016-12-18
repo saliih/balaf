@@ -36,26 +36,27 @@ class TwitterCommand extends ContainerAwareCommand
         $auth = new SingleUserAuth($credentials, $serializer);
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
-        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter'=>false,'enabled'=>true),array('id'=>'DESC'));
+        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
         $webpath = '/var/www/tounsia/web';
-        echo $img = $webpath.$posts->getPic();echo "\n";
+        echo $img = $webpath . $posts->getPic();
+        echo "\n";
         $response = $auth->postMedia('media/upload', $img);
         $media_ids[] = $response['media_id'];
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
-      // $path = r':year,'month':month,'categoryname':object.category.slug}) %}
+        // $path = r':year,'month':month,'categoryname':object.category.slug}) %}
 
-        $url = $this->getContainer()->get('router')->generate('front_article',array(
-            'locale'=>'fr',
-            'slug'=>$posts->getAlias(),
-            'year'=>$year,
-            'month'=>$month,
-            'categoryname'=>$posts->getCategory()->getSlug(),
+        $url = $this->getContainer()->get('router')->generate('front_article', array(
+            'locale' => 'fr',
+            'slug' => $posts->getAlias(),
+            'year' => $year,
+            'month' => $month,
+            'categoryname' => $posts->getCategory()->getSlug(),
 
         ));
 
         $params = array(
-            'status' => '#Recette : '.$posts->getTitle()."\n http://www.tounsia.net/$url",
+            'status' => '#Recette : ' . $posts->getTitle() . "\n http://www.tounsia.net/$url",
             'media_ids' => implode(',', $media_ids),
         );
 
@@ -63,6 +64,7 @@ class TwitterCommand extends ContainerAwareCommand
         $posts->setTwitter(true);
         $em->persist($posts);
         $em->flush();
-
+        print_r($auth->getHeaders());
+        print_r($response);
     }
 }
