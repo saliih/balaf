@@ -68,9 +68,12 @@ class TwitterCommand extends ContainerAwareCommand
 
         $response = $auth->post('statuses/update', $params);
         $posts->setTwitter(true);
+		print_r($response['entities']['urls'][0]['url']);
+		if(isset($response['entities']['urls'][0]['url']))
 		$posts->setShortlink($response['entities']['urls'][0]['url']);
         $em->persist($posts);
         $em->flush();
+		echo "\n".$posts->getShortlink();
         //print_r($auth->getHeaders());
         print_r($response['entities']['urls'][0]['url']);
     }
