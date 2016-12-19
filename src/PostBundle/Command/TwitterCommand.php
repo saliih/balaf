@@ -56,7 +56,7 @@ class TwitterCommand extends ContainerAwareCommand
         ));
 
         $params = array(
-            'status' => '#Recette : ' . $posts->getTitle() . "\n http://www.tounsia.net/$url",
+            'status' => '#Recette : ' . $posts->getTitle() . "\n http://www.tounsia.net".$url,
             //'media_ids' => implode(',', $media_ids),
         );
 
