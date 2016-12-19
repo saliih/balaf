@@ -37,6 +37,9 @@ class TwitterCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
+		if($posts==null){
+			exit;
+		}
         $webpath = '/var/www/tounsia/web';
         echo $img = /*$webpath .*/ $posts->getPic();
         echo "\n";
@@ -45,23 +48,29 @@ class TwitterCommand extends ContainerAwareCommand
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
         // $path = r':year,'month':month,'categoryname':object.category.slug}) %}
+		if($posts->getShortlink()==""){
+			$url = $this->getContainer()->get('router')->generate('front_article', array(
+				'locale' => 'fr',
+				'slug' => $posts->getAlias(),
+				'year' => $year,
+				'month' => $month,
+				'categoryname' => $posts->getCategory()->getSlug(),
 
-        $url = $this->getContainer()->get('router')->generate('front_article', array(
-            'locale' => 'fr',
-            'slug' => $posts->getAlias(),
-            'year' => $year,
-            'month' => $month,
-            'categoryname' => $posts->getCategory()->getSlug(),
-
-        ));
-
+			));
+			$url = "http://www.tounsia.net".$url
+		}else{
+			$url = $posts->getShortlink();
+		}
         $params = array(
-            'status' => '#Recette : ' . $posts->getTitle() . "\n http://www.tounsia.net".$url,
+            'status' => '#Recette : ' . $posts->getTitle() . "\n >> ".$url,
             //'media_ids' => implode(',', $media_ids),
         );
 
         $response = $auth->post('statuses/update', $params);
         $posts->setTwitter(true);
+		if($posts->getShortlink()!=""){
+			$posts->setShortlink($response['entities']['urls'][0]['url']);
+		}
         $em->persist($posts);
         $em->flush();
         //print_r($auth->getHeaders());

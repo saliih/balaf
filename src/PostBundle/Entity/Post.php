@@ -52,6 +52,12 @@ class Post
      * @ORM\Column(name="article", type="text",nullable=true)
      */
     private $article;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="shortlink", type="string",nullable=true)
+     */
+    private $shortlink;
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="Post")
@@ -487,6 +493,22 @@ class Post
     public function setTwitter($twitter)
     {
         $this->twitter = $twitter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShortlink()
+    {
+        return $this->shortlink;
+    }
+
+    /**
+     * @param mixed $shortlink
+     */
+    public function setShortlink($shortlink)
+    {
+        $this->shortlink = $shortlink;
     }
 
 }
