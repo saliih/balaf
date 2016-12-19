@@ -3,6 +3,10 @@
  {% block descriptionMeta %}{{ article.category.description }} : {{ article.title }}{% endblock %}
  {% block keyMeta %}{{ article.category }}{% endblock %}
 {% block head %}
+    {% set url = app.request.uri %}
+    {% if article.shortlink!="" %}{
+        {% set url = article.shortlink %}
+    {% endif %}
 <meta property="og:site_name" content="www.tounsia.net" /> 
 <meta property="og:type" content="blog" />
 <meta property="og:image" content="http://www.tounsia.net{{ asset(article.pic) }}" /> 
