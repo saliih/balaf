@@ -4,13 +4,13 @@
  {% block keyMeta %}{{ article.category }}{% endblock %}
 {% block head %}
     {% set url = app.request.uri %}
-    {% if article.shortlink!="" %}{
+    {% if article.shortlink !="" %}
         {% set url = article.shortlink %}
     {% endif %}
 <meta property="og:site_name" content="www.tounsia.net" /> 
 <meta property="og:type" content="blog" />
 <meta property="og:image" content="http://www.tounsia.net{{ asset(article.pic) }}" /> 
-<meta property="og:url" content="{{app.request.uri}}" /> 
+<meta property="og:url" content="{{ url }}" />
 <meta property="og:title" content="{{ article.title }}" /> 
 <meta property="og:description" content="{{ ((article.article)|shortdesc(200))|raw }}" />
 {% endblock %}
