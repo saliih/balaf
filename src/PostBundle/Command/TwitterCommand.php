@@ -40,8 +40,8 @@ class TwitterCommand extends ContainerAwareCommand
         $webpath = '/var/www/tounsia/web';
         echo $img = /*$webpath .*/ $posts->getPic();
         echo "\n";
-        $response = $auth->postMedia('media/upload', $img);
-        $media_ids[] = $response['media_id'];
+       // $response = $auth->postMedia('media/upload', $img);
+       // $media_ids[] = $response['media_id'];
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
         // $path = r':year,'month':month,'categoryname':object.category.slug}) %}
