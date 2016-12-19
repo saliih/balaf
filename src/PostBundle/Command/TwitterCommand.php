@@ -64,7 +64,7 @@ class TwitterCommand extends ContainerAwareCommand
         $posts->setTwitter(true);
         $em->persist($posts);
         $em->flush();
-        print_r($auth->getHeaders());
-        print_r($response);
+        //print_r($auth->getHeaders());
+        print_r($response['entities']['urls'][0]['url']);
     }
 }
