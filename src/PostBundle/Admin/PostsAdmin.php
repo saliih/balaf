@@ -52,7 +52,9 @@ class PostsAdmin extends Admin
                 'template' => 'PostBundle:Post:views.html.twig'
             ));
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $listMapper->add('ramadan2017', null, array('editable' => true));
+            $listMapper->add('ramadan2017', null, array('editable' => true))
+                ->add('twitter', null, array('editable' => false));
+
         }
         $listMapper->add('_action', 'actions', array(
             'actions' => array(
