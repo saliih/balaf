@@ -37,9 +37,9 @@ class TwitterCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
-		if($posts==null){
+		/*if($posts==null){
 			exit;
-		}
+		}*/
         $webpath = '/var/www/tounsia/web';
         echo $img = /*$webpath .*/ $posts->getPic();
         echo "\n";
@@ -68,9 +68,7 @@ class TwitterCommand extends ContainerAwareCommand
 
         $response = $auth->post('statuses/update', $params);
         $posts->setTwitter(true);
-		if($posts->getShortlink()==""){
-			$posts->setShortlink($response['entities']['urls'][0]['url']);
-		}
+		$posts->setShortlink($response['entities']['urls'][0]['url']);
         $em->persist($posts);
         $em->flush();
         //print_r($auth->getHeaders());
