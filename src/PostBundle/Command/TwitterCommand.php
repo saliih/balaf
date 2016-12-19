@@ -57,7 +57,7 @@ class TwitterCommand extends ContainerAwareCommand
 				'categoryname' => $posts->getCategory()->getSlug(),
 
 			));
-			$url = "http://www.tounsia.net".$url
+			$url = "http://www.tounsia.net".$url;
 		}else{
 			$url = $posts->getShortlink();
 		}
