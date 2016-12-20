@@ -62,7 +62,7 @@ class TwitterCommand extends ContainerAwareCommand
 			$url = $posts->getShortlink();
 		}
         $params = array(
-            'status' => '#Recette : ' . $posts->getTitle() . "\n >> ".$url,
+            'status' => '#Recette : ' . $posts->getTitle() . "\n  ".$url,
             //'media_ids' => implode(',', $media_ids),
         );
 
