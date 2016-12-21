@@ -64,13 +64,6 @@ class TwitterCommand extends ContainerAwareCommand
             $em->persist($posts);
             $em->flush();
             echo "done \n" ;
-            $message = \Swift_Message::newInstance()
-                ->setSubject('share '.$posts->getTitle())
-                ->setFrom('tounsianet@gmail.com')
-                ->setTo('salah.chtioui@gmail.com')
-                ->setBody('share '.$posts->getTitle())
-            ;
-            $this->getContainer()->get('mailer')->send($message);
         }else{
             $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();
             foreach ($posts as $post){
