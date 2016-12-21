@@ -37,44 +37,55 @@ class TwitterCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
-		/*if($posts==null){
-			exit;
-		}*/
-        $webpath = '/var/www/tounsia/web';
-        echo $img = /*$webpath .*/ $posts->getPic();
-        echo "\n";
-       // $response = $auth->postMedia('media/upload', $img);
-       // $media_ids[] = $response['media_id'];
-        $year = $posts->getPublieddate()->format('Y');
-        $month = $posts->getPublieddate()->format('m');
-        // $path = r':year,'month':month,'categoryname':object.category.slug}) %}
-		if($posts->getShortlink()==""){
-			$url = $this->getContainer()->get('router')->generate('front_article', array(
-				'locale' => 'fr',
-				'slug' => $posts->getAlias(),
-				'year' => $year,
-				'month' => $month,
-				'categoryname' => $posts->getCategory()->getSlug(),
+        if($posts) {
+            $year = $posts->getPublieddate()->format('Y');
+            $month = $posts->getPublieddate()->format('m');
+            if ($posts->getShortlink() == "") {
+                $url = $this->getContainer()->get('router')->generate('front_article', array(
+                    'locale' => 'fr',
+                    'slug' => $posts->getAlias(),
+                    'year' => $year,
+                    'month' => $month,
+                    'categoryname' => $posts->getCategory()->getSlug(),
 
-			));
-			$url = "http://www.tounsia.net".$url;
-		}else{
-			$url = $posts->getShortlink();
-		}
-        $params = array(
-            'status' => '#Recette : ' . $posts->getTitle() . "\n  ".$url,
-            //'media_ids' => implode(',', $media_ids),
-        );
-
-        $response = $auth->post('statuses/update', $params);
-        $posts->setTwitter(true);
-		print_r($response['entities']['urls'][0]['url']);
-		if(isset($response['entities']['urls'][0]['url']))
-		$posts->setShortlink($response['entities']['urls'][0]['url']);
-        $em->persist($posts);
-        $em->flush();
-		echo "\n".$posts->getShortlink();
-        //print_r($auth->getHeaders());
-        print_r($response['entities']['urls'][0]['url']);
+                ));
+                $url = "http://www.tounsia.net" . $url;
+            } else {
+                $url = $posts->getShortlink();
+            }
+            $params = array(
+                'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
+                //'media_ids' => implode(',', $media_ids),
+            );
+            $response = $auth->post('statuses/update', $params);
+            $posts->setTwitter(true);
+            if (isset($response['entities']['urls'][0]['url']))
+                $posts->setShortlink($response['entities']['urls'][0]['url']);
+            $em->persist($posts);
+            $em->flush();
+            echo "done \n" ;
+            $message = \Swift_Message::newInstance()
+                ->setSubject('share '.$posts->getTitle())
+                ->setFrom('tounsianet@gmail.com')
+                ->setTo('salah.chtioui@gmail.com')
+                ->setBody('share '.$posts->getTitle())
+            ;
+            $this->getContainer()->get('mailer')->send($message);
+        }else{
+            $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();
+            foreach ($posts as $post){
+                $post->setTwitter(false);
+                $em->persist($posts);
+            }
+            $em->flush();
+            echo "reset \n" ;
+            $message = \Swift_Message::newInstance()
+                ->setSubject('share reseted')
+                ->setFrom('tounsianet@gmail.com')
+                ->setTo('salah.chtioui@gmail.com')
+                ->setBody("share reseted")
+            ;
+            $this->getContainer()->get('mailer')->send($message);
+        }
     }
 }
