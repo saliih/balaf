@@ -86,8 +86,13 @@ class BlockController extends Controller
             $article = array();
             $i = 0;
             foreach ($tab as $value) {
-                if ($i < 5)
-                    $article[] = $this->getDoctrine()->getRepository('PostBundle:Post')->find($value['id']);
+                if ($i < 5) {
+                    $post = $this->getDoctrine()->getRepository('PostBundle:Post')->find($value['id']);
+                    $post->setNbview($value['value']);
+                    $article[] = $post;
+                }else{
+                    break;
+                }
                 $i++;
             }
         }
