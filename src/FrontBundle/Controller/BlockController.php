@@ -77,11 +77,12 @@ class BlockController extends Controller
             //  sort($tab);
             usort($tab, function ($a, $b) {
                 if (is_numeric($a['value']) && is_numeric($b['value'])) {
-                    return ($a["value"] - $b["value"]);
+                    return -1 * ($a["value"] - $b["value"]);
                 } else {
-                    return strcasecmp($a["value"], $b["value"]);
+                    return -1 * (strcasecmp($a["value"], $b["value"]));
                 }
             });
+
             $article = array();
             $i = 0;
             foreach ($tab as $value) {echo $value["value"]."<br>";
