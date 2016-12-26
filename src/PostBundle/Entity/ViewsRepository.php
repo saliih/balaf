@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class ViewsRepository extends EntityRepository
 {
+    public function findpopular(){
+        $dt = new \DateTime();
+        $dt->modify("-1 week");
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='".$dt->format('Y-m-d')."'");
+        return $query->getResult();
+
+    }
 }
