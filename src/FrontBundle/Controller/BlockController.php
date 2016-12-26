@@ -74,17 +74,20 @@ class BlockController extends Controller
                 }
                 $tab[$view->getPost()->getId()]['value']++;
             }
-          //  sort($tab);
+            //  sort($tab);
             usort($tab, function ($a, $b) {
                 if (is_numeric($a['value']) && is_numeric($b['value'])) {
-                    return  ($a["value"] - $b["value"]);
+                    return ($a["value"] - $b["value"]);
                 } else {
-                    return  strcasecmp($a["value"], $b["value"]);
+                    return strcasecmp($a["value"], $b["value"]);
                 }
             });
             $article = array();
-            foreach ($tab as $value){
-                $article[] = $this->getDoctrine()->getRepository('PostBundle:Post')->find($value['id']) ;
+            $i = 0;
+            foreach ($tab as $value) {
+                if ($i < 5)
+                    $article[] = $this->getDoctrine()->getRepository('PostBundle:Post')->find($value['id']);
+                $i++;
             }
         }
         return $this->render('FrontBundle:Block:tab.html.twig', array(
