@@ -84,7 +84,7 @@ class BlockController extends Controller
             });
             $article = array();
             $i = 0;
-            foreach ($tab as $value) {echo $value["value"];
+            foreach ($tab as $value) {echo $value["value"]."<br>";
                 if ($i < 5)
                     $article[] = $this->getDoctrine()->getRepository('PostBundle:Post')->find($value['id']);
                 $i++;
