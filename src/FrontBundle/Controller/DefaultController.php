@@ -16,7 +16,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         // Nos séléction
-        $selection  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("enabled"=>true),array('publieddate'=>'DESC'));
+        $selection  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("enabled"=>true),array('publieddate'=>'DESC', 'id'=>'DESC'));
         $nbselection = count($selection);
         $tab = array();
         for($i=0;$i<20;$i++){
@@ -48,7 +48,7 @@ class DefaultController extends Controller
             'parent' => null,
             'locale'=>$locale
         ));
-        $newsbar  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true),array('publieddate'=>'DESC'),3);
+        $newsbar  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true),array('publieddate'=>'DESC', 'id'=>'DESC'),3);
         return $this->render('FrontBundle:Default:header.html.twig', array(
             "category" => $category,
             "newsbar" => $newsbar,
@@ -70,7 +70,7 @@ class DefaultController extends Controller
         ),$response);
     }
     public function rssAction(){
-        $posts  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true),array('publieddate'=>'DESC'),10);
+        $posts  = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true),array('publieddate'=>'DESC', 'id'=>'DESC'),10);
         $response = new Response();
         $response->headers->set('Content-Type', 'xml');
         return $this->render('FrontBundle:Default:rss.xml.twig', array(

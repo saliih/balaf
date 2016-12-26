@@ -26,7 +26,7 @@ class ArticleController extends Controller
             $em->persist($view);
         }
         $em->flush();
-        $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category" => $article->getCategory(), 'enabled' => true), array('publieddate' => 'DESC'));
+        $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category" => $article->getCategory(), 'enabled' => true), array('publieddate' => 'DESC', 'id'=>'DESC'));
         shuffle($related);
         $i = 0;
         $related2 = $related;

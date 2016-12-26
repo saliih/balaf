@@ -12,6 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function findpopular(){
+        $dt = new \DateTime();
+        $dt->modify("-1 week");
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Post as p where p.enabled = true 
+                                and p.publieddate >='".$dt->format('Y-m-d')."'order by p.nbview desc")->setMaxResults(5);
+        return $query->getResult();
+
+    }
     public function search($str){
         $query = $this->getEntityManager()
             ->createQuery("select p  from

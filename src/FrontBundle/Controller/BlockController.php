@@ -11,7 +11,7 @@ class BlockController extends Controller
     public function gerRecords($nb)
     {
         return $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(
-            array("enabled" => true), array('publieddate'=>'DESC'), $nb
+            array("enabled" => true), array('publieddate'=>'DESC', 'id'=>'DESC'), $nb
         );
     }
 
@@ -32,7 +32,7 @@ class BlockController extends Controller
         $this->catid[] = 1;
         $category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(13);
         //$this->recurcive($category);
-        $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'category' => $category), array('publieddate'=>'DESC'), 5);
+        $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'category' => $category), array('publieddate'=>'DESC', 'id'=>'DESC'), 5);
         return $this->render('FrontBundle:Block:cuisine.html.twig', array('article' => $article));
     }
 
@@ -41,7 +41,7 @@ class BlockController extends Controller
         $this->catid[] = 7;
         $category = $this->getDoctrine()->getRepository("PostBundle:Category")->find(7);
         //$this->recurcive($category);
-        $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'category' => $category), array('publieddate'=>'DESC'), 5);
+        $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'category' => $category), array('publieddate'=>'DESC', 'id'=>'DESC'), 5);
         return $this->render('FrontBundle:Block:maman.html.twig', array('article' => $article));
     }
 
@@ -60,9 +60,13 @@ class BlockController extends Controller
     public function tabAction($id)
     {
 
-        $order = ($id == 1) ? array('nbview' => 'DESC') : array('publieddate'=>'DESC');
+        $order = ($id == 1) ? array('nbview' => 'DESC') : array('publieddate'=>'DESC', 'id'=>'DESC');
 
         $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true), $order, 5);
+        if($id == 1) {
+            $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findpopular();
+
+        }
         return $this->render('FrontBundle:Block:tab.html.twig', array(
             'article' => $article
         ));
@@ -83,7 +87,7 @@ class BlockController extends Controller
                 ++$i;
             }
 
-            $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'id' => $tab),array('publieddate'=>'DESC'));
+            $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true, 'id' => $tab),array('publieddate'=>'DESC', 'id'=>'DESC'));
         }
 		return $this->render('FrontBundle:Block:vistied.html.twig', array(
             'article' => $article
