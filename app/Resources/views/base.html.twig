@@ -10,26 +10,7 @@
     <meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% block stylesheets %}
-      {#  <link rel="shortcut icon" href="{{ asset('public/img/favicon/favicon.ico') }}" type="image/x-icon"/>
-        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('public/img/favicon/apple-touch-icon-57x57.png') }}">
-        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('public/img/favicon/apple-touch-icon-60x60.png') }}">
-        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('public/img/favicon/apple-touch-icon-72x72.png') }}">
-        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('public/img/favicon/apple-touch-icon-76x76.png') }}">
-        <link rel="apple-touch-icon" sizes="114x114"
-              href="{{ asset('public/img/favicon/apple-touch-icon-114x114.png') }}">
-        <link rel="apple-touch-icon" sizes="120x120"
-              href="{{ asset('public/img/favicon/apple-touch-icon-120x120.png') }}">
-        <link rel="apple-touch-icon" sizes="144x144"
-              href="{{ asset('public/img/favicon/apple-touch-icon-144x144.png') }}">
-        <link rel="apple-touch-icon" sizes="152x152"
-              href="{{ asset('public/img/favicon/apple-touch-icon-152x152.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180"
-              href="{{ asset('public/img/favicon/apple-touch-icon-180x180.png') }}">
-        <link rel="icon" type="image/png" href="{{ asset('public/img/favicon/favicon-16x16.png') }}" sizes="16x16">
-        <link rel="icon" type="image/png" href="{{ asset('public/img/favicon/favicon-32x32.png') }}" sizes="32x32">
-        <link rel="icon" type="image/png" href="{{ asset('public/img/favicon/favicon-96x96.png') }}" sizes="96x96">
-        <link rel="icon" type="image/png" href="{{ asset('public/img/favicon/android-chrome-192x192.png') }}"
-              sizes="192x192">#}
+
 
 
 
@@ -42,12 +23,13 @@
 
         <!-- Icon Font -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% stylesheets filter="scssphp" output="assetic/tounsia.css"
+        'public/plugins/bootstrap/css/bootstrap.min.css'
+        'assets/source/jquery.fancybox.css'
+        'public/css/style.min.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{ asset('public/plugins/bootstrap/css/bootstrap.min.css') }}">
-
-        <!-- Theme CSS -->
-        <link rel="stylesheet" href="{{ asset('public/css/style.min.css') }}">
     {% endblock %}
 
     <!--[if lt IE 9]>
@@ -95,24 +77,20 @@
 
 
 {% block javascripts %}
-    <script src="{{ asset('public/js/jquery-1.11.2.min.js') }}"></script>
 
-    <script src="{{ asset('public/js/modernizr.min.js') }}"></script>
-
-    <script src="{{ asset('public/plugins/bootstrap/js/bootstrap.js') }}"></script>
-
-    <script src="{{ asset('public/js/script.min.js') }}"></script>
+    {% javascripts filter="?jsqueeze" output="assetic/main.js"
+    'public/js/jquery-1.11.2.min.js'
+    'public/js/modernizr.min.js'
+    'public/plugins/bootstrap/js/bootstrap.js'
+    'public/js/script.min.js'
+    'assets/lib/jquery.mousewheel-3.0.6.pack.js'
+    'assets/source/jquery.fancybox.pack.js'
+    'public/js/analytics.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
 {% endblock %}
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-77458398-1', 'auto');
-    ga('send', 'pageview');
-
-</script>
 </body>
 </html>

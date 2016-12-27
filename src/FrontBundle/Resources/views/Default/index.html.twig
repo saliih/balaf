@@ -1,26 +1,8 @@
 {% extends '::base.html.twig' %}
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('assets/lib/jquery.mousewheel-3.0.6.pack.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/source/jquery.fancybox.pack.js') }}?v=2.1.5"></script>
-    <script>
-        $(document).ready(function () {
-            $(".fancybox").fancybox({
-                'width'				: '300',
-                'height'			: '200',
-                'autoScale'     	: false,
-                'transitionIn'		: 'none',
-                'transitionOut'		: 'none',
-                'type'				: 'iframe',
-                'href'              : "https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/tounsiaNet/&amp;width=350&amp;height=350&amp;colorscheme=dark&amp;show_faces=true&amp;border_color=%2399c844&amp;stream=false&amp;header=false&amp;appId=1788355211393444"
-            });
-            $('#fancyboxiframe').trigger("click");
-        });
-    </script>
-{% endblock %}
+
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" href="{{ asset('assets/source/jquery.fancybox.css') }}?v=2.1.5" type="text/css" media="screen" />
+
 <style>
     .fancybox{display: none;}
 </style>
