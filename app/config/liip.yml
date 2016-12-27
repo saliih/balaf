@@ -6,17 +6,17 @@ liip_imagine:
     filter_sets:
         cache: ~
         category_page:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [796, 321] }
                 thumbnail: { size: [796, 321], mode: outbound , format: png  }
         galery:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [220, 220] }
                 thumbnail: { size: [220, 220], mode: inset  , format: png }
         hug:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [730, 320] }
                 thumbnail: { size: [730, 320], mode: inset  , format: png }
@@ -26,27 +26,27 @@ liip_imagine:
                 upscale: { min: [730, 480] }
                 thumbnail: { size: [730, 480], mode: inset  , format: png }
         cuisine1:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [540, 335] }
                 thumbnail: { size: [540, 335], mode: inset  , format: png }
         cuisine2:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [160, 120] }
                 thumbnail: { size: [160, 120], mode: inset  , format: png }
         mode2:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [350, 230] }
                 thumbnail: { size: [350, 230], mode: inset  , format: png }
         related:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [230, 150] }
                 thumbnail: { size: [230, 150], mode: inset  , format: png }
         small:
-            quality: 80
+            quality: 70
             filters:
                 upscale: { min: [95, 80] }
                 thumbnail: { size: [95, 80], mode: inset  , format: png }
