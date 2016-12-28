@@ -56,6 +56,13 @@ class MonthsBlockService extends BaseBlockService
                 $final[$post->getCreatedby()->getUsername()][$index] = 0;
             $final[$post->getCreatedby()->getUsername()][$index]++;
         }
+        foreach ($final as $key => &$value) {
+            $i = 0;
+            foreach ($value as $kk => $element) {
+                if ($i < count($value) - 6) unset($value[$kk]);
+                ++$i;
+            }
+        }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'title' => "Article par mois",
