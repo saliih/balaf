@@ -17,6 +17,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService as BaseBlockService;
 use Sonata\BlockBundle\Util\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class MonthsBlockService extends BaseBlockService
 {
@@ -50,19 +51,19 @@ class MonthsBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
         $posts = $this->em->getRepository('PostBundle:Post')->findAll();
         $final = array();
+        $dt = new \DateTime();
+        $dt->modify("-6 months");
         foreach ($posts as $post) {
-            $index = $post->getPublieddate()->format('Y-m');
-            if (!isset($final[$post->getCreatedby()->getUsername()][$index]))
-                $final[$post->getCreatedby()->getUsername()][$index] = 0;
-            $final[$post->getCreatedby()->getUsername()][$index]++;
-        }
-        foreach ($final as $key => &$value) {
-            $i = 0;
-            foreach ($value as $kk => $element) {
-                if ($i < count($value) - 6) unset($value[$kk]);
-                ++$i;
+            $tocheck =  $post->getPublieddate()->format('Ym');
+            $limit = $dt->format('Ym');
+            if($tocheck >= $limit) {
+                $index = $post->getPublieddate()->format('Y-m');
+                if (!isset($final[$post->getCreatedby()->getUsername()][$index]))
+                    $final[$post->getCreatedby()->getUsername()][$index] = 0;
+                $final[$post->getCreatedby()->getUsername()][$index]++;
             }
         }
+
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'title' => "Article par mois",
