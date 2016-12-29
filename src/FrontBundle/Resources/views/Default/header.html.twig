@@ -5,21 +5,21 @@
             <div class="mag-content">
                 <div class="row">
                     <div class="col-md-12">
-                        <!-- Mobile Menu Button -->
+
                         <a class="navbar-toggle collapsed" id="nav-button" href="#mobile-nav">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </a><!-- .navbar-toggle -->
+                        </a>
 
-                        <!-- Main Nav Wrapper -->
+
                         <nav class="navbar mega-menu">
                             <a class="logo" href="{{ path('front_homepage') }}" title="Tounsia.net" rel="home">
                                 Tounsia <span>Net</span>
-                            </a><!-- .logo -->
+                            </a>
 
-                            <!-- Navigation Menu -->
+
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
                                     {% for item in category %}
@@ -31,13 +31,13 @@
                                                         <li><a href="{{ path('front_category',{'locale':app.request.locale ,'slug':entry.slug}) }}">{{ entry.title }}</a></li>
                                                     {% endfor %}
                                                        
-                                                </ul><!-- .dropdown-menu -->
+                                                </ul>
                                             {% endif %}
-                                        </li><!-- .dropdown .menu-color1 -->
+                                        </li>
                                     {% endfor %}
                                   
-                                </ul><!-- .nav .navbar-nav -->
-                            </div><!-- .navbar-collapse -->              <!-- End Navigation Menu -->
+                                </ul>
+                            </div>
 
                             <div class="header-right">
                                 <div class="social-icons">
@@ -46,17 +46,17 @@
                                     <a href="https://plus.google.com/116278865096880981782" rel="publisher" target='_blank' data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus fa-lg"></i></a>
                                     <a href="https://www.youtube.com/channel/UC0ZSpRpad48a8M-UUge9Dyg" target='_blank' data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube fa-lg"></i></a>
                                     <a href="{{ path('flux_rss') }}"  data-toggle="tooltip" data-placement="bottom" title="RSS"><i class="fa fa-rss-square fa-lg"></i></a>
-                                    <!-- Only for Fixed Sidebar Layout -->
+
                                     <a href="#" class="fixed-button navbar-toggle" id="fixed-button">
                                         <i></i>
                                         <i></i>
                                         <i></i>
                                         <i></i>
-                                    </a><!-- .fixed-button -->
-                                </div><!-- .social-icons -->
-                            </div><!-- .header-right -->
+                                    </a>
+                                </div>
+                            </div>
 
-                        </nav><!-- .navbar -->
+                        </nav>
 
                         <div id="sb-search" class="sb-search">
                             <form method="get" action="{{ path('search_recipe') }}">
@@ -64,10 +64,10 @@
                                 <input class="sb-search-submit" type="submit" value="">
                                 <span class="sb-icon-search fa fa-search" data-toggle="tooltip" data-placement="bottom" title="Search"></span>
                             </form>
-                        </div><!-- .sb-search -->            </div>
+                        </div>     </div>
                 </div>
-            </div><!-- .mag-content -->
-        </div><!-- .container -->
-    </div><!-- .header -->
+            </div>
+        </div>
+    </div>
 
-</header><!-- .header-wrapper -->
+</header>

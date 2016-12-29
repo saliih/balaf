@@ -35,7 +35,7 @@
 
                     <h1 class="post-title">
                         {{ article.title }}
-                    </h1><!-- .post-title -->
+                    </h1>
 
                     <a href="#" class="category bgcolor2">
                         {{ article.category.title }}
@@ -53,11 +53,11 @@
                     <figure class="image-overlay">
                         <img src="{{ asset(article.pic) }}" alt="tounsia.Net : {{ article.title }}">{#| imagine_filter('category_page')#}
                     </figure>
-                </header><!-- .post-header -->
+                </header>
 
                 <div class="post-content clearfix">
                     {{ article.article|raw }}
-                </div><!-- .post-content -->
+                </div>
 
                 <footer class="post-meta">
                    {#<div class="tags-wrapper">
@@ -67,7 +67,7 @@
                             <li><a href="#">Wood</a></li>
                             <li><a href="#">Advice</a></li>
                         </ul>
-                    </div><!-- .tags-wrapper -->#} 
+                    </div>
 
                     {#<div class="share-wrapper clearfix">
                         <div class="total-shares">
@@ -121,7 +121,7 @@
                                     <a href="#" class="post-nav-title">What the Viny "Comeback" Really Looks Like</a>
                                 </div>
                             </div>
-                        </div><!-- .post-nav-wrapper -->
+                        </div>
                     </div>
 
                     <div class="author-box clearfix">
@@ -147,12 +147,12 @@
                     #}
                 </footer>
 
-            </article><!-- .post-wrapper -->
+            </article>
 
             <div class="related-posts clearfix">
                 <div class="row">
                     <div class="col-md-6"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- page article -->
+
 <ins class="adsbygoogle"
      style="display:inline-block;width:300px;height:250px"
      data-ad-client="ca-pub-6877324570550574"
@@ -161,7 +161,7 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div>
                     <div class="col-md-6"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- page article -->
+
 <ins class="adsbygoogle"
      style="display:inline-block;width:300px;height:250px"
      data-ad-client="ca-pub-6877324570550574"
@@ -199,11 +199,10 @@
                         </article>
                     </div>
 {% endfor %}
-                </div><!-- .row -->
+                </div>
 
 
-            </div><!-- .related-post -->
-            <!-- Mid ad -->
+            </div>
            {{ render(controller('FrontBundle:Default:ad728',{'header':false})) }}
             <div id="comments" class="comments-wrapper clearfix">
                         <h3 class="block-title"><span>Comments</span></h3>
@@ -213,10 +212,10 @@
                     </div>
             
 
-        </div><!-- End Left big column -->
+        </div>
         {{ render(controller('FrontBundle:Default:sidebar')) }}
 
-    </div><!-- .blog-content -->
+    </div>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5755594c8743465a"></script>

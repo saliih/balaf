@@ -1,11 +1,11 @@
-<!doctype html>
+{% spaceless %}<!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Tounsia.Net {% endblock %}</title>
     <meta name="keywords" content="{% block keyMeta %}{% endblock %}">
     <meta name="description" content="{% block descriptionMeta %}{% endblock %}">
-    <meta property="fb:page_id" content="172776089786299" /> 
+    <meta property="fb:page_id" content="172776089786299" />
 {% block head %}{% endblock %}
     <meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,14 +14,12 @@
 
 
 
-        <!-- Google Fonts -->
         <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,400italic,500,700,700italic,900"
               rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic" rel="stylesheet"
               type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet" type="text/css">
 
-        <!-- Icon Font -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         {% stylesheets filter="scssphp" output="assetic/tounsia.css"
         'public/plugins/bootstrap/css/bootstrap.min.css'
@@ -56,6 +54,7 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 <div id="main" class="header-style1">
 
+    {% endspaceless %}
 
     {% spaceless %}
         {{ render(controller('FrontBundle:Default:header')) }}
@@ -67,10 +66,10 @@
         </div>
         {{ render(controller('FrontBundle:Default:footer')) }}
 
-    {% endspaceless %}
+    {% endspaceless %}    {% spaceless %}
+
 </div>
 
-<!-- / Mobile Menu -->
 <div id="go-top-button" class="fa fa-angle-up" title="Scroll To Top"></div>
 
 <div class="mobile-overlay" id="mobile-overlay"></div>
@@ -94,3 +93,4 @@
 
 </body>
 </html>
+{% endspaceless %}
