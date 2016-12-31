@@ -22,9 +22,9 @@ class Views
     private $id;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="dv", type="date")
+     * @ORM\Column(name="dv", type="datetime")
      */
     private $dv;
     /**
