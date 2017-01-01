@@ -47,7 +47,7 @@ class ViewUsersBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $views = $this->em->getRepository('PostBundle:Views')->findAll();
+        $views = $this->em->getRepository('PostBundle:Views')->findMonth();
         $final = array();
         $total = 0;
         foreach ($views as $post) {

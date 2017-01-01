@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Alexa
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PostBundle\Entity\AlexaRepository")
  */
 class Alexa
 {

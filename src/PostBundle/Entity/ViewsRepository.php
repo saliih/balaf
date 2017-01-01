@@ -22,4 +22,14 @@ class ViewsRepository extends EntityRepository
         return $query->getResult();
 
     }
+    public function findMonth(){
+        $dt = new \DateTime();
+        $dt->modify("-1 month");
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='".$dt->format('Y-m-d')."'");
+        return $query->getResult();
+
+    }
 }
