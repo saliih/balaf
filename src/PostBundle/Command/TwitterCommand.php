@@ -41,26 +41,27 @@ class TwitterCommand extends ContainerAwareCommand
             if ($posts) {
                 $year = $posts->getPublieddate()->format('Y');
                 $month = $posts->getPublieddate()->format('m');
-                if ($posts->getShortlink() == "") {
-                    $url = $this->getContainer()->get('router')->generate('front_article', array(
-                        'locale' => 'fr',
-                        'slug' => $posts->getAlias(),
-                        'year' => $year,
-                        'month' => $month,
-                        'categoryname' => $posts->getCategory()->getSlug(),
+                $url = $this->getContainer()->get('router')->generate('front_article', array(
+                    'locale' => 'fr',
+                    'slug' => $posts->getAlias(),
+                    'year' => $year,
+                    'month' => $month,
+                    'categoryname' => $posts->getCategory()->getSlug(),
+                ));
+                $url = "http://www.tounsia.net" . $url;
 
-                    ));
-                    $url = "http://www.tounsia.net" . $url;
-                } else {
-                    $url = $posts->getShortlink();
-                }
                 $params = array(
                     'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
                     //'media_ids' => implode(',', $media_ids),
                 );
                 if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
                     $response = $auth->post('statuses/update', $params);
-                
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('share reseted')
+                    ->setFrom('tounsianet@gmail.com')
+                    ->setTo('salah.chtioui@gmail.com')
+                    ->setBody("shared : ".$posts->getTitle());
+                $this->getContainer()->get('mailer')->send($message);
                 $posts->setTwitter(true);
                 if (isset($response['entities']['urls'][0]['url']))
                     $posts->setShortlink($response['entities']['urls'][0]['url']);
