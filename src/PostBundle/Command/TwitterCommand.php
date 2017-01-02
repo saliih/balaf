@@ -72,7 +72,7 @@ class TwitterCommand extends ContainerAwareCommand
                 $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();
                 foreach ($posts as $post) {
                     $post->setTwitter(false);
-                    $em->persist($posts);
+                    $em->persist($post);
                 }
                 $em->flush();
                 echo "reset \n";
