@@ -38,7 +38,7 @@ class TwitterCommand extends ContainerAwareCommand
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
         try {
-            if ($posts) {
+            if ($posts != null) {
                 $year = $posts->getPublieddate()->format('Y');
                 $month = $posts->getPublieddate()->format('m');
                 $url = $this->getContainer()->get('router')->generate('front_article', array(
