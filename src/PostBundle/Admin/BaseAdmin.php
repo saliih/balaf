@@ -15,12 +15,11 @@ class BaseAdmin extends Admin
     protected $datagridValues = array(
         '_sort_order' => 'DESC',
         '_page' => 1,
-        '_per_page' => 25,
+        '_per_page' => 20,
     );
-    protected $maxPerPage = 25;
-    protected $maxPageLinks = 25;
-    protected $translationDomain = 'MainFactBundle';
-    protected $perPageOptions = array(25, 50, 75, 100, 125, 150);
+    protected $maxPerPage = 20;
+    protected $maxPageLinks = 15;
+    protected $perPageOptions = array(20, 40, 60, 80, 100, 120, 140);
     protected $listModes = array();
     public function getExportFormats()
     {
