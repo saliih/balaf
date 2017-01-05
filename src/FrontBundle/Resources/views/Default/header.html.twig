@@ -24,10 +24,13 @@
                                 <ul class="nav navbar-nav">
                                     {% for item in category %}
                                         <li class="dropdown menu-color1">
-                                            <a href="{{ path('front_category',{'locale':app.request.locale ,'slug':item.slug}) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ item.title }}</a>
+                                            {% set path = path('front_category',{'locale':app.request.locale ,'slug':item.slug}) %}
+                                            {% if item.slug =="cuisine" %}{% set path = "#" %}{% endif %}
+                                            <a href="{{ path }}" {% if (item.children)|length > 0 %}class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"{% endif %}>{{ item.title }}</a>
                                             {% if (item.children)|length > 0 %}
                                                 <ul class="dropdown-menu">
                                                     {% for entry in item.children %}
+
                                                         <li><a href="{{ path('front_category',{'locale':app.request.locale ,'slug':entry.slug}) }}">{{ entry.title }}</a></li>
                                                     {% endfor %}
                                                        
