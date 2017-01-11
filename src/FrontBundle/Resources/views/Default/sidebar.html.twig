@@ -1,8 +1,6 @@
 <div class="col-md-4" data-stickycolumn>
     <aside class="sidebar clearfix">
-
         {{ render(controller('FrontBundle:Default:ad300')) }}
-
         <div class="widget searchwidget">
             <form class="searchwidget-form"  method="get" action="{{ path('search_recipe') }}">
                 <div class="input-group">
@@ -20,7 +18,6 @@
             <ul class="nav nav-tabs" role="tablist" id="widget-tab">
                 <li role="presentation" class="active"><a href="#tab-popular" aria-controls="tab-popular" role="tab" data-toggle="tab">Populaire</a></li>
                 <li role="presentation"><a href="#tab-recent" aria-controls="tab-recent" role="tab" data-toggle="tab">Nouveau</a></li>
-                <!--<li role="presentation"><a href="#tab-comments" aria-controls="tab-comments" role="tab" data-toggle="tab">Comments</a></li>-->
             </ul>
 
             <div class="tab-content">
@@ -38,7 +35,7 @@
             </div>
         </div>
 
-        <!--<div class="widget tagwidget">
+        {#<div class="widget tagwidget">
             <h3 class="block-title"><span>Tags</span></h3>
             <ul class="tags-widget">
                 <li><a href="#">Windows 10</a></li>
@@ -53,22 +50,22 @@
                 <li><a href="#">Taken 3</a></li>
                 <li><a href="#">Lego</a></li>
             </ul>
-        </div>-->
-        {{ render(controller('FrontBundle:Block:visited')) }}
+        </div>#}
+        {# render(controller('FrontBundle:Block:visited')) #}
         {{ render(controller('FrontBundle:Block:categories')) }}
 
-        <!--<div class="widget adwidget subscribewidget">
-            <h3 class="block-title"><span>Subscribe</span></h3>
-            <p>The more you tighten your grip, Tarkin, the more star systems will slip through your fingers.</p>
-            <form class="form-inline">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter your email">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Subscribe</button>
-          </span>
-                </div>
-            </form>
-        </div>-->
+{#<div class="widget adwidget subscribewidget">
+    <h3 class="block-title"><span>Subscribe</span></h3>
+    <p>The more you tighten your grip, Tarkin, the more star systems will slip through your fingers.</p>
+    <form class="form-inline">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter your email">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button">Subscribe</button>
+  </span>
+        </div>
+    </form>
+</div>#}
 
-    </aside>
+</aside>
 </div>     </div>
