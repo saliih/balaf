@@ -50,7 +50,7 @@ class ViewWeekBlockService extends BaseBlockService
         $views = $this->em->getRepository('PostBundle:Views')->findMonth();
         $final = array();
         foreach ($views as $view) {
-            $index = $view->getDv()->format('H');
+            $index = (int)$view->getDv()->format('H');
             if (!isset($final[$index]))
                 $final[$index] = 0;
             if ((int)$index != 0)
