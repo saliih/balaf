@@ -23,7 +23,7 @@
             var datatoday = [];
             {% set i =0 %}
             {% for key,item in final %}
-            data.push([{{ key }}, {{ item/10 }}]);
+            data.push([{{ key }}, {{ item/7 }}]);
             {% set i = i+1 %}
             {% endfor %}
             {% set i =0 %}
