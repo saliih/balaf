@@ -32,4 +32,14 @@ class ViewsRepository extends EntityRepository
         return $query->getResult();
 
     }
+    public function findWeek(){
+        $dt = new \DateTime();
+        $dt->modify("-1 week");
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='".$dt->format('Y-m-d')."'");
+        return $query->getResult();
+
+    }
 }

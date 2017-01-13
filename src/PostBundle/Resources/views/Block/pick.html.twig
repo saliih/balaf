@@ -22,7 +22,7 @@
         var data = [];
         {% set i =0 %}
         {% for key,item in final %}
-        data.push([{{ key }}, {{ item / 10 }}]);
+        data.push([{{ key }}, {{ item }}]);
         {% set i = i+1 %}
         {% endfor %}
         var line_data1 = {

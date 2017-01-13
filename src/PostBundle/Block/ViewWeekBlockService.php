@@ -47,14 +47,13 @@ class ViewWeekBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $views = $this->em->getRepository('PostBundle:Views')->findMonth();
+        $views = $this->em->getRepository('PostBundle:Views')->findWeek();
         $final = array();
         foreach ($views as $view) {
             $index = (int)$view->getDv()->format('H');
             if (!isset($final[$index]))
                 $final[$index] = 0;
-            if ((int)$index != 0)
-                $final[$index]++;
+            $final[$index]++;
             //echo $view->getDv()->format('H')."<br>";
         }
         ksort($final);
