@@ -28,7 +28,7 @@
             {% endfor %}
             {% set i =0 %}
             {% for key,item in today %}
-            data.push([{{ key }}, {{ item }}]);
+            datatoday.push([{{ key }}, {{ item }}]);
             {% set i = i+1 %}
             {% endfor %}
             var line_data1 = {
