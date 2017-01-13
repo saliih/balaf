@@ -51,12 +51,13 @@ class ViewWeekBlockService extends BaseBlockService
         $final = array();
         foreach ($views as $view) {
             $index = $view->getDv()->format('H');
-            if (!isset($final[$index])) $final[$index] = 0;
-            $final[$index]++;
+            if (!isset($final[$index]))
+                $final[$index] = 0;
+            if ((int)$index != 0)
+                $final[$index]++;
             //echo $view->getDv()->format('H')."<br>";
         }
         ksort($final);
-        unset($final[0]);
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'title' => "Les heures pic",
