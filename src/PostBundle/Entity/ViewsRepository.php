@@ -42,4 +42,13 @@ class ViewsRepository extends EntityRepository
         return $query->getResult();
 
     }
+    public function findToday(){
+        $dt = new \DateTime();
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='".$dt->format('Y-m-d')." 00:00:00'");
+        return $query->getResult();
+
+    }
 }

@@ -54,11 +54,19 @@ class ViewWeekBlockService extends BaseBlockService
             if (!isset($final[$index]))
                 $final[$index] = 0;
             $final[$index]++;
-            //echo $view->getDv()->format('H')."<br>";
         }
         ksort($final);
+        $todayview = $views = $this->em->getRepository('PostBundle:Views')->findToday();
+        $today = array();
+        foreach ($todayview as $view) {
+            $index = (int)$view->getDv()->format('H');
+            if (!isset($final[$index]))
+                $today[$index] = 0;
+            $today[$index]++;
+        }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
+            'today' => $today,
             'title' => "Les heures pic",
             'block' => $blockContext->getBlock(),
             'settings' => $settings
