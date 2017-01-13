@@ -56,6 +56,7 @@ class ViewWeekBlockService extends BaseBlockService
             //echo $view->getDv()->format('H')."<br>";
         }
         ksort($final);
+        unset($final[0]);
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'title' => "Les heures pic",
