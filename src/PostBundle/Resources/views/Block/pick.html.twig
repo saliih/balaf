@@ -21,6 +21,7 @@
         $(function () {
             var data = [];
             var datatoday = [];
+            var lastday = [];
             {% set i =0 %}
             {% for key,item in final %}
             data.push([{{ key }}, {{ item/7 }}]);
@@ -29,6 +30,10 @@
             {% set i =0 %}
             {% for key,item in today %}
             datatoday.push([{{ key }}, {{ item }}]);
+            {% set i = i+1 %}
+            {% endfor %}{% set i =0 %}
+            {% for key,item in last %}
+            lastday.push([{{ key }}, {{ item }}]);
             {% set i = i+1 %}
             {% endfor %}
             var line_data1 = {
@@ -39,7 +44,11 @@
                 data: datatoday,
                 color: "#00a65a"
             };
-            $.plot("#week-chart", [line_data1, line_data2], {
+            var line_data3 = {
+                data: lastday,
+                color: "#dd4b39"
+            };
+            $.plot("#week-chart", [line_data1, line_data2, line_data3], {
                 grid: {
                     hoverable: true,
                     borderColor: "#f3f3f3",

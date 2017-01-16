@@ -34,11 +34,15 @@ class ViewsRepository extends EntityRepository
     }
     public function findWeek(){
         $dt = new \DateTime();
-        $dt->modify("-1 week");
+        $dt->modify("-8 days");
+        $dtend = new \DateTime();
+        $dtend->modify('-1 day');
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
-                                 p.dv >='".$dt->format('Y-m-d')."'");
+                                 p.dv >='".$dt->format('Y-m-d')." 00:00:00'
+                                 and p.dv <= '".$dtend->format('Y-m-d')." 23:59:59'
+                                 ");
         return $query->getResult();
 
     }
@@ -48,6 +52,16 @@ class ViewsRepository extends EntityRepository
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
                                  p.dv >='".$dt->format('Y-m-d')." 00:00:00'");
+        return $query->getResult();
+
+    }
+    public function findOneday($dt){
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='".$dt->format('Y-m-d')." 00:00:00'
+                                 and  p.dv <='".$dt->format('Y-m-d')." 23:59:59'
+                                 ");
         return $query->getResult();
 
     }

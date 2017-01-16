@@ -43,11 +43,7 @@ class ViewWeekBlockService extends BaseBlockService
             'template' => 'PostBundle:Block:pick.html.twig',
         ));
     }
-
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
-    {
-        $settings = $blockContext->getSettings();
-        $views = $this->em->getRepository('PostBundle:Views')->findWeek();
+    private function getFormatedData($views){
         $final = array();
         foreach ($views as $view) {
             $index = (int)$view->getDv()->format('H');
@@ -56,17 +52,24 @@ class ViewWeekBlockService extends BaseBlockService
             $final[$index]++;
         }
         ksort($final);
-        $todayview = $views = $this->em->getRepository('PostBundle:Views')->findToday();
-        $today = array();
-        foreach ($todayview as $view) {
-            $index = (int)$view->getDv()->format('H');
-            if (!isset($final[$index]))
-                $today[$index] = 0;
-            $today[$index]++;
-        }
+        return $final;
+    }
+    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    {
+        $settings = $blockContext->getSettings();
+        $views = $this->em->getRepository('PostBundle:Views')->findWeek();
+        $final = $this->getFormatedData($views);
+        $todayview = $this->em->getRepository('PostBundle:Views')->findToday();
+        $today = $this->getFormatedData($todayview);
+        $dt = new \DateTime();
+        $dt->modify("-1 day");
+        $lastday = $this->em->getRepository('PostBundle:Views')->findOneday($dt);
+        $last = $this->getFormatedData($lastday);
+
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'today' => $today,
+            'last' => $last,
             'title' => "Les heures pic",
             'block' => $blockContext->getBlock(),
             'settings' => $settings
