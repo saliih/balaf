@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
  {% block title %}{{ article.category.description }} : {{ article.title }}  sur tounsia.net{% endblock %}
- {% block descriptionMeta %}{{ article.category.description }} : {{ article.title }}{% endblock %}
- {% block keyMeta %}{{ article.category }}{% endblock %}
+ {% block descriptionMeta %}{{ article.category.description }} : {{ article.title }} {% if article.ramadan2017==1 %}pour Ramadan 2017{% endif %}{% endblock %}
+ {% block keyMeta %}{{ article.category }}
+ {% if article.ramadan2017==1 %}, ramadan 2017{% endif %}
+ {% endblock %}
 {% block head %}
     {% set url = app.request.uri %}
     {% if article.shortlink !="" %}
