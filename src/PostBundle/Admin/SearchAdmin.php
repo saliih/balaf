@@ -29,11 +29,7 @@ class SearchAdmin extends Admin
     {
         $datagridMapper
             ->add('search')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'delete' => array(),
-                )
-            ));
+            ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -42,7 +38,12 @@ class SearchAdmin extends Admin
 
             ->add('search', null, array('label' => 'Keywords'))
             ->add('act', null, array('label' => 'traité', 'editable'=>true))
-            ->add('result');
+            ->add('result')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'delete' => array(),
+                )
+            ));
 
     }
 }
