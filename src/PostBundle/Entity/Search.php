@@ -46,6 +46,10 @@ class Search
     {
         $this->act = false;
     }
+    public function __toString()
+    {
+        return $this->search;
+    }
 
     /**
      * @return boolean
