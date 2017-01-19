@@ -28,7 +28,12 @@ class SearchAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('search');
+            ->add('search')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'delete' => array(),
+                )
+            ));
     }
 
     protected function configureListFields(ListMapper $listMapper)
