@@ -55,6 +55,11 @@ services:
         arguments: [~, PostBundle\Entity\Tasks, ~] #MailingBundle:CRUD
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Liste des tâches', icon:'<i class="fa fa-envelope"></i>' }
+    admin.allowip:
+        class: PostBundle\Admin\AllowIpAdmin
+        arguments: [~, PostBundle\Entity\AllowIp, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Liste des ip valid', icon:'<i class="fa fa-envelope"></i>' }
     admin.alexa:
         class: PostBundle\Admin\AlexaAdmin
         arguments: [~, PostBundle\Entity\Alexa, ~] #MailingBundle:CRUD
