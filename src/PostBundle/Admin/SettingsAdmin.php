@@ -36,14 +36,9 @@ class SettingsAdmin extends Admin
     {
         $listMapper
 
-            ->add('name', null, array('label' => 'Keywords'))
-            ->add('act', null, array('label' => 'traité', 'editable'=>true))
-            ->add('result')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    //'delete' => array(),
-                )
-            ));
+            ->add('name', null, array('label' => 'Name'))
+            ->add('act', null, array('label' => 'Activate', 'editable'=>true))
+          ;
 
     }
 }
