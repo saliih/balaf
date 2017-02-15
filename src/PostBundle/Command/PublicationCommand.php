@@ -24,12 +24,15 @@ class PublicationCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $dt = new \DateTime();
-        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findBy(array("publieddate"=>$dt,'enabled'=>false));
-        foreach ($posts as $post){
-            $post->setEnabled(true);
-            $em->persist($post);
-            $em->flush();
+        $autoactivate =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(2);
+        if($autoactivate->getAct()) {
+            $dt = new \DateTime();
+            $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findBy(array("publieddate" => $dt, 'enabled' => false));
+            foreach ($posts as $post) {
+                $post->setEnabled(true);
+                $em->persist($post);
+                $em->flush();
+            }
         }
     }
 }

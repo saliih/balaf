@@ -37,59 +37,62 @@ class TwitterCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
-        try {
-            if ($posts != null) {
-                $year = $posts->getPublieddate()->format('Y');
-                $month = $posts->getPublieddate()->format('m');
-                $url = $this->getContainer()->get('router')->generate('front_article', array(
-                    'locale' => 'fr',
-                    'slug' => $posts->getAlias(),
-                    'year' => $year,
-                    'month' => $month,
-                    'categoryname' => $posts->getCategory()->getSlug(),
-                ));
-                $url = "http://www.tounsia.net" . $url;
+        $autoshare =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(1);
+        if($autoshare->getAct()) {
+            try {
+                if ($posts != null) {
+                    $year = $posts->getPublieddate()->format('Y');
+                    $month = $posts->getPublieddate()->format('m');
+                    $url = $this->getContainer()->get('router')->generate('front_article', array(
+                        'locale' => 'fr',
+                        'slug' => $posts->getAlias(),
+                        'year' => $year,
+                        'month' => $month,
+                        'categoryname' => $posts->getCategory()->getSlug(),
+                    ));
+                    $url = "http://www.tounsia.net" . $url;
 
-                $params = array(
-                    'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
-                    //'media_ids' => implode(',', $media_ids),
-                );
-                if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
-                    $response = $auth->post('statuses/update', $params);
-                /*$message = \Swift_Message::newInstance()
-                    ->setSubject('shared')
-                    ->setFrom('tounsianet@gmail.com')
-                    ->setTo('salah.chtioui@gmail.com')
-                    ->setBody("shared : ".$posts->getTitle());
-                $this->getContainer()->get('mailer')->send($message);*/
-                $posts->setTwitter(true);
-                if (isset($response['entities']['urls'][0]['url']))
-                    $posts->setShortlink($response['entities']['urls'][0]['url']);
-                $em->persist($posts);
-                $em->flush();
-                echo "done \n";
-            } else {
-                $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();
-                foreach ($posts as $post) {
-                    $post->setTwitter(false);
-                    $em->persist($post);
+                    $params = array(
+                        'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
+                        //'media_ids' => implode(',', $media_ids),
+                    );
+                    if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
+                        $response = $auth->post('statuses/update', $params);
+                    /*$message = \Swift_Message::newInstance()
+                        ->setSubject('shared')
+                        ->setFrom('tounsianet@gmail.com')
+                        ->setTo('salah.chtioui@gmail.com')
+                        ->setBody("shared : ".$posts->getTitle());
+                    $this->getContainer()->get('mailer')->send($message);*/
+                    $posts->setTwitter(true);
+                    if (isset($response['entities']['urls'][0]['url']))
+                        $posts->setShortlink($response['entities']['urls'][0]['url']);
+                    $em->persist($posts);
+                    $em->flush();
+                    echo "done \n";
+                } else {
+                    $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();
+                    foreach ($posts as $post) {
+                        $post->setTwitter(false);
+                        $em->persist($post);
+                    }
+                    $em->flush();
+                    echo "reset \n";
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('share reseted')
+                        ->setFrom('tounsianet@gmail.com')
+                        ->setTo('salah.chtioui@gmail.com')
+                        ->setBody("share reseted");
+                    $this->getContainer()->get('mailer')->send($message);
                 }
-                $em->flush();
-                echo "reset \n";
+            } catch (\Exception $e) {
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('share reseted')
+                    ->setSubject('problème partage')
                     ->setFrom('tounsianet@gmail.com')
                     ->setTo('salah.chtioui@gmail.com')
-                    ->setBody("share reseted");
+                    ->setBody('Exception reçue : ' . $e->getMessage());
                 $this->getContainer()->get('mailer')->send($message);
             }
-        } catch (\Exception $e) {
-            $message = \Swift_Message::newInstance()
-                ->setSubject('problème partage')
-                ->setFrom('tounsianet@gmail.com')
-                ->setTo('salah.chtioui@gmail.com')
-                ->setBody('Exception reçue : ' . $e->getMessage());
-            $this->getContainer()->get('mailer')->send($message);
         }
     }
 }
