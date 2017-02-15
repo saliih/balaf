@@ -73,6 +73,7 @@ sonata_admin:
                     - admin.search
                     - admin.category
                     - admin.allowip
+                    - admin.setings
             Users:
                 label: Users
                 icon: '<i class="fa fa-users"></i>'

@@ -84,3 +84,8 @@ services:
         arguments: [~, PostBundle\Entity\Search, ~] #MailingBundle:CRUD
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Search'}
+    admin.setings:
+        class: PostBundle\Admin\SettingsAdmin
+        arguments: [~, PostBundle\Entity\Settings, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Search'}
