@@ -23,6 +23,7 @@ class ArticleController extends Controller
             $view->setPost($article);
             $view->setIp($ip);
             $view->setCreatedby($article->getCreatedby());
+            $view->setRefer($request->headers->get('referer'));
             $em->persist($view);
         }
         $em->flush();

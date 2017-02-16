@@ -39,10 +39,33 @@ class Views
      */
     private $ip;
     /**
+     * @var string
+     *
+     * @ORM\Column(name="refer", type="string", length=255, nullable=true)
+     */
+    private $refer;
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      **/
     private $createdby;
+
+    /**
+     * @return mixed
+     */
+    public function getRefer()
+    {
+        return $this->refer;
+    }
+
+    /**
+     * @param mixed $refer
+     */
+    public function setRefer($refer)
+    {
+        $this->refer = parse_url($refer, PHP_URL_HOST);
+    }
+
     /**
      * Views constructor.
      * @param \DateTime $dv
