@@ -16,7 +16,7 @@ class CategoryController extends Controller
             $request->query->getInt('page', 1)/*page number*/,
             12/*limit per page*/
         );
-        return $this->render('FrontBundle:Category:ramadan.html.twig', array("category" => $category, 'posts' => $pagination));
+        return $this->render('FrontBundle:Category:ramadan.html.twig', array( 'posts' => $pagination));
     }
 
     public function indexAction($locale, $slug)
