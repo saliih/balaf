@@ -58,12 +58,7 @@ class TwitterCommand extends ContainerAwareCommand
                     );
                     if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
                         $response = $auth->post('statuses/update', $params);
-                    /*$message = \Swift_Message::newInstance()
-                        ->setSubject('shared')
-                        ->setFrom('tounsianet@gmail.com')
-                        ->setTo('salah.chtioui@gmail.com')
-                        ->setBody("shared : ".$posts->getTitle());
-                    $this->getContainer()->get('mailer')->send($message);*/
+
                     $posts->setTwitter(true);
                     if (isset($response['entities']['urls'][0]['url']))
                         $posts->setShortlink($response['entities']['urls'][0]['url']);
@@ -76,6 +71,8 @@ class TwitterCommand extends ContainerAwareCommand
                         $post->setTwitter(false);
                         $em->persist($post);
                     }
+                    $autoshare->setAct(false);
+                    $em->persist($autoshare);
                     $em->flush();
                     echo "reset \n";
                     $message = \Swift_Message::newInstance()
