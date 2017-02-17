@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row blog-content">
+        <div class="col-md-8">
+            <h3 class="block-title"><span>Ramadan 2017</span></h3>
+    {% set i =0 %}
+    {% for article in posts %}
+        {% set year =  article.publieddate|date('Y') %}
+        {% set month =  article.publieddate|date('m') %}
+        {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
+    {% if i == 0 %}
+        <article class="news-block big-block">
+                <a href="{{ path }}" class="overlay-link">
+                    <figure class="image-overlay">
+                        <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="tounsia.Net : {{ article.title }}">
+                    </figure>
+                </a>
+                <a href="{{ path }}" class="category">
+                    {{ article.category.title }}
+                </a>
+                <header class="news-details">
+                    <h3 class="news-title">
+                        <a href="{{ path }}">
+                            {{ article.title }}
+                        </a>
+                    </h3>
+                    <p> {{ ((article.article)|shortdesc(250))|raw }}</p>
+                   {# <p class="simple-share">
+                        by <a href="{{ path }}"><b>John Doe</b></a> -
+                        <span class="article-date"><i class="fa fa-clock-o"></i> 10 minutes ago</span>
+                    </p>#}
+                </header>
+            </article>
+{% else %}
+            <article class="simple-post simple-big clearfix">
+                <div class="simple-thumb">
+
+                    <a href="{{ path }}">
+                        <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="tounsia.Net : {{ article.title }}">
+                    </a>
+                </div>
+                <header>
+                    <p class="simple-share">
+                        <a href="{{ path }}"> {{ article.category.title }}</a>{# /
+                        by <a href="{{ path }}">John Doe</a> -#}
+                        <span><i class="fa fa-clock-o"></i> {{ article.publieddate|date('d/m/Y') }}</span>
+                    </p>
+
+                    <h3>
+                        <a href="{{ path }}">{{ article.title }}</a>
+                    </h3>
+
+                    <p class="excerpt">
+                        {{ ((article.article)|shortdesc(150))|raw }}
+                    </p>
+                </header>
+            </article>
+{% endif %}
+        {% set i = i + 1 %}
+    {% endfor %}
+
+            {{ knp_pagination_render(posts) }}
+
+        </div>
+
+        {{ render(controller('FrontBundle:Default:sidebar')) }}
+    </div>
+{% endblock %}
