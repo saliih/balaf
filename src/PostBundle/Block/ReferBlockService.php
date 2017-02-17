@@ -47,9 +47,8 @@ class ReferBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $views = $this->em->getRepository('PostBundle:Views')->findAll();
+        $views = $this->em->getRepository('PostBundle:Views')->findBy(array(),array('id'=>'DESC'),2000);
         $final = array();
-
         foreach ($views as $view) {
             if($view->getRefer()!=""){
                 if(!isset($final[$view->getRefer()])) $final[$view->getRefer()] =0;
