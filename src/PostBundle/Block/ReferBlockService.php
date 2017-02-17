@@ -56,6 +56,7 @@ class ReferBlockService extends BaseBlockService
             }
 
         }
+        sort($final);
 
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
