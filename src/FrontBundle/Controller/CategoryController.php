@@ -4,6 +4,7 @@ namespace FrontBundle\Controller;
 
 use PostBundle\Entity\Search;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
 {
