@@ -79,7 +79,7 @@ class TwitterCommand extends ContainerAwareCommand
                         ->setSubject('share reseted')
                         ->setFrom('tounsianet@gmail.com')
                         ->setTo('salah.chtioui@gmail.com')
-                        ->setBody("share reseted");
+                        ->setBody("share reseted you must activate script");
                     $this->getContainer()->get('mailer')->send($message);
                 }
             } catch (\Exception $e) {

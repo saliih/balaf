@@ -10,6 +10,7 @@ sonata_block:
         sonata.block.service.viewuser: ~
         sonata.block.service.share: ~
         sonata.block.service.viewweek: ~
+        sonata.block.service.refer: ~
         sonata.admin.block.admin_list:
             contexts: [admin]
         sonata.user.block.menu:    # used to display the menu in profile pages
@@ -53,9 +54,11 @@ sonata_admin:
 
             - { position: center, type: sonata.block.service.month, settings: { template: 'PostBundle:Block:month.html.twig'  } }
             - { position: center, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
+            - { position: center, type: sonata.block.service.refer, settings: { template: 'PostBundle:Block:refer.html.twig'  } }
             #- { position: right, type: sonata.block.service.posts, settings: { template: 'PostBundle:Block:Posts.html.twig'  } }
             - { position: right, type: sonata.block.service.viewuser, settings: { template: 'PostBundle:Block:viewuser.html.twig'  } }
             - { position: right, type: sonata.block.service.share, settings: { template: 'PostBundle:Block:share.html.twig'  } }
+
 
         groups:
 
