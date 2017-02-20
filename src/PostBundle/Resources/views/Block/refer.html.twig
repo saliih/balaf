@@ -30,13 +30,11 @@
                 <tbody>
                 {% set total = 0 %}
                 {% for key,item in final %}
-                    {% if item != "www.tounsia.net" %}
                 <tr>
                     <td>{{ key }}</td>
                     <td>{{ item }}</td>
                     {% set total = total + item %}
                 </tr>
-                    {% endif %}
                     {% endfor %}
                 </tbody>
                 <tfoot>

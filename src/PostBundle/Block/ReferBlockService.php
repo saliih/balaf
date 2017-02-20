@@ -50,9 +50,9 @@ class ReferBlockService extends BaseBlockService
         $views = $this->em->getRepository('PostBundle:Views')->findToday();
         $final = array();
         foreach ($views as $view) {
-            if($view->getRefer()!=""){
-                if(!isset($final[$view->getRefer()])) $final[$view->getRefer()] =0;
-                $final[$view->getRefer()] ++;
+            if ($view->getRefer() != "" || $view->getRefer() != "www.tounsia.net") {
+                if (!isset($final[$view->getRefer()])) $final[$view->getRefer()] = 0;
+                $final[$view->getRefer()]++;
             }
 
         }
