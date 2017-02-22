@@ -51,12 +51,25 @@ class ReferBlockService extends BaseBlockService
         $final = array();
         foreach ($views as $view) {
             if ($view->getRefer() != "" && $view->getRefer() != "www.tounsia.net") {
-                if (!isset($final[$view->getRefer()])) $final[$view->getRefer()] = 0;
-                $final[$view->getRefer()]++;
+                if (!isset($final[$view->getRefer()])){
+                    $final[$view->getRefer()][0] = 0;
+                    $final[$view->getRefer()][1] = 0;
+                }
+                $final[$view->getRefer()][0]++;
             }
-
         }
-
+        $dt = new \DateTime();
+        $dt->modify("-1 day");
+        $views2 = $this->em->getRepository('PostBundle:Views')->findOneday($dt);
+        foreach ($views as $view) {
+            if ($view->getRefer() != "" && $view->getRefer() != "www.tounsia.net") {
+                if (!isset($final[$view->getRefer()])) {
+                    $final[$view->getRefer()][0] = 0;
+                    $final[$view->getRefer()][1] = 0;
+                }
+                $final[$view->getRefer()][1]++;
+            }
+        }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'title' => "Site Refer",

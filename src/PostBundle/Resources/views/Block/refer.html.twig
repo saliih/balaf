@@ -23,17 +23,21 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th rowspan=2 width="60%">Refer</th>
-                    <th width="40%" colspan=2>NB°</th>
+                    <th rowspan=2 width="50%">Refer</th>
+                    <th width="25%" >NB° to day</th>
+                    <th width="25%" >NB° last day</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% set total = 0 %}
+                {% set total1 = 0 %}
                 {% for key,item in final %}
                 <tr>
                     <td>{{ key }}</td>
-                    <td>{{ item }}</td>
-                    {% set total = total + item %}
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1] }}</td>
+                    {% set total = total + item[0] %}
+                    {% set total1 = total1 + item[1] %}
                 </tr>
                     {% endfor %}
                 </tbody>
@@ -41,6 +45,7 @@
                 <tr>
                     <th>Total</th>
                     <td>{{ total }}</td>
+                    <td>{{ total1 }}</td>
 
                 </tr>
                 </tfoot>
