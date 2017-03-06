@@ -48,6 +48,18 @@ class Tasks
      * @ORM\Column(name="act", type="boolean")
      */
     private $act;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Tasks constructor.
+     */
     public function __construct()
     {
         $this->act = false;
