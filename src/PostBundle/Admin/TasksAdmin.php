@@ -27,22 +27,21 @@ class TasksAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-
             ->add('name')
             ->add('dcr')
-            ->add('act',null,array('editable'=>true))
+            ->add('act', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'delete' => array(),
                 )
             ));
     }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name')
-            ->add('body')
-        ;
+            ->add('body', null, array('required' => false));
 
     }
 }
