@@ -33,9 +33,7 @@
                     label: "{{ key }}",
                     data: [{% set i=0 %}
                         {% for key2,item2 in item %}
-                        {% if item2>30 %}
                             [{{ i }}, {{ item2 }}],{% set i=i+1 %}
-                        {% endif %}
                         {% endfor %}
                     ]
                 },

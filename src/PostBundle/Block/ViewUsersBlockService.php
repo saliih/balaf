@@ -53,9 +53,11 @@ class ViewUsersBlockService extends BaseBlockService
         foreach ($views as $post) {
             $index = $post->getDv()->format("ymd");
             $user = $post->getCreatedby()->getUsername();
-            if (!isset($final[$user][$index])) $final[$user][$index] = 0;
-            if (!isset($final['Total'][$index])) $final['Total'][$index] = 0;
-            $final[$user][$index] += 1;
+            if($user!="emau83") {
+                if (!isset($final[$user][$index])) $final[$user][$index] = 0;
+                if (!isset($final['Total'][$index])) $final['Total'][$index] = 0;
+                $final[$user][$index] += 1;
+            }
             $final['Total'][$index] += 1;
         }
 
