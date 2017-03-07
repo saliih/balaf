@@ -52,7 +52,7 @@ class MonthsBlockService extends BaseBlockService
         $posts = $this->em->getRepository('PostBundle:Post')->findAll();
         $final = array();
         $dt = new \DateTime();
-        $dt->modify("-6 months");
+        $dt->modify("-60 months");
         foreach ($posts as $post) {
             $tocheck =  $post->getPublieddate()->format('Ym');
             $limit = $dt->format('Ym');
