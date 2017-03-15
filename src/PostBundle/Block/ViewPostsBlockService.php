@@ -59,9 +59,9 @@ class ViewPostsBlockService extends BaseBlockService
         }
         usort($final, function ($a, $b) {
             if (is_numeric($a['view']) && is_numeric($b['view'])) {
-                return  ($a['view'] - $b['view']);
+                return  -1 *($a['view'] - $b['view']);
             } else {
-                return -1 * strcasecmp($a['view'], $b['view']);
+                return  strcasecmp($a['view'], $b['view']);
             }
         });
         return $this->renderResponse($blockContext->getTemplate(), array(
