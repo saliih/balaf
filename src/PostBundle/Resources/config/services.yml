@@ -50,6 +50,12 @@ services:
         tags:
             - { name: sonata.block }
 
+    sonata.block.service.viewposts:
+        class: PostBundle\Block\ViewPostsBlockService
+        arguments: [ "sonata.block.service.viewposts", @templating, @doctrine.orm.entity_manager ]
+        tags:
+            - { name: sonata.block }
+
 
     Tools.utils:
         class: PostBundle\Services\NewsServices
