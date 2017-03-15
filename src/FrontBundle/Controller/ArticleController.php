@@ -24,7 +24,9 @@ class ArticleController extends Controller
             $view->setIp($ip);
             $view->setCreatedby($article->getCreatedby());
             $view->setRefer($request->headers->get('referer'));
-            $em->persist($view);
+            if($view->getRefer()!="") {
+                $em->persist($view);
+            }
         }
         $em->flush();
         $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category" => $article->getCategory(), 'enabled' => true), array('publieddate' => 'DESC', 'id'=>'DESC'));
