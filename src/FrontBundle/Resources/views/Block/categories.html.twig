@@ -2,9 +2,12 @@
     <h3 class="block-title"><span>Categories</span></h3>
     <ul>
         {% for key,item in categories %}
-        <li>
-            <a href="{{ path('front_category',{'locale':app.request.locale ,'slug':item.slug}) }}">{{ item.title }} <span class="count">{{ item.nbpost }}</span></a>
-        </li>
+            {% if item.nbpost >0 %}
+                <li>
+                    <a href="{{ path('front_category',{'locale':app.request.locale ,'slug':item.slug}) }}">{{ item.title }}
+                        <span class="count">{{ item.nbpost }}</span></a>
+                </li>
+            {% endif %}
         {% endfor %}
 
     </ul>
