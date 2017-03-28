@@ -31,6 +31,7 @@ class PostsAdmin extends Admin
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $datagridMapper->
             add('createdby')
+                ->add('enabled')
                 ->add('ramadan2017')
                 ->add('category');
         }
@@ -53,7 +54,7 @@ class PostsAdmin extends Admin
             ));
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $listMapper->add('ramadan2017', null, array('editable' => true))
-                ->add('twitter', null, array('editable' => false));
+                ->add('twitter', null, array('editable' => true));
 
         }
         $listMapper->add('_action', 'actions', array(
