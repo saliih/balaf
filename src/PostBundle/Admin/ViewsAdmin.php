@@ -43,7 +43,11 @@ class ViewsAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('dv','sonata_type_datetime_picker')
+            ->add('dv')
+            ->add('post')
+            ->add('refer')
+            ->add('ip')
+            ->add('createdby')
         ;
 
     }
