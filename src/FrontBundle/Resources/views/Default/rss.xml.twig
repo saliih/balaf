@@ -17,7 +17,7 @@
             {% set month =  article.publieddate|date('m') %}
             {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
             <item>
-                <title>{{ article.title }}</title>
+                <title><![CDATA[{{ article.title }}]]></title>
                 <category><![CDATA[{{ article.category.title }}]]></category>
                 <link>http://www.tounsia.net{{ path }}</link>
                 <description><![CDATA[ {{ ((article.article)|shortdesc(450))|raw }}]]></description>
