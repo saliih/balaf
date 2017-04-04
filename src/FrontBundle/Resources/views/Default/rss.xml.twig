@@ -1,12 +1,5 @@
 {% autoescape %}<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0"
-     xmlns:content="http://purl.org/rss/1.0/modules/content/"
-     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:atom="http://www.w3.org/2005/Atom"
-     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
->
+<rss version="2.0">
     <channel>
         <title>TounsiaNet</title>
         <language>fr-FR</language>
@@ -16,12 +9,14 @@
             {% set year =  article.publieddate|date('Y') %}
             {% set month =  article.publieddate|date('m') %}
             {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
+
             <item>
                 <title><![CDATA[{{ article.title }}]]></title>
-                <category><![CDATA[{{ article.category.title }}]]></category>
                 <link>http://www.tounsia.net{{ path }}</link>
+                <category><![CDATA[{{ article.category.title }}]]></category>
                 <description><![CDATA[ {{ ((article.article)|shortdesc(450))|raw }}]]></description>
             </item>
+
         {% endfor %}
     </channel>
 </rss>{% endautoescape %}
