@@ -14,11 +14,15 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
-        $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array('post' => $article, 'ip' => $ip));
+        $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array(
+            'post' => $article,
+            //'ip' => $ip,
+            'dv' => new \DateTime()
+        ));
         $newnb = $article->getNbview() + 1;
         $article->setNbview($newnb);
         $em->persist($article);
-        if ($view == null) {
+        if ($view == null && $ip != "197.3.10.74") {
             $view = new Views();
             $view->setPost($article);
             $view->setIp($ip);
