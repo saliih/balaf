@@ -16,7 +16,7 @@ class ArticleController extends Controller
         $ip = $request->getClientIp();
         $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array(
             'post' => $article,
-            //'ip' => $ip,
+            'ip' => $ip,
             'dv' => new \DateTime()
         ));
         $newnb = $article->getNbview() + 1;
