@@ -67,7 +67,7 @@ class TableBlockService extends BaseBlockService
             $final[$user]["postpercent"] = number_format($percent, 2, ',', ' ');
             $percentv = ($data["view"] * 100) / $totalview;
             $final[$user]["viewpercent"] = number_format($percentv, 2, ',', ' ');
-            $final[$user]["report"] = number_format(($percent / $percentv ), 2, ',', ' ');
+            $final[$user]["report"] = number_format(($percentv / $percent ), 2, ',', ' ');
         }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
