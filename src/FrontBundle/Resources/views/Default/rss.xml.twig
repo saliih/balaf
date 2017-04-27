@@ -3,7 +3,7 @@
     <channel>
         <title>TounsiaNet</title>
         <language>fr-FR</language>
-        <link>http://www.tounsia.net</link>
+        <link>https://www.tounsia.net</link>
         <description>Tounsia.Net Le portail de la femme tunisienne, cuisine, beauté, astuces, mode</description>
         {% for article in articles %}
             {% set year =  article.publieddate|date('Y') %}
@@ -12,7 +12,7 @@
 
             <item>
                 <title><![CDATA[{{ article.title }}]]></title>
-                <link>http://www.tounsia.net{{ path }}</link>
+                <link>https://www.tounsia.net{{ path }}</link>
                 <category><![CDATA[{{ article.category.title }}]]></category>
                 <description><![CDATA[ {{ ((article.article)|shortdesc(450))|raw }}]]></description>
             </item>

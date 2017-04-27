@@ -1,16 +1,16 @@
 {% autoescape %}<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://www.tounsia.net{{ path('front_homepage') }}</loc>
+        <loc>https://www.tounsia.net{{ path('front_homepage') }}</loc>
         <lastmod>2016-06-24</lastmod>
     </url>
     <url>
-        <loc>http://www.tounsia.net/fr/ramadan2017</loc>
+        <loc>https://www.tounsia.net/fr/ramadan2017</loc>
         <lastmod>2017-02-17</lastmod>
     </url>
     {% for item in categories %}
     <url>
-        <loc>http://www.tounsia.net{{ path('front_category',{'locale':'fr' ,'slug':item.slug}) }}</loc>
+        <loc>https://www.tounsia.net{{ path('front_category',{'locale':'fr' ,'slug':item.slug}) }}</loc>
         <lastmod>2016-06-04</lastmod>
     </url>
     {% endfor %}
@@ -19,7 +19,7 @@
         {% set month =  item.publieddate|date('m') %}
         {% set path = path('front_article',{'locale':'fr' ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
         <url>
-        <loc>http://www.tounsia.net{{ path }}</loc>
+        <loc>https://www.tounsia.net{{ path }}</loc>
         <lastmod>{{ item.publieddate|date('Y-m-d') }}</lastmod>
     </url>
     {% endfor %}
