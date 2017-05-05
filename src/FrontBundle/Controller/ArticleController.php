@@ -22,12 +22,13 @@ class ArticleController extends Controller
         $newnb = $article->getNbview() + 1;
         $article->setNbview($newnb);
         $em->persist($article);
-        if ($view == null && $ip != "197.3.10.74") {
+        $refer = $request->headers->get('referer');
+        if ($view === null && $ip != "197.3.10.74" && $refer!="") {
             $view = new Views();
             $view->setPost($article);
             $view->setIp($ip);
             $view->setCreatedby($article->getCreatedby());
-            $view->setRefer($request->headers->get('referer'));
+            $view->setRefer($refer);
             $em->persist($view);
         }
         $em->flush();
