@@ -46,6 +46,7 @@ class ViewWeekBlockService extends BaseBlockService
     private function getFormatedData($views){
         $final = array();
         foreach ($views as $view) {
+            if($view->getRefer()=="www.tounsia.net")continue;
             $index = (int)$view->getDv()->format('H');
             if (!isset($final[$index]))
                 $final[$index] = 0;
