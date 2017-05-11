@@ -7,8 +7,8 @@
                 <span class="info-box-icon bg-aqua"><i class="ion ion-arrow-graph-up-right"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Page par visite</span>
-                    <span class="info-box-number">{{ final }} <small>pages</small></span>
+                    <span class="info-box-text">Pages par visite par mois</span>
+                    <span class="info-box-number">{{ final|number_format(2, '.', ',') }} <small>pages</small></span>
                 </div>
                 <!-- /.info-box-content -->
             </div>

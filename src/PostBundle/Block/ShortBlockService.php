@@ -63,7 +63,7 @@ class ShortBlockService extends BaseBlockService
             foreach ($listIp as $key=>$ipcount){
                 $count += $ipcount;
             }
-            $array2[$date] = $count / count($ipcount);
+            $array2[$date] = $count / count($listIp);
         }
         if(count($array2)>0) {
             $all = 0;
