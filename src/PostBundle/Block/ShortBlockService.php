@@ -70,7 +70,7 @@ class ShortBlockService extends BaseBlockService
             foreach ($array2 as $value) {
                 $all += $value;
             }
-            $final = $all / count($array2);
+            $final = $all / 30;
         }
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
