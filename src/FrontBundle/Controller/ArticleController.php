@@ -14,24 +14,26 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
-        $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array(
-            'post' => $article,
-            'ip' => $ip,
-            'dv' => new \DateTime()
-        ));
-        $newnb = $article->getNbview() + 1;
-        $article->setNbview($newnb);
-        $em->persist($article);
-        $refer = $request->headers->get('referer');
-        if ($view === null && $ip != "197.3.10.74" && $refer!="") {
-            $view = new Views();
-            $view->setPost($article);
-            $view->setIp($ip);
-            $view->setCreatedby($article->getCreatedby());
-            $view->setRefer($refer);
-            $em->persist($view);
+        if ($ip != "197.3.10.74") {
+            $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array(
+                'post' => $article,
+                'ip' => $ip,
+                'dv' => new \DateTime()
+            ));
+            $newnb = $article->getNbview() + 1;
+            $article->setNbview($newnb);
+            $em->persist($article);
+            $refer = $request->headers->get('referer');
+            if ($view === null && $refer != "") {
+                $view = new Views();
+                $view->setPost($article);
+                $view->setIp($ip);
+                $view->setCreatedby($article->getCreatedby());
+                $view->setRefer($refer);
+                $em->persist($view);
+            }
+            $em->flush();
         }
-        $em->flush();
         $related = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("category" => $article->getCategory(), 'enabled' => true), array('publieddate' => 'DESC', 'id' => 'DESC'));
         shuffle($related);
         $i = 0;
