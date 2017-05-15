@@ -120,26 +120,19 @@ class Views
     }
 
     /**
-     * Set refer
-     *
-     * @param string $refer
-     * @return Views
-     */
-    public function setRefer($refer)
-    {
-        $this->refer = parse_url($refer, PHP_URL_HOST);
-
-        return $this;
-    }
-
-    /**
-     * Get refer
-     *
-     * @return string 
+     * @return mixed
      */
     public function getRefer()
     {
         return $this->refer;
+    }
+
+    /**
+     * @param mixed $refer
+     */
+    public function setRefer($refer)
+    {
+        $this->refer = parse_url($refer, PHP_URL_HOST);
     }
 
     /**

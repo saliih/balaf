@@ -29,7 +29,7 @@ class viewsCommand extends ContainerAwareCommand
         foreach ($views as $view){
             $refer = $view->getRefer();
             $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
-            if($referLink==null){
+            if($referLink==null && !empty($refer)){
                 $referLink = new Refer();
                 $referLink->setTitle($refer);
                 $em->persist($referLink);
