@@ -29,7 +29,7 @@ class ArticleController extends Controller
                 $referLink = $this->getDoctrine()->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
                 if($referLink==null){
                     $referLink = new Refer();
-                    $referLink->setTitle($refer);
+                    $referLink->setTitle(parse_url($refer, PHP_URL_HOST));
                     $em->persist($referLink);
                     $em->flush();
                 }
