@@ -60,7 +60,7 @@ class Views
      */
     public function __construct()
     {
-        $this->dv = new \DateTime();    
+        $this->dv = new \DateTime();
     }
 
     /**
