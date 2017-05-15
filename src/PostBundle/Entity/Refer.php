@@ -62,7 +62,7 @@ class Refer
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = parse_url($title, PHP_URL_HOST);
 
         return $this;
     }
