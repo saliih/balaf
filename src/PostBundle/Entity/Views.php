@@ -45,34 +45,22 @@ class Views
      */
     private $refer;
     /**
+     * @ORM\ManyToOne(targetEntity="Refer", inversedBy="view")
+     * @ORM\JoinColumn(name="refer_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     **/
+    private $referLinks;
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      **/
     private $createdby;
 
     /**
-     * @return mixed
-     */
-    public function getRefer()
-    {
-        return $this->refer;
-    }
-
-    /**
-     * @param mixed $refer
-     */
-    public function setRefer($refer)
-    {
-        $this->refer = parse_url($refer, PHP_URL_HOST);
-    }
-
-    /**
      * Views constructor.
-     * @param \DateTime $dv
      */
     public function __construct()
     {
-        $this->dv = new \DateTime();
+        $this->dv = new \DateTime();    
     }
 
     /**
@@ -109,6 +97,52 @@ class Views
     }
 
     /**
+     * Set ip
+     *
+     * @param string $ip
+     * @return Views
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * Get ip
+     *
+     * @return string 
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * Set refer
+     *
+     * @param string $refer
+     * @return Views
+     */
+    public function setRefer($refer)
+    {
+        $this->refer = $refer;
+
+        return $this;
+    }
+
+    /**
+     * Get refer
+     *
+     * @return string 
+     */
+    public function getRefer()
+    {
+        return $this->refer;
+    }
+
+    /**
      * Set post
      *
      * @param \PostBundle\Entity\Post $post
@@ -132,26 +166,26 @@ class Views
     }
 
     /**
-     * Set ip
+     * Set referLinks
      *
-     * @param string $ip
+     * @param \PostBundle\Entity\Refer $referLinks
      * @return Views
      */
-    public function setIp($ip)
+    public function setReferLinks(\PostBundle\Entity\Refer $referLinks = null)
     {
-        $this->ip = $ip;
+        $this->referLinks = $referLinks;
 
         return $this;
     }
 
     /**
-     * Get ip
+     * Get referLinks
      *
-     * @return string 
+     * @return \PostBundle\Entity\Refer 
      */
-    public function getIp()
+    public function getReferLinks()
     {
-        return $this->ip;
+        return $this->referLinks;
     }
 
     /**

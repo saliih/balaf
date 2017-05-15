@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use PostBundle\Entity\Refer;
 use PostBundle\Entity\Views;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -25,11 +26,19 @@ class ArticleController extends Controller
             $em->persist($article);
             $refer = $request->headers->get('referer');
             if ($view === null && $refer != "") {
+                $referLink = $this->getDoctrine()->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
+                if($referLink==null){
+                    $referLink = new Refer();
+                    $referLink->setTitle($refer);
+                    $em->persist($referLink);
+                    $em->flush();
+                }
                 $view = new Views();
                 $view->setPost($article);
                 $view->setIp($ip);
                 $view->setCreatedby($article->getCreatedby());
                 $view->setRefer($refer);
+                $view->setReferLinks($referLink);
                 $em->persist($view);
             }
             $em->flush();

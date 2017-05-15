@@ -116,4 +116,14 @@ class Search
     {
         $this->result = $result;
     }
+
+    /**
+     * Get act
+     *
+     * @return boolean 
+     */
+    public function getAct()
+    {
+        return $this->act;
+    }
 }

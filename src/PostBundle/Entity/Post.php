@@ -511,4 +511,14 @@ class Post
         $this->shortlink = $shortlink;
     }
 
+
+    /**
+     * Get twitter
+     *
+     * @return boolean 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
 }

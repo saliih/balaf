@@ -30,7 +30,7 @@ class ViewsAdmin extends Admin
 
             ->add('dv')
             ->add('post')
-            ->add('refer')
+            ->add('referLinks')
             ->add('ip')
             ->add('createdby')
             ->add('_action', 'actions', array(
