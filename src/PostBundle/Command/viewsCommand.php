@@ -30,11 +30,12 @@ class viewsCommand extends ContainerAwareCommand
             foreach ($views as $view) {
                 $refer = trim($view->getRefer());
                 $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title' => $refer));
-                if ($referLink == null) {
+                if ($referLink === null) {
                     $referLink = new Refer();
                     $referLink->setTitle($refer);
                     $em->persist($referLink);
                     $em->flush();
+                    $output->writeln($refer);
                 }
                 $view->setReferLinks($referLink);
                 $em->persist($view);
