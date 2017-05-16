@@ -25,10 +25,10 @@ class viewsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks' => null), array(), 900);
+        $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks' => null), array(), 1000);
         if (count($views))
             foreach ($views as $view) {
-                $refer = $view->getRefer();
+                $refer = trim($view->getRefer());
                 $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title' => $refer));
                 if ($referLink == null && !empty($refer)) {
                     $referLink = new Refer();
