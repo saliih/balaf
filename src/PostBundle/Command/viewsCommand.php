@@ -25,21 +25,21 @@ class viewsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks'=>null),array(),900);
-        if(count($views))
-        foreach ($views as $view){
-            $refer = $view->getRefer();
-            $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
-            if($referLink==null && !empty($refer)){
-                $referLink = new Refer();
-                $referLink->setTitle($refer);
+        $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks' => null), array(), 900);
+        if (count($views))
+            foreach ($views as $view) {
+                $refer = $view->getRefer();
+                $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title' => $refer));
+                if ($referLink == null && !empty($refer)) {
+                    $referLink = new Refer();
+                    $referLink->setTitle($refer);
+                    $em->persist($referLink);
+                    $em->flush();
+                }
+                $view->setReferLinks($referLink);
                 $em->persist($referLink);
                 $em->flush();
             }
-            $view->setReferLinks($referLink);
-            $em->persist($referLink);
-            $em->flush();
-        }
         else
             $output->writeln("fin");
         $output->writeln("done");

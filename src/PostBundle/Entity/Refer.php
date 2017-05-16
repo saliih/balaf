@@ -32,6 +32,16 @@ class Refer
      */
     private $views;
 
+    private $nbview = 0;
+
+    /**
+     * @return int
+     */
+    public function getNbview()
+    {
+        return count($this->views);
+    }
+
     public function __toString()
     {
         return $this->title;
