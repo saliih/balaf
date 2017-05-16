@@ -25,7 +25,7 @@ class viewsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks'=>null),array(),100);
+        $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks'=>null),array(),900);
         foreach ($views as $view){
             $refer = $view->getRefer();
             $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
