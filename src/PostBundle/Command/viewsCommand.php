@@ -26,6 +26,7 @@ class viewsCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
         $views = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Views')->findBy(array('referLinks'=>null),array(),900);
+        if(count($views))
         foreach ($views as $view){
             $refer = $view->getRefer();
             $referLink = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
@@ -39,6 +40,8 @@ class viewsCommand extends ContainerAwareCommand
             $em->persist($referLink);
             $em->flush();
         }
+        else
+            $output->writeln("fin");
         $output->writeln("done");
     }
 }
