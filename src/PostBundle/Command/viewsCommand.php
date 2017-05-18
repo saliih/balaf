@@ -33,10 +33,9 @@ class viewsCommand extends ContainerAwareCommand
                 if ($referLink === null) {
                     $referLink = new Refer();
                     $referLink->setTitle($refer);
-                    $em->persist($referLink);
-                    $em->flush();
-                    $output->writeln($refer);
                 }
+                $em->persist($referLink);
+                $em->flush();
                 $view->setReferLinks($referLink);
                 $em->persist($view);
             }

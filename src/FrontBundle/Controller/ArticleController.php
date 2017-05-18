@@ -26,10 +26,10 @@ class ArticleController extends Controller
             $em->persist($article);
             $refer = $request->headers->get('referer');
             if ($view === null && $refer != "") {
-                $referLink = $this->getDoctrine()->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
+                $referLink = $this->getDoctrine()->getRepository('PostBundle:Refer')->findOneBy(array('title'=>trim($refer)));
                 if ($referLink === null) {
                     $referLink = new Refer();
-                    $referLink->setTitle(parse_url(trim($refer), PHP_URL_HOST));
+                    $referLink->setTitle(trim(parse_url($refer, PHP_URL_HOST)));
                     $em->persist($referLink);
                     $em->flush();
                 }
