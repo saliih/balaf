@@ -43,7 +43,7 @@ class ViewsAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('dv')
+            ->add('dv','doctrine_orm_datetime_range', array('field_type'=>'sonata_type_datetime_range_picker'))
             ->add('post')
             ->add('refer')
             ->add('ip')
