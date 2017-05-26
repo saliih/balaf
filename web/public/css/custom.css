@@ -6,6 +6,6 @@
 .height280{
     height:280px;
 }
-.container{
-    background: url('img/bg.png') repeat;
+body{
+    background: url('img/bg.png') repeat !important;
 }
