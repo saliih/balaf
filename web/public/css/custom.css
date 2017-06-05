@@ -13,3 +13,6 @@ body{
 .blog-content {
     background: #ffffff;
 }
+.pagination .active{
+    background: #f60 !important;
+}
