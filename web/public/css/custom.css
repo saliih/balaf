@@ -15,4 +15,5 @@ body{
 }
 .pagination .active{
     background: #f60 !important;
+    color: #ffffff !important;
 }
