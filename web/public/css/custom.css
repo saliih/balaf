@@ -17,3 +17,8 @@ body{
     background: #f60 !important;
     color: #ffffff !important;
 }
+.sidebarafter10{
+    border-top: 1px solid #444444;
+    padding-top: 10px
+}
+.fancybox{display: none;}

@@ -1,20 +1,10 @@
 {% extends '::base.html.twig' %}
-
-    {% block stylesheets %}
-        {{ parent() }}
-
-<style>
-    .fancybox{display: none;}
-</style>
-    {% endblock %}
 {% block title %}Tounsia.Net Le portail de la femme tunisienne astuce beauté & cuisine{% endblock %}
 {% block descriptionMeta %}TounsiaNet : Le portail de la femme tunisienne qui fournit plusieurs recettes, astuce de beauté, santé pour simplifier la vie de la femme tunisienne{% endblock %}
 {% block body %}
 <a href="#" class="fancybox" id="fancyboxiframe"></a>
 <div class="main-content mag-content clearfix">
-
     {{ render(controller('FrontBundle:Block:top')) }}
-
     <div class="row main-body" data-stickyparent>
         <div class="col-md-8">
             <section class="admag-block">
@@ -23,14 +13,9 @@
                     {{ render(controller('FrontBundle:Block:cuisine')) }}
                 </div>
             </section>
-
             {{ render(controller('FrontBundle:Block:maman')) }}
-
         </div>
-
-
         {{ render(controller('FrontBundle:Default:sidebar')) }}
-
         <section class="admag-block">
             <div class="row">
                 {{ render(controller('FrontBundle:Block:center',{id:4})) }}
@@ -286,6 +271,5 @@
                     </div>       </div>
         #}
     </div>
-
-
+</div>
     {% endblock %}
