@@ -60,8 +60,8 @@ sonata_admin:
             #- { position: right, type: sonata.block.service.posts, settings: { template: 'PostBundle:Block:Posts.html.twig'  } }
 
             - { position: right, type: sonata.block.service.short1, settings: { template: 'PostBundle:Block:short1.html.twig'  } }
-            - { position: right, type: sonata.block.service.share, settings: { template: 'PostBundle:Block:share.html.twig'  } }
             - { position: right, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
+            - { position: right, type: sonata.block.service.share, settings: { template: 'PostBundle:Block:share.html.twig'  } }
             - { position: right, type: sonata.block.service.viewposts, settings: { template: 'PostBundle:Block:viewposts.html.twig'  } }
             - { position: right, type: sonata.block.service.refer, settings: { template: 'PostBundle:Block:refer.html.twig'  } }
 

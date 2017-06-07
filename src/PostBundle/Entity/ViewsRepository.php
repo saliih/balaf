@@ -12,27 +12,44 @@ use Doctrine\ORM\EntityRepository;
  */
 class ViewsRepository extends EntityRepository
 {
-    public function findpopular(){
+    public function findpopular()
+    {
         $dt = new \DateTime();
         $dt->modify("-1 week");
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
-                                 p.dv >='".$dt->format('Y-m-d')."'");
+                                 p.dv >='" . $dt->format('Y-m-d') . "'");
         return $query->getResult();
 
     }
-    public function findMonth(){
+
+    public function findMonth()
+    {
         $dt = new \DateTime();
         $dt->modify("-1 month");
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
-                                 p.dv >='".$dt->format('Y-m-d')."'");
+                                 p.dv >='" . $dt->format('Y-m-d') . "'");
         return $query->getResult();
 
     }
-    public function findWeek(){
+
+    public function findquanze()
+    {
+        $dt = new \DateTime();
+        $dt->modify("-15 days");
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='" . $dt->format('Y-m-d') . "'");
+        return $query->getResult();
+
+    }
+
+    public function findWeek()
+    {
         $dt = new \DateTime();
         $dt->modify("-8 days");
         $dtend = new \DateTime();
@@ -40,27 +57,31 @@ class ViewsRepository extends EntityRepository
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
-                                 p.dv >='".$dt->format('Y-m-d')." 00:00:00'
-                                 and p.dv <= '".$dtend->format('Y-m-d')." 23:59:59'
+                                 p.dv >='" . $dt->format('Y-m-d') . " 00:00:00'
+                                 and p.dv <= '" . $dtend->format('Y-m-d') . " 23:59:59'
                                  ");
         return $query->getResult();
 
     }
-    public function findToday(){
+
+    public function findToday()
+    {
         $dt = new \DateTime();
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
-                                 p.dv >='".$dt->format('Y-m-d')." 00:00:00'");
+                                 p.dv >='" . $dt->format('Y-m-d') . " 00:00:00'");
         return $query->getResult();
 
     }
-    public function findOneday($dt){
+
+    public function findOneday($dt)
+    {
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
-                                 p.dv >='".$dt->format('Y-m-d')." 00:00:00'
-                                 and  p.dv <='".$dt->format('Y-m-d')." 23:59:59'
+                                 p.dv >='" . $dt->format('Y-m-d') . " 00:00:00'
+                                 and  p.dv <='" . $dt->format('Y-m-d') . " 23:59:59'
                                  ");
         return $query->getResult();
 

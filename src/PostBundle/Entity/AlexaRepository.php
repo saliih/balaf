@@ -14,7 +14,7 @@ class AlexaRepository extends EntityRepository
 {
     public function findMonth(){
         $dt = new \DateTime();
-        $dt->modify("-1 month");
+        $dt->modify("-10 days");
         $query = $this->getEntityManager()
             ->createQuery("select a from
                                 PostBundle\Entity\Alexa as a where 
