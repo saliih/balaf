@@ -25,11 +25,12 @@ class ArticleController extends Controller
             $article->setNbview($newnb);
             $em->persist($article);
             $refer = $request->headers->get('referer');
+            $refer = parse_url($refer, PHP_URL_HOST);
             if ($view === null && $refer != "") {
-                $referLink = $this->getDoctrine()->getRepository('PostBundle:Refer')->findOneBy(array('title'=>trim($refer)));
+                $referLink = $this->getDoctrine()->getRepository('PostBundle:Refer')->findOneBy(array('title'=>$refer));
                 if ($referLink === null) {
                     $referLink = new Refer();
-                    $referLink->setTitle(trim(parse_url($refer, PHP_URL_HOST)));
+                    $referLink->setTitle($refer);
                     $em->persist($referLink);
                     $em->flush();
                 }

@@ -132,7 +132,7 @@ class Views
      */
     public function setRefer($refer)
     {
-        $this->refer = parse_url($refer, PHP_URL_HOST);
+        $this->refer = $refer;
     }
 
     /**
