@@ -28,7 +28,7 @@ class Refer
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Views", mappedBy="category", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Views", mappedBy="referLinks", cascade={"persist"})
      */
     private $views;
 
