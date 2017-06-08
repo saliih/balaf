@@ -53,12 +53,10 @@ class ViewMonthsBlockService extends BaseBlockService
         $views = $this->em->getRepository('PostBundle:Views')->find6Months();
         $final = array();
         foreach ($views as $view) {
-           $view = new Views();
            if(!isset($final[$view->getDv()->format('Y-m')]))
                $final[$view->getDv()->format('Y-m')] = 0;
             $final[$view->getDv()->format('Y-m')] ++;
         }
-
         return $this->renderResponse($blockContext->getTemplate(), array(
             'final' => $final,
             'title' => "Article par mois",
