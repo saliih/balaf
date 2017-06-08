@@ -50,7 +50,7 @@ class ViewMonthsBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $views = $this->em->getRepository('PostBundle:Views')->find6Months();
+        $views = $this->em->getRepository('PostBundle:Views')->findYear();
         $final = array();
         foreach ($views as $view) {
            if(!isset($final[$view->getDv()->format('Y-m')]))
