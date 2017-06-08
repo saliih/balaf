@@ -1,0 +1,59 @@
+{% extends 'SonataBlockBundle:Block:block_base.html.twig' %}
+
+
+
+{% block block %}
+
+    <div class="box box-success">
+
+        <div class="box-header">
+            <h3 class="box-title"> {{ title }}</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="box-body">
+            <div id="month-chart" style="height: 225px;"></div>
+        </div>
+
+    </div>
+    <script>
+        $(function () {
+            {% set i=1 %}
+
+            var bar_data_views = {
+                data: [
+                    {% for key,item in final %}
+                    ["{{ key }}", {{ item }}],
+                    {% set i=i+1 %}
+                    {% endfor %}
+                ]
+            };
+
+            var stack = true,
+                bars = true,
+                lines = false,
+                steps = false;
+
+            $.plot("#month-chart", [bar_data_views], {
+                series: {
+                    stack: false,
+
+                    bars: {
+                        show: true,
+                        barWidth: 0.6
+                    }
+                },
+
+                xaxis: {
+                    mode: "categories",
+                    tickLength: 0
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -23,6 +23,17 @@ class ViewsRepository extends EntityRepository
         return $query->getResult();
 
     }
+    public function find6Months()
+    {
+        $dt = new \DateTime();
+        $dt->modify("-6 months");
+        $query = $this->getEntityManager()
+            ->createQuery("select p  from
+                                PostBundle\Entity\Views as p where 
+                                 p.dv >='" . $dt->format('Y-m-d') . "'");
+        return $query->getResult();
+
+    }
 
     public function findMonth()
     {
