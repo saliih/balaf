@@ -87,6 +87,11 @@ sonata_admin:
                     - admin.setings
                     - admin.views
                     - admin.refer
+            WebTv:
+                label: WebTv
+                icon: '<i class="fa fa-youtube" aria-hidden="true"></i>'
+                items:
+                    - admin.chaines
             Users:
                 label: Users
                 icon: '<i class="fa fa-users"></i>'

@@ -120,3 +120,9 @@ services:
         arguments: [~, PostBundle\Entity\Settings, ~] #MailingBundle:CRUD
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Settings'}
+
+    admin.chaines:
+        class: PostBundle\Admin\ChainesAdmin
+        arguments: [~, PostBundle\Entity\Chaines, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "WebTv" ,label: 'Chaines Youtube'}
