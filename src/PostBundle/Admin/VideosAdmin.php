@@ -19,21 +19,25 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class VideosAdmin extends Admin
 {
-    public function getname()
-    {
-        return 'Chaines Youtube';
-    }
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'created',
+
+    );
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id', null,array('label'=>'Miniature','template'=>'PostBundle:Videos:thumbnail.html.twig'))
             ->add('name')
+            ->add('category')
             ->add('createdby')
             ->add('created')
             ->add('act', null, array('editable' => true))
             ->add('trt', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
+                    'edit' => array(),
                     'delete' => array(),
                 )
             ));
