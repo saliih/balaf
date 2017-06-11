@@ -121,8 +121,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Settings'}
 
-    admin.chaines:
-        class: PostBundle\Admin\ChainesAdmin
-        arguments: [~, PostBundle\Entity\Chaines, ~] #MailingBundle:CRUD
+    admin.videos:
+        class: PostBundle\Admin\VideosAdmin
+        arguments: [~, PostBundle\Entity\Videos, ~] #MailingBundle:CRUD
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "WebTv" ,label: 'Chaines Youtube'}
+            - { name: sonata.admin, manager_type: orm, group: "WebTv" ,label: 'Videos Youtube'}

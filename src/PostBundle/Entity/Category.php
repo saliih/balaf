@@ -50,6 +50,10 @@ class Category
      * @ORM\OneToMany(targetEntity="Post", mappedBy="category", cascade={"persist"})
      */
     private $posts;
+    /**
+     * @ORM\OneToMany(targetEntity="Videos", mappedBy="category", cascade={"persist"})
+     */
+    private $videos;
 
     /**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist"})
@@ -296,5 +300,38 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \PostBundle\Entity\Videos $videos
+     * @return Category
+     */
+    public function addVideo(\PostBundle\Entity\Videos $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \PostBundle\Entity\Videos $videos
+     */
+    public function removeVideo(\PostBundle\Entity\Videos $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }

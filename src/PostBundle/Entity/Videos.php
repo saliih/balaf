@@ -1,0 +1,310 @@
+<?php
+
+namespace PostBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Videos
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Videos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     **/
+    private $createdby;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="videos")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     **/
+    private $category;
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="created", type="date",nullable=true)
+     */
+    private $created;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="body", type="text", length=255, nullable=true)
+     */
+    private $body;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="videoId", type="string", length=255, nullable=true)
+     */
+    private $videosId;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="act", type="boolean")
+     */
+    private $act;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="trt", type="boolean")
+     */
+    private $trt;
+
+    public function __toString()
+    {
+        return (string)$this->name;
+    }
+
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+        $this->act=false;
+        $this->trt=false;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Chaines
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Chaines
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set act
+     *
+     * @param boolean $act
+     * @return Chaines
+     */
+    public function setAct($act)
+    {
+        $this->act = $act;
+
+        return $this;
+    }
+
+    /**
+     * Get act
+     *
+     * @return boolean 
+     */
+    public function getAct()
+    {
+        return $this->act;
+    }
+
+    /**
+     * Set body
+     *
+     * @param string $body
+     * @return Videos
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * Get body
+     *
+     * @return string 
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Set trt
+     *
+     * @param boolean $trt
+     * @return Videos
+     */
+    public function setTrt($trt)
+    {
+        $this->trt = $trt;
+
+        return $this;
+    }
+
+    /**
+     * Get trt
+     *
+     * @return boolean 
+     */
+    public function getTrt()
+    {
+        return $this->trt;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Videos
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set createdby
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdby
+     * @return Videos
+     */
+    public function setCreatedby(\Application\Sonata\UserBundle\Entity\User $createdby = null)
+    {
+        $this->createdby = $createdby;
+
+        return $this;
+    }
+
+    /**
+     * Get createdby
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getCreatedby()
+    {
+        return $this->createdby;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \PostBundle\Entity\Category $category
+     * @return Videos
+     */
+    public function setCategory(\PostBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \PostBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set videosId
+     *
+     * @param string $videosId
+     * @return Videos
+     */
+    public function setVideosId($videosId)
+    {
+        $this->videosId = $videosId;
+
+        return $this;
+    }
+
+    /**
+     * Get videosId
+     *
+     * @return string 
+     */
+    public function getVideosId()
+    {
+        return $this->videosId;
+    }
+}
