@@ -48,6 +48,7 @@ class VideosAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('url')
+            ->add('created', 'sonata_type_date_picker', array('required' => false, 'dp_language' => 'fr', 'format' => 'dd/MM/yyyy'))
             ->add('category', null, array('label' => 'Catégorie'));
 
     }
