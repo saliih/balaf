@@ -126,3 +126,11 @@ services:
         arguments: [~, PostBundle\Entity\Videos, ~] #MailingBundle:CRUD
         tags:
             - { name: sonata.admin, manager_type: orm, group: "WebTv" ,label: 'Videos Youtube'}
+        #calls:
+        #    - [ setTemplate, [edit, PostBundle:Videos:edit.html.twig]]
+
+    admin.channel:
+        class: PostBundle\Admin\ChannelAdmin
+        arguments: [~, PostBundle\Entity\Channel, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "WebTv" ,label: 'Channel Youtube'}

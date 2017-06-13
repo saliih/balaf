@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:edit.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@PostBundle/Resources/public/js/videos.js'
+    filter="?jsqueeze" %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+

@@ -34,24 +34,6 @@ class Videos
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url2", type="string", length=255, nullable=true)
-     */
-    private $url2;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url3", type="string", length=255, nullable=true)
-     */
-    private $url3;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url4", type="string", length=255, nullable=true)
-     */
-    private $url4;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
@@ -65,6 +47,11 @@ class Videos
      **/
     private $category;
     /**
+     * @ORM\ManyToOne(targetEntity="Channel", inversedBy="videos")
+     * @ORM\JoinColumn(name="channel_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     **/
+    private $channel;
+    /**
      * @var \Date
      *
      * @ORM\Column(name="created", type="date",nullable=true)
@@ -73,9 +60,15 @@ class Videos
     /**
      * @var string
      *
-     * @ORM\Column(name="body", type="text", length=255, nullable=true)
+     * @ORM\Column(name="body", type="text",nullable=true)
      */
     private $body;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tags", type="text", nullable=true)
+     */
+    private $tags;
 
     /**
      * @var string
@@ -109,6 +102,7 @@ class Videos
         $this->trt=false;
     }
 
+
     /**
      * Get id
      *
@@ -123,7 +117,7 @@ class Videos
      * Set name
      *
      * @param string $name
-     * @return Chaines
+     * @return Videos
      */
     public function setName($name)
     {
@@ -146,7 +140,7 @@ class Videos
      * Set url
      *
      * @param string $url
-     * @return Chaines
+     * @return Videos
      */
     public function setUrl($url)
     {
@@ -166,26 +160,26 @@ class Videos
     }
 
     /**
-     * Set act
+     * Set created
      *
-     * @param boolean $act
-     * @return Chaines
+     * @param \DateTime $created
+     * @return Videos
      */
-    public function setAct($act)
+    public function setCreated($created)
     {
-        $this->act = $act;
+        $this->created = $created;
 
         return $this;
     }
 
     /**
-     * Get act
+     * Get created
      *
-     * @return boolean 
+     * @return \DateTime 
      */
-    public function getAct()
+    public function getCreated()
     {
-        return $this->act;
+        return $this->created;
     }
 
     /**
@@ -212,6 +206,75 @@ class Videos
     }
 
     /**
+     * Set tags
+     *
+     * @param string $tags
+     * @return Videos
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set videosId
+     *
+     * @param string $videosId
+     * @return Videos
+     */
+    public function setVideosId($videosId)
+    {
+        $this->videosId = $videosId;
+
+        return $this;
+    }
+
+    /**
+     * Get videosId
+     *
+     * @return string 
+     */
+    public function getVideosId()
+    {
+        return $this->videosId;
+    }
+
+    /**
+     * Set act
+     *
+     * @param boolean $act
+     * @return Videos
+     */
+    public function setAct($act)
+    {
+        $this->act = $act;
+
+        return $this;
+    }
+
+    /**
+     * Get act
+     *
+     * @return boolean 
+     */
+    public function getAct()
+    {
+        return $this->act;
+    }
+
+    /**
      * Set trt
      *
      * @param boolean $trt
@@ -232,29 +295,6 @@ class Videos
     public function getTrt()
     {
         return $this->trt;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return Videos
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
     }
 
     /**
@@ -304,94 +344,25 @@ class Videos
     }
 
     /**
-     * Set videosId
+     * Set channel
      *
-     * @param string $videosId
+     * @param \PostBundle\Entity\Channel $channel
      * @return Videos
      */
-    public function setVideosId($videosId)
+    public function setChannel(\PostBundle\Entity\Channel $channel = null)
     {
-        $this->videosId = $videosId;
+        $this->channel = $channel;
 
         return $this;
     }
 
     /**
-     * Get videosId
+     * Get channel
      *
-     * @return string 
+     * @return \PostBundle\Entity\Channel 
      */
-    public function getVideosId()
+    public function getChannel()
     {
-        return $this->videosId;
-    }
-
-    /**
-     * Set url2
-     *
-     * @param string $url2
-     * @return Videos
-     */
-    public function setUrl2($url2)
-    {
-        $this->url2 = $url2;
-
-        return $this;
-    }
-
-    /**
-     * Get url2
-     *
-     * @return string 
-     */
-    public function getUrl2()
-    {
-        return $this->url2;
-    }
-
-    /**
-     * Set url3
-     *
-     * @param string $url3
-     * @return Videos
-     */
-    public function setUrl3($url3)
-    {
-        $this->url3 = $url3;
-
-        return $this;
-    }
-
-    /**
-     * Get url3
-     *
-     * @return string 
-     */
-    public function getUrl3()
-    {
-        return $this->url3;
-    }
-
-    /**
-     * Set url4
-     *
-     * @param string $url4
-     * @return Videos
-     */
-    public function setUrl4($url4)
-    {
-        $this->url4 = $url4;
-
-        return $this;
-    }
-
-    /**
-     * Get url4
-     *
-     * @return string 
-     */
-    public function getUrl4()
-    {
-        return $this->url4;
+        return $this->channel;
     }
 }

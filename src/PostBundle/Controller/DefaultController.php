@@ -11,28 +11,32 @@ class DefaultController extends Controller
     {
         return $this->render('PostBundle:Default:index.html.twig', array('name' => $name));
     }
-    public function linkpostAction(){
-        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled'=>true));
+
+    public function linkpostAction()
+    {
+        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled' => true));
         $tab = array();
-        foreach($posts as $post){
+        foreach ($posts as $post) {
             $tab[] = array(
-                "title"=>$post->getTitle(),
-                "value"=>$this->generateUrl('front_article',array(
-                    "locale"=>"fr",
-                    "categoryname"=>$post->getCategory()->getSlug(),
-                    "year"=> $post->getCreated()->format("Y"),
-                    "month"=> $post->getCreated()->format("m"),
-                    "slug"=>$post->getAlias()
+                "title" => $post->getTitle(),
+                "value" => $this->generateUrl('front_article', array(
+                    "locale" => "fr",
+                    "categoryname" => $post->getCategory()->getSlug(),
+                    "year" => $post->getCreated()->format("Y"),
+                    "month" => $post->getCreated()->format("m"),
+                    "slug" => $post->getAlias()
                 ))
             );
         }
         return new JsonResponse($tab);
     }
-    public function toolbarAction(){
+
+    public function toolbarAction()
+    {
         $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $search = $this->getDoctrine()->getRepository('PostBundle:Search')->findBy(array('act'=>false));
-        $tasks = $this->getDoctrine()->getRepository('PostBundle:Tasks')->findBy(array('act'=>false));
+        $search = $this->getDoctrine()->getRepository('PostBundle:Search')->findBy(array('act' => false));
+        $tasks = $this->getDoctrine()->getRepository('PostBundle:Tasks')->findBy(array('act' => false));
 
         $view = 0;
         $myview = 0;
@@ -54,4 +58,19 @@ class DefaultController extends Controller
         ));
 
     }
+
+    public function youtubeAction()
+    {
+        $request = $this->get('request');
+        $url = $request->request->get('url');
+        $tab = explode('=', $url);
+        $id = $tab[1];
+        $html = 'https://www.googleapis.com/youtube/v3/videos?id=' . $id . '&key=AIzaSyBGseWi-G-NxC1wO0R4UtTEg0HmSPXSJlI&part=snippet';
+        $response = file_get_contents($html);
+        $decoded = json_decode($response, true);
+        $data = $decoded['items'][0]['snippet'];
+        $data['publishedAt'] = $this->convertdate($data['publishedAt']);
+        return new JsonResponse($data);
+    }
+
 }

@@ -43,7 +43,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ PostBundle ]
     #java: /usr/bin/java
     filters:
         jsqueeze: ~
@@ -114,4 +114,4 @@ knp_paginator:
 
 
 fos_js_routing:
-    routes_to_expose: [ jsonlinks ]
+    routes_to_expose: [ jsonlinks , jsonyoutube ]

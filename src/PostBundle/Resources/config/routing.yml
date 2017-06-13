@@ -4,3 +4,6 @@ post_homepage:
 jsonlinks:
     path:     /jsonlinks
     defaults: { _controller: PostBundle:Default:linkpost }
+jsonyoutube:
+    path:     /youtube
+    defaults: { _controller: PostBundle:Default:youtube }
