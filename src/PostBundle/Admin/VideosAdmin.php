@@ -32,6 +32,7 @@ class VideosAdmin extends Admin
         $listMapper
             ->add('id', null, array('label' => 'Miniature', 'template' => 'PostBundle:Videos:thumbnail.html.twig'))
             ->add('channel')
+            ->add('url')
             ->add('name')
             ->add('createdby')
             ->add('created')
