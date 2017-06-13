@@ -34,6 +34,24 @@ class Videos
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url2", type="string", length=255, nullable=true)
+     */
+    private $url2;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url3", type="string", length=255, nullable=true)
+     */
+    private $url3;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url4", type="string", length=255, nullable=true)
+     */
+    private $url4;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
@@ -306,5 +324,74 @@ class Videos
     public function getVideosId()
     {
         return $this->videosId;
+    }
+
+    /**
+     * Set url2
+     *
+     * @param string $url2
+     * @return Videos
+     */
+    public function setUrl2($url2)
+    {
+        $this->url2 = $url2;
+
+        return $this;
+    }
+
+    /**
+     * Get url2
+     *
+     * @return string 
+     */
+    public function getUrl2()
+    {
+        return $this->url2;
+    }
+
+    /**
+     * Set url3
+     *
+     * @param string $url3
+     * @return Videos
+     */
+    public function setUrl3($url3)
+    {
+        $this->url3 = $url3;
+
+        return $this;
+    }
+
+    /**
+     * Get url3
+     *
+     * @return string 
+     */
+    public function getUrl3()
+    {
+        return $this->url3;
+    }
+
+    /**
+     * Set url4
+     *
+     * @param string $url4
+     * @return Videos
+     */
+    public function setUrl4($url4)
+    {
+        $this->url4 = $url4;
+
+        return $this;
+    }
+
+    /**
+     * Get url4
+     *
+     * @return string 
+     */
+    public function getUrl4()
+    {
+        return $this->url4;
     }
 }

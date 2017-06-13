@@ -28,7 +28,7 @@ class VideosAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null,array('label'=>'Miniature','template'=>'PostBundle:Videos:thumbnail.html.twig'))
+            ->add('id', null, array('label' => 'Miniature', 'template' => 'PostBundle:Videos:thumbnail.html.twig'))
             ->add('name')
             ->add('category')
             ->add('createdby')
@@ -48,8 +48,11 @@ class VideosAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('url')
-            ->add('created', 'sonata_type_date_picker', array('required' => false, 'dp_language' => 'fr', 'format' => 'dd/MM/yyyy'))
-            ->add('category', null, array('label' => 'Catégorie'));
+            ->add('url2', null, array('required' => false))
+            ->add('url3', null, array('required' => false))
+            ->add('url4', null, array('required' => false))
+            ->add('created', 'sonata_type_date_picker', array('required' => true, 'dp_language' => 'fr', 'format' => 'dd/MM/yyyy'))
+            ->add('category', null, array('label' => 'Catégorie','required' => false));
 
     }
 
