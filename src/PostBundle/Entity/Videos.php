@@ -73,7 +73,7 @@ class Videos
     /**
      * @var string
      *
-     * @ORM\Column(name="videoId", type="string", length=255, nullable=true)
+     * @ORM\Column(name="videoId", type="string", length=255, nullable=true, unique=true)
      */
     private $videosId;
 
