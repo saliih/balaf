@@ -36,7 +36,8 @@ class TwitterCommand extends ContainerAwareCommand
         $auth = new SingleUserAuth($credentials, $serializer);
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
-        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true, 'ramadan2017' => true), array('id' => 'DESC'));
+        $category = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Category')->find(7);
+        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true, 'category' => $category), array('id' => 'DESC'));
         $autoshare =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(1);
         if($autoshare->getAct()) {
             try {
