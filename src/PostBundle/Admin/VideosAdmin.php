@@ -45,6 +45,18 @@ class VideosAdmin extends Admin
             ));
     }
 
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('name');
+        $datagridMapper
+            ->add('channel')
+            ->add('createdby')
+            ->add('act')
+            ->add('trt');
+
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -77,8 +89,8 @@ class VideosAdmin extends Admin
         //echo "<pre>";print_r($decoded);exit;
         $data = $decoded['items'][0]['snippet'];
 
-        $channel = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository('PostBundle:Channel')->findOneBy(array('name'=>$data['channelTitle']));
-        if($channel==null) {
+        $channel = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository('PostBundle:Channel')->findOneBy(array('name' => $data['channelTitle']));
+        if ($channel == null) {
             $channel = new Channel();
             $channel->setName($data['channelTitle']);
             $channel->setChannelId($data['channelId']);
