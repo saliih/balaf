@@ -50,9 +50,8 @@ class ShareBlockService extends BaseBlockService
     {
         // merge settings
         $settings = $blockContext->getSettings();
-        $category = $this->em->getRepository('PostBundle:Category')->find(7);
-        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array('category'=>$category, 'twitter' => false, 'enabled' => true), array('id' => 'DESC'),3);
-        $postsnonactive = $this->em->getRepository('PostBundle:Post')->findBy(array('category' => $category,'twitter' => false, 'enabled' => true));
+        $posts = $this->em->getRepository('PostBundle:Post')->findBy(array( 'twitter' => false, 'enabled' => true), array('id' => 'DESC'),3);
+        $postsnonactive = $this->em->getRepository('PostBundle:Post')->findBy(array('twitter' => false, 'enabled' => true));
 
         return $this->renderResponse($blockContext->getTemplate(), array(
             'posts' => $posts,

@@ -36,8 +36,7 @@ class TwitterCommand extends ContainerAwareCommand
         $auth = new SingleUserAuth($credentials, $serializer);
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
-        $category = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Category')->find(7);
-        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true, 'category' => $category), array('id' => 'DESC'));
+        $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
         $autoshare =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(1);
         if($autoshare->getAct()) {
             try {
@@ -45,13 +44,13 @@ class TwitterCommand extends ContainerAwareCommand
                     $year = $posts->getPublieddate()->format('Y');
                     $month = $posts->getPublieddate()->format('m');
                     $url = $this->getContainer()->get('router')->generate('front_article', array(
-                        'locale' => 'fr',
+                        'locale' => $posts->getLocale(),
                         'slug' => $posts->getAlias(),
                         'year' => $year,
                         'month' => $month,
                         'categoryname' => $posts->getCategory()->getSlug(),
                     ));
-                    $url = "http://www.tounsia.net" . $url;
+                    $url = "https://www.tounsia.net" . $url;
 
                     $params = array(
                         'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
@@ -65,7 +64,7 @@ class TwitterCommand extends ContainerAwareCommand
                         $posts->setShortlink($response['entities']['urls'][0]['url']);
                     $em->persist($posts);
                     $em->flush();
-                    echo "done \n";
+                    $output->writeln( "done");
                 } else {
                     $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();
                     foreach ($posts as $post) {
@@ -75,7 +74,7 @@ class TwitterCommand extends ContainerAwareCommand
                     $autoshare->setAct(false);
                     $em->persist($autoshare);
                     $em->flush();
-                    echo "reset \n";
+                    $output->writeln( "Reset");
                     $message = \Swift_Message::newInstance()
                         ->setSubject('share reseted')
                         ->setFrom('tounsianet@gmail.com')
