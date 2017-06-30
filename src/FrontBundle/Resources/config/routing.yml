@@ -11,7 +11,7 @@ front_category:
     path: /{locale}/category/{slug}
     defaults : { _controller: FrontBundle:Category:index }
 ramadan:
-    path: /{locale}/ramadan2017
+    path: /{locale}/ramadan{year}
     defaults : { _controller: FrontBundle:Category:ramadan }
 front_article:
     path: /{locale}/{categoryname}/{year}/{month}/article/{slug}/

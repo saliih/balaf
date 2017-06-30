@@ -61,12 +61,17 @@ class DefaultController extends Controller
     }
     public function sitemapsAction(){
         $categories  = $this->getDoctrine()->getRepository('PostBundle:Category')->findAll();
+        $nbPosts = array();
+        foreach ($categories as $category){
+            $nbPosts[$category->getId()] = ceil(count($category->getPosts())/12);
+        }
         $posts  = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
         $response = new Response();
         $response->headers->set('Content-Type', 'xml');
         return $this->render('FrontBundle:Default:sitemaps.xml.twig', array(
             'categories'=>$categories,
-            'articles'=>$posts
+            'articles'=>$posts,
+            'nbPosts'=>$nbPosts
         ),$response);
     }
     public function rssAction(){

@@ -4,15 +4,28 @@
         <loc>https://www.tounsia.net{{ path('front_homepage') }}</loc>
         <lastmod>2016-06-24</lastmod>
     </url>
+
     <url>
         <loc>https://www.tounsia.net/fr/ramadan2017</loc>
         <lastmod>2017-02-17</lastmod>
+    </url>
+    <url>
+        <loc>https://www.tounsia.net/fr/ramadan2018</loc>
+        <lastmod>2017-06-30</lastmod>
     </url>
     {% for item in categories %}
     <url>
         <loc>https://www.tounsia.net{{ path('front_category',{'locale':'fr' ,'slug':item.slug}) }}</loc>
         <lastmod>2016-06-04</lastmod>
     </url>
+	{% if nbPosts[item.id]>1 %}
+	{% for i in 2..nbPosts[item.id] %}
+	<url>
+        <loc>https://www.tounsia.net{{ path('front_category',{'locale':'fr' ,'slug':item.slug}) }}?page={{ i }}</loc>
+        <lastmod>2016-06-04</lastmod>
+    </url>
+	{% endfor %}
+	{% endif %}
     {% endfor %}
     {% for item in articles %}
         {% set year =  item.publieddate|date('Y') %}

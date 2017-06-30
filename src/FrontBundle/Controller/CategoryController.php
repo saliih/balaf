@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
 {
-    public function ramadanAction(Request $request){
+    public function ramadanAction(Request $request,$locale,$year){
         $posts = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array('ramadan2017' => true, 'enabled' => true), array('publieddate' => 'DESC', 'id' => 'DESC'));
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
