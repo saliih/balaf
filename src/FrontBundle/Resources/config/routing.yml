@@ -19,3 +19,6 @@ front_article:
 search_recipe:
     path: /recherche
     defaults : { _controller: FrontBundle:Category:search }
+echange:
+    path: /echange
+    defaults : { _controller: FrontBundle:Default:echange }

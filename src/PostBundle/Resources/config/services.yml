@@ -120,6 +120,11 @@ services:
         arguments: [~, PostBundle\Entity\Settings, ~] #MailingBundle:CRUD
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Settings'}
+    admin.echange:
+        class: PostBundle\Admin\EchangeAdmin
+        arguments: [~, PostBundle\Entity\Echange, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: "Liens d'echange"}
 
     admin.videos:
         class: PostBundle\Admin\VideosAdmin

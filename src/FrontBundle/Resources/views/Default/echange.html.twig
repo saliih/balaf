@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="row blog-content">
+    <div class="col-md-12">
+        <h3 class="block-title"><span>liens d'échange</span></h3>
+        {% for item in echanges %}
+            {{ item.body | raw }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

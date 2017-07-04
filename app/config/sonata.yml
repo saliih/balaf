@@ -73,12 +73,17 @@ sonata_admin:
                 icon: '<i class="fa fa-file-text" aria-hidden="true"></i>'
                 items:
                     - admin.posts
+            SEO:
+                label: Référencement
+                icon: '<i class="fa fa-globe" aria-hidden="true"></i>'
+                items:
+                    - admin.echange
+                    - admin.alexa
             Configuration:
                 label: Configurations
                 icon: '<i class="fa fa-cogs"></i>'
                 items:
                     - admin.tasks
-                    - admin.alexa
                     - admin.search
                     - admin.category
                     - admin.allowip
