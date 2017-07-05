@@ -1,4 +1,4 @@
-{% autoescape %}<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>https://www.tounsia.net{{ path('front_homepage') }}</loc>
@@ -36,4 +36,9 @@
         <lastmod>{{ item.publieddate|date('Y-m-d') }}</lastmod>
     </url>
     {% endfor %}
-</urlset>{% endautoescape %}
+
+    <url>
+        <loc>https://www.tounsia.net/echange</loc>
+        <lastmod>2017-07-04</lastmod>
+    </url>
+</urlset>
