@@ -51,7 +51,7 @@ class TwitterCommand extends ContainerAwareCommand
                         'categoryname' => $posts->getCategory()->getSlug(),
                     ));
                     $url = "https://www.tounsia.net" . $url;
-
+                    $output->writeln($url);
                     $params = array(
                         'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
                         //'media_ids' => implode(',', $media_ids),
