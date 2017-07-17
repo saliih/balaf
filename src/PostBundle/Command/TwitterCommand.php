@@ -31,14 +31,15 @@ class TwitterCommand extends ContainerAwareCommand
             'consumer_secret' => 'p2t1b0Vc47fjfs1y50Wrrzy77zcdrt4ZCDZNC6YOu0JIjRjpjK',
             'oauth_token' => '745913210520375296-jJ00sOLElS3nA6y7XSrvSYzvItP4iUM',
             'oauth_token_secret' => 'gEN2VT4DSZwAVPOiE7dws4jUKj2Ybfl0SwJjN5QlM91EY',
-        );
+        );$output->writeln("1");
         $serializer = new ArraySerializer();
         $auth = new SingleUserAuth($credentials, $serializer);
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
+        $output->writeln("2");
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
         $autoshare =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(1);
-        if($autoshare->getAct()) {
+        if($autoshare->getAct()) {$output->writeln("3");
             try {
                 if ($posts != null) {
                     $year = $posts->getPublieddate()->format('Y');
@@ -91,5 +92,6 @@ class TwitterCommand extends ContainerAwareCommand
                 $this->getContainer()->get('mailer')->send($message);
             }
         }
+        $output->writeln("4");
     }
 }
