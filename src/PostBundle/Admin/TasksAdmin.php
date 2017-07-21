@@ -36,8 +36,8 @@ class TasksAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
             ->add('dcr')
+            ->add('name')
             ->add('act', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
