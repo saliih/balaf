@@ -23,7 +23,16 @@ class TasksAdmin extends Admin
     {
         return 'Liste des tâches';
     }
+    public function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
 
+            ->add('dcr')
+            ->add('name')
+            ->add('body')
+
+        ;
+    }
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -32,6 +41,7 @@ class TasksAdmin extends Admin
             ->add('act', null, array('editable' => true))
             ->add('_action', 'actions', array(
                 'actions' => array(
+                    'show' => array(),
                     'delete' => array(),
                 )
             ));
