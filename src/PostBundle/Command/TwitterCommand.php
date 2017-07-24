@@ -89,7 +89,10 @@ class TwitterCommand extends ContainerAwareCommand
                     ->setTo('salah.chtioui@gmail.com')
                     ->setBody('Exception reçue : ' . $e->getMessage());
                 $this->getContainer()->get('mailer')->send($message);
+                $output->writeln("Error");
             }
+        }else{
+            $output->writeln("Not Activated");
         }
     }
 }
