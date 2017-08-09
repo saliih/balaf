@@ -38,6 +38,7 @@ class AlexaCommand extends ContainerAwareCommand
                 }
             } else {
                 $rate = $data->SD->COUNTRY['RANK'];
+                print_r($data);
                 print_r($rate);
                 if (isset($rate)) {
                     $value = (string)$rate;
