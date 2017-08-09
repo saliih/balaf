@@ -49,7 +49,7 @@ class AlexaCommand extends ContainerAwareCommand
                     }
                 }else{
                     $message = \Swift_Message::newInstance()
-                        ->setSubject('problème partage')
+                        ->setSubject('Alexa data')
                         ->setFrom('tounsianet@gmail.com')
                         ->setTo('salah.chtioui@gmail.com')
                         ->setBody('Exception reçue : no data from tunisia ' );
