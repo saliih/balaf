@@ -27,24 +27,25 @@ class AlexaCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $data = "http://data.alexa.com/data?cli=10&url=tounsia.net";
         if (($response_xml_data = file_get_contents($data)) === false) {
-            echo "Error fetching XML\n";
+            $output->writeln( "Error fetching XML");
         } else {
             libxml_use_internal_errors(true);
             $data = simplexml_load_string($response_xml_data);
             if (!$data) {
-                echo "Error loading XML\n";
+                $output->writeln( "Error loading XML");
                 foreach (libxml_get_errors() as $error) {
-                    echo "\t", $error->message;
+                    $output->writeln( $error->message);
                 }
             } else {
                 $rate = $data->SD->COUNTRY['RANK'];
+                print_r($rate);
                 if (isset($rate)) {
                     $value = (string)$rate;
                     $alexa = new Alexa();
                     $alexa->setValue($value);
                     $em->persist($alexa);
                     $em->flush();
-                    echo "\n done";
+                    $output->writeln( "done");
                 }
             }
         }
