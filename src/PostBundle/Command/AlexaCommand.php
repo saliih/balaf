@@ -48,6 +48,12 @@ class AlexaCommand extends ContainerAwareCommand
                         $output->writeln("done");
                     }
                 }else{
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('problème partage')
+                        ->setFrom('tounsianet@gmail.com')
+                        ->setTo('salah.chtioui@gmail.com')
+                        ->setBody('Exception reçue : no data from tunisia ' );
+                    $this->getContainer()->get('mailer')->send($message);
                     $output->writeln("No Data");
                 }
             }
