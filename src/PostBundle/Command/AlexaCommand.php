@@ -37,16 +37,20 @@ class AlexaCommand extends ContainerAwareCommand
                     $output->writeln( $error->message);
                 }
             } else {
-                $rate = $data->SD->COUNTRY['RANK'];
-                print_r($data);
-                print_r($rate);
-                if (isset($rate)) {
-                    $value = (string)$rate;
-                    $alexa = new Alexa();
-                    $alexa->setValue($value);
-                    $em->persist($alexa);
-                    $em->flush();
-                    $output->writeln( "done");
+                if(isset($data->SD->COUNTRY['RANK'])) {
+                    $rate = $data->SD->COUNTRY['RANK'];
+                    print_r($data);
+                    print_r($rate);
+                    if (isset($rate)) {
+                        $value = (string)$rate;
+                        $alexa = new Alexa();
+                        $alexa->setValue($value);
+                        $em->persist($alexa);
+                        $em->flush();
+                        $output->writeln("done");
+                    }
+                }else{
+                    $output->writeln("No Data");
                 }
             }
         }
