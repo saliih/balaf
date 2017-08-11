@@ -3,7 +3,7 @@ zenstruck_backup:
         database:
             mysqldump:
                 database: '%database_name%'
-        
+
     namers:
         daily:
             timestamp:
@@ -16,8 +16,10 @@ zenstruck_backup:
         zip: { zip: ~ }
     destinations:
         s3:
-            s3cmd:
-                bucket: "s3://foobar/backups"
+        #    s3cmd:
+        #        bucket: "s3://foobar/backups"
+            stream:
+                directory:     "/backup"
     profiles:
         daily:
             scratch_dir: "%kernel.root_dir%/cache/backup"
