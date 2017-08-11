@@ -23,13 +23,14 @@
         "sonata-project/doctrine-orm-admin-bundle": "*",
         "sonata-project/block-bundle": "*",
         "sonata-project/user-bundle": "*",
-        "nelmio/api-doc-bundle": "^2.12",
+        "nelmio/api-doc-bundle": "2.*",
         "knplabs/knp-paginator-bundle": "^2.5",
         "imagine/imagine": "^0.6.3",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "liip/imagine-bundle": "^1.5",
         "leafo/scssphp": "~0.1.5",
-        "patchwork/jsqueeze" : "v2.0.5"
+        "patchwork/jsqueeze" : "v2.0.5",
+        "zenstruck/backup-bundle": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
