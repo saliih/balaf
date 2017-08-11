@@ -1,39 +1,45 @@
 zenstruck_backup:
+    namers:
+
+        # Prototype
+        name:
+            simple:
+                name:                 backup
+            timestamp:
+                format:               YmdHis
+                prefix:               'tounsia'
+                timezone:             ~
+    processors:
+        # Prototype
+        name:
+            zip:
+                options:              '-r'
+                timeout:              300
+
     sources:
-        database:
-            mysqldump:
-                database: '%database_name%'
-        files:
-            rsync:
-                source: "%kernel.root_dir%/../backup"
-                additional_options:
-                    - --exclude=_cache/
-  # Prototype
+
+        # Prototype
         name:
             mysqldump:
                 database:             '%database_name%'
                 host:                 '%database_host%'
                 user:                 '%database_user%'
                 password:             '%database_password%'
-                timeout:              300
-    namers:
-        daily:
-            timestamp:
-                format: d
-                prefix: tounsia-
-        snapshot:
-            timestamp:
-                prefix: tounsia-
-    processors:
-        zip: { zip: ~ }
+                ssh_host:             null
+                ssh_user:             null
+                ssh_port:             22
+                timeout:              700
+
     destinations:
         s3:
             s3cmd:
-                bucket: "s3://foobar/backup/tounsia-{day-of-month}"
+                bucket: "s3://foobar/backups"
     profiles:
-        daily:
-            scratch_dir: "%kernel.root_dir%/cache/backup"
-            sources: [database]
-            namer: daily
-            processor: zip
-            destinations: [s3]
+
+        # Prototype
+        name:
+            scratch_dir:          '%kernel.cache_dir%/backup'
+            sources:              [database] # Required, can be a string
+            namer:                daily
+            processor:            zip
+            destinations:         [s3] # Required, can be a string
