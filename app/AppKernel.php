@@ -34,7 +34,6 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Zenstruck\BackupBundle\ZenstruckBackupBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
