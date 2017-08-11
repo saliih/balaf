@@ -2,12 +2,8 @@ zenstruck_backup:
     sources:
         database:
             mysqldump:
-                database: my_database
-        files:
-            rsync:
-                source: "%kernel.root_dir%/../web/files"
-                additional_options:
-                    - --exclude=_cache/
+                database: '%database_name%'
+        
     namers:
         daily:
             timestamp:
