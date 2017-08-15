@@ -66,3 +66,6 @@ DirectoryIndex app.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
+
+Redirect permanent /m/ https://www.tounsia.net
+Redirect permanent /sitemap https://www.tounsia.net/sitemap.xml
