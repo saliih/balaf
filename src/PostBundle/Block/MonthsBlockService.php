@@ -53,6 +53,7 @@ class MonthsBlockService extends BaseBlockService
         $final = array();
         $dt = new \DateTime();
         $dt->modify("-50 months");
+        
         foreach ($posts as $post) {
             $tocheck =  $post->getPublieddate()->format('Ym');
             $limit = $dt->format('Ym');
