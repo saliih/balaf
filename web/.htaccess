@@ -144,3 +144,11 @@ FileETag none
    Header unset Cache-Control
   </FilesMatch>
 </IfModule>
+
+
+
+
+Redirect permanent /m/ https://www.tounsia.net
+Redirect permanent /sitemap https://www.tounsia.net/sitemap.xml
+Redirect permanent /mobile/ https://www.tounsia.net
+Redirect permanent /fr/entrees/2016/12/article/cigares-la-viande/ https://www.tounsia.net/fr/entrees/2016/12/article/cigares-la-viande-swaba3-bel7am/
