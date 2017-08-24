@@ -53,12 +53,12 @@ class MonthsBlockService extends BaseBlockService
         $final = array();
         $dt = new \DateTime();
         $dt->modify("-50 months");
-        
+
         foreach ($posts as $post) {
             $tocheck =  $post->getPublieddate()->format('Ym');
             $limit = $dt->format('Ym');
             if($tocheck >= $limit) {
-                $index = $post->getPublieddate()->format('Y-m');
+                $index = $post->getPublieddate()->format('Ym');
                 if (!isset($final[$post->getCreatedby()->getUsername()][$index]))
                     $final[$post->getCreatedby()->getUsername()][$index] = 0;
                 $final[$post->getCreatedby()->getUsername()][$index]++;
