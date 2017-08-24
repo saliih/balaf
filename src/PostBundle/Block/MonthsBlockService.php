@@ -52,12 +52,12 @@ class MonthsBlockService extends BaseBlockService
         $posts = $this->em->getRepository('PostBundle:Post')->findAll();
         $final = array();
         $dt = new \DateTime();
-        $dt->modify("-1 year");
+        $dt->modify("-12 months");
         foreach ($posts as $post) {
             $tocheck =  $post->getPublieddate()->format('Ym');
-            $limit = $dt->format('Ym');
+            $limit = $dt->format('Y-m');
             if($tocheck >= $limit) {
-                $index = $post->getPublieddate()->format('Ym');
+                $index = $post->getPublieddate()->format('Y-m');
                 if (!isset($final[$post->getCreatedby()->getUsername()][$index]))
                     $final[$post->getCreatedby()->getUsername()][$index] = 0;
                 $final[$post->getCreatedby()->getUsername()][$index]++;
