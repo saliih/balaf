@@ -149,6 +149,7 @@ FileETag none
 
 
 
+Redirect permanent /track.aspx https://www.tounsia.net
 Redirect permanent /m/ https://www.tounsia.net
 Redirect permanent /sitemap https://www.tounsia.net/sitemap.xml
 Redirect permanent /mobile/ https://www.tounsia.net
