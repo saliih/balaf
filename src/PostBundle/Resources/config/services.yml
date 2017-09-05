@@ -109,6 +109,7 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Articles', icon:'<i class="fa fa-envelope"></i>' }
         calls:
+            - [addChild, ['@admin.views']]
             - [ setTemplate, [edit, PostBundle:Post:edit.html.twig]]
     admin.search:
         class: PostBundle\Admin\SearchAdmin

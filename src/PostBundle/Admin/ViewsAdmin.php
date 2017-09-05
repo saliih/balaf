@@ -19,6 +19,7 @@ use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class ViewsAdmin extends Admin
 {
+    protected $parentAssociationMapping = 'post';
     public function getname()
     {
         return 'View';
