@@ -53,7 +53,7 @@ class PostsAdmin extends Admin
             ))
             ->add('enabled', null, array('editable' => true));
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $listMapper->add('ramadan2017', null, array('editable' => true))
+            $listMapper->add('ramadan2017', null, array('label'=>'Ramadan','editable' => true))
                 ->add('twitter', null, array('editable' => true));
 
         }
