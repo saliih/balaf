@@ -60,10 +60,10 @@ class PostsAdmin extends Admin
         $listMapper->add('_action', 'actions', array(
             'actions' => array(
                 // 'view' => array(),
-                'edit' => array(),
-                'delete' => array(),
+                'edit' => array('template' => "PostBundle:Post:editbt.html.twig"),
                 "View" => array('template' => "PostBundle:Post:viewsbt.html.twig"),
                 "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig"),
+                'delete' => array('template' => "PostBundle:Post:deletebt.html.twig"),
             )
         ));
 
