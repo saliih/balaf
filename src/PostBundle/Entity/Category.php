@@ -3,6 +3,7 @@
 namespace PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PostBundle\Model\Seo as Seo;
 
 /**
  * Category
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Category
+class Category extends Seo
 {
     /**
      * @var integer

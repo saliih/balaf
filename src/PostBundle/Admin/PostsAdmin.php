@@ -44,7 +44,7 @@ class PostsAdmin extends Admin
                 'template' => 'PostBundle:Post:pic.html.twig'
             ))
             ->addIdentifier('title', null, array('label' => 'Titre'))
-            ->add('publieddate',null,array('template' => 'PostBundle:Post:publieddate.html.twig'))
+            ->add('publieddate', null, array('template' => 'PostBundle:Post:publieddate.html.twig'))
             ->add('category', null, array('label' => 'Catégorie'))
             ->add('createdby')
             ->add('nbview', null, array("label" => "real view"))
@@ -53,7 +53,7 @@ class PostsAdmin extends Admin
             ))
             ->add('enabled', null, array('editable' => true));
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $listMapper->add('ramadan2017', null, array('label'=>'Ramadan','editable' => true))
+            $listMapper->add('ramadan2017', null, array('label' => 'Ramadan', 'editable' => true))
                 ->add('twitter', null, array('editable' => true));
 
         }
@@ -87,17 +87,26 @@ class PostsAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Artcile', array('class' => 'col-md-8'))
-            ->add('title')
-            ->add('alias', null, array('required' => false))
-            ->add('article', 'textarea', array('required' => false))
+            ->tab('Article')
+                ->with('Artcile', array('class' => 'col-md-8'))
+                ->add('title')
+                ->add('alias', null, array('required' => false))
+                ->add('article', 'textarea', array('required' => false))
+                ->end()
+                ->with('Status', array('class' => 'col-md-4'))
+                ->add('enabled', null, array('required' => false))
+                ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
+                ->add('pic', null, array('required' => false))
+                ->add('category', null, array('required' => true))//->add('createdby')
+                ->end()
             ->end()
-            ->with('Status', array('class' => 'col-md-4'))
-            ->add('enabled', null, array('required' => false))
-            ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
-            ->add('pic', null, array('required' => false))
-            ->add('category', null, array('required' => true))//->add('createdby')
-        ;
+            ->tab('SEO')
+            ->with('Balise Méta', array('class' => 'col-md-12'))
+            ->add("titleSeo", null, array('required' => false))
+            ->add("descriptionSeo", 'textarea', array('required' => false))
+            ->end()
+            ->end()
+            ;
     }
 
     public function createQuery($context = 'list')

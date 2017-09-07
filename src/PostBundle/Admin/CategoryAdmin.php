@@ -17,7 +17,9 @@ class CategoryAdmin extends Admin
     }
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('title');
+        $datagridMapper
+            ->add('title')
+        ;
     }
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -52,10 +54,20 @@ class CategoryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->tab('Information')
+            ->with('Catégorie')
             ->add('title')
             ->add('ord')
             ->add('parent',null,array('required'=>false))
             ->add('description','textarea',array())
+            ->end()
+            ->end()
+            ->tab('SEO')
+            ->with('Balise Méta', array('class' => 'col-md-12'))
+            ->add("titleSeo", null, array('required' => false))
+            ->add("descriptionSeo", 'textarea', array('required' => false))
+            ->end()
+            ->end()
         ;
 
     }

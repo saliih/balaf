@@ -3,14 +3,14 @@
 namespace PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use PostBundle\Model\Seo as Seo;
 /**
  * Post
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PostBundle\Entity\PostRepository")
  */
-class Post
+class Post extends Seo
 {
     /**
      * @var integer
