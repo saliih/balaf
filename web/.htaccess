@@ -155,4 +155,5 @@ Redirect permanent /sitemap https://www.tounsia.net/sitemap.xml
 Redirect permanent /mobile/ https://www.tounsia.net
 Redirect permanent /fr/entrees/2016/12/article/cigares-la-viande/ https://www.tounsia.net/fr/entrees/2016/12/article/cigares-la-viande-swaba3-bel7am/
 Redirect permanent /fr/patisseries/2017/07/article/pain-perdu-chocolate/ https://www.tounsia.net/fr/patisseries/2017/07/article/pain-baguette-perdu-chocolate/
+Redirect permanent /fr/cuisine/2016/11/article/assida-aux-pistaches/ https://www.tounsia.net/fr/patisseries/2016/11/article/assidet-fozde9-assida-aux-pistaches/
 
