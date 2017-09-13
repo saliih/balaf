@@ -21,7 +21,7 @@ class ArticleController extends Controller
                 'ip' => $ip,
                 'dv' => new \DateTime()
             ));
-            $newnb = $article->getNbview() + 1;
+            $newnb = count($article->getView()) + 1;
             $article->setNbview($newnb);
             $em->persist($article);
             $refer = $request->headers->get('referer');
