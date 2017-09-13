@@ -1,30 +1,43 @@
 {% extends '::base.html.twig' %}
- {% block title %}{{ article.category.description }} : {{ article.title }}  sur tounsia.net{% endblock %}
- {% block descriptionMeta %}{{ article.category.description }} : {{ article.title }} {% if article.ramadan2017==1 %}pour Ramadan 2017{% endif %}{% endblock %}
+ {% block title %}
+     {% if article.titleSeo == "" %}
+         {{ article.category.description }} : {{ article.title }}  sur tounsia.net
+     {% elseif %}
+         {{ article.titleSeo }}
+     {% endif %}
+ {% endblock %}
+ {% block descriptionMeta %}
+     {% if article.descriptionSeo == "" %}
+         {{ article.category.description }} : {{ article.title }} {% if article.ramadan2017==1 %}pour Ramadan 2017{% endif %}
+     {% else %}
+         {{ article.descriptionSeo }}
+     {% endif %}
+ {% endblock %}
  {% block keyMeta %}{{ article.category }}
- {% if article.ramadan2017==1 %}, ramadan 2017{% endif %}
+     {% if article.ramadan2017==1 %}, ramadan 2017{% endif %}
  {% endblock %}
 {% block head %}
     {% set url = app.request.uri %}
     {% if article.shortlink !="" %}
         {% set url = article.shortlink %}
     {% endif %}
-<meta property="og:site_name" content="www.tounsia.net" /> 
-<meta property="og:type" content="blog" />
-<meta property="og:image" content="http://www.tounsia.net{{ asset(article.pic) }}" /> 
-<meta property="og:url" content="{{ url }}" />
-<meta property="og:title" content="{{ article.title }}" /> 
-<meta property="og:description" content="{{ ((article.article)|shortdesc(200))|raw }}" />
+    <meta property="og:site_name" content="www.tounsia.net"/>
+    <meta property="og:type" content="blog"/>
+    <meta property="og:image" content="http://www.tounsia.net{{ asset(article.pic) }}"/>
+    <meta property="og:url" content="{{ url }}"/>
+    <meta property="og:title" content="{{ article.title }}"/>
+    <meta property="og:description" content="{{ ((article.article)|shortdesc(200))|raw }}"/>
 {% endblock %}
 {% block body %}
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=1788355211393444";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=1788355211393444";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     {% set year =  article.publieddate|date('Y') %}
     {% set month =  article.publieddate|date('m') %}
     {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
@@ -46,14 +59,16 @@
                     <p class="simple-share">
 
                         <span>
-                            <span class="article-date"><i class="fa fa-clock-o"></i>{{ article.publieddate|date('d/m/Y') }}</span>
+                            <span class="article-date"><i
+                                        class="fa fa-clock-o"></i>{{ article.publieddate|date('d/m/Y') }}</span>
                         </span>
                         <span><i class="fa fa-eye"></i> {{ article.nbview }} vue</span>
 
                     </p>
 
                     <figure class="image-overlay">
-                        <img src="{{ asset(article.pic) }}" alt="tounsia.Net : {{ article.title }}">{#| imagine_filter('category_page')#}
+                        <img src="{{ asset(article.pic) }}"
+                             alt="tounsia.Net : {{ article.title }}">{#| imagine_filter('category_page')#}
                     </figure>
                 </header>
 
@@ -62,91 +77,91 @@
                 </div>
 
                 <footer class="post-meta">
-                   {#<div class="tags-wrapper">
-                        <ul class="tags-widget clearfix">
-                            <li class="trending">TAGS:</li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Wood</a></li>
-                            <li><a href="#">Advice</a></li>
-                        </ul>
-                    </div>
+                    {#<div class="tags-wrapper">
+                         <ul class="tags-widget clearfix">
+                             <li class="trending">TAGS:</li>
+                             <li><a href="#">Creative</a></li>
+                             <li><a href="#">Wood</a></li>
+                             <li><a href="#">Advice</a></li>
+                         </ul>
+                     </div>
 
-                    {#<div class="share-wrapper clearfix">
-                        <div class="total-shares">
-                            <em id="countUp" data-count="267">267</em>
-                            <div class="caption">Shares</div>
-                        </div>
+                     {#<div class="share-wrapper clearfix">
+                         <div class="total-shares">
+                             <em id="countUp" data-count="267">267</em>
+                             <div class="caption">Shares</div>
+                         </div>
 
-                        <div class="share-buttons">
-                            <a class="social-share facebook" href="#">
-                                <i class="fa fa-facebook"></i>
-                                <span class="alt-text">Share</span>
-                            </a>
-                            <a class="social-share twitter" href="#">
-                                <i class="fa fa-twitter"></i>
-                                <span class="alt-text">Tweet</span>
-                            </a>
-                            <a class="social-share google-plus" href="#">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                            <a class="social-share linked_in" href="#">
-                                <i class="fa fa-linkedin"></i>
-                            </a>
-                            <a class="social-share pinterest" href="#">
-                                <i class="fa fa-pinterest"></i>
-                            </a>
-                        </div>#}
-                        <span class='st_facebook_large' displayText='Facebook'></span>
-<span class='st_twitter_large' displayText='Tweet'></span>
-<span class='st_googleplus_large' displayText='Google +'></span>
-<span class='st_pinterest_large' displayText='Pinterest'></span>
-                   {# </div> #}
-{#
-                    <div class="row">
-                        <div class="post-nav-wrapper clearfix">
-                            <div class="col-md-6 omega">
-                                <div class="previous-post">
-                                    <div class="post-nav-label">
-                                        <i class="fa fa-angle-left"></i>
-                                        Previous post
-                                    </div>
-                                    <a href="#" class="post-nav-title">4 apps that every smartphone must get right</a>
-                                </div>
-                            </div>
+                         <div class="share-buttons">
+                             <a class="social-share facebook" href="#">
+                                 <i class="fa fa-facebook"></i>
+                                 <span class="alt-text">Share</span>
+                             </a>
+                             <a class="social-share twitter" href="#">
+                                 <i class="fa fa-twitter"></i>
+                                 <span class="alt-text">Tweet</span>
+                             </a>
+                             <a class="social-share google-plus" href="#">
+                                 <i class="fa fa-google-plus"></i>
+                             </a>
+                             <a class="social-share linked_in" href="#">
+                                 <i class="fa fa-linkedin"></i>
+                             </a>
+                             <a class="social-share pinterest" href="#">
+                                 <i class="fa fa-pinterest"></i>
+                             </a>
+                         </div>#}
+                    <span class='st_facebook_large' displayText='Facebook'></span>
+                    <span class='st_twitter_large' displayText='Tweet'></span>
+                    <span class='st_googleplus_large' displayText='Google +'></span>
+                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                    {# </div> #}
+                    {#
+                                        <div class="row">
+                                            <div class="post-nav-wrapper clearfix">
+                                                <div class="col-md-6 omega">
+                                                    <div class="previous-post">
+                                                        <div class="post-nav-label">
+                                                            <i class="fa fa-angle-left"></i>
+                                                            Previous post
+                                                        </div>
+                                                        <a href="#" class="post-nav-title">4 apps that every smartphone must get right</a>
+                                                    </div>
+                                                </div>
 
-                            <div class="col-md-6 alpha">
-                                <div class="next-post">
-                                    <div class="post-nav-label">
-                                        Next post
-                                        <i class="fa fa-angle-right"></i>
-                                    </div>
-                                    <a href="#" class="post-nav-title">What the Viny "Comeback" Really Looks Like</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                                <div class="col-md-6 alpha">
+                                                    <div class="next-post">
+                                                        <div class="post-nav-label">
+                                                            Next post
+                                                            <i class="fa fa-angle-right"></i>
+                                                        </div>
+                                                        <a href="#" class="post-nav-title">What the Viny "Comeback" Really Looks Like</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                    <div class="author-box clearfix">
-                        <div class="author-avatar">
-                            <a href="page_author.php">
-                                <img alt="" src="img/author4.jpg" class="avatar" height="110" width="110">
-                            </a>
-                        </div>
-                        <div class="author-info">
-                            <h3><a href="page_author.php">John Doe</a></h3>
-                            <p class="author-bio">
-                                He is here. All right. Well, take care of yourself, Han. I guess that's what you're best at, ain't it? What?! Don't act so surprised, Your Highness. You weren't on any mercy mission this time.
-                            </p>
-                            <div class="author-contact">
-                                <a href="#"><i class="fa fa-envelope fa-lg" title="Email"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-globe fa-lg" title="Website"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-twitter fa-lg" title="Twitter"></i></a>
-                                <a href="#" rel="publisher" target="_blank"><i title="Google+" class="fa fa-google-plus fa-lg"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-facebook fa-lg" title="Facebook"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    #}
+                                        <div class="author-box clearfix">
+                                            <div class="author-avatar">
+                                                <a href="page_author.php">
+                                                    <img alt="" src="img/author4.jpg" class="avatar" height="110" width="110">
+                                                </a>
+                                            </div>
+                                            <div class="author-info">
+                                                <h3><a href="page_author.php">John Doe</a></h3>
+                                                <p class="author-bio">
+                                                    He is here. All right. Well, take care of yourself, Han. I guess that's what you're best at, ain't it? What?! Don't act so surprised, Your Highness. You weren't on any mercy mission this time.
+                                                </p>
+                                                <div class="author-contact">
+                                                    <a href="#"><i class="fa fa-envelope fa-lg" title="Email"></i></a>
+                                                    <a href="#" target="_blank"><i class="fa fa-globe fa-lg" title="Website"></i></a>
+                                                    <a href="#" target="_blank"><i class="fa fa-twitter fa-lg" title="Twitter"></i></a>
+                                                    <a href="#" rel="publisher" target="_blank"><i title="Google+" class="fa fa-google-plus fa-lg"></i></a>
+                                                    <a href="#" target="_blank"><i class="fa fa-facebook fa-lg" title="Facebook"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        #}
                 </footer>
 
             </article>
@@ -160,7 +175,8 @@
                         {{ render(controller('FrontBundle:Default:ad300')) }}
                     </div>
                 </div>
-                </div><div class="related-posts clearfix">
+            </div>
+            <div class="related-posts clearfix">
                 <h3 class="block-title"><span>Articles Liés</span></h3>
                 <div class="row">
                     {% for item in related %}
@@ -169,45 +185,48 @@
                         {% set path = path('front_article',{'locale':app.request.locale ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
 
                         <div class="col-md-4">
-                        <article class="news-block small-block">
-                            <a href="{{ path }}" class="overlay-link">
-                                <figure class="image-overlay">
-                                    <img src="{{ (item.pic)| imagine_filter('related') }}" alt="tounsia.Net : {{ item.title }}">
-                                </figure>
-                            </a>
-                            <header class="news-details">
-                                <h3 class="news-title">
-                                    <a href="{{ path }}">
-                                        {{ item.title }}
-                                    </a>
-                                </h3>
-                                <p class="simple-share">
+                            <article class="news-block small-block">
+                                <a href="{{ path }}" class="overlay-link">
+                                    <figure class="image-overlay">
+                                        <img src="{{ (item.pic)| imagine_filter('related') }}"
+                                             alt="tounsia.Net : {{ item.title }}">
+                                    </figure>
+                                </a>
+                                <header class="news-details">
+                                    <h3 class="news-title">
+                                        <a href="{{ path }}">
+                                            {{ item.title }}
+                                        </a>
+                                    </h3>
+                                    <p class="simple-share">
 
-                                    <span class="article-date"><i class="fa fa-clock-o"></i> {{ item.publieddate|date('d/m/Y') }}</span>
-                                </p>
-                            </header>
-                        </article>
-                    </div>
-{% endfor %}
+                                        <span class="article-date"><i
+                                                    class="fa fa-clock-o"></i> {{ item.publieddate|date('d/m/Y') }}</span>
+                                    </p>
+                                </header>
+                            </article>
+                        </div>
+                    {% endfor %}
                 </div>
 
 
             </div>
-           {{ render(controller('FrontBundle:Default:ad728',{'header':false})) }}
+            {{ render(controller('FrontBundle:Default:ad728',{'header':false})) }}
             <div id="comments" class="comments-wrapper clearfix">
-                        <h3 class="block-title"><span>Comments</span></h3>
+                <h3 class="block-title"><span>Comments</span></h3>
 
-                       <div class="fb-comments" data-mobile=true data-href="{{app.request.uri}}" data-numposts="5"  data-width="750"></div>
-                    
-                    </div>
-            
+                <div class="fb-comments" data-mobile=true data-href="{{ app.request.uri }}" data-numposts="5"
+                     data-width="750"></div>
+
+            </div>
+
 
         </div>
         {{ render(controller('FrontBundle:Default:sidebar')) }}
 
     </div>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5755594c8743465a"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5755594c8743465a"></script>
 
 {% endblock %}
