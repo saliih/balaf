@@ -22,8 +22,7 @@ class ArticleController extends Controller
                 'dv' => new \DateTime()
             ));
             $newnb = count($article->getView()) + 1;
-            $article->setNbview($newnb);
-            $em->persist($article);
+
             $refer = $request->headers->get('referer');
             $refer = parse_url($refer, PHP_URL_HOST);
             if ($view === null && $refer != "" && $article->getEnabled()) {
@@ -41,6 +40,8 @@ class ArticleController extends Controller
                 $view->setRefer($refer);
                 $view->setReferLinks($referLink);
                 $em->persist($view);
+                $article->setNbview($newnb);
+                $em->persist($article);
             }
             $em->flush();
         }
