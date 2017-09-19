@@ -47,7 +47,7 @@ class AlexaBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $rates = $this->em->getRepository('PostBundle:Alexa')->findMonth();
+        $rates = $this->em->getRepository('PostBundle:Alexa')->findAll();
         $final = array();
         foreach ($rates as $rate) {
             $index = $rate->getDcr()->format('Ymd');
