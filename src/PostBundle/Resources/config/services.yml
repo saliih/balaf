@@ -111,6 +111,7 @@ services:
         calls:
             - [addChild, ['@admin.views']]
             - [ setTemplate, [edit, PostBundle:Post:edit.html.twig]]
+            - [ setTemplate, [list, PostBundle:Post:list.html.twig]]
     admin.search:
         class: PostBundle\Admin\SearchAdmin
         arguments: [~, PostBundle\Entity\Search, ~] #MailingBundle:CRUD

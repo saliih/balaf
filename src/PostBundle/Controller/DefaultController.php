@@ -2,6 +2,7 @@
 
 namespace PostBundle\Controller;
 
+use PostBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -71,6 +72,23 @@ class DefaultController extends Controller
         $data = $decoded['items'][0]['snippet'];
         $data['publishedAt'] = $this->convertdate($data['publishedAt']);
         return new JsonResponse($data);
+    }
+
+    public function pieChartsAction(Post $post){
+        $data = array();
+        foreach ($post->getView() as $item){
+            $url = $item->getRefer();
+            $tab = explode('.',$url);
+            $name = $tab[1];
+            if($name == "co"){
+                $name = "twitter";
+            }
+            if(!isset($data[$name])){
+                $data[$name] = array('label'=>$name,'data'=>0);
+            }
+            $data[$name]['data']++;
+        }
+        return new JsonResponse(array_values($data));
     }
 
 }

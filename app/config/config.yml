@@ -114,4 +114,4 @@ knp_paginator:
 
 
 fos_js_routing:
-    routes_to_expose: [ jsonlinks , jsonyoutube ]
+    routes_to_expose: [ jsonlinks , jsonyoutube, pie_charts ]
