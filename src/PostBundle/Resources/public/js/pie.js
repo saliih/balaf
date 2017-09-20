@@ -15,7 +15,6 @@ $(document).ready(function () {
                     $.plot(placeholder, data, {
                         series: {
                             pie: {
-                                innerRadius: 0.5,
                                 show: true
                             }
                         },
