@@ -83,6 +83,8 @@ class DefaultController extends Controller
             if($name == "co"){
                 $name = "twitter";
             }
+            if($name == 'tounsia')
+                continue;
             if(!isset($data[$name])){
                 $data[$name] = array('label'=>$name,'data'=>0);
             }

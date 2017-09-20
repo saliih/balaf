@@ -10,20 +10,20 @@ $(document).ready(function () {
             type : 'POST', // Le type de la requête HTTP, ici devenu POST
             dataType : 'json',
             success:function (data) {
-
-                $('#myModal').modal();
-                $.plot(placeholder, data, {
-                    series: {
-                        pie: {
-                            innerRadius: 0.5,
-                            show: true
+                if(data.length) {
+                    $('#myModal').modal();
+                    $.plot(placeholder, data, {
+                        series: {
+                            pie: {
+                                innerRadius: 0.5,
+                                show: true
+                            }
+                        },
+                        legend: {
+                            show: false
                         }
-                    },
-                    legend: {
-                        show: false
-                    }
-                });
-
+                    });
+                }
             }
         });
         return false;
