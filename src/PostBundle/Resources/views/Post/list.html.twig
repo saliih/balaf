@@ -1,11 +1,12 @@
 {% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('plugins/flot/jquery.flot.min.js') }}" language="javascript" type="text/javascript" ></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.resize.min.js') }}" language="javascript" type="text/javascript" ></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.pie.min.js') }}" language="javascript" type="text/javascript" ></script>
+    <script src="{{ asset('plugins/flot/jquery.flot.stack.js') }}" language="javascript" type="text/javascript" ></script>
     {% javascripts filter="?jsqueeze" output="assetic/pie.js"
-    'plugins/flot/jquery.flot.min.js'
-    'plugins/flot/jquery.flot.resize.min.js'
-    'plugins/flot/jquery.flot.pie.min.js'
-    'plugins/flot/jquery.flot.stack.js'
+  
     '@PostBundle/Resources/public/js/pie.js'
     %}
     <script src="{{ asset_url }}"></script>
