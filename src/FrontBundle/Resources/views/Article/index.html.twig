@@ -2,10 +2,11 @@
  {% block title %}
      {% if article.titleSeo == "" %}
          {{ article.category.description }} : {{ article.title }}  sur tounsia.net
-     {% elseif %}
+     {% else %}
          {{ article.titleSeo }}
      {% endif %}
  {% endblock %}
+
  {% block descriptionMeta %}
      {% if article.descriptionSeo == "" %}
          {{ article.category.description }} : {{ article.title }} {% if article.ramadan2017==1 %}pour Ramadan 2017{% endif %}

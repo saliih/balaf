@@ -56,11 +56,18 @@ class Views
     private $createdby;
 
     /**
+     * @var Boolean
+     *
+     * @ORM\Column(name="mobile", type="boolean",nullable=true)
+     */
+    private $mobile;
+    /**
      * Views constructor.
      */
     public function __construct()
     {
         $this->dv = new \DateTime();
+        $this->mobile = false;
     }
 
     /**
@@ -202,5 +209,21 @@ class Views
     public function getCreatedby()
     {
         return $this->createdby;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param bool $mobile
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
     }
 }
