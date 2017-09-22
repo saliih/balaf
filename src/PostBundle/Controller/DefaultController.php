@@ -93,8 +93,8 @@ class DefaultController extends Controller
         return new JsonResponse(array_values($data));
     }
 	private function getHost($Address) { 
-		$parseUrl = parse_url(trim($Address)); 
-		return trim($parseUrl['host'] ? $parseUrl['host'] : array_shift(explode('/', $parseUrl['path'], 2))); 
+		preg_match("/[a-z0-9\-]{1,63}\.[a-z\.]{2,6}$/", parse_url($url, PHP_URL_HOST), $_domain_tld);
+		return $_domain_tld[0];
 	} 
 
 }
