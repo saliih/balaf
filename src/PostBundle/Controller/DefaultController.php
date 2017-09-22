@@ -78,7 +78,7 @@ class DefaultController extends Controller
         $data = array();
         foreach ($post->getView() as $item){
             $url = $item->getRefer();
-            $parse = $this->getHost($url);print_r($parse);
+            $parse = $host = parse_url($url, PHP_URL_HOST);print_r($parse);
 			 $name = $parse['host'];
             if($name == "t.co"){
                 $name = "twitter.com";
@@ -92,9 +92,6 @@ class DefaultController extends Controller
         }
         return new JsonResponse(array_values($data));
     }
-	private function getHost($Address) { 
-		preg_match("/[a-z0-9\-]{1,63}\.[a-z\.]{2,6}$/", parse_url($url, PHP_URL_HOST), $_domain_tld);
-		return $_domain_tld[0];
-	} 
+ 
 
 }
