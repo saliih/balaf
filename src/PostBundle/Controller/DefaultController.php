@@ -82,9 +82,9 @@ class DefaultController extends Controller
 			 $name = $parse['host'];
             if($name == "t.co"){
                 $name = "twitter.com";
-            }
-            if($name == 'tounsia.net')
-                continue;*/
+            }*/
+            if($url == 'www.tounsia.net')
+                continue;
             if(!isset($data[$url])){
                 $data[$url] = array('label'=>$url,'data'=>0);
             }
