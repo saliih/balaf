@@ -78,7 +78,7 @@ class DefaultController extends Controller
         $data = array();
         foreach ($post->getView() as $item){
             $url = $item->getRefer();
-            $name = parse_url($url)
+            $name = parse_url($url);
 			
             if($name == "t.co"){
                 $name = "twitter.com";
