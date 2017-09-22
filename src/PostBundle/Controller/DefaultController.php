@@ -78,12 +78,12 @@ class DefaultController extends Controller
         $data = array();
         foreach ($post->getView() as $item){
             $url = $item->getRefer();
-            $tab = explode('.',$url);
-            $name = $tab[1];
-            if($name == "co"){
-                $name = "twitter";
+            $name = parse_url($url)
+			
+            if($name == "t.co"){
+                $name = "twitter.com";
             }
-            if($name == 'tounsia')
+            if($name == 'tounsia.net')
                 continue;
             if(!isset($data[$name])){
                 $data[$name] = array('label'=>$name,'data'=>0);
