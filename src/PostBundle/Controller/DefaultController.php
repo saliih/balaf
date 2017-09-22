@@ -78,17 +78,17 @@ class DefaultController extends Controller
         $data = array();
         foreach ($post->getView() as $item){
             $url = $item->getRefer();
-            $host = parse_url($url, PHP_URL_HOST);print_r($host);
+           /* $host = parse_url($url, PHP_URL_HOST);print_r($host);
 			 $name = $parse['host'];
             if($name == "t.co"){
                 $name = "twitter.com";
             }
             if($name == 'tounsia.net')
-                continue;
-            if(!isset($data[$name])){
-                $data[$name] = array('label'=>$name,'data'=>0);
+                continue;*/
+            if(!isset($data[$url])){
+                $data[$url] = array('label'=>$url,'data'=>0);
             }
-            $data[$name]['data']++;
+            $data[$url]['data']++;
         }
         return new JsonResponse(array_values($data));
     }
