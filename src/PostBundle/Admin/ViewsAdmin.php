@@ -34,6 +34,7 @@ class ViewsAdmin extends Admin
             ->add('referLinks')
             ->add('ip')
             ->add('createdby')
+            ->add('mobile')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'delete' => array(),
