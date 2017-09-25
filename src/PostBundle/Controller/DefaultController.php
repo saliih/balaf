@@ -74,24 +74,31 @@ class DefaultController extends Controller
         return new JsonResponse($data);
     }
 
-    public function pieChartsAction(Post $post){
+    public function pieChartsAction(Post $post)
+    {
+        $mobile = array('mobile'=>array('label' => "Mobile", 'data' => 0),'desktop'=>array('label' => "Desktop", 'data' => 0));
         $data = array();
-        foreach ($post->getView() as $item){
+        foreach ($post->getView() as $item) {
             $url = $item->getRefer();
-           /* $host = parse_url($url, PHP_URL_HOST);print_r($host);
-			 $name = $parse['host'];
-            if($name == "t.co"){
-                $name = "twitter.com";
-            }*/
-            if($url == 'www.tounsia.net')
+            /* $host = parse_url($url, PHP_URL_HOST);print_r($host);
+              $name = $parse['host'];
+             if($name == "t.co"){
+                 $name = "twitter.com";
+             }*/
+            if ($url == 'www.tounsia.net')
                 continue;
-            if(!isset($data[$url])){
-                $data[$url] = array('label'=>$url,'data'=>0);
+            if (!isset($data[$url])) {
+                $data[$url] = array($url, 0);
             }
-            $data[$url]['data']++;
+            $data[$url][1]++;
+            if($item->isMobile()){
+                $mobile['mobile']['data']++;
+            }else{
+                $mobile['desktop']['data']++;
+            }
         }
-        return new JsonResponse(array_values($data));
+        return new JsonResponse(array("views"=>array_values($data),"mobile"=>array_values($mobile)));
     }
- 
+
 
 }
