@@ -40,7 +40,7 @@ class ArticleController extends Controller
                 $view->setCreatedby($article->getCreatedby());
                 $view->setRefer($refer);
                 $view->setReferLinks($referLink);
-                $view->isMobile(($service->isMobile($request))?true:false);
+                $view->isMobile($service->isMobile($request));
                 $em->persist($view);
                 $article->setNbview($newnb);
                 $em->persist($article);
