@@ -6,13 +6,13 @@ use PostBundle\Entity\Refer;
 use PostBundle\Entity\Views;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
+use PostBundle\Services\MobileDetect;
 
 class ArticleController extends Controller
 {
     public function indexAction($locale, $categoryname, $year, $month, $slug)
     {
         $request = $this->get('request');
-        $service = $this->get('Tools.utils');
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
@@ -40,7 +40,8 @@ class ArticleController extends Controller
                 $view->setCreatedby($article->getCreatedby());
                 $view->setRefer($refer);
                 $view->setReferLinks($referLink);
-                $view->isMobile($service->isMobile($request));
+                $detect = new MobileDetect();
+                $view->isMobile($detect->isMobile() && $detect->isTablet());
                 $em->persist($view);
                 $article->setNbview($newnb);
                 $em->persist($article);
