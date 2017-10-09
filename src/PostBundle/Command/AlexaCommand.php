@@ -37,17 +37,16 @@ class AlexaCommand extends ContainerAwareCommand
                     $output->writeln( $error->message);
                 }
             } else {
+                $alexa = new Alexa();
                 if(isset($data->SD->COUNTRY['RANK'])) {
                     $rate = $data->SD->COUNTRY['RANK'];
                     if (isset($rate)) {
                         $value = (string)$rate;
-                        $alexa = new Alexa();
                         $alexa->setValue($value);
-                        $em->persist($alexa);
-                        $em->flush();
                         $output->writeln("done");
                     }
                 }else{
+                    $alexa->setValue(0);
                     $message = \Swift_Message::newInstance()
                         ->setSubject('Alexa data')
                         ->setFrom('tounsianet@gmail.com')
@@ -56,6 +55,8 @@ class AlexaCommand extends ContainerAwareCommand
                     $this->getContainer()->get('mailer')->send($message);
                     $output->writeln("No Data");
                 }
+                $em->persist($alexa);
+                $em->flush();
             }
         }
     }
