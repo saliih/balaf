@@ -20,7 +20,7 @@ class NewsServices
     {
         $this->container = $container;
         $this->assets_url = "https://www.tounsia.net/";
-        $this->phantomjs_path = "/var/www/tounsia/PhantomJS/";
+        $this->phantomjs_path = "/var/www/tounsia/PhantomJS";
     }
     public function slugify($text)
     {
