@@ -5,12 +5,27 @@ namespace PostBundle\Controller;
 use PostBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DefaultController extends Controller
 {
     public function indexAction($name)
     {
         return $this->render('PostBundle:Default:index.html.twig', array('name' => $name));
+    }
+
+    public function imageAction($id)
+    {
+        $post = $this->getDoctrine()->getRepository("PostBundle:Post")->find($id);
+        $service = $this->get('tools.utils');
+        $url = "htts://www.tounsia.net/print/" . $post->getId();
+        $filename = $service->generatePDFOrImage(file_get_contents($url), false, "portrait", 500);
+        $response = new BinaryFileResponse($filename);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
+
+        return $response;
+
     }
 
     public function linkpostAction()

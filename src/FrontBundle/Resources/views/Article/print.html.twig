@@ -1,0 +1,71 @@
+{% extends '::baseprint.html.twig' %}
+ {% block title %}
+     {% if article.titleSeo == "" %}
+         {{ article.category.description }} : {{ article.title }}  sur tounsia.net
+     {% else %}
+         {{ article.titleSeo }}
+     {% endif %}
+ {% endblock %}
+
+ {% block descriptionMeta %}
+     {% if article.descriptionSeo == "" %}
+         {{ article.category.description }} : {{ article.title }} {% if article.ramadan2017==1 %}pour Ramadan 2017{% endif %}
+     {% else %}
+         {{ article.descriptionSeo }}
+     {% endif %}
+ {% endblock %}
+ {% block keyMeta %}{{ article.category }}
+     {% if article.ramadan2017==1 %}, ramadan 2017{% endif %}
+ {% endblock %}
+{% block head %}
+    {% set url = app.request.uri %}
+    {% if article.shortlink !="" %}
+        {% set url = article.shortlink %}
+    {% endif %}
+    <meta property="og:site_name" content="www.tounsia.net"/>
+    <meta property="og:type" content="blog"/>
+    <meta property="og:image" content="http://www.tounsia.net{{ asset(article.pic) }}"/>
+    <meta property="og:url" content="{{ url }}"/>
+    <meta property="og:title" content="{{ article.title }}"/>
+    <meta property="og:description" content="{{ ((article.article)|shortdesc(200))|raw }}"/>
+{% endblock %}
+{% block body %}
+
+    {% set year =  article.publieddate|date('Y') %}
+    {% set month =  article.publieddate|date('m') %}
+    {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
+    <div class="row blog-content" data-stickyparent>
+        <div class="col-md-8" data-stickycolumn>
+
+            <article class="post-wrapper clearfix">
+
+                <header class="post-header">
+
+                    <h1 class="post-title">
+                        {{ article.title }}
+                    </h1>
+
+                    <a href="#" class="category bgcolor2">
+                        {{ article.category.title }}
+                    </a>
+
+
+                    <figure class="image-overlay">
+                        <img src="{{ asset(article.pic) }}"
+                             alt="tounsia.Net : {{ article.title }}">{#| imagine_filter('category_page')#}
+                    </figure>
+                </header>
+
+                <div class="post-content clearfix">
+                    {{ article.article|raw }}
+                </div>
+
+
+            </article>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

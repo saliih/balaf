@@ -64,6 +64,7 @@ class PostsAdmin extends Admin
                 "View" => array('template' => "PostBundle:Post:viewsbt.html.twig"),
                 "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig"),
                 "pie" => array('template' => "PostBundle:Post:pie.html.twig"),
+                "image" => array('template' => "PostBundle:Post:image.html.twig"),
                 'delete' => array('template' => "PostBundle:Post:deletebt.html.twig"),
             )
         ));

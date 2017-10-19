@@ -1,0 +1,55 @@
+<header class="header-wrapper clearfix">
+
+    <div class="header" id="header">
+        <div class="container">
+            <div class="mag-content">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <a class="navbar-toggle collapsed" id="nav-button" href="#mobile-nav">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+
+
+                        <nav class="navbar mega-menu">
+                            <a class="logo" href="{{ path('front_homepage') }}" title="Tounsia.net" rel="home">
+                                Tounsia <span>Net</span>
+                            </a>
+
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    {% for item in category %}
+                                        <li class="dropdown menu-color1">
+                                            {% set path = path('front_category',{'locale':app.request.locale ,'slug':item.slug}) %}
+                                            {% if item.slug =="cuisine" %}{% set path = "#" %}{% endif %}
+                                            <a href="{{ path }}" {% if (item.children)|length > 0 %}class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"{% endif %}>{{ item.title }}</a>
+                                            {% if (item.children)|length > 0 %}
+                                                <ul class="dropdown-menu">
+                                                    {% for entry in item.children %}
+
+                                                        <li><a href="{{ path('front_category',{'locale':app.request.locale ,'slug':entry.slug}) }}">{{ entry.title }}</a></li>
+                                                    {% endfor %}
+                                                       
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                  {#  <li class="dropdown menu-color1 bgcolor1"><a href="{{ path('ramadan',{locale:'fr'}) }}">Ramadan 2018</a></li>
+                                #}</ul>
+                            </div>
+
+
+
+                        </nav>
+
+                         </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>

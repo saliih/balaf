@@ -59,6 +59,23 @@ class DefaultController extends Controller
         ));
     }
 
+    public function header2Action()
+    {
+
+        $locale = $this->get('request')->getLocale();
+
+
+        $category = $this->getDoctrine()->getRepository('PostBundle:Category')->findBy(array(
+            'parent' => null,
+            'locale' => $locale
+        ));
+        $newsbar = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array('enabled' => true), array('publieddate' => 'DESC', 'id' => 'DESC'), 3);
+        return $this->render('FrontBundle:Default:header2.html.twig', array(
+            "category" => $category,
+            "newsbar" => $newsbar,
+        ));
+    }
+
     public function footerAction()
     {
         return $this->render('FrontBundle:Default:footer.html.twig', array());
@@ -95,5 +112,4 @@ class DefaultController extends Controller
         $echanges = $this->getDoctrine()->getRepository('PostBundle:Echange')->findAll();
         return $this->render('FrontBundle:Default:echange.html.twig', array("echanges"=>$echanges));
     }
-
 }

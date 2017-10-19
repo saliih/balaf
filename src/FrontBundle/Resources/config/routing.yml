@@ -16,6 +16,9 @@ ramadan:
 front_article:
     path: /{locale}/{categoryname}/{year}/{month}/article/{slug}/
     defaults : { _controller: FrontBundle:Article:index }
+front_article_print:
+    path: /print/{id}
+    defaults : { _controller: FrontBundle:Article:toPrint }
 search_recipe:
     path: /recherche
     defaults : { _controller: FrontBundle:Category:search }

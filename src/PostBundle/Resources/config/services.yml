@@ -69,6 +69,7 @@ services:
 
     Tools.utils:
         class: PostBundle\Services\NewsServices
+        arguments: ["@service_container"]
 
 
     admin.tasks:

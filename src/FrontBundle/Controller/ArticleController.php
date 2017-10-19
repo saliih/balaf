@@ -59,4 +59,14 @@ class ArticleController extends Controller
         return $this->render('FrontBundle:Article:index.html.twig', array('article' => $article, 'related' => $related));
     }
 
+    public function toPrintAction($id)
+    {
+        $request = $this->get('request');
+        $em = $this->getDoctrine()->getEntityManager();
+        $article = $this->getDoctrine()->getRepository('PostBundle:Post')->find($id);
+        $ip = $request->getClientIp();
+
+        return $this->render('FrontBundle:Article:print.html.twig', array('article' => $article, 'related' => array()));
+    }
+
 }

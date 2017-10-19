@@ -104,6 +104,12 @@ class Post extends Seo
     /**
      * @var Boolean
      *
+     * @ORM\Column(name="image", type="boolean",nullable=true)
+     */
+    private $image;
+    /**
+     * @var Boolean
+     *
      * @ORM\Column(name="ramadan2017", type="boolean",nullable=true)
      */
     private $ramadan2017;
@@ -126,6 +132,7 @@ class Post extends Seo
      */
     public function __construct()
     {
+        $this->image = false;
         $this->twitter=false;
         $this->ramadan2017 = false;
         $this->enabled = false;
@@ -520,5 +527,21 @@ class Post extends Seo
     public function getTwitter()
     {
         return $this->twitter;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param bool $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }

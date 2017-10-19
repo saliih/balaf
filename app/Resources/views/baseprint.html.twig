@@ -1,0 +1,79 @@
+{% spaceless %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Tounsia.Net {% endblock %}</title>
+    <meta name="keywords" content="{% block keyMeta %}{% endblock %}">
+    <meta name="description" content="{% block descriptionMeta %}{% endblock %}">
+    <meta name="google-site-verification" content="AEfGfOJGi8KBet6nqM7nTwgEr8F1jvbEpg5cRNMf4dc" />
+    <meta property="fb:page_id" content="172776089786299" />
+{% block head %}{% endblock %}
+    <meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,400italic,500,700,700italic,900"
+              rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700,700italic" rel="stylesheet"
+              type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% stylesheets filter="scssphp" output="assetic/tounsia.css"
+        'public/plugins/bootstrap/css/bootstrap.min.css'
+        'assets/source/jquery.fancybox.css'
+        'public/css/style.min.css'
+        'public/css/custom.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+    {% endblock %}
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+
+<div id="main" class="header-style1">
+
+    {% endspaceless %}
+
+    {% spaceless %}
+        {{ render(controller('FrontBundle:Default:header2')) }}
+
+        <div class="container main-wrapper">
+            {% block body %}{% endblock %}
+        </div>
+        {{ render(controller('FrontBundle:Default:footer')) }}
+
+    {% endspaceless %}    {% spaceless %}
+
+</div>
+
+<div id="go-top-button" class="fa fa-angle-up" title="Scroll To Top"></div>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+
+
+{% block javascripts %}
+
+    {% javascripts filter="?jsqueeze" output="assetic/main.js"
+    'public/js/jquery-1.11.2.min.js'
+    'public/js/modernizr.min.js'
+    'public/plugins/bootstrap/js/bootstrap.js'
+    'public/js/script.min.js'
+    'assets/lib/jquery.mousewheel-3.0.6.pack.js'
+    'assets/source/jquery.fancybox.pack.js'
+    'public/js/analytics.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+</body>
+</html>
+{% endspaceless %}
