@@ -19,7 +19,7 @@ class DefaultController extends Controller
     {
         $post = $this->getDoctrine()->getRepository("PostBundle:Post")->find($id);
         $service = $this->get('tools.utils');
-        $url = "htts://www.tounsia.net/print/" . $post->getId();
+        $url = "https://www.tounsia.net/print/" . $post->getId();
         $filename = $service->generatePDFOrImage(file_get_contents($url), false, "portrait", 500);
         $response = new BinaryFileResponse($filename);
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
