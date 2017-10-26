@@ -97,9 +97,9 @@ class DefaultController extends Controller
             $url = $item->getRefer();
             if ($url == 'www.tounsia.net')
                 continue;
-            if(strpos($url, "google") === true){
+            if(!(strpos($url, "google") === false)){
                 $url = "google";
-            }else if(strpos($url, "facebook") === true){
+            }else if(!(strpos($url, "facebook") === false)){
                 $url = "facebook";
             }
 
