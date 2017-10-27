@@ -104,9 +104,9 @@ class DefaultController extends Controller
                 $url = "scoop";
             }else if(!(strpos($url, "yahoo") === false)){
                 $url = "yahoo";
-            }else if(!(strpos($url, "tounsia") === false)){
+            }/*else if(!(strpos($url, "tounsia") === false)){
                 $url = "tounsia";
-            }else if(!(strpos($url, "bing") === false)){
+            }*/else if(!(strpos($url, "bing") === false)){
                 $url = "bing";
             }else if(!(strpos($url, "t.co") === false)){
                 $url = "twitter";
