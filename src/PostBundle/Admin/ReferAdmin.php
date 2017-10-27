@@ -29,9 +29,9 @@ class ReferAdmin extends Admin
         $listMapper
 
             ->add('title')
-            ->add('views', null, array(
+           /* ->add('views', null, array(
                 'template' => 'PostBundle:Refer:views.html.twig'
-            ))
+            ))*/
             //->add('nbview')
             ->add('_action', 'actions', array(
                 'actions' => array(
