@@ -95,13 +95,32 @@ class DefaultController extends Controller
         $data = array();
         foreach ($post->getView() as $item) {
             $url = $item->getRefer();
-            if ($url == 'www.tounsia.net')
-                continue;
+
             if(!(strpos($url, "google") === false)){
                 $url = "google";
             }else if(!(strpos($url, "facebook") === false)){
                 $url = "facebook";
+            }else if(!(strpos($url, "scoop") === false)){
+                $url = "scoop";
+            }else if(!(strpos($url, "yahoo") === false)){
+                $url = "yahoo";
+            }else if(!(strpos($url, "tounsia") === false)){
+                $url = "tounsia";
+            }else if(!(strpos($url, "bing") === false)){
+                $url = "bing";
+            }else if(!(strpos($url, "t.co") === false)){
+                $url = "twitter";
+            }else if(!(strpos($url, "twitter.com") === false)){
+                $url = "twitter";
+            }else if(!(strpos($url, "flipboard") === false)){
+                $url = "flipboard";
+            }else if(!(strpos($url, "pinterest") === false)){
+                $url = "pinterest";
+            }else if(!(strpos($url, "pinterest") === false)){
+                $url = "pinterest";
             }
+            else
+                continue;
 
             if (!isset($data[$url])) {
                 $data[$url] = array($url, 0);
