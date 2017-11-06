@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
  {% block title %}
      {% if article.titleSeo == "" %}
-         {{ article.category.description }} : {{ article.title }}  sur tounsia.net
+         {{ article.category.description }} : {{ article.title }}  de la cuisine tunisienne
      {% else %}
          {{ article.titleSeo }}
      {% endif %}
@@ -9,7 +9,7 @@
 
  {% block descriptionMeta %}
      {% if article.descriptionSeo == "" %}
-         {{ article.category.description }} : {{ article.title }} {% if article.ramadan2017==1 %}pour Ramadan 2018{% endif %}
+        Recette tunisienne - {{ article.category.description }} , {{ article.title }} {% if article.ramadan2017==1 %}{#pour Ramadan 2018#}{% endif %}
      {% else %}
          {{ article.descriptionSeo }}
      {% endif %}
