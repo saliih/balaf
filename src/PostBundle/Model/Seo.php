@@ -9,18 +9,21 @@
 namespace PostBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 class Seo
 {
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="title_seo", type="string",length=160, nullable=true)
      */
     protected $titleSeo;
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="description_seo", type="string",length=255, nullable=true)
      */
     protected $descriptionSeo;

@@ -3,14 +3,14 @@
 namespace PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use PostBundle\Model\Seo as Seo;
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Post
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PostBundle\Entity\PostRepository")
  */
-class Post extends Seo
+class Post
 {
     /**
      * @var integer
@@ -20,10 +20,24 @@ class Post extends Seo
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
+     * @Gedmo\Translatable
+     * @ORM\Column(name="title_seo", type="string",length=160, nullable=true)
+     */
+    protected $titleSeo;
+    /**
+     * @var string
+     *
+     * @Gedmo\Translatable
+     * @ORM\Column(name="description_seo", type="string",length=255, nullable=true)
+     */
+    protected $descriptionSeo;
+    /**
+     * @var string
+     *
+     * @Gedmo\Translatable
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -40,15 +54,14 @@ class Post extends Seo
      */
     private $pic;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="locale", type="string", length=2)
+     * @Gedmo\Locale
      */
     private $locale;
 
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="article", type="text",nullable=true)
      */
     private $article;
@@ -74,6 +87,7 @@ class Post extends Seo
     /**
      * @var \Date
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="created", type="date",nullable=true)
      */
     private $created;
@@ -92,6 +106,7 @@ class Post extends Seo
     /**
      * @var Boolean
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="enabled", type="boolean",nullable=true)
      */
     private $enabled;
@@ -101,12 +116,7 @@ class Post extends Seo
      * @ORM\Column(name="twitter", type="boolean",nullable=true)
      */
     private $twitter;
-    /**
-     * @var Boolean
-     *
-     * @ORM\Column(name="image", type="boolean",nullable=true)
-     */
-    private $image;
+
     /**
      * @var Boolean
      *
@@ -116,6 +126,7 @@ class Post extends Seo
     /**
      * @var integer
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="nbview", type="integer",nullable=true)
      */
     private $nbview;
@@ -127,12 +138,19 @@ class Post extends Seo
     {
         return (string)$this->title;
     }
+
+    /**
+     * @param $locale
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
+    }
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->image = false;
         $this->twitter=false;
         $this->ramadan2017 = false;
         $this->enabled = false;
@@ -221,29 +239,6 @@ class Post extends Seo
     }
 
     /**
-     * Set locale
-     *
-     * @param string $locale
-     * @return Post
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
-    /**
      * Set article
      *
      * @param string $article
@@ -264,6 +259,29 @@ class Post extends Seo
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set shortlink
+     *
+     * @param string $shortlink
+     * @return Post
+     */
+    public function setShortlink($shortlink)
+    {
+        $this->shortlink = $shortlink;
+
+        return $this;
+    }
+
+    /**
+     * Get shortlink
+     *
+     * @return string 
+     */
+    public function getShortlink()
+    {
+        return $this->shortlink;
     }
 
     /**
@@ -343,9 +361,6 @@ class Post extends Seo
      */
     public function setEnabled($enabled)
     {
-        if($enabled){
-            $this->created = new \DateTime();
-        }
         $this->enabled = $enabled;
 
         return $this;
@@ -359,6 +374,52 @@ class Post extends Seo
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param boolean $twitter
+     * @return Post
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return boolean 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set ramadan2017
+     *
+     * @param boolean $ramadan2017
+     * @return Post
+     */
+    public function setRamadan2017($ramadan2017)
+    {
+        $this->ramadan2017 = $ramadan2017;
+
+        return $this;
+    }
+
+    /**
+     * Get ramadan2017
+     *
+     * @return boolean 
+     */
+    public function getRamadan2017()
+    {
+        return $this->ramadan2017;
     }
 
     /**
@@ -431,29 +492,6 @@ class Post extends Seo
     }
 
     /**
-     * Set ramadan2017
-     *
-     * @param boolean $ramadan2017
-     * @return Post
-     */
-    public function setRamadan2017($ramadan2017)
-    {
-        $this->ramadan2017 = $ramadan2017;
-
-        return $this;
-    }
-
-    /**
-     * Get ramadan2017
-     *
-     * @return boolean 
-     */
-    public function getRamadan2017()
-    {
-        return $this->ramadan2017;
-    }
-
-    /**
      * Add view
      *
      * @param \PostBundle\Entity\Views $view
@@ -487,61 +525,48 @@ class Post extends Seo
     }
 
     /**
-     * @return boolean
-     */
-    public function isTwitter()
-    {
-        return $this->twitter;
-    }
-
-    /**
-     * @param boolean $twitter
-     */
-    public function setTwitter($twitter)
-    {
-        $this->twitter = $twitter;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getShortlink()
-    {
-        return $this->shortlink;
-    }
-
-    /**
-     * @param mixed $shortlink
-     */
-    public function setShortlink($shortlink)
-    {
-        $this->shortlink = $shortlink;
-    }
-
-
-    /**
-     * Get twitter
+     * Set titleSeo
      *
-     * @return boolean 
+     * @param string $titleSeo
+     * @return Post
      */
-    public function getTwitter()
+    public function setTitleSeo($titleSeo)
     {
-        return $this->twitter;
+        $this->titleSeo = $titleSeo;
+
+        return $this;
     }
 
     /**
-     * @return bool
+     * Get titleSeo
+     *
+     * @return string 
      */
-    public function isImage()
+    public function getTitleSeo()
     {
-        return $this->image;
+        return $this->titleSeo;
     }
 
     /**
-     * @param bool $image
+     * Set descriptionSeo
+     *
+     * @param string $descriptionSeo
+     * @return Post
      */
-    public function setImage($image)
+    public function setDescriptionSeo($descriptionSeo)
     {
-        $this->image = $image;
+        $this->descriptionSeo = $descriptionSeo;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionSeo
+     *
+     * @return string 
+     */
+    public function getDescriptionSeo()
+    {
+        return $this->descriptionSeo;
     }
 }
