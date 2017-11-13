@@ -15,6 +15,13 @@ class DefaultController extends Controller
         return $this->render('PostBundle:Default:index.html.twig', array('name' => $name));
     }
 
+    public function shareTwitterAction($id){
+       $post = $this->getDoctrine()->getRepository('PostBundle:Post')->find($id);
+       $service = $this->get('Tools.utils');
+       $service->sharePostTwitter($post);
+       return new JsonResponse(array("success"=>true));
+    }
+
     public function imageAction($id)
     {
         $post = $this->getDoctrine()->getRepository("PostBundle:Post")->find($id);

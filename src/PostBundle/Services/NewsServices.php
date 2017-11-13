@@ -22,6 +22,42 @@ class NewsServices
         $this->assets_url = "https://www.tounsia.net/";
         $this->phantomjs_path = "/var/www/tounsia/PhantomJS";
     }
+
+    public function sharePostTwitter($posts){
+        $em = $this->container->get('doctrine')->getManager();
+        $credentials = array(
+            'consumer_key' => 'k8wNWmHoqs4iHIxAXBlIIQPSm',
+            'consumer_secret' => 'p2t1b0Vc47fjfs1y50Wrrzy77zcdrt4ZCDZNC6YOu0JIjRjpjK',
+            'oauth_token' => '745913210520375296-jJ00sOLElS3nA6y7XSrvSYzvItP4iUM',
+            'oauth_token_secret' => 'gEN2VT4DSZwAVPOiE7dws4jUKj2Ybfl0SwJjN5QlM91EY',
+        );
+        $serializer = new ArraySerializer();
+        $auth = new SingleUserAuth($credentials, $serializer);
+        $year = $posts->getPublieddate()->format('Y');
+        $month = $posts->getPublieddate()->format('m');
+        $url = $this->getContainer()->get('router')->generate('front_article', array(
+            'locale' => $posts->getLocale(),
+            'slug' => $posts->getAlias(),
+            'year' => $year,
+            'month' => $month,
+            'categoryname' => $posts->getCategory()->getSlug(),
+        ));
+        $url = "https://www.tounsia.net" . $url;
+
+        $params = array(
+            'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
+            //'media_ids' => implode(',', $media_ids),
+        );
+        if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
+            $response = $auth->post('statuses/update', $params);
+
+        $posts->setTwitter(true);
+        if (isset($response['entities']['urls'][0]['url']))
+            $posts->setShortlink($response['entities']['urls'][0]['url']);
+        $em->persist($posts);
+        $em->flush();
+    }
+
     public function slugify($text)
     {
         $text = preg_replace('~[^\pL\d]+~u', '-', $text);

@@ -26,14 +26,7 @@ class TwitterCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         date_default_timezone_set('UTC');
-        $credentials = array(
-            'consumer_key' => 'k8wNWmHoqs4iHIxAXBlIIQPSm',
-            'consumer_secret' => 'p2t1b0Vc47fjfs1y50Wrrzy77zcdrt4ZCDZNC6YOu0JIjRjpjK',
-            'oauth_token' => '745913210520375296-jJ00sOLElS3nA6y7XSrvSYzvItP4iUM',
-            'oauth_token_secret' => 'gEN2VT4DSZwAVPOiE7dws4jUKj2Ybfl0SwJjN5QlM91EY',
-        );
-        $serializer = new ArraySerializer();
-        $auth = new SingleUserAuth($credentials, $serializer);
+        $servicePost = $this->getContainer()->get('Tools.utils');
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
@@ -41,29 +34,7 @@ class TwitterCommand extends ContainerAwareCommand
         if($autoshare->getAct()) {
             try {
                 if ($posts != null) {
-                    $year = $posts->getPublieddate()->format('Y');
-                    $month = $posts->getPublieddate()->format('m');
-                    $url = $this->getContainer()->get('router')->generate('front_article', array(
-                        'locale' => $posts->getLocale(),
-                        'slug' => $posts->getAlias(),
-                        'year' => $year,
-                        'month' => $month,
-                        'categoryname' => $posts->getCategory()->getSlug(),
-                    ));
-                    $url = "https://www.tounsia.net" . $url;
-
-                    $params = array(
-                        'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
-                        //'media_ids' => implode(',', $media_ids),
-                    );
-                    if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
-                        $response = $auth->post('statuses/update', $params);
-
-                    $posts->setTwitter(true);
-                    if (isset($response['entities']['urls'][0]['url']))
-                        $posts->setShortlink($response['entities']['urls'][0]['url']);
-                    $em->persist($posts);
-                    $em->flush();
+                    $servicePost->sharePostTwitter($posts);
                     $output->writeln( "done");
                 } else {
                     $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findAll();

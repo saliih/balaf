@@ -48,10 +48,52 @@ $(document).ready(function () {
         });
         return false;
     });
+    $('.share_twitter').on('click',function (event) {
+        var url = $(this).attr('href');
+        getRequest(url, {}, function(result) {alert('done')});
+        return false;
+    })
 });
 function labelFormatter(label, series) {
     return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
         + label
         + "<br>"
         + Math.round(series.percent) + "%</div>";
+}
+
+function getRequest(url, _data, success_function, params, extraParams) {
+    params = params || {};
+   /* var showloader = typeof(params.showloader) != "undefined" ? params.showloader : true;
+    if (showloader) {
+        showLoader(true);
+    }*/
+    var parameters = {
+        async: true,
+        url: url,
+        type: params.type || "POST",
+        data: _data,
+        success: function (data) {
+            if (data === "is_not_logged") {
+                successDialog("Nyellow", Translator.trans("Session expired", {}, 'javascript')+"! "+Translator.trans("Please login again", {}, 'javascript')+".", BootstrapDialog.TYPE_WARNING, undefined, function () {
+                    window.location.href = "login";
+                });
+            } else {
+                if (typeof (success_function) == "function") {
+                    success_function(data);
+                }
+            }
+        },
+        error: function (xhr) {
+            errorDialog(Translator.trans("Error contacting server", {}, 'javascript'), Translator.trans("Error encountered", {}, 'javascript')+' : ' + xhr.responseText);
+        },
+        complete: function () {
+            if (showloader) {
+                showLoader(false);
+            }
+        }
+    };
+    if (typeof(extraParams) == "object") {
+        $.extend(parameters, extraParams);
+    }
+    $.ajax(parameters);
 }
