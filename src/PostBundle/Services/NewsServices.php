@@ -37,7 +37,7 @@ class NewsServices
         $auth = new SingleUserAuth($credentials, $serializer);
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
-        $url = $this->getContainer()->get('router')->generate('front_article', array(
+        $url = $this->container->get('router')->generate('front_article', array(
             'locale' => $posts->getLocale(),
             'slug' => $posts->getAlias(),
             'year' => $year,
