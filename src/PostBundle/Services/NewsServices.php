@@ -10,6 +10,8 @@ namespace PostBundle\Services;
 
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
+use PostBundle\twitter\Auth\SingleUserAuth;
+use PostBundle\twitter\Serializer\ArraySerializer;
 
 class NewsServices
 {
