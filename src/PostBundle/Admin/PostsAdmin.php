@@ -72,6 +72,13 @@ class PostsAdmin extends Admin
 
     }
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('batch');
+        $collection->remove('delete');
+        //$collection->remove('edit');
+    }
+
     public function prePersist($object)
     {
         $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
