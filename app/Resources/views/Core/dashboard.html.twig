@@ -12,13 +12,84 @@ file that was distributed with this source code.
 {% extends base_template %}
 {% block javascripts %}
     {{ parent() }}
+
     <script src="{{ asset('plugins/flot/jquery.flot.min.js') }}" language="javascript" type="text/javascript" ></script>
     <script src="{{ asset('plugins/flot/jquery.flot.resize.min.js') }}" language="javascript" type="text/javascript" ></script>
     <script src="{{ asset('plugins/flot/jquery.flot.pie.min.js') }}" language="javascript" type="text/javascript" ></script>
     <script src="{{ asset('plugins/flot/jquery.flot.stack.js') }}" language="javascript" type="text/javascript" ></script>
 
     <script src="{{ asset('plugins/flot/jquery.flot.categories.min.js') }}"></script>
+    {% javascripts
+    '@PostBundle/Resources/public/js/vendor/jquery-paginate.min.js'
+    filter="?jsqueeze" %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function () {
+            $('.table').paginate({
+                limit: 10,
+                childrenSelector: 'tbody > tr:not(.hidden_row)',
+            });
+        });
 
+    </script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+        .page-navigation a[data-selected] {
+            z-index: 3;
+            color: #ffffff;
+            background-color: #1eace2;
+            border-color: #1eace2;
+            cursor: default;
+        }
+
+        .page-navigation {
+            padding-left: 0;
+            margin: 0 auto 61px;
+            border-radius: 4px;
+            display: block;
+            float: none;
+            text-align: center;
+            font-size: 12px;
+        }
+        .page-navigation > a[data-previous] {
+            margin-right: 20px;
+            border: 1px solid #a9a9a9;
+
+            color: #a9a9a9;
+            font-size: 20px;
+            padding: 0 5px 4px;
+            line-height: 16px;
+        }
+        .page-navigation a {
+            border: 0;
+            padding: 2px 9px;
+            text-decoration: none;
+        }
+
+        .page-navigation a[data-next] {
+            border: 1px solid #a9a9a9;
+            margin-left: 20px;
+            color: #a9a9a9;
+            font-size: 20px;
+            padding: 0 5px 4px;
+            line-height: 16px;
+        }
+
+        .page-navigation a[data-first], .page-navigation a[data-last] {
+            display: none;
+        }
+
+        .page-navigation>a,
+        .page-navigation>li>span {
+            border-radius: 0 !important;
+            margin: -1px;
+        }
+
+    </style>
 {% endblock %}
 {% block title %}{{ 'title_dashboard'|trans({}, 'SonataAdminBundle') }}{% endblock%}
 {% block breadcrumb %}{% endblock %}
