@@ -142,7 +142,7 @@ class DefaultController extends Controller
         }
         foreach($data as $key=>$value){
             $percent = $value[1] * 100 / $count;
-            if($percent <= 10){
+            if($percent <= 5){
                 if(!isset($data['other'])) {
                     $data["other"] = array("other",0);
                 }
