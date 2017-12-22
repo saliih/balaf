@@ -100,6 +100,7 @@ class DefaultController extends Controller
     {
         $mobile = array('mobile'=>array('label' => "Mobile", 'data' => 0),'desktop'=>array('label' => "Desktop", 'data' => 0));
         $data = array();
+        $count = $post->getView()->count();
         foreach ($post->getView() as $item) {
             $url = $item->getRefer();
 
@@ -137,6 +138,17 @@ class DefaultController extends Controller
                 $mobile['mobile']['data']++;
             }else{
                 $mobile['desktop']['data']++;
+            }
+        }
+        foreach($data as $key=>$value){
+            $percent = $value[1] * 100 / $count;
+            if($percent <= 10){
+                if(!isset($data['other'])) {
+                    $data["other"] = array("other",0);
+                }
+                $data['other'][1] += $value[1];
+                unset($data[$key]);
+
             }
         }
         return new JsonResponse(array("views"=>array_values($data),"mobile"=>array_values($mobile)));
