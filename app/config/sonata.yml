@@ -6,6 +6,7 @@ sonata_block:
         sonata.block.service.tablecompare: ~
         sonata.block.service.month: ~
         sonata.block.service.monthuser: ~
+        sonata.block.service.monthrefer: ~
         sonata.block.service.alexa: ~
         sonata.block.service.viewuser: ~
         sonata.block.service.share: ~
@@ -51,6 +52,7 @@ sonata_admin:
     dashboard:
         blocks:
             # display a dashboard block
+            - { position: left, type: sonata.block.service.monthrefer, settings: { template: 'PostBundle:Block:monthrefer.html.twig'  } }
             - { position: left, type: sonata.block.service.viewweek, settings: { template: 'PostBundle:Block:pick.html.twig'  } }
             - { position: left, type: sonata.block.service.alexa, settings: { template: 'PostBundle:Block:alexa.html.twig'  } }
             - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
