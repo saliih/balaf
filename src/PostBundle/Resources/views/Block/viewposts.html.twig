@@ -33,13 +33,13 @@
                     {% set i = 0 %}
                     {% for item in final %}
                         {% set totalpost = item['view']+ totalpost %}
-                        {% if i < 10 %}
+
                             {% set post = item['post'] %}
                             <tr>
                                 <td>{{ post.title }} </td>
                                 <td>{{ item['view'] }}</td>
                             </tr>
-                        {% endif %}
+
                         {% set i = i+1 %}
                     {% endfor %}
                     </tbody>
