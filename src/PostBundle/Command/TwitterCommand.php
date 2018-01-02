@@ -2,6 +2,7 @@
 
 namespace PostBundle\Command;
 
+use PostBundle\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,6 +30,7 @@ class TwitterCommand extends ContainerAwareCommand
         $servicePost = $this->getContainer()->get('Tools.utils');
         $em = $this->getContainer()->get('doctrine')->getManager();
         $dt = new \DateTime();
+        /** @var Post $posts */
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));
         $autoshare =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(1);
         if($autoshare->getAct()) {
@@ -58,7 +60,7 @@ class TwitterCommand extends ContainerAwareCommand
                     ->setSubject('problème partage')
                     ->setFrom('tounsianet@gmail.com')
                     ->setTo('salah.chtioui@gmail.com')
-                    ->setBody('Exception reçue : ' . $e->getMessage());
+                    ->setBody('Exception reçue : ' . $e->getMessage()." <br>".$posts->getTitle());
                 $this->getContainer()->get('mailer')->send($message);
                 $output->writeln("Error");
             }
