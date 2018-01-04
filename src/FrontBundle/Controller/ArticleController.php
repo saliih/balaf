@@ -16,7 +16,7 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
-        if ($ip != "197.3.10.74") {
+        if (!in_array($ip,array('45.58.117.232', "197.3.10.74"))) {
             $view = $this->getDoctrine()->getRepository('PostBundle:Views')->findOneBy(array(
                 'post' => $article,
                 'ip' => $ip,
