@@ -52,8 +52,12 @@ class ShortAlexaBlockService extends BaseBlockService
         $nb = count($alexas);
         /** @var Alexa $alexa */
         $total = 0;
+        $i = 0;
         foreach ($alexas as $alexa) {
+            if($i > 365)
+                break;
             $total += $alexa->getValue();
+            ++$i;
         }
         $total = round($total / $nb,0);
         return $this->renderResponse($blockContext->getTemplate(), array(
