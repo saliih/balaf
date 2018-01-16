@@ -56,7 +56,6 @@ class ShortAlexaBlockService extends BaseBlockService
         foreach ($alexas as $alexa) {
             if($i > 365 )
                 break;
-            if($alexa->getValue() != 0)
             $total += $alexa->getValue();
             ++$i;
         }
