@@ -23,6 +23,11 @@ services:
         arguments: [ "sonata.block.service.short1", @templating, @doctrine.orm.entity_manager ]
         tags:
             - { name: sonata.block }
+    sonata.block.service.short2:
+        class: PostBundle\Block\ShortAlexaBlockService
+        arguments: [ "sonata.block.service.short1", @templating, @doctrine.orm.entity_manager ]
+        tags:
+            - { name: sonata.block }
     sonata.block.service.viewweek:
         class: PostBundle\Block\ViewWeekBlockService
         arguments: [ "sonata.block.service.viewweek", @templating, @doctrine.orm.entity_manager ]

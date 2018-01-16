@@ -13,6 +13,7 @@ sonata_block:
         sonata.block.service.viewweek: ~
         sonata.block.service.viewposts: ~
         sonata.block.service.short1: ~
+        sonata.block.service.short2: ~
         sonata.block.service.refer: ~
         #sonata.block.service.viewsmonths: ~
         sonata.admin.block.admin_list:
@@ -57,6 +58,7 @@ sonata_admin:
             - { position: left, type: sonata.block.service.alexa, settings: { template: 'PostBundle:Block:alexa.html.twig'  } }
             - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             - { position: center, type: sonata.block.service.short1, settings: { template: 'PostBundle:Block:short1.html.twig'  } }
+            - { position: center, type: sonata.block.service.short2, settings: { template: 'PostBundle:Block:short2.html.twig'  } }
             - { position: center, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
             - { position: center, type: sonata.block.service.share, settings: { template: 'PostBundle:Block:share.html.twig'  } }
             - { position: center, type: sonata.block.service.viewposts, settings: { template: 'PostBundle:Block:viewposts.html.twig'  } }
