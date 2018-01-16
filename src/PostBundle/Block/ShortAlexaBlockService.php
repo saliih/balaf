@@ -49,7 +49,6 @@ class ShortAlexaBlockService extends BaseBlockService
     {
         $settings = $blockContext->getSettings();
         $alexas = $this->em->getRepository('PostBundle:Alexa')->findAll();
-        $nb = count($alexas);
         /** @var Alexa $alexa */
         $total = 0;
         $i = 0;
@@ -59,7 +58,7 @@ class ShortAlexaBlockService extends BaseBlockService
             $total += $alexa->getValue();
             ++$i;
         }
-        $total = round($total / $nb,0);
+        $total = round($total / 365,0);
         return $this->renderResponse($blockContext->getTemplate(), array(
             'total' => $total,
             'title' => "Alexa Average Rate",
