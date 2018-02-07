@@ -48,7 +48,7 @@ class ShortAlexaBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();
-        $alexas = $this->em->getRepository('PostBundle:Alexa')->findAll();
+        $alexas = $this->em->getRepository('PostBundle:Alexa')->findBy(array(),array('dcr'=>"DESC"));
         /** @var Alexa $alexa */
         $total = 0;
         $i = 0;
