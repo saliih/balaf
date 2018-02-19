@@ -24,10 +24,15 @@ class AppExtension extends \Twig_Extension
     {
         return array(
             'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
+            'expire' => new \Twig_Filter_Method($this, 'expireFilter'),
             'sitemap' => new \Twig_Filter_Method($this, 'sitemap')
         );
     }
-
+    public function expireFilter($str){
+        $dt = new \DateTime();
+        $dt->modify("+ 1 month");
+        return $dt->format("D, d  M Y");
+    }
     public function shortdesc($str,$size = 500){
         $text = strip_tags($str);
         if(strlen($text)>=$size){
