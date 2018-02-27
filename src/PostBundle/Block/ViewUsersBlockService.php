@@ -16,6 +16,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService as BaseBlockService;
 use Sonata\BlockBundle\Util\OptionsResolver;
+use PostBundle\Entity\Views;
 
 class ViewUsersBlockService extends BaseBlockService
 {
@@ -50,7 +51,11 @@ class ViewUsersBlockService extends BaseBlockService
         $views = $this->em->getRepository('PostBundle:Views')->findMonth();
         $final = array();
         $total = 0;
+        /** @var Views $post */
         foreach ($views as $post) {
+            if($post->getRefer() == "www.tounsia.net" || $post->getRefer() == "tounsia.net"){
+                continue;
+            }
             $index = $post->getDv()->format("ymd");
             $user = $post->getCreatedby()->getUsername();
             if($user!="emau83") {
