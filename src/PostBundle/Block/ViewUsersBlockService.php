@@ -56,6 +56,7 @@ class ViewUsersBlockService extends BaseBlockService
             /*if($post->getRefer() == "www.tounsia.net" || $post->getRefer() == "tounsia.net"){
                 continue;
             }*/
+			
             $index = $post->getDv()->format("ymd");
             $user = $post->getCreatedby()->getUsername();
             if($user!="emau83") {
