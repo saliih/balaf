@@ -30,6 +30,7 @@ class PostsAdmin extends Admin
             ->add('title');
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $datagridMapper->
+            add('twitter')
             add('createdby')
                 ->add('enabled')
                 ->add('ramadan2017')
