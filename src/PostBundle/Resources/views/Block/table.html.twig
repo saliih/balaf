@@ -59,7 +59,8 @@
                     <td>{{ totalpost }}</td>
                     <td></td>
                     <td>{{ totalview }}</td>
-                    <td colspan="3"></td>
+                    <td colspan="2"></td>
+                    <td >{{ ( totalview / totalpost) | number_format(2, '.', ',') }}</td>
                 </tr>
                 </tfoot>
             </table>
