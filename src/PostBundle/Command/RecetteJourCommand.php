@@ -25,15 +25,20 @@ class RecetteJourCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $recette = new Recettes();
-        $recette->setSalade($this->getPost(10));
-        $recette->setSoupe($this->getPost(11));
-        $recette->setEntree($this->getPost(14));
-        $recette->setPrincipal($this->getPost(13));
-        $recette->setPatisserie($this->getPost(7));
-        $em->persist($recette);
-        $em->flush();
-        $output->writeln("done");
+        $check = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Recettes')->findOneBy(array('datepub'=>new \DateTime()));
+        if(!$check) {
+            $recette = new Recettes();
+            $recette->setSalade($this->getPost(10));
+            $recette->setSoupe($this->getPost(11));
+            $recette->setEntree($this->getPost(14));
+            $recette->setPrincipal($this->getPost(13));
+            $recette->setPatisserie($this->getPost(7));
+            $em->persist($recette);
+            $em->flush();
+            $output->writeln("done");
+        }else{
+            $output->writeln('exist');
+        }
     }
     private function getPost($id){
         $em = $this->getContainer()->get('doctrine')->getManager();
