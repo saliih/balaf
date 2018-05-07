@@ -123,6 +123,11 @@ services:
             - [addChild, ['@admin.views']]
             - [ setTemplate, [edit, PostBundle:Post:edit.html.twig]]
             - [ setTemplate, [list, PostBundle:Post:list.html.twig]]
+    admin.recettes:
+        class: PostBundle\Admin\RecettesAdmin
+        arguments: [~, PostBundle\Entity\Recettes, ~] #MailingBundle:CRUD
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Recette du jour', icon:'<i class="fa fa-envelope"></i>' }
     admin.search:
         class: PostBundle\Admin\SearchAdmin
         arguments: [~, PostBundle\Entity\Search, ~] #MailingBundle:CRUD
