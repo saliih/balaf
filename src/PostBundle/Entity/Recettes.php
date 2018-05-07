@@ -24,7 +24,7 @@ class Recettes
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datepub", type="datetime")
+     * @ORM\Column(name="datepub", type="date")
      */
     private $datepub;
 
