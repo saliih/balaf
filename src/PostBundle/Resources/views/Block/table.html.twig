@@ -30,7 +30,7 @@
                     <th rowspan=2 width="20">User</th>
                     <th width="35%" colspan=2>Articles</th>
                     <th width="35%" colspan=2>View</th>
-                    <th rowspan="2" width="10%" >Rapport</th>
+                   {# <th rowspan="2" width="10%" >Rapport</th>#}
                     <th rowspan="2" width="10%" >Moyenne<br> par article</th>
                 </tr>
 				<tr>
@@ -48,7 +48,7 @@
                     <td>{{ item['postpercent'] }} %</td>
                     <td>{{ item['view'] }}</td>
                     <td>{{ item['viewpercent'] }} %</td>
-                    <td>{{ item['report'] }} </td>
+                   {# <td>{{ item['report'] }} </td>#}
                     <td>{{ (item['view'] / item['post']) | number_format(2, '.', ',') }} </td>
                 </tr>
                     {% endfor %}
@@ -59,7 +59,7 @@
                     <td>{{ totalpost }}</td>
                     <td></td>
                     <td>{{ totalview }}</td>
-                    <td colspan="2"></td>
+                    <td></td>
                     <td >{{ ( totalview / totalpost) | number_format(2, '.', ',') }}</td>
                 </tr>
                 </tfoot>
