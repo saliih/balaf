@@ -63,7 +63,7 @@
                             <span class="article-date"><i
                                         class="fa fa-clock-o"></i>{{ article.publieddate|date('d/m/Y') }}</span>
                         </span>
-                        <span><i class="fa fa-eye"></i> {{ article.nbview }} vue</span>
+                        <span><i class="fa fa-eye"></i> {{ article.nbview | number_format(2, '.', ' ') }} vue</span>
 
                     </p>
 
