@@ -18,7 +18,13 @@ class AlexaCommand extends ContainerAwareCommand
             ->setName('tounsia:alexa')
             ->setDescription('GetAlexa rate / day');
     }
+	private function xml2array ( $xmlObject, $out = array () )
+{
+    foreach ( (array) $xmlObject as $index => $node )
+        $out[$index] = ( is_object ( $node ) ) ? xml2array ( $node ) : $node;
 
+    return $out;
+}
     /**
      * {@inheritdoc}
      */
@@ -31,6 +37,7 @@ class AlexaCommand extends ContainerAwareCommand
         } else {
             libxml_use_internal_errors(true);
             $data = simplexml_load_string($response_xml_data);
+			
             if (!$data) {
                 $output->writeln( "Error loading XML");
                 foreach (libxml_get_errors() as $error) {
@@ -40,9 +47,9 @@ class AlexaCommand extends ContainerAwareCommand
                 $alexa = new Alexa();
                 if(isset($data->SD->COUNTRY['RANK'])) {
                     $rate = $data->SD->COUNTRY['RANK'];
+					$rate = $this->xml2array($rate);
                     if (isset($rate)) {
-                        $value = (string)$rate;
-                        $alexa->setValue($value);
+                        $alexa->setValue($rate[0]);
                         $output->writeln("done");
                     }
                 }else{
