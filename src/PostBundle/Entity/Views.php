@@ -226,4 +226,14 @@ class Views
     {
         $this->mobile = $mobile;
     }
+
+    /**
+     * Get mobile
+     *
+     * @return boolean 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
 }

@@ -9,6 +9,8 @@
 namespace PostBundle\Admin;
 
 use PostBundle\Admin\BaseAdmin as Admin;
+use PostBundle\Entity\Post;
+use PostBundle\Entity\Tags;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -53,10 +55,11 @@ class PostsAdmin extends Admin
                 'template' => 'PostBundle:Post:views.html.twig'
             ))*/
             ->add('enabled', null, array('editable' => true));
+
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $listMapper->add('ramadan2017', null, array('label' => 'Ramadan', 'editable' => true))
-                ->add('twitter', null, array('editable' => true));
-
+                ->add('twitter', null, array('editable' => true))
+            ->add('checkTags', null, array('editable' => false, "label"=>"tags"));
         }
         $listMapper->add('_action', 'actions', array(
             'actions' => array(
@@ -79,6 +82,45 @@ class PostsAdmin extends Admin
         $collection->remove('delete');
         //$collection->remove('edit');
     }
+    private function generateTags(Post $object){
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+        $strTags = $object->getStrtags();
+        $tags = explode(',',$strTags);
+        if(count($tags)) {
+            $tagsName = array();
+            foreach ($tags as $tag) {
+                $tag = trim($tag);
+                $tagObj = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository('PostBundle:Tags')->findOneBy(array('name' => $tag));
+                if ($tagObj == null) {
+                    $tagObj = new Tags();
+                    $tagObj->setName($tag);
+                    $em->persist($tagObj);
+                }
+                $tagsName[$tag] = $tagObj;
+            }
+            /** @var Tags $field */
+            foreach ($object->getTags() as $field){
+                if(in_array($field->getName(), array_keys($tagsName))){echo $field->getName()."<br>";
+                    unset($tagsName[$field->getName()]);
+                }else{
+                    $object->removeTag($field);
+                }
+            }
+            foreach ($tagsName as $obj){
+                $object->addTag($obj);
+            }
+            $object->setCheckTags(true);
+            $em->flush();
+        }
+    }
+    public function postUpdate($object)
+    {
+        $this->generateTags($object);
+    }
+    public function postPersist($object)
+    {
+        $this->generateTags($object);
+    }
 
     public function prePersist($object)
     {
@@ -88,6 +130,7 @@ class PostsAdmin extends Admin
         $object->setLocale($local);
         $object->setAlias($service->slugify($object->getTitle()));
         $object->setCreatedby($user);
+
     }
 
     public function preUpdate($object)
@@ -109,6 +152,7 @@ class PostsAdmin extends Admin
                 ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
                 ->add('pic', null, array('required' => false))
                 ->add('category', null, array('required' => true))//->add('createdby')
+                ->add('strtags', "textarea",array('label'=>"tags par virgule"))
                 ->end()
             ->end()
             ->tab('SEO')

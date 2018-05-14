@@ -110,6 +110,12 @@ class Post extends Seo
     /**
      * @var Boolean
      *
+     * @ORM\Column(name="check_tags", type="boolean",nullable=true)
+     */
+    private $checkTags;
+    /**
+     * @var Boolean
+     *
      * @ORM\Column(name="ramadan2017", type="boolean",nullable=true)
      */
     private $ramadan2017;
@@ -123,6 +129,25 @@ class Post extends Seo
      * @ORM\OneToMany(targetEntity="Views", mappedBy="post", cascade={"persist"})
      */
     private $view;
+    /**
+     * @ORM\ManyToMany(targetEntity="Tags", inversedBy="post")
+     * @ORM\JoinTable(name="tags_post",
+     *     joinColumns={
+     *     @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tags_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $tags;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="strtags", type="text", nullable=true)
+     */
+    private $strtags;
     public function __toString()
     {
         return (string)$this->title;
@@ -130,17 +155,19 @@ class Post extends Seo
     /**
      * Constructor
      */
+
     public function __construct()
     {
         $this->image = false;
+        $this->checkTags = false;
         $this->twitter=false;
         $this->ramadan2017 = false;
         $this->enabled = false;
         $this->created = new \DateTime();
         $this->publieddate = new \DateTime();
         $this->view = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
     /**
      * Get id
      *
@@ -149,6 +176,22 @@ class Post extends Seo
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCheckTags()
+    {
+        return $this->checkTags;
+    }
+
+    /**
+     * @param bool $checkTags
+     */
+    public function setCheckTags($checkTags)
+    {
+        $this->checkTags = $checkTags;
     }
 
     /**
@@ -544,4 +587,63 @@ class Post extends Seo
     {
         $this->image = $image;
     }
+
+    /**
+     * Get image
+     *
+     * @return boolean 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \PostBundle\Entity\Tags $tags
+     * @return Post
+     */
+    public function addTag(\PostBundle\Entity\Tags $tags)
+    {
+        $this->tags[] = $tags;
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \PostBundle\Entity\Tags $tags
+     */
+    public function removeTag(\PostBundle\Entity\Tags $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStrtags()
+    {
+        return $this->strtags;
+    }
+
+    /**
+     * @param string $strtags
+     */
+    public function setStrtags($strtags)
+    {
+        $this->strtags = $strtags;
+    }
+
 }
