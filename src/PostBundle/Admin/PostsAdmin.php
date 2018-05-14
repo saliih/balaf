@@ -90,6 +90,7 @@ class PostsAdmin extends Admin
             $tagsName = array();
             foreach ($tags as $tag) {
                 $tag = trim($tag);
+                if($tag == "") continue;
                 $tagObj = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository('PostBundle:Tags')->findOneBy(array('name' => $tag));
                 if ($tagObj == null) {
                     $tagObj = new Tags();
