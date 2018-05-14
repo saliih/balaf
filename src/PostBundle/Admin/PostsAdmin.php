@@ -152,7 +152,7 @@ class PostsAdmin extends Admin
                 ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
                 ->add('pic', null, array('required' => false))
                 ->add('category', null, array('required' => true))//->add('createdby')
-                ->add('strtags', "textarea",array('label'=>"tags par virgule"))
+                ->add('strtags', "textarea",array('label'=>"tags par virgule", "required"=>false))
                 ->end()
             ->end()
             ->tab('SEO')
