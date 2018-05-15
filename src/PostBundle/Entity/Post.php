@@ -163,7 +163,8 @@ class Post extends Seo
         $this->twitter=false;
         $this->ramadan2017 = false;
         $this->enabled = false;
-		$this->strtags = "recette tunisienne, cuisine tunisienne,"
+	$this->strtags = "recette tunisienne, cuisine tunisienne,";
+		
         $this->created = new \DateTime();
         $this->publieddate = new \DateTime();
         $this->view = new \Doctrine\Common\Collections\ArrayCollection();
