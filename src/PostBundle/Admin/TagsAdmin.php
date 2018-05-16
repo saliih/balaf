@@ -40,6 +40,11 @@ class TagsAdmin extends Admin
         $listMapper
             ->add('name')
             ->add('rate')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                   'delete' => array(),
+                )
+            ));
            ;
     }
     protected function configureRoutes(RouteCollection $collection)
