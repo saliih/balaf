@@ -27,13 +27,23 @@ class TagsCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $tags = $this->getContainer()->get('doctrine')->getRepository("PostBundle:Tags")->findAll();
         $total = count($tags);
+        $data = array();
+        $nbpost = 0;
         /** @var Tags $tag */
         foreach ($tags as $tag){
-            $nbpost = count($tag->getPost());
-            $rate = $total / $nbpost ;
-            $output->writeln($tag->getName()." : ".$rate);
-            $tag->setRate(round($rate));
-            $em->persist($tag);
+            $data[] = array(
+                'object' => $tag,
+                "count" => count($tag->getPost()),
+            );
+            $nbpost += count($tag->getPost());
+        }
+        foreach ($data as $datum){
+            /** @var Tags $obj */
+            $obj = $datum["object"];
+            $rate = $datum['count'] * 100 / $nbpost;
+            $obj->setRate($rate);
+            $em->persist($obj);
+            $output->writeln($obj->getName()." : ".$obj->getRate());
         }
         $em->flush();
 
