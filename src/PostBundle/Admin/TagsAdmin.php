@@ -50,7 +50,6 @@ class TagsAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('batch');
-        $collection->remove('delete');
         $collection->remove('edit');
         $collection->remove('create');
     }
