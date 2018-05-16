@@ -30,9 +30,9 @@ class TagsCommand extends ContainerAwareCommand
         /** @var Tags $tag */
         foreach ($tags as $tag){
             $nbpost = count($tag->getPost());
-            $rate = $nbpost  / $total;
+            $rate = $total / $nbpost ;
             $output->writeln($tag->getName()." : ".$rate);
-            $tag->setRate($rate);
+            $tag->setRate(round($rate));
             $em->persist($tag);
         }
         $em->flush();
