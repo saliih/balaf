@@ -75,6 +75,7 @@ sonata_admin:
                 icon: '<i class="fa fa-file-text" aria-hidden="true"></i>'
                 items:
                     - admin.posts
+                    - admin.tags
                     - admin.recettes
             SEO:
                 label: Référencement
