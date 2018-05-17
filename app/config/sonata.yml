@@ -54,10 +54,10 @@ sonata_admin:
         blocks:
             - { position: left, type: sonata.block.service.monthrefer, settings: { template: 'PostBundle:Block:monthrefer.html.twig'  } }
             - { position: left, type: sonata.block.service.viewweek, settings: { template: 'PostBundle:Block:pick.html.twig'  } }
-            - { position: left, type: sonata.block.service.alexa, settings: { template: 'PostBundle:Block:alexa.html.twig'  } }
+            #- { position: left, type: sonata.block.service.alexa, settings: { template: 'PostBundle:Block:alexa.html.twig'  } }
             - { position: left, type: sonata.block.service.tablecompare, settings: { template: 'PostBundle:Block:table.html.twig'  } }
             - { position: center, type: sonata.block.service.short1, settings: { template: 'PostBundle:Block:short1.html.twig'  } }
-            - { position: center, type: sonata.block.service.short2, settings: { template: 'PostBundle:Block:short2.html.twig'  } }
+            #- { position: center, type: sonata.block.service.short2, settings: { template: 'PostBundle:Block:short2.html.twig'  } }
             - { position: center, type: sonata.block.service.monthuser, settings: { template: 'PostBundle:Block:monthuser.html.twig'  } }
             - { position: center, type: sonata.block.service.share, settings: { template: 'PostBundle:Block:share.html.twig'  } }
             - { position: center, type: sonata.block.service.viewposts, settings: { template: 'PostBundle:Block:viewposts.html.twig'  } }
@@ -82,7 +82,7 @@ sonata_admin:
                 icon: '<i class="fa fa-globe" aria-hidden="true"></i>'
                 items:
                     - admin.echange
-                    - admin.alexa
+#                    - admin.alexa
             Configuration:
                 label: Configurations
                 icon: '<i class="fa fa-cogs"></i>'
