@@ -101,7 +101,7 @@ class PostsAdmin extends Admin
             }
             /** @var Tags $field */
             foreach ($object->getTags() as $field){
-                if(in_array($field->getName(), array_keys($tagsName))){echo $field->getName()."<br>";
+                if(in_array($field->getName(), array_keys($tagsName))){
                     unset($tagsName[$field->getName()]);
                 }else{
                     $object->removeTag($field);
