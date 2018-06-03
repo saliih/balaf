@@ -1,0 +1,1474 @@
+{% spaceless %}<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="fr"><![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="fr"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="fr"><!--<![endif]-->
+<head>
+
+
+    <title>{% block title %}Tounsia.Net {% endblock %}</title>
+    <meta name="keywords" content="{% block keyMeta %}{% endblock %}">
+    <meta name="description" content="{% block descriptionMeta %}{% endblock %}">
+    <meta http-equiv="expires" content="{{ "" | expire  }} 23:59:59 GMT">
+    <meta name="google-site-verification" content="AEfGfOJGi8KBet6nqM7nTwgEr8F1jvbEpg5cRNMf4dc" />
+    <meta property="fb:page_id" content="172776089786299" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {% block stylesheets %}
+        {% block head %}{% endblock %}
+        {% stylesheets filter="scssphp"
+        'public/css/base.css'
+        'public/css/bootstrap.min.css'
+        'public/css/loaded.css'
+        'public/css/font-awesome/css/font-awesome.min.css'
+        'public/css/fontello/css/fontello.css'
+        'public/css/elegant_font/elegant_font.min.css'
+        'public/css/icomoon/icomoon.css'
+        'public/css/settings.css'
+        'public/css/ion.rangeslider/css/ion.rangeSlider.css'
+        'public/css/ion.rangeslider/css/ion.rangeSlider.skinNice.css'
+        'public/style.css'
+
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+	
+</head>
+<body class="sticky loaded boxed">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.6&appId=1788355211393444";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<div id="loader-wrapper">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div><!-- End Preload spinner -->
+<div id="wrap">
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                    <a href="index.html" id="logo">
+                        <img src="{{ asset('public/images/logo.png') }}" alt="">
+                    </a>
+                </div>
+                <nav class="col-md-9 col-sm-7 col-xs-6">
+                    <a class="np-toggle-switch np-toggle-switch-nxp open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+                    <div class="main-menu" id="main-menu">
+                        <div id="header_menu">
+                            <img src="{{ asset('public/images/logo-menu.png') }}" alt="">
+                        </div>
+                        <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+                        <ul>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="show-submenu"><i class="icon_house_alt"></i> Home <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="index.html">Home Page 1</a></li>
+                                    <li><a href="index-2.html">Home Page 2</a></li>
+                                    <li><a href="index-3.html">Home Page 3</a></li>
+                                    <li><a href="index-4.html">Home Page 4</a></li>
+                                    <li><a href="index-5.html">Home Page 5</a></li>
+                                    <li><a href="index-revslider-2.html">Revolution Slider 2</a></li>
+                                    <li><a href="index-revslider-3.html">Revolution Slider 3</a></li>
+                                    <li><a href="index-revslider-4.html">Revolution Slider 4</a></li>
+                                    <li><a href="footer-1.html">Footer Styles</a></li>
+                                    <li><a href="index-boxed.html">Home boxed</a></li>
+                                </ul>
+                            </li>
+                            <li class="megamenu submenu">
+                                <a href="javascript:void(0);" class="show-submenu-mega"><i class="ic icon-plus-circle"></i> Pages <i class="fa fa-angle-down"></i></a>
+                                <div class="menu-wrapper">
+                                    <div class="col-md-4">
+                                        <h3>Pages</h3>
+                                        <ul>
+                                            <li><a href="login.html"><i class="fa fa-sign-in"></i> User Login</a></li>
+                                            <li><a href="register.html"><i class="fa fa-user-plus"></i> User Register</a></li>
+                                            <li><a href="page-right-sidebar.html"><i class="fa fa-file-text-o"></i> Page (Right sidebar)</a></li>
+                                            <li><a href="page-left-sidebar.html"><i class="fa fa-file-text-o"></i> Page (Left sidebar)</a></li>
+                                            <li><a href="page-full-width.html"><i class="fa fa-file-text-o"></i> Page (Full width)</a></li>
+                                            <li><a href="single-checkalso.html"><i class="fa fa-check-circle"></i> Check Also Left</a></li>
+                                            <li><a href="single-checkalso-right.html"><i class="fa fa-check-circle"></i> Check Also Right</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Pages</h3>
+                                        <ul>
+                                            <li><a href="contacts.html"><i class="fa fa-paper-plane"></i> Contacts</a></li>
+                                            <li><a href="about.html"><i class="fa fa-info-circle"></i> About us</a></li>
+                                            <li><a href="faq.html"><i class="fa fa-life-ring"></i> Faq</a></li>
+                                            <li><a href="shortcodes.html"><i class="fa fa-code"></i> Shortcodes</a></li>
+                                            <li><a href="reviewstyle.html"><i class="fa fa-star"></i> Review Style</a></li>
+                                            <li><a href="topreview.html"><i class="fa fa-star"></i> Top Review</a></li>
+                                            <li><a href="404.html"><i class="fa fa-bolt"></i> 404 Error Page</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Pages</h3>
+                                        <ul>
+                                            <li><a href="pricing.html"><i class="fa fa-money"></i> Pricing</a></li>
+                                            <li><a href="create-recipe.html"><i class="fa fa-plus"></i> Create Recipe</a></li>
+                                            <li><a href="single-recipes.html"><i class="ic icon-recipes"></i> Single Recipe</a></li>
+                                            <li><a href="single-chef.html"><i class="ic icon-chefs"></i> Single Chef</a></li>
+                                            <li><a href="single-video.html"><i class="ic icon-videos"></i> Single Video</a></li>
+                                            <li><a href="single-book.html"><i class="ic icon-books"></i> Single Book</a></li>
+                                            <li><a href="reading-position-indicator.html"><i class="fa fa-minus"></i> reading position indicator</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="show-submenu"><i class="ic icon-post"></i> Blog <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="blog-right-sidebar.html">Blog 1 (Right sidebar)</a></li>
+                                    <li><a href="blog-left-sidebar.html">Blog 1 (Left sidebar)</a></li>
+                                    <li><a href="blog-full-width.html">Blog 1 (Full Width)</a></li>
+                                    <li><a href="blog-2-right-sidebar.html">Blog 2 (Right sidebar)</a></li>
+                                    <li><a href="blog-2-left-sidebar.html">Blog 2 (Left sidebar)</a></li>
+                                    <li><a href="blog-2-full-width.html">Blog 2 (Full Width)</a></li>
+                                    <li><a href="single-post-right-sidebar.html">Single (Right sidebar)</a></li>
+                                    <li><a href="single-post-left-sidebar.html">Single (Left sidebar)</a></li>
+                                    <li><a href="single-post-full-width.html">Single (Full Width)</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="recipes.html"><i class="ic icon-recipes"></i> Recipes</a></li>
+                            <li><a href="chefs.html"><i class="ic icon-chefs"></i> Chefs</a></li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="show-submenu"><i class="icon_cart_alt"></i> Store <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="shop-grid-view.html">Shop (Grid view)</a></li>
+                                    <li><a href="shop-list-view.html">Shop (List view)</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:void(0);" class="show-submenu"><i class="ic icon-community2"></i> Community <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="community.html">Community</a></li>
+                                    <li><a href="single-forum.html">Single Forum</a></li>
+                                    <li><a href="single-topic.html">Single Topic</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="videos.html"><i class="ic icon-videos"></i> Videos</a></li>
+                            <li><a href="books.html"><i class="ic icon-books"></i> Books</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="slideshow">
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="1500">
+                        <img src="{{ asset('public/images/content/sub_header.png') }}" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <div class="slideshow-bg"
+                             data-y="310"
+                             data-x="center"
+                             data-start="0"></div>
+                        <div class="slide-h2 tp-caption randomrotate skewtoleft tp-resizeme start"
+                             data-y="300"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="300"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>Recipes Food</h2>
+                        </div>
+                        <div class="slide-h2 tp-caption customin"
+                             data-y="370"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="600"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>Recipes Food - Food & Recipes Food Template</h2>
+                        </div>
+                        <div class="slide-p tp-caption black randomrotate skewtoleft tp-resizeme start"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-y="460"
+                             data-speed="500"
+                             data-start="1300"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="500" style="z-index: 6; white-space: pre-line; max-width: 1170px;"><p>Lorem Ipsum is simply dummy of the printing and typesetting 's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                        </div>
+                        <div class="slide-a tp-caption customin"
+                             data-x="center"
+                             data-y="540"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-start="1800"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="500"
+                             style="z-index: 3"><a href="http://themeforest.net/user/themearabia">Purcahse Now</a>
+                        </div>
+                    </li>
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
+                        <img src="{{ asset('public/images/content/header-bg.jpg') }}" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <div class="slideshow-bg"
+                             data-y="310"
+                             data-x="center"
+                             data-start="0"></div>
+                        <div class="slide-h2 tp-caption randomrotate skewtoleft tp-resizeme start"
+                             data-y="300"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>More than 50000 Recipe</h2>
+                        </div>
+                        <div class="slide-h2 tp-caption customin"
+                             data-y="370"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="600"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>We Know How To Make Your Life Awesome</h2>
+                        </div>
+                        <div class="slide-p tp-caption black randomrotate skewtoleft tp-resizeme start"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-y="460"
+                             data-speed="500"
+                             data-start="1300"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="500" style="z-index: 6; white-space: pre-line; max-width: 1170px;"><p>Lorem Ipsum is simply dummy of the printing and typesetting 's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                        </div>
+                        <div class="slide-a tp-caption customin"
+                             data-x="center"
+                             data-y="540"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-start="1800"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="500"
+                             style="z-index: 3"><a href="http://themeforest.net/user/themearabia">Purcahse Now</a>
+                        </div>
+                    </li>
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
+                        <img src="{{ asset('public/images/content/header-bg1.jpg') }}" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <div class="slideshow-bg"
+                             data-y="310"
+                             data-x="center"
+                             data-start="0"></div>
+                        <div class="slide-h2 tp-caption randomrotate skewtoleft tp-resizeme start"
+                             data-y="300"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="300"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>Recipes Food</h2>
+                        </div>
+                        <div class="slide-h2 tp-caption customin"
+                             data-y="370"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="600"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>Awesome Template For Restaurant & Food Lovers</h2>
+                        </div>
+                        <div class="slide-p tp-caption black randomrotate skewtoleft tp-resizeme start"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-y="460"
+                             data-speed="500"
+                             data-start="1300"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="500" style="z-index: 6; white-space: pre-line; max-width: 1170px;"><p>Lorem Ipsum is simply dummy of the printing and typesetting 's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                        </div>
+                        <div class="slide-a tp-caption customin"
+                             data-x="center"
+                             data-y="540"
+                             data-hoffset="100"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-start="1800"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="500"
+                             style="z-index: 4"><a href="#">Read More</a>
+                        </div>
+                        <div class="slide-a slide-a-2 tp-caption customin"
+                             data-x="center"
+                             data-y="540"
+                             data-hoffset="-100"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-start="2100"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="500"
+                             style="z-index: 4"><a href="http://themeforest.net/user/themearabia">Purcahse Now</a>
+                        </div>
+                    </li>
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
+                        <img src="{{ asset('public/images/content/header-bg4.jpg') }}" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <div class="slideshow-bg"
+                             data-y="310"
+                             data-x="center"
+                             data-start="0"></div>
+                        <div class="slide-h2 tp-caption randomrotate skewtoleft tp-resizeme start"
+                             data-y="300"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="300"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>Wanna Taste Anew Life !</h2>
+                        </div>
+                        <div class="slide-h2 tp-caption customin"
+                             data-y="370"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-start="600"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="300"
+                             style="z-index: 2"><h2>We Offer You Agreat Tasting Experience</h2>
+                        </div>
+                        <div class="slide-p tp-caption black randomrotate skewtoleft tp-resizeme start"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-y="460"
+                             data-speed="500"
+                             data-start="1300"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="500" style="z-index: 6; white-space: pre-line; max-width: 1170px;"><p>Lorem Ipsum is simply dummy of the printing and typesetting 's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                        </div>
+                        <div class="slide-a tp-caption customin"
+                             data-x="center"
+                             data-y="540"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="500"
+                             data-start="1800"
+                             data-easing="Power3.easeInOut"
+                             data-endspeed="500"
+                             style="z-index: 4"><a href="http://themeforest.net/user/themearabia">Purcahse Now</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Top Review</h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+            <hr class="divider">
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="recipes-review">
+                    <div class="recipes-img">
+                        <img src="{{ asset('public/images/recipe/01.jpg') }}" alt="" />
+                        <div class="favorite active"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></div>
+                    </div>
+                    <div class="recipes-content">
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <div class="ratings">
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                            <span>134</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="recipes-review">
+                    <div class="recipes-img">
+                        <img src="{{ asset('public/images/recipe/02.jpg') }}" alt="" />
+                        <div class="favorite active"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></div>
+                    </div>
+                    <div class="recipes-content">
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <div class="ratings">
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                            <span>134</span>
+                        </div>
+                        <div class="col-details">
+                            <ul class="details">
+                                <li><img src="{{ asset('public/images/users/avatar1.jpg') }}" class="img-profile" alt=""></li>
+                                <li>
+                                    <h4>Themearabia</h4>
+                                    <ul class="favorites">
+                                        <li><i class="fa fa-heart"></i></li>
+                                        <li><span>235</span></li>
+                                    </ul>
+                                    <ul class="comments">
+                                        <li><i class="fa fa-comments"></i></li>
+                                        <li><span>36</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="review-final-score">
+                                <h3>9.9</h3>
+                                <h4>Review Score</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-box review-percentage">
+                        <h2 class="review-box-header">Review Title</h2>
+                        <div class="review-item">
+                            <h5>Design - 10</h5><span style="width: 100%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9.1</h5><span style="width: 91%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9.4</h5><span style="width: 94%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9</h5><span style="width: 90%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9.6</h5><span style="width: 96%;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="recipes-review">
+                    <div class="recipes-img">
+                        <img src="{{ asset('public/images/recipe/03.jpg') }}" alt="" />
+                        <div class="favorite"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></div>
+                    </div>
+                    <div class="recipes-content">
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <div class="ratings">
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                            <span>134</span>
+                        </div>
+                        <div class="col-details">
+                            <ul class="details">
+                                <li><img src="{{ asset('public/images/users/avatar1.jpg') }}" class="img-profile" alt=""></li>
+                                <li>
+                                    <h4>Themearabia</h4>
+                                    <ul class="favorites">
+                                        <li><i class="fa fa-heart"></i></li>
+                                        <li><span>235</span></li>
+                                    </ul>
+                                    <ul class="comments">
+                                        <li><i class="fa fa-comments"></i></li>
+                                        <li><span>36</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="review-final-score">
+                                <h3>9.9</h3>
+                                <h4>Review Score</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-box review-percentage">
+                        <h2 class="review-box-header">Review Title</h2>
+                        <div class="review-item">
+                            <h5>Design - 10</h5><span style="width: 100%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9.1</h5><span style="width: 91%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9.4</h5><span style="width: 94%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9</h5><span style="width: 90%;"></span>
+                        </div>
+                        <div class="review-item">
+                            <h5>Design - 9.6</h5><span style="width: 96%;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="recipes-review">
+                    <div class="recipes-img">
+                        <img src="{{ asset('public/images/recipe/04.jpg') }}" alt="" />
+                        <div class="favorite"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></div>
+                    </div>
+                    <div class="recipes-content">
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <div class="ratings">
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                            <span>134</span>
+                        </div>
+                        <div class="col-details">
+                            <ul class="details">
+                                <li><img src="{{ asset('public/images/users/avatar1.jpg') }}" class="img-profile" alt=""></li>
+                                <li>
+                                    <h4>Themearabia</h4>
+                                    <ul class="favorites">
+                                        <li><i class="fa fa-heart"></i></li>
+                                        <li><span>235</span></li>
+                                    </ul>
+                                    <ul class="comments">
+                                        <li><i class="fa fa-comments"></i></li>
+                                        <li><span>36</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="review-final-score">
+                                <h3>9.9</h3>
+                                <h4>Review Score</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="recipes-review">
+                    <div class="recipes-img">
+                        <img src="{{ asset('public/images/recipe/05.jpg') }}" alt="" />
+                        <div class="favorite"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></div>
+                    </div>
+                    <div class="recipes-content">
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <div class="ratings">
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                            <span>134</span>
+                        </div>
+                        <div class="col-details">
+                            <ul class="details">
+                                <li><img src="{{ asset('public/images/users/avatar1.jpg') }}" class="img-profile" alt=""></li>
+                                <li>
+                                    <h4>Themearabia</h4>
+                                    <ul class="favorites">
+                                        <li><i class="fa fa-heart"></i></li>
+                                        <li><span>235</span></li>
+                                    </ul>
+                                    <ul class="comments">
+                                        <li><i class="fa fa-comments"></i></li>
+                                        <li><span>36</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="review-final-score">
+                                <h3>9.9</h3>
+                                <h4>Review Score</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="recipes-review">
+                    <div class="recipes-img">
+                        <img src="{{ asset('public/images/recipe/06.jpg') }}" alt="" />
+                        <div class="favorite"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></div>
+                    </div>
+                    <div class="recipes-content">
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <div class="ratings">
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                            <span>134</span>
+                        </div>
+                        <div class="col-details">
+                            <ul class="details">
+                                <li><img src="{{ asset('public/images/users/avatar1.jpg') }}" class="img-profile" alt=""></li>
+                                <li>
+                                    <h4>Themearabia</h4>
+                                    <ul class="favorites">
+                                        <li><i class="fa fa-heart"></i></li>
+                                        <li><span>235</span></li>
+                                    </ul>
+                                    <ul class="comments">
+                                        <li><i class="fa fa-comments"></i></li>
+                                        <li><span>36</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="review-final-score">
+                                <h3>9.9</h3>
+                                <h4>Review Score</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="container margin_60">
+            <div class="main_title">
+                <h2 class="nomargin_top">Hello, We Are Recipes Food</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+                <hr class="divider">
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="box-icon">
+                        <div><i class="ic icon-recipes"></i></div>
+                        <h3>Recipes</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+                        <a href="#" class="button-radius">Browse More Recipe</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="box-icon">
+                        <div><i class="ic icon-videos"></i></div>
+                        <h3>Videos</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+                        <a href="#" class="button-radius">Browse More Videos</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="box-icon">
+                        <div><i class="ic icon-books"></i></div>
+                        <h3>Books</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+                        <a href="#" class="button-radius">Browse More Books</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="box-icon">
+                        <div><i class="ic icon-post"></i></div>
+                        <h3>Blog</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+                        <a href="#" class="button-radius">Browse More Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Menu Of The Day</h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+            <hr class="divider">
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/01.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul><!-- End stars -->
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/02.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/03.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/04.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/05.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/06.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/01.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="menu-item">
+                    <div class="menu-img"><img src="{{ asset('public/images/recipe/02.jpg') }}" alt="" /></div>
+                    <div class="menu-content">
+                        <ul class="stars">
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis.</p>
+                        <a href="#" class="button-more">Continue reading</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="container margin_60">
+            <div class="main_title">
+                <h2 class="nomargin_top">Recipe</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+                <hr class="divider">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-recipe">
+                        <div class="photo">
+                            <img src="{{ asset('public/images/recipe/01.jpg') }}" alt="">
+                            <span class="image-fader"><span class="hover-icon"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></span></span>
+                        </div>
+                        <div class="excerpt">
+                            <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-recipe">
+                        <div class="photo">
+                            <img src="{{ asset('public/images/recipe/02.jpg') }}" alt="">
+                            <span class="image-fader"><span class="hover-icon"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></span></span>
+                        </div>
+                        <div class="excerpt">
+                            <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-recipe">
+                        <div class="photo">
+                            <img src="{{ asset('public/images/recipe/03.jpg') }}" alt="">
+                            <span class="image-fader"><span class="hover-icon"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></span></span>
+                        </div>
+                        <div class="excerpt">
+                            <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-recipe">
+                        <div class="photo">
+                            <img src="{{ asset('public/images/recipe/04.jpg') }}" alt="">
+                            <span class="image-fader"><span class="hover-icon"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></span></span>
+                        </div>
+                        <div class="excerpt">
+                            <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-recipe">
+                        <div class="photo">
+                            <img src="{{ asset('public/images/recipe/05.jpg') }}" alt="">
+                            <span class="image-fader"><span class="hover-icon"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></span></span>
+                        </div>
+                        <div class="excerpt">
+                            <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-recipe">
+                        <div class="photo">
+                            <img src="{{ asset('public/images/recipe/06.jpg') }}" alt="">
+                            <span class="image-fader"><span class="hover-icon"><a href="javascript:void(0);"><i class="fa fa-heart"></i></a></span></span>
+                        </div>
+                        <div class="excerpt">
+                            <h3><a href="#">Lorem ipsum dolor sit amet</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                            <ul class="stars">
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <a class="button-browse-more" href="#">Browse More Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Videos</h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+            <hr class="divider">
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-video">
+                    <div class="photo">
+                        <img src="{{ asset('public/images/videos/01.jpg') }}" alt="">
+                        <span class="image-fader">
+                                <span class="hover-icon">
+                                    <a href="javascript:void(0);"><i class="fa fa-play"></i></a>
+                                </span>
+                            </span>
+                        <span class="video-time">3:00</span>
+                    </div>
+                    <h3>Japan Food</h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-video">
+                    <div class="photo">
+                        <img src="{{ asset('public/images/videos/02.jpg') }}" alt="">
+                        <span class="image-fader">
+                                <span class="hover-icon">
+                                    <a href="javascript:void(0);"><i class="fa fa-play"></i></a>
+                                </span>
+                            </span>
+                        <span class="video-time">5:20</span>
+                    </div>
+                    <h3>Japan Food</h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-video">
+                    <div class="photo">
+                        <img src="{{ asset('public/images/videos/03.jpg') }}" alt="">
+                        <span class="image-fader">
+                                <span class="hover-icon">
+                                    <a href="javascript:void(0);"><i class="fa fa-play"></i></a>
+                                </span>
+                            </span>
+                        <span class="video-time">8:26</span>
+                    </div>
+                    <h3>Japan Food</h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-video">
+                    <div class="photo">
+                        <img src="{{ asset('public/images/videos/01.jpg') }}" alt="">
+                        <span class="image-fader">
+                                <span class="hover-icon">
+                                    <a href="javascript:void(0);"><i class="fa fa-play"></i></a>
+                                </span>
+                            </span>
+                        <span class="video-time">8:26</span>
+                    </div>
+                    <h3>Japan Food</h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-video">
+                    <div class="photo">
+                        <img src="{{ asset('public/images/videos/02.jpg') }}" alt="">
+                        <span class="image-fader">
+                                <span class="hover-icon">
+                                    <a href="javascript:void(0);"><i class="fa fa-play"></i></a>
+                                </span>
+                            </span>
+                        <span class="video-time">8:26</span>
+                    </div>
+                    <h3>Japan Food</h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-video">
+                    <div class="photo">
+                        <img src="{{ asset('public/images/videos/03.jpg') }}" alt="">
+                        <span class="image-fader">
+                                <span class="hover-icon">
+                                    <a href="javascript:void(0);"><i class="fa fa-play"></i></a>
+                                </span>
+                            </span>
+                        <span class="video-time">8:26</span>
+                    </div>
+                    <h3>Japan Food</h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="text-center">
+                    <a class="button-browse-more" href="#">Browse More Videos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="container margin_60">
+            <div class="main_title">
+                <h2 class="nomargin_top">Blog</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+                <hr class="divider">
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <ul class="recent-posts">
+                        <li>
+                            <div class="photo">
+                                <img src="{{ asset('public/images/blog/01.jpg') }}" alt="">
+                                <span class="image-fader"><span class="hover-icon"><a href="blog-single.html"><i class="fa fa-plus"></i></a></span></span>
+                            </div>
+                            <div class="inner">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <ul class="stars">
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                                <a href="blog-single.html" class="button-more">Continue reading</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="photo">
+                                <img src="{{ asset('public/images/blog/02.jpg') }}" alt="">
+                                <span class="image-fader"><span class="hover-icon"><a href="blog-single.html"><i class="fa fa-plus"></i></a></span></span>
+                            </div>
+                            <div class="inner">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <ul class="stars">
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                                <a href="blog-single.html" class="button-more">Continue reading</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="photo">
+                                <img src="{{ asset('public/images/blog/03.jpg') }}" alt="">
+                                <span class="image-fader"><span class="hover-icon"><a href="blog-single.html"><i class="fa fa-plus"></i></a></span></span>
+                            </div>
+                            <div class="inner">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <ul class="stars">
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                                <a href="blog-single.html" class="button-more">Continue reading</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <ul class="recent-posts">
+                        <li>
+                            <div class="photo">
+                                <img src="{{ asset('public/images/blog/04.jpg') }}" alt="">
+                                <span class="image-fader"><span class="hover-icon"><a href="blog-single.html"><i class="fa fa-plus"></i></a></span></span>
+                            </div>
+                            <div class="inner">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <ul class="stars">
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                                <a href="blog-single.html" class="button-more">Continue reading</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="photo">
+                                <img src="{{ asset('public/images/blog/05.jpg') }}" alt="">
+                                <span class="image-fader"><span class="hover-icon"><a href="blog-single.html"><i class="fa fa-plus"></i></a></span></span>
+                            </div>
+                            <div class="inner">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <ul class="stars">
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                                <a href="blog-single.html" class="button-more">Continue reading</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="photo">
+                                <img src="{{ asset('public/images/blog/06.jpg') }}" alt="">
+                                <span class="image-fader"><span class="hover-icon"><a href="blog-single.html"><i class="fa fa-plus"></i></a></span></span>
+                            </div>
+                            <div class="inner">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <ul class="stars">
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                                <a href="blog-single.html" class="button-more">Continue reading</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <a class="button-browse-more" href="#">Browse More Posts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Books</h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+            <hr class="divider">
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-book">
+                    <div class="photo"><img src="{{ asset('public/images/books/01.jpg') }}" alt=""></div>
+                    <h3><a href="">The Food Babe Way</a></h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-book">
+                    <div class="photo"><img src="{{ asset('public/images/books/02.jpg') }}" alt=""></div>
+                    <h3><a href="">The Food Babe Way</a></h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-book">
+                    <div class="photo"><img src="{{ asset('public/images/books/03.jpg') }}" alt=""></div>
+                    <h3><a href="">The Food Babe Way</a></h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-book">
+                    <div class="photo"><img src="{{ asset('public/images/books/04.jpg') }}" alt=""></div>
+                    <h3><a href="">The Food Babe Way</a></h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-book">
+                    <div class="photo"><img src="{{ asset('public/images/books/01.jpg') }}" alt=""></div>
+                    <h3><a href="">The Food Babe Way</a></h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="col-book">
+                    <div class="photo"><img src="{{ asset('public/images/books/02.jpg') }}" alt=""></div>
+                    <h3><a href="">The Food Babe Way</a></h3>
+                    <ul class="stars">
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li class="active"><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#" class="icon"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="text-center">
+                    <a class="button-browse-more" href="#">Browse More Books</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Community</h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+            <hr class="divider">
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-community">
+                    <div class="thumb"><i class="ic icon-community"></i></div>
+                    <div class="inner">
+                        <h3><a href="">Exercising and cooking</a></h3>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-community">
+                    <div class="thumb"><i class="ic icon-community"></i></div>
+                    <div class="inner">
+                        <h3><a href="">Recipes Recipes for Babies</a></h3>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-community">
+                    <div class="thumb"><i class="ic icon-community"></i></div>
+                    <div class="inner">
+                        <h3><a href="">Special Diets for losing weight</a></h3>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-community">
+                    <div class="thumb"><i class="ic icon-community"></i></div>
+                    <div class="inner">
+                        <h3><a href="">Ideas for grilling meat at home</a></h3>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="container get-apps">
+            <div class="row">
+                <div class="col-sm-8 col-md-8">
+                    <h3>Get the mobile app!</h3>
+                    <p>Consider now provided laughter boy landlord dashwood. Often voice and the spoke. No shewing fertile village equally prepare up females.</p>
+                    <div class="apps-image">
+                        <a href="#"><img src="{{ asset('public/images/ios.png') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('public/images/android.png') }}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 apps-cover"><img src="{{ asset('public/images/apps.png') }}" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="newslatter">
+        <div class="container">
+            <p>stay Always Updated With us. Sign in with our newsletter</p>
+            <div class="subcribe">
+                <input type="text" class="form-control" placeholder="Your mail">
+                <a class="fa fa-paper-plane" href="javascript:void(0);"></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="social_footer" class="social_color_hover">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                        <p>Recipes Food  |  All Rights Reserved.<br />Template By themearabia.net</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="go-up"><i class="fa fa-chevron-up"></i></div>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+
+
+{% block javascripts %}
+
+    {% javascripts filter="?jsqueeze" output="assetic/main.js"
+    'public/js/jquery-2.2.4.min.js'
+    'public/js/bootstrap.min.js'
+    'public/js/jquery-ui-1.10.3.custom.min.js'
+    'public/js/jquery.easing.1.3.min.js'
+    'public/js/jquery.nicescroll.min.js'
+    'public/js/jquery.scrollTo.js'
+    'public/js/ResizeSensor.min.js'
+    'public/js/theia-sticky-sidebar.min.js'
+    'public/js/parallax.min.js'
+    'public/js/jquery.themepunch.plugins.min.js'
+    'public/js/jquery.themepunch.revolution.min.js'
+    'public/js/ion.rangeSlider.min.js'
+    'public/js/imagesloaded.pkgd.min.js'
+
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}{#
+    'public/js/analytics.js'#}
+{% endblock %}
+
+</body>
+</html>
+{% endspaceless %}
