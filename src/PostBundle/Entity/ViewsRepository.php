@@ -38,7 +38,7 @@ class ViewsRepository extends EntityRepository
     public function findMonth()
     {
         $dt = new \DateTime();
-        $dt->modify("-1 month");
+        $dt->modify("-10 days");
         $query = $this->getEntityManager()
             ->createQuery("select p  from
                                 PostBundle\Entity\Views as p where 
