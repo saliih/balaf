@@ -7,15 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    public function ad300Action()
+    public function advertiseAction()
     {
         return $this->render('FrontBundle:Default:ad300.html.twig', array());
     }
 
-    public function ad728Action($header = false)
-    {
-        return $this->render('FrontBundle:Default:ad728.html.twig', array("header" => $header));
-    }
+
 
     public function indexAction()
     {
