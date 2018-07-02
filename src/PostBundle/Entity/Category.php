@@ -74,7 +74,7 @@ class Category extends Seo
     private $nbpost;
     public function __toString()
     {
-        return $this->title;
+        return (string)$this->title;
     }
 
     /**
