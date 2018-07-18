@@ -15,7 +15,7 @@ class PostRepository extends EntityRepository
     public function search($str){
         $query = $this->getEntityManager()
             ->createQuery("select p  from
-                                PostBundle\Entity\Post as p where p.title like '%$str%' or p.article  like '%$str%'");
+                                PostBundle\Entity\Post as p where p.title like '%$str%' or p.article  like '%$str%' or p.strtags  like '%$str%'");
         return $query->getResult();
     }
     public function related($cat)
