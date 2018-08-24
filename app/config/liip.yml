@@ -8,8 +8,8 @@ liip_imagine:
         category_page:
             quality: 70
             filters:
-                upscale: { min: [796, 321] }
-                thumbnail: { size: [796, 321], mode: outbound , format: png  }
+                upscale: { min: [730, 480] }
+                thumbnail: { size: [730, 480], mode: outbound , format: png  }
         galery:
             quality: 70
             filters:

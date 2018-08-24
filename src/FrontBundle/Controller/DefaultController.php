@@ -16,6 +16,7 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
+        $first3 = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("enabled" => true), array('publieddate' => 'DESC', 'id' => 'DESC'),3);
         // Nos séléction
         $selection = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(array("enabled" => true), array('publieddate' => 'DESC', 'id' => 'DESC'));
         $nbselection = count($selection);
@@ -31,7 +32,10 @@ class DefaultController extends Controller
             }
         }
 
-        return $this->render('FrontBundle:Default:index.html.twig', array("selection" => $selection2));
+        return $this->render('FrontBundle:Default:index.html.twig', array(
+            "selection" => $selection2,
+            "first" => $first3
+        ));
     }
 
     public function sidebarAction()
