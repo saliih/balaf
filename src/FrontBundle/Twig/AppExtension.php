@@ -37,7 +37,7 @@ class AppExtension extends \Twig_Extension
                      data-ad-format="auto"></ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>';
+                </script><br />';
         return str_replace("</h2>", $html, $str);
     }
     public function expireFilter($str){
