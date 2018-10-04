@@ -25,8 +25,20 @@ class AppExtension extends \Twig_Extension
         return array(
             'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
             'expire' => new \Twig_Filter_Method($this, 'expireFilter'),
+            'adsense' => new \Twig_Filter_Method($this, 'adsenseFilter'),
             'sitemap' => new \Twig_Filter_Method($this, 'sitemap')
         );
+    }
+    public function adsenseFilter($str){
+        $html = '</h2><ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6877324570550574"
+                     data-ad-slot="9868401699"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>';
+        return str_replace("</h2>", $html, $str);
     }
     public function expireFilter($str){
         $dt = new \DateTime();
