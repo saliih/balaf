@@ -41,6 +41,7 @@
                     <h3>
                         <a href="{{ path }}">{{ item.title }}</a>
                     </h3>
+                    <p>{{ ((item.article)|shortdesc(100))|raw }}</p>
                     <p class="simple-share">
                         <a href="{{ path }}">{{ item.category }}</a> /
                         {#  by <a href="#"><b>John Doe</b></a> #}
