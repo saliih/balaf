@@ -4,9 +4,6 @@
 {% block keyMeta %}{% for item in tags %}{{ item.name }}, {% endfor %}{% endblock %}
 {% block body %}
 <div class="main-content mag-content clearfix">
-    <div class="col-md-12">
-        <h1>Tounsia.Net Le portail de la femme tunisienne astuce beauté & cuisine</h1>
-    </div>
     {{ render(controller('FrontBundle:Block:top')) }}
     <div class="row main-body" data-stickyparent>
         <div class="col-md-8">
