@@ -7,7 +7,7 @@
     height:280px;
 }
 body{
-    background: #f4f4f4 url('img/bg.png') repeat !important;
+    background: #f4f4f4  !important;/*url('img/bg.png') repeat*/
     background-attachment: fixed !important;
 }
 .blog-content {
