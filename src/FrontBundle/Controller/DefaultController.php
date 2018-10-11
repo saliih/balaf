@@ -33,8 +33,8 @@ class DefaultController extends Controller
                 $selection2[] = $value;
             }
         }
-
-        return $this->render('FrontBundle:Default:index.html.twig', array("selection" => $selection2));
+        $tags = $this->getDoctrine()->getRepository('PostBundle:Tags')->findBy([],["rate" => "DESC"], 20);
+        return $this->render('FrontBundle:Default:index.html.twig', array("selection" => $selection2, "tags" => $tags));
     }
 
     public function sidebarAction()

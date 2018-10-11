@@ -1,9 +1,12 @@
 {% extends '::base.html.twig' %}
 {% block title %}Tounsia.Net Le portail de la femme tunisienne astuce beauté & cuisine{% endblock %}
 {% block descriptionMeta %}TounsiaNet : Le portail de la femme tunisienne qui fournit plusieurs recettes, astuce de beauté, santé pour simplifier la vie de la femme tunisienne{% endblock %}
+{% block keyMeta %}{% for item in tags %}{{ item.name }}, {% endfor %}{% endblock %}
 {% block body %}
-<a href="#" class="fancybox" id="fancyboxiframe"></a>
 <div class="main-content mag-content clearfix">
+    <div class="col-md-12">
+        <h1>Tounsia.Net Le portail de la femme tunisienne astuce beauté & cuisine</h1>
+    </div>
     {{ render(controller('FrontBundle:Block:top')) }}
     <div class="row main-body" data-stickyparent>
         <div class="col-md-8">
