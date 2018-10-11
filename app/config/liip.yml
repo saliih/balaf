@@ -11,7 +11,7 @@ liip_imagine:
                 upscale: { min: [796, 321] }
                 thumbnail: { size: [796, 321], mode: outbound , format: png  }
         galery:
-            quality: 70
+            quality: 50
             filters:
                 upscale: { min: [220, 220] }
                 thumbnail: { size: [220, 220], mode: inset  , format: png }
@@ -41,12 +41,12 @@ liip_imagine:
                 upscale: { min: [350, 230] }
                 thumbnail: { size: [350, 230], mode: inset  , format: png }
         related:
-            quality: 70
+            quality: 50
             filters:
                 upscale: { min: [230, 150] }
                 thumbnail: { size: [230, 150], mode: inset  , format: png }
         small:
-            quality: 70
+            quality: 50
             filters:
                 upscale: { min: [95, 80] }
                 thumbnail: { size: [95, 80], mode: inset  , format: png }
