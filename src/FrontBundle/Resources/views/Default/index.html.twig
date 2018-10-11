@@ -2,6 +2,15 @@
 {% block title %}Tounsia.Net Le portail de la femme tunisienne astuce beauté & cuisine{% endblock %}
 {% block descriptionMeta %}TounsiaNet : Le portail de la femme tunisienne qui fournit plusieurs recettes, astuce de beauté, santé pour simplifier la vie de la femme tunisienne{% endblock %}
 {% block keyMeta %}{% for item in tags %}{{ item.name }}, {% endfor %}{% endblock %}
+{% block head %}
+    {{ parent() }}
+<meta property="og:site_name" content="www.tounsia.net"/>
+<meta property="og:type" content="Blog"/>
+<meta property="og:image" content="http://www.tounsia.net/public/logo.png"/>
+<meta property="og:url" content="http://www.tounsia.net/"/>
+<meta property="og:title" content="Tounsia.Net Le portail de la femme tunisienne astuce beauté & cuisine"/>
+<meta property="og:description" content="TounsiaNet : Le portail de la femme tunisienne qui fournit plusieurs recettes, astuce de beauté, santé pour simplifier la vie de la femme tunisienne"/>
+{% endblock %}
 {% block body %}
 <div class="main-content mag-content clearfix">
     {{ render(controller('FrontBundle:Block:top')) }}
