@@ -30,7 +30,7 @@ class AppExtension extends \Twig_Extension
         );
     }
     public function adsenseFilter($str){
-        $html = '</h2><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        $html = '<br /><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
@@ -39,8 +39,8 @@ class AppExtension extends \Twig_Extension
      data-ad-slot="3310740302"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script><br />';
-        return str_replace("</h2>", $html, $str);
+</script><h2>';
+        return str_replace("<h2>", $html, $str);
     }
     public function expireFilter($str){
         $dt = new \DateTime();
