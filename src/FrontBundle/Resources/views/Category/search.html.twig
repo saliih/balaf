@@ -10,7 +10,8 @@
         {% set month =  article.publieddate|date('m') %}
         {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
         {% if i % 3 == 2 %}
-    <br /><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <article class="simple-post simple-big clearfix">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <ins class="adsbygoogle"
              style="display:block; text-align:center;"
              data-ad-layout="in-article"
@@ -19,7 +20,7 @@
              data-ad-slot="3310740302"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        </script></article>
         {% endif %}
 
         <article class="simple-post simple-big clearfix">
