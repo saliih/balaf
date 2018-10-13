@@ -9,7 +9,20 @@
         {% set year =  article.publieddate|date('Y') %}
         {% set month =  article.publieddate|date('m') %}
         {% set path = path('front_article',{'locale':app.request.locale ,'slug':article.alias, 'year':year,'month':month,'categoryname':article.category.slug}) %}
-            <article class="simple-post simple-big clearfix">
+        {% if i == 5 %}
+    <br /><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-6877324570550574"
+             data-ad-slot="3310740302"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        {% endif %}
+
+        <article class="simple-post simple-big clearfix">
                 <div class="simple-thumb">
                     <a href="{{ path }}">
                         <img src="{{ (article.pic)| imagine_filter('category_page') }}" alt="tounsia.Net : {{ article.title }}">
@@ -29,6 +42,7 @@
                     </p>
                 </header>
             </article>
+        {% set i = i+1 %}
     {% endfor %}
             {{ knp_pagination_render(posts) }}
         </div>
