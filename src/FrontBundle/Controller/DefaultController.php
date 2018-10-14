@@ -93,11 +93,8 @@ class DefaultController extends Controller
         $tags = $this->getDoctrine()->getRepository('PostBundle:Tags')->findAll();
         $nbtags = array();
         foreach ($tags as $tag){
-            $article = $this->getDoctrine()->getRepository('PostBundle:Post')->getTags($tag->getId());
-            dump(count($tag->getPost()));
-            $nbtags[$tag->getId()] = (count($article));// / 12
+            $nbtags[$tag->getId()] = (count($tag->getPost()) / 12);
         }
-        dump($nbtags);exit;
         $response = new Response();
         $response->headers->set('Content-Type', 'xml');
         return $this->render('FrontBundle:Default:sitemaps.xml.twig', array(
