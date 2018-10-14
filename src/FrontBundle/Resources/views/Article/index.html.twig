@@ -83,7 +83,7 @@
                          <ul class="tags-widget clearfix">
                              <li class="trending">TAGS:</li>
                              {% for item in article.tags %}
-                             <li><a href="{{ path('front_tags',{locale:"fr", name : item.name}) }}">{{ item }}</a></li>
+                             <li><a href="{{ path('front_tags',{locale:"fr", name : item.slug}) }}">{{ item }}</a></li>
                              {% endfor %}
                          </ul>
                      </div>
