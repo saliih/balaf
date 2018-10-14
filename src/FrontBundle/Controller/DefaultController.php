@@ -89,12 +89,21 @@ class DefaultController extends Controller
             $nbPosts[$category->getId()] = ceil(count($category->getPosts()) / 12);
         }
         $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
+
+        $tags = $this->getDoctrine()->getRepository('PostBundle:Tags')->findAll();
+        $nbtags = array();
+        foreach ($tags as $tag){
+            $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->getTags($tag->getId());
+            $nbtags[$tag->getId()] = ceil(count($posts) / 12);
+        }
         $response = new Response();
         $response->headers->set('Content-Type', 'xml');
         return $this->render('FrontBundle:Default:sitemaps.xml.twig', array(
             'categories' => $categories,
             'articles' => $posts,
-            'nbPosts' => $nbPosts
+            'nbPosts' => $nbPosts,
+            'tags' => $tags,
+            'nbtags' => $nbtags
         ), $response);
     }
 
