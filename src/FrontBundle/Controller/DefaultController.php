@@ -93,7 +93,7 @@ class DefaultController extends Controller
         $tags = $this->getDoctrine()->getRepository('PostBundle:Tags')->findAll();
         $nbtags = array();
         foreach ($tags as $tag){
-            $nbtags[$tag->getId()] = (count($tag->getPost()) / 12);
+            $nbtags[$tag->getId()] = (integer)(count($tag->getPost()) / 12);
         }
         $response = new Response();
         $response->headers->set('Content-Type', 'xml');
