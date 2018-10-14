@@ -16,6 +16,9 @@ front_recette:
 ramadan:
     path: /{locale}/ramadan{year}
     defaults : { _controller: FrontBundle:Category:ramadan }
+front_tags:
+    path: /{locale}/tags/{name}
+    defaults : { _controller: FrontBundle:Category:tags }
 front_article:
     path: /{locale}/{categoryname}/{year}/{month}/article/{slug}/
     defaults : { _controller: FrontBundle:Article:index }

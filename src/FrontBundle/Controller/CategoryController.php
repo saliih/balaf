@@ -19,6 +19,18 @@ class CategoryController extends Controller
         return $this->render('FrontBundle:Category:ramadan.html.twig', array( 'posts' => $pagination));
     }
 
+    public function tagsAction(Request $request,$locale,$name){
+        $tag = $this->getDoctrine()->getRepository("PostBundle:Tags")->findOneBy([['name' => $name]]);
+        $posts = $tag->getPost();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $posts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            12/*limit per page*/
+        );
+        return $this->render('FrontBundle:Category:tags.html.twig', array( 'name' => $name, 'posts' => $pagination));
+    }
+
     public function indexAction($locale, $slug)
     {
         $request = $this->get("request");
