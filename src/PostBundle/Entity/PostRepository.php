@@ -12,6 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function getTags($id)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->join('p.tags', 'f')
+            ->where($qb->expr()->eq('f.id', $id));
+        return $qb;
+    }
     public function search($str){
         $query = $this->getEntityManager()
             ->createQuery("select p  from

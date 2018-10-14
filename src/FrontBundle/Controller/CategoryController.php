@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
     public function tagsAction(Request $request,$locale,$name){
         $tag = $this->getDoctrine()->getRepository("PostBundle:Tags")->findOneBy(['slug' => $name]);
-        $posts =  $this->getDoctrine()->getRepository('PostBundle:Post')->findBy(['tags'=> [$tag]], ['publieddate' => 'DESC', 'id' => 'DESC']);
+        $posts =  $this->getDoctrine()->getRepository('PostBundle:Post')->getTags($tag->getId());
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $posts, /* query NOT result */
