@@ -24,6 +24,7 @@ class TagsCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $tools = $this->getContainer()->get('Tools.utils');
         $em = $this->getContainer()->get('doctrine')->getManager();
         $tags = $this->getContainer()->get('doctrine')->getRepository("PostBundle:Tags")->findAll();
         $total = count($tags);
@@ -42,6 +43,9 @@ class TagsCommand extends ContainerAwareCommand
             $obj = $datum["object"];
             $rate = $datum['count'] * 100 / $nbpost;
             $obj->setRate($rate);
+            if($obj->getSlug() === "" || $obj->getSlug() === null){
+                $obj->setSlug($tools->slugify($obj->getName()));
+            }
             $em->persist($obj);
             $output->writeln($obj->getName()." : ".$obj->getRate());
         }

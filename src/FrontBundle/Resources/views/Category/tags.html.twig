@@ -1,11 +1,11 @@
 {% extends '::base.html.twig' %}
 {% block title %}
-    Tounsia.Net : les recettes de cuisine pour de {{ name }}
+    Tounsia.Net : les recettes de cuisine pour de {{ tags.name }}
 {% endblock %}
 {% block body %}
     <div class="row blog-content">
         <div class="col-md-8">
-            <h3 class="block-title"><span>Tag : {{ name }}</span></h3>
+            <h3 class="block-title"><span>Tag : {{ tags.name }}</span></h3>
     {% set i =0 %}
     {% for article in posts %}
         {% set year =  article.publieddate|date('Y') %}

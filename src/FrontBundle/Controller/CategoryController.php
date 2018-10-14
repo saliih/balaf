@@ -20,7 +20,7 @@ class CategoryController extends Controller
     }
 
     public function tagsAction(Request $request,$locale,$name){
-        $tag = $this->getDoctrine()->getRepository("PostBundle:Tags")->findOneBy([['name' => $name]]);
+        $tag = $this->getDoctrine()->getRepository("PostBundle:Tags")->findOneBy([['slug' => $name]]);
         $posts = $tag->getPost();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -28,7 +28,7 @@ class CategoryController extends Controller
             $request->query->getInt('page', 1)/*page number*/,
             12/*limit per page*/
         );
-        return $this->render('FrontBundle:Category:tags.html.twig', array( 'name' => $name, 'posts' => $pagination));
+        return $this->render('FrontBundle:Category:tags.html.twig', array('tags' => $tag,  'name' => $name, 'posts' => $pagination));
     }
 
     public function indexAction($locale, $slug)

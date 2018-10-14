@@ -29,6 +29,13 @@ class Tags
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=100)
+     */
+    private $slug;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="rate", type="float")
@@ -139,5 +146,21 @@ class Tags
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }

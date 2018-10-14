@@ -83,6 +83,7 @@ class PostsAdmin extends Admin
         //$collection->remove('edit');
     }
     private function generateTags(Post $object){
+        $tools = $this->getConfigurationPool()->getContainer()->fet('Tools.utils');
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
         $strTags = $object->getStrtags();
         $tags = explode(',',$strTags);
@@ -95,6 +96,7 @@ class PostsAdmin extends Admin
                 if ($tagObj == null) {
                     $tagObj = new Tags();
                     $tagObj->setName($tag);
+                    $tagObj->setSlug($tools->slugify($tag));
                     $em->persist($tagObj);
                 }
                 $tagsName[$tag] = $tagObj;
