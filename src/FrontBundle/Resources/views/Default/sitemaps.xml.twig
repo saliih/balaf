@@ -18,13 +18,13 @@
     </url>
     {% for item in tags %}
         <url>
-            <loc>https://www.tounsia.net{{ path('front_tags',{'locale':'fr' ,'slug':item.slug}) }}</loc>
+            <loc>https://www.tounsia.net{{ path('front_tags',{'locale':'fr' ,'name':item.slug}) }}</loc>
             <lastmod>2018-10-14</lastmod>
         </url>
         {% if nbtags[item.id]>1 %}
             {% for i in 2..nbtags[item.id] %}
                 <url>
-                    <loc>https://www.tounsia.net{{ path('front_tags',{'locale':'fr' ,'slug':item.slug}) }}?page={{ i }}</loc>
+                    <loc>https://www.tounsia.net{{ path('front_tags',{'locale':'fr' ,'name':item.slug}) }}?page={{ i }}</loc>
                     <lastmod>2018-10-14</lastmod>
                 </url>
             {% endfor %}
