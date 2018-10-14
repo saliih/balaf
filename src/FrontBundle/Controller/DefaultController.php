@@ -93,9 +93,9 @@ class DefaultController extends Controller
         $tags = $this->getDoctrine()->getRepository('PostBundle:Tags')->findAll();
         $nbtags = array();
         foreach ($tags as $tag){
-            $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->getTags($tag->getId());
-            count($posts);echo "<br>";
-            $nbtags[$tag->getId()] = ceil(count($posts) / 12);
+            $article = $this->getDoctrine()->getRepository('PostBundle:Post')->getTags($tag->getId());
+            count($article);echo "<br>";
+            $nbtags[$tag->getId()] = ceil(count($article) / 12);
         }
         dump($nbtags);exit;
         $response = new Response();
