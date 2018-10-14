@@ -30,16 +30,14 @@ class AppExtension extends \Twig_Extension
         );
     }
     public function adsenseFilter($str){
-        $html = '<br /><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-6877324570550574"
-     data-ad-slot="3310740302"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script><h2>';
+        $html = '<br /><ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6877324570550574"
+        data-ad-slot="9868401699"
+        data-ad-format="auto"></ins>
+   <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+   </script><h2>';
         return str_replace("<h2>", $html, $str);
     }
     public function expireFilter($str){
