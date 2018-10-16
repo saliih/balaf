@@ -83,7 +83,7 @@ class PostsAdmin extends Admin
         //$collection->remove('edit');
     }
     private function generateTags(Post $object){
-        $tools = $this->getConfigurationPool()->getContainer()->fet('Tools.utils');
+        $tools = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
         $strTags = $object->getStrtags();
         $tags = explode(',',$strTags);
