@@ -43,6 +43,7 @@ sonata_user:
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
 sonata_admin:
+    persist_filters: true
     templates:
         layout:               :Sonata:standard_layout.html.twig
         dashboard:            :Core:dashboard.html.twig
