@@ -34,6 +34,7 @@ class PostsAdmin extends Admin
             $datagridMapper
                 ->add('twitter')
                 ->add('createdby')
+                ->add('checkTags')
                 ->add('enabled')
                 ->add('ramadan2017')
                 ->add('category');
