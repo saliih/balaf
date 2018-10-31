@@ -1,7 +1,8 @@
 <div class="mag-content clearfix">
     <div class="row">
         <div class="col-md-12">
-            {% if header %}
+            {% set current_path = app.request.get('_route') %}
+            {% if current_path == "front_homepage" %}
            <h1 class="pull-right"><span>Tounsia Net</span> Le portail de la femme tunisienne il vous presente des astuces beauté, cuisine ...</h1>
 
             {% endif %}<div class="ad728-wrapper">
