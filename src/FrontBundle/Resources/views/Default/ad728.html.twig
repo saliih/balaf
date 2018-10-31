@@ -1,7 +1,7 @@
 <div class="mag-content clearfix">
     <div class="row">
         <div class="col-md-12">
-            {% set current_path = app.request.get('_route') %}
+            {% set current_path = app.request.get('_route') %}{{ current_path }}
             {% if current_path == "front_homepage" %}
            <h1 class="pull-right"><span>Tounsia Net</span> Le portail de la femme tunisienne il vous presente des astuces beauté, cuisine ...</h1>
 
