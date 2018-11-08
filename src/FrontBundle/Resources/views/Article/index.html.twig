@@ -1,22 +1,7 @@
 {% extends '::base.html.twig' %}
- {% block title %}
-     {% if article.titleSeo == "" %}
-         {{ article.category.description }} : {{ article.title }}  de la cuisine tunisienne
-     {% else %}
-         {{ article.titleSeo }}
-     {% endif %}
- {% endblock %}
-
- {% block descriptionMeta %}
-     {% if article.descriptionSeo == "" %}
-        Recette tunisienne - {{ article.category.description }} , {{ article.title }} {% if article.ramadan2017==1 %}{#pour Ramadan 2018#}{% endif %}
-     {% else %}
-         {{ article.descriptionSeo }}
-     {% endif %}
- {% endblock %}
- {% block keyMeta %}{{ article.category }}
-     {% if article.ramadan2017==1 %}, ramadan 2018{% endif %}
- {% endblock %}
+ {% block title %}{% if article.titleSeo == "" %}{{ article.category.description }} : {{ article.title }}  de la cuisine tunisienne{% else %}{{ article.titleSeo }}{% endif %}{% endblock %}
+ {% block descriptionMeta %}{% if article.descriptionSeo == "" %}Recette tunisienne - {{ article.category.description }} , {{ article.title }} {% if article.ramadan2017==1 %}{#pour Ramadan 2018#}{% endif %}{% else %}{{ article.descriptionSeo }}{% endif %}{% endblock %}
+ {% block keyMeta %}{{ article.category }}{% if article.ramadan2017==1 %}, ramadan 2018{% endif %}{% endblock %}
 {% block head %}
     {% set url = app.request.uri %}
     {% if article.shortlink !="" %}
@@ -79,40 +64,42 @@
 
                 <footer class="post-meta">
                     {% if article.tags | length > 0 %}
-                    <div class="tags-wrapper">
-                         <ul class="tags-widget clearfix">
-                             <li class="trending">TAGS:</li>
-                             {% for item in article.tags %}
-                             <li><a href="{{ path('front_tags',{locale:"fr", name : item.slug}) }}">{{ item }}</a></li>
-                             {% endfor %}
-                         </ul>
-                     </div>
-                {% endif %}
-                     {#<div class="share-wrapper clearfix">
-                         <div class="total-shares">
-                             <em id="countUp" data-count="267">267</em>
-                             <div class="caption">Shares</div>
-                         </div>
+                        <div class="tags-wrapper">
+                            <ul class="tags-widget clearfix">
+                                <li class="trending">TAGS:</li>
+                                {% for item in article.tags %}
+                                    <li>
+                                        <a href="{{ path('front_tags',{locale:"fr", name : item.slug}) }}">{{ item }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {#<div class="share-wrapper clearfix">
+                        <div class="total-shares">
+                            <em id="countUp" data-count="267">267</em>
+                            <div class="caption">Shares</div>
+                        </div>
 
-                         <div class="share-buttons">
-                             <a class="social-share facebook" href="#">
-                                 <i class="fa fa-facebook"></i>
-                                 <span class="alt-text">Share</span>
-                             </a>
-                             <a class="social-share twitter" href="#">
-                                 <i class="fa fa-twitter"></i>
-                                 <span class="alt-text">Tweet</span>
-                             </a>
-                             <a class="social-share google-plus" href="#">
-                                 <i class="fa fa-google-plus"></i>
-                             </a>
-                             <a class="social-share linked_in" href="#">
-                                 <i class="fa fa-linkedin"></i>
-                             </a>
-                             <a class="social-share pinterest" href="#">
-                                 <i class="fa fa-pinterest"></i>
-                             </a>
-                         </div>#}
+                        <div class="share-buttons">
+                            <a class="social-share facebook" href="#">
+                                <i class="fa fa-facebook"></i>
+                                <span class="alt-text">Share</span>
+                            </a>
+                            <a class="social-share twitter" href="#">
+                                <i class="fa fa-twitter"></i>
+                                <span class="alt-text">Tweet</span>
+                            </a>
+                            <a class="social-share google-plus" href="#">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a class="social-share linked_in" href="#">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a class="social-share pinterest" href="#">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </div>#}
                     <span class='st_facebook_large' displayText='Facebook'></span>
                     <span class='st_twitter_large' displayText='Tweet'></span>
                     <span class='st_googleplus_large' displayText='Google +'></span>
