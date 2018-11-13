@@ -62,9 +62,9 @@
                         <span><i class="fa fa-calendar"></i> {{ article.publieddate|date('d/m/Y') }}</span>
                     </p>
 
-                    <h2>
+                    <h3>
                         <a href="{{ path }}">{{ article.title }}</a>
-                    </h2>
+                    </h3>
 
                     <p class="excerpt">
                         {{ ((article.article)|shortdesc(250))|raw }}
