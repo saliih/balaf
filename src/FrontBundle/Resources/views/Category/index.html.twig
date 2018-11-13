@@ -4,7 +4,7 @@
 {% block body %}
     <div class="row blog-content">
         <div class="col-md-8">
-            <h3 class="block-title"><span>{{ category }}</span></h3>
+            <h1 class="block-title"><span>{{ category }}</span></h1>
     {% set i =0 %}
     {% for article in posts %}
         {% set year =  article.publieddate|date('Y') %}
@@ -21,11 +21,11 @@
                     {{ article.category.title }}
                 </a>
                 <header class="news-details">
-                    <h3 class="news-title">
+                    <h2 class="news-title">
                         <a href="{{ path }}">
                             {{ article.title }}
                         </a>
-                    </h3>
+                    </h2>
                     <p> {{ ((article.article)|shortdesc(350))|raw }}</p>
 
                 </header>
@@ -58,9 +58,9 @@
                         <span><i class="fa fa-calendar"></i> {{ article.publieddate|date('d/m/Y') }}</span>
                     </p>
 
-                    <h3>
+                    <h2>
                         <a href="{{ path }}">{{ article.title }}</a>
-                    </h3>
+                    </h2>
 
                     <p class="excerpt">
                         {{ ((article.article)|shortdesc(250))|raw }}
