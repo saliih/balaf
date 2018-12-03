@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use PostBundle\Entity\Category;
 use PostBundle\Entity\Refer;
 use PostBundle\Entity\Views;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,14 +13,32 @@ class ArticleController extends Controller
 {
     public function indexAction($locale, $categoryname, $year, $month, $slug)
     {
+        //ptisseries
+        $params = [
+            "locale" => $locale,
+            "categoryname" => $categoryname,
+            "year" => $year,
+            "month" => $month,
+            "slug" => $slug,
+        ];
         if($categoryname === "ptes"){
-            $url = $this->generateUrl("front_article",[
-                "locale" => $locale,
-                "categoryname" => "pates",
-                "year" => $year,
-                "month" => $month,
-                "slug" => $slug,
-            ]);
+            $params["categoryname"] = "pates";
+            $url = $this->generateUrl("front_article",$params);
+            return $this->redirect($url, 301);
+        }elseif ($categoryname === "ptisseries"){
+            $params["categoryname"] = "patisseries";
+            $url = $this->generateUrl("front_article",$params);
+            return $this->redirect($url, 301);
+        }elseif ($categoryname === "entrs"){
+            $params["categoryname"] = "entrees";
+            $url = $this->generateUrl("front_article",$params);
+            return $this->redirect($url, 301);
+        }elseif ($categoryname === "cuisine"){
+            $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
+            /** @var Category $category */
+            $category = $article->getCategory();
+            $params["categoryname"] = $category->getSlug();
+            $url = $this->generateUrl("front_article",$params);
             return $this->redirect($url, 301);
         }
         $request = $this->get('request');
