@@ -12,6 +12,16 @@ class ArticleController extends Controller
 {
     public function indexAction($locale, $categoryname, $year, $month, $slug)
     {
+        if($categoryname === "ptes"){
+            $url = $this->generateUrl("front_article",[
+                "locale" => $locale,
+                "categoryname" => "pates",
+                "year" => $year,
+                "month" => $month,
+                "slug" => $slug,
+            ]);
+            return $this->redirect($url, 301);
+        }
         $request = $this->get('request');
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
