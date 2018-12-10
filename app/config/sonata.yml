@@ -76,13 +76,13 @@ sonata_admin:
                 icon: '<i class="fa fa-file-text" aria-hidden="true"></i>'
                 items:
                     - admin.posts
+                    - admin.category
                     - admin.tags
                     - admin.recettes
             SEO:
                 label: Référencement
                 icon: '<i class="fa fa-globe" aria-hidden="true"></i>'
                 items:
-                    - admin.echange
 #                    - admin.alexa
             Configuration:
                 label: Configurations
@@ -90,17 +90,17 @@ sonata_admin:
                 items:
                     - admin.tasks
                     - admin.search
-                    - admin.category
                     - admin.allowip
                     - admin.setings
-                    - admin.views
-                    - admin.refer
-            WebTv:
-                label: WebTv
-                icon: '<i class="fa fa-youtube" aria-hidden="true"></i>'
-                items:
-                    - admin.videos
-                    - admin.channel
+                    - admin.echange
+                    #- admin.views
+                    #- admin.refer
+            #WebTv:
+            #    label: WebTv
+            #    icon: '<i class="fa fa-youtube" aria-hidden="true"></i>'
+            #    items:
+            #        - admin.videos
+            #        - admin.channel
             Users:
                 label: Users
                 icon: '<i class="fa fa-users"></i>'

@@ -92,11 +92,11 @@ services:
         arguments: [~, PostBundle\Entity\Views, ~] #MailingBundle:CRUD
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Views', icon:'<i class="fa fa-eye"></i>' }
-    admin.refer:
-            class: PostBundle\Admin\ReferAdmin
-            arguments: [~, PostBundle\Entity\Refer, ~] #MailingBundle:CRUD
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'SIte référant', icon:'<i class="fa fa-eye"></i>' }
+#    admin.refer:
+#            class: PostBundle\Admin\ReferAdmin
+#            arguments: [~, PostBundle\Entity\Refer, ~] #MailingBundle:CRUD
+#            tags:
+#                - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'SIte référant', icon:'<i class="fa fa-eye"></i>' }
     admin.allowip:
         class: PostBundle\Admin\AllowIpAdmin
         arguments: [~, PostBundle\Entity\AllowIp, ~] #MailingBundle:CRUD
@@ -125,7 +125,7 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Post" ,label: 'Articles', icon:'<i class="fa fa-envelope"></i>' }
         calls:
-            - [addChild, ['@admin.views']]
+            #- [addChild, ['@admin.views']]
             - [ setTemplate, [edit, PostBundle:Post:edit.html.twig]]
             - [ setTemplate, [list, PostBundle:Post:list.html.twig]]
     admin.recettes:
