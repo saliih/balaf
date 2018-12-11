@@ -617,4 +617,20 @@ class Post extends Seo
         $this->strtags = $strtags;
     }
 
+    /**
+     * @return bool
+     */
+    public function isDuplicateContent()
+    {
+        return $this->duplicateContent;
+    }
+
+    /**
+     * @param bool $duplicateContent
+     */
+    public function setDuplicateContent($duplicateContent)
+    {
+        $this->duplicateContent = $duplicateContent;
+    }
+
 }
