@@ -48,7 +48,7 @@ class PostsAdmin extends Admin
                 'template' => 'PostBundle:Post:pic.html.twig'
             ))
             ->addIdentifier('title', null, array('label' => 'Titre'))
-            ->add('publieddate', null, array('template' => 'PostBundle:Post:publieddate.html.twig'))
+            //->add('publieddate', null, array('template' => 'PostBundle:Post:publieddate.html.twig'))
             ->add('category', null, array('label' => 'Catégorie'))
             ->add('updated')
             ->add('nbview', null, array("label" => "real view"))
@@ -60,8 +60,9 @@ class PostsAdmin extends Admin
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $listMapper->add('ramadan2017', null, array('label' => 'Ramadan', 'editable' => true))
-                ->add('twitter', null, array('editable' => true))
-            ->add('checkTags', null, array('editable' => false, "label"=>"tags"));
+                // ->add('twitter', null, array('editable' => true))
+                //->add('checkTags', null, array('editable' => false, "label"=>"tags"))
+            ;
         }
         $listMapper->add('_action', 'actions', array(
             'actions' => array(
@@ -71,8 +72,8 @@ class PostsAdmin extends Admin
                 #"View" => array('template' => "PostBundle:Post:viewsbt.html.twig"),
                 "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig"),
                 //"pie" => array('template' => "PostBundle:Post:pie.html.twig"),
-                "image" => array('template' => "PostBundle:Post:image.html.twig"),
-               // 'delete' => array('template' => "PostBundle:Post:deletebt.html.twig"),
+                //"image" => array('template' => "PostBundle:Post:image.html.twig"),
+                // 'delete' => array('template' => "PostBundle:Post:deletebt.html.twig"),
             )
         ));
 
@@ -84,16 +85,18 @@ class PostsAdmin extends Admin
         $collection->remove('delete');
         //$collection->remove('edit');
     }
-    private function generateTags(Post $object){
+
+    private function generateTags(Post $object)
+    {
         $tools = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
         $strTags = $object->getStrtags();
-        $tags = explode(',',$strTags);
-        if(count($tags)) {
+        $tags = explode(',', $strTags);
+        if (count($tags)) {
             $tagsName = array();
             foreach ($tags as $tag) {
                 $tag = trim($tag);
-                if($tag == "") continue;
+                if ($tag == "") continue;
                 $tagObj = $this->getConfigurationPool()->getContainer()->get('doctrine')->getRepository('PostBundle:Tags')->findOneBy(array('name' => $tag));
                 if ($tagObj == null) {
                     $tagObj = new Tags();
@@ -104,24 +107,26 @@ class PostsAdmin extends Admin
                 $tagsName[$tag] = $tagObj;
             }
             /** @var Tags $field */
-            foreach ($object->getTags() as $field){
-                if(in_array($field->getName(), array_keys($tagsName))){
+            foreach ($object->getTags() as $field) {
+                if (in_array($field->getName(), array_keys($tagsName))) {
                     unset($tagsName[$field->getName()]);
-                }else{
+                } else {
                     $object->removeTag($field);
                 }
             }
-            foreach ($tagsName as $obj){
+            foreach ($tagsName as $obj) {
                 $object->addTag($obj);
             }
             $object->setCheckTags(true);
             $em->flush();
         }
     }
+
     public function postUpdate($object)
     {
         $this->generateTags($object);
     }
+
     public function postPersist($object)
     {
         $this->generateTags($object);
@@ -147,26 +152,25 @@ class PostsAdmin extends Admin
     {
         $formMapper
             ->tab('Article')
-                ->with('Artcile', array('class' => 'col-md-8'))
-                ->add('title')
-                ->add('alias', null, array('required' => false))
-                ->add('article', 'textarea', array('required' => false))
-                ->end()
-                ->with('Status', array('class' => 'col-md-4'))
-                ->add('enabled', null, array('required' => false))
-                ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
-                ->add('pic', null, array('required' => false))
-                ->add('category', null, array('required' => true))//->add('createdby')
-                ->add('strtags', "textarea",array('label'=>"tags par virgule", "required"=>false))
-                ->end()
+            ->with('Artcile', array('class' => 'col-md-8'))
+            ->add('title')
+            ->add('alias', null, array('required' => false))
+            ->add('article', 'textarea', array('required' => false))
+            ->end()
+            ->with('Status', array('class' => 'col-md-4'))
+            ->add('enabled', null, array('required' => false))
+            ->add('publieddate', 'sonata_type_date_picker', array('dp_language' => 'fr', 'format' => 'dd/MM/yyyy', 'label' => 'date de publication'))
+            ->add('pic', null, array('required' => false))
+            ->add('category', null, array('required' => true))//->add('createdby')
+            ->add('strtags', "textarea", array('label' => "tags par virgule", "required" => false))
+            ->end()
             ->end()
             ->tab('SEO')
             ->with('Balise Méta', array('class' => 'col-md-12'))
             ->add("titleSeo", null, array('required' => false))
             ->add("descriptionSeo", 'textarea', array('required' => false))
             ->end()
-            ->end()
-            ;
+            ->end();
     }
 
     public function createQuery($context = 'list')
