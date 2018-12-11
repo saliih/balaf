@@ -50,11 +50,11 @@
         {% set path = path('front_article',{'locale':'fr' ,'slug':item.alias, 'year':year,'month':month,'categoryname':item.category.slug}) %}
         <url>
         <loc>https://www.tounsia.net{{ path }}</loc>
-        <lastmod>{{ item.publieddate|date('Y-m-d') }}</lastmod>
-            <image:image>
-                <image:loc>https://www.tounsia.net{{ item.pic }}</image:loc>
-                <image:title><![CDATA[{{ item.title }}]]></image:title>
-            </image:image>
+        <lastmod>{{ item.updated|date('Y-m-d') }}</lastmod>
+        <image:image>
+            <image:loc>https://www.tounsia.net{{ item.pic }}</image:loc>
+            <image:title><![CDATA[{{ item.title }}]]></image:title>
+        </image:image>
     </url>
     {% endfor %}
 

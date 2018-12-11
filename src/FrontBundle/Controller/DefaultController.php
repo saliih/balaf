@@ -88,8 +88,7 @@ class DefaultController extends Controller
         foreach ($categories as $category) {
             $nbPosts[$category->getId()] = ceil(count($category->getPosts()) / 12);
         }
-        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
-
+        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findBy([],['updated' => "DESC"]);
         $tags = $this->getDoctrine()->getRepository('PostBundle:Tags')->findAll();
         $nbtags = array();
         foreach ($tags as $tag){
