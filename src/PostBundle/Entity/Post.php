@@ -98,6 +98,12 @@ class Post extends Seo
     /**
      * @var Boolean
      *
+     * @ORM\Column(name="duplicate_content", type="boolean",nullable=true)
+     */
+    private $duplicateContent;
+    /**
+     * @var Boolean
+     *
      * @ORM\Column(name="twitter", type="boolean",nullable=true)
      */
     private $twitter;
@@ -125,10 +131,7 @@ class Post extends Seo
      * @ORM\Column(name="nbview", type="integer",nullable=true)
      */
     private $nbview;
-    /**
-     * @ORM\OneToMany(targetEntity="Views", mappedBy="post", cascade={"persist"})
-     */
-    private $view;
+
     /**
      * @ORM\ManyToMany(targetEntity="Tags", inversedBy="post")
      * @ORM\JoinTable(name="tags_post",
@@ -160,14 +163,13 @@ class Post extends Seo
     {
         $this->image = false;
         $this->checkTags = false;
+        $this->duplicateContent = false;
         $this->twitter=false;
         $this->ramadan2017 = false;
         $this->enabled = false;
-	$this->strtags = "recette tunisienne, cuisine tunisienne,";
-		
+        $this->strtags = "recette tunisienne, cuisine tunisienne,";
         $this->created = new \DateTime();
         $this->publieddate = new \DateTime();
-        $this->view = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
     /**
@@ -496,39 +498,6 @@ class Post extends Seo
     public function getRamadan2017()
     {
         return $this->ramadan2017;
-    }
-
-    /**
-     * Add view
-     *
-     * @param \PostBundle\Entity\Views $view
-     * @return Post
-     */
-    public function addView(\PostBundle\Entity\Views $view)
-    {
-        $this->view[] = $view;
-
-        return $this;
-    }
-
-    /**
-     * Remove view
-     *
-     * @param \PostBundle\Entity\Views $view
-     */
-    public function removeView(\PostBundle\Entity\Views $view)
-    {
-        $this->view->removeElement($view);
-    }
-
-    /**
-     * Get view
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getView()
-    {
-        return $this->view;
     }
 
     /**

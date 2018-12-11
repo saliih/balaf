@@ -50,12 +50,13 @@ class PostsAdmin extends Admin
             ->addIdentifier('title', null, array('label' => 'Titre'))
             ->add('publieddate', null, array('template' => 'PostBundle:Post:publieddate.html.twig'))
             ->add('category', null, array('label' => 'Catégorie'))
-            ->add('createdby')
+            ->add('updated')
             ->add('nbview', null, array("label" => "real view"))
             /*->add('view', null, array(
                 'template' => 'PostBundle:Post:views.html.twig'
             ))*/
-            ->add('enabled', null, array('editable' => true));
+            ->add('enabled', null, array('editable' => true))
+            ->add('duplicateContent', null, array('editable' => true));
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
             $listMapper->add('ramadan2017', null, array('label' => 'Ramadan', 'editable' => true))
