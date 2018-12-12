@@ -64,7 +64,7 @@ class BlockController extends Controller
         $order = ($id == 1) ? array('nbview' => 'DESC') : array('publieddate' => 'DESC', 'id' => 'DESC');
 
         $article = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array("enabled" => true), $order, 5);
-        if ($id == 1) {
+        /*if ($id == 1) {
             $views = $this->getDoctrine()->getRepository("PostBundle:Views")->findpopular();
             $tab = array();
             foreach ($views as $view) {
@@ -95,7 +95,7 @@ class BlockController extends Controller
                 }
                 $i++;
             }
-        }
+        }*/
         return $this->render('FrontBundle:Block:tab.html.twig', array(
             'article' => $article
         ));
