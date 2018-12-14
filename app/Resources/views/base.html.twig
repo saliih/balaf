@@ -41,7 +41,9 @@
             enable_page_level_ads: true
         });
     </script>
-
+    <script async custom-element="amp-auto-ads"
+            src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 </head>
 <body>
 <div id="fb-root"></div>
@@ -73,7 +75,9 @@
 
 <div class="mobile-overlay" id="mobile-overlay"></div>
 
-
+<amp-auto-ads type="adsense"
+              data-ad-client="ca-pub-6877324570550574">
+</amp-auto-ads>
 {% block javascripts %}
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-77458398-1"></script>
     <script>
