@@ -356,6 +356,9 @@ class Post extends Seo
      */
     public function getUpdated()
     {
+        if($this->updated === null){
+            return $this->publieddate;
+        }
         return $this->updated;
     }
 
