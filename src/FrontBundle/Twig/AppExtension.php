@@ -43,7 +43,7 @@ class AppExtension extends \Twig_Extension
         $str = str_replace("<h2>", $html, $str);
         $str = str_replace("<li>",'<li itemprop=”recipeIngredient”>', $str);
         if (substr($str,0,3) === "<p>"){
-            $str = $this->tools->str_replace_first($str, "<p>", '<p itemprop="warningdescription">');
+            $str = $this->tools->str_replace_first($str, "<p>", '<p itemprop="description">');
         }
         return $str;
     }
