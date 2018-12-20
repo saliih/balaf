@@ -42,9 +42,9 @@ class AppExtension extends \Twig_Extension
    </script><h2>';
         $str = str_replace("<h2>", $html, $str);
         $str = str_replace("<li>",'<li itemprop=”recipeIngredient”>', $str);
-       /* if (substr($str,0,3) === "<p>"){
-            $str = $this->tools->str_replace_first($str, "<p>", '<p itemprop="description">');
-        }*/
+        if (substr($str,0,3) === "<p>"){
+            preg_replace('/<p>/', '<p itemprop="description">', $str, 1);
+        }
         return $str;
     }
     public function expireFilter($str){
