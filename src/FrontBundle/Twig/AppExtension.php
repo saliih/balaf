@@ -38,7 +38,9 @@ class AppExtension extends \Twig_Extension
    <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
    </script><h2>';
-        return str_replace("<h2>", $html, $str);
+        $str = str_replace("<h2>", $html, $str);
+        $str = str_replace("<li>",'<li itemprop=”ingredients”>', $str);
+        return $str;
     }
     public function expireFilter($str){
         $dt = new \DateTime();
