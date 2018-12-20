@@ -30,22 +30,22 @@
     <div class="row blog-content" data-stickyparent>
         <div class="col-md-8" data-stickycolumn>
 
-            <article class="post-wrapper clearfix" itemscope itemtype=”http://schema.org/Recipe”>
+            <article class="post-wrapper clearfix" itemscope itemtype="http://schema.org/Recipe">
 
                 <header class="post-header">
 
-                    <h1 class="post-title" itemprop=”name”>
+                    <h1 class="post-title" itemprop="name">
                         {{ article.title }}
                     </h1>
 
-                    <a href="#" class="category bgcolor2">
+                    <a href="#" itemprop="recipeCategory" class="category bgcolor2">
                         {{ article.category.title }}
                     </a>
 
                     <p class="simple-share">
 
                         <span>
-                            <span class="article-date"  itemprop=”datePublished” content=”DD/MM/YYYY”><i
+                            <span class="article-date"  itemprop="datePublished" content="DD/MM/YYYY"><i
                                         class="fa fa-calendar"></i>{{ article.publieddate|date('d/m/Y') }}</span>
                         </span>
                         <span><i class="fa fa-eye"></i> {{ article.nbview | number_format(0, '', ' ') }} vue</span>
@@ -53,7 +53,7 @@
                     </p>
 
                     <figure class="image-overlay">
-                        <img  itemprop=”image” src="{{ asset(article.pic) }}"
+                        <img  itemprop="image" src="{{ asset(article.pic) }}"
                              alt="tounsia.Net : {{ article.title }}">{#| imagine_filter('category_page')#}
                     </figure>
                 </header>
