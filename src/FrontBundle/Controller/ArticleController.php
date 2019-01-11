@@ -43,7 +43,7 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
-        if (!in_array($ip,array("197.3.10.74"))) {
+        if (!in_array($ip,array("197.3.10.74")) && $article->getEnabled()) {
             $newnb = (integer)$article->getNbview() + 1;
             $article->setNbview($newnb);
             $em->persist($article);
