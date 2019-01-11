@@ -50,7 +50,7 @@ class PostsAdmin extends Admin
             ->addIdentifier('title', null, array('label' => 'Titre'))
             //->add('publieddate', null, array('template' => 'PostBundle:Post:publieddate.html.twig'))
             ->add('category', null, array('label' => 'Catégorie'))
-            ->add('updated')
+            ->add('created')->add('updated')
             ->add('nbview', null, array("label" => "real view"))
             /*->add('view', null, array(
                 'template' => 'PostBundle:Post:views.html.twig'
@@ -59,10 +59,10 @@ class PostsAdmin extends Admin
             ->add('duplicateContent', null, array('editable' => true));
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            $listMapper->add('ramadan2017', null, array('label' => 'Ramadan', 'editable' => true))
+            /*$listMapper->add('ramadan2017', null, array('label' => 'Ramadan', 'editable' => true))
                 // ->add('twitter', null, array('editable' => true))
                 //->add('checkTags', null, array('editable' => false, "label"=>"tags"))
-            ;
+            ;*/
         }
         $listMapper->add('_action', 'actions', array(
             'actions' => array(
