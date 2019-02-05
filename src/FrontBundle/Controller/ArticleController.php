@@ -31,6 +31,10 @@ class ArticleController extends Controller
             $params["slug"] = "pate-au-thon-tunisien";
             $url = $this->generateUrl("front_article",$params);
             return $this->redirect($url, 301);
+        }elseif ($slug === "crme-au-beurre"){
+            $params["slug"] = "creme-au-beurre";
+            $url = $this->generateUrl("front_article",$params);
+            return $this->redirect($url, 301);
         }elseif ($categoryname === "ptisseries"){
             $params["categoryname"] = "patisseries";
             $url = $this->generateUrl("front_article",$params);
