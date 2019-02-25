@@ -27,7 +27,7 @@
         "knplabs/knp-paginator-bundle": "^2.5",
         "imagine/imagine": "^0.6.3",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
-        "liip/imagine-bundle": "^1.5",
+        "liip/imagine-bundle": "^1.9",
         "leafo/scssphp": "~0.1.5",
         "patchwork/jsqueeze" : "v2.0.5"
     },
