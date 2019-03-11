@@ -9,6 +9,7 @@
 namespace PostBundle\Admin;
 
 use PostBundle\Admin\BaseAdmin as Admin;
+use PostBundle\Entity\Ingredients;
 use PostBundle\Entity\Post;
 use PostBundle\Entity\Tags;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -120,11 +121,13 @@ class PostsAdmin extends Admin
             $object->setCheckTags(true);
             $em->flush();
         }
+
     }
 
     public function postUpdate($object)
     {
         $this->generateTags($object);
+
     }
 
     public function postPersist($object)
@@ -140,12 +143,20 @@ class PostsAdmin extends Admin
         $object->setLocale($local);
         $object->setAlias($service->slugify($object->getTitle()));
         $object->setCreatedby($user);
+        /** @var Ingredients $ingredient */
+        foreach ($object->getIngredients() as $ingredient){
+            $ingredient->setPost($object);
+        }
 
     }
 
     public function preUpdate($object)
     {
         $object->setUpdated(new \DateTime());
+        /** @var Ingredients $ingredient */
+        foreach ($object->getIngredients() as $ingredient){
+            $ingredient->setPost($object);
+        }
     }
 
     protected function configureFormFields(FormMapper $formMapper)
@@ -155,6 +166,18 @@ class PostsAdmin extends Admin
             ->with('Artcile', array('class' => 'col-md-8'))
             ->add('title')
             ->add('alias', null, array('required' => false))
+            ->add('descript', null, array('required' => false))
+            ->add('ingredients', "sonata_type_collection", array(
+                'type_options' =>array(
+                    // Prevents the "Delete" option from being displayed
+                    'delete' => true,
+
+                )
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'true',
+            ))
             ->add('article', 'textarea', array('required' => false))
             ->end()
             ->with('Status', array('class' => 'col-md-4'))

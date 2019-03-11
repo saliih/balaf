@@ -146,6 +146,17 @@ class Post extends Seo
     private $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity="PostBundle\Entity\Ingredients", mappedBy="post", cascade={"remove","persist"})
+     **/
+    private $ingredients;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descript", type="text",nullable=true)
+     */
+    private $descript;
+    /**
      * @var string
      *
      * @ORM\Column(name="strtags", type="text", nullable=true)
@@ -162,6 +173,7 @@ class Post extends Seo
     public function __construct()
     {
         $this->image = false;
+        $this->ingredients = new \Doctrine\Common\Collections\ArrayCollection();;
         $this->checkTags = false;
         $this->duplicateContent = false;
         $this->twitter=false;
@@ -636,4 +648,80 @@ class Post extends Seo
         $this->duplicateContent = $duplicateContent;
     }
 
+
+    /**
+     * Get duplicateContent
+     *
+     * @return boolean 
+     */
+    public function getDuplicateContent()
+    {
+        return $this->duplicateContent;
+    }
+
+    /**
+     * Get checkTags
+     *
+     * @return boolean 
+     */
+    public function getCheckTags()
+    {
+        return $this->checkTags;
+    }
+
+    /**
+     * Add ingredients
+     *
+     * @param \PostBundle\Entity\Ingredients $ingredients
+     * @return Post
+     */
+    public function addIngredient(\PostBundle\Entity\Ingredients $ingredients)
+    {
+        $this->ingredients[] = $ingredients;
+
+        return $this;
+    }
+
+    /**
+     * Remove ingredients
+     *
+     * @param \PostBundle\Entity\Ingredients $ingredients
+     */
+    public function removeIngredient(\PostBundle\Entity\Ingredients $ingredients)
+    {
+        $this->ingredients->removeElement($ingredients);
+    }
+
+    /**
+     * Get ingredients
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * Set descript
+     *
+     * @param string $descript
+     * @return Post
+     */
+    public function setDescript($descript)
+    {
+        $this->descript = $descript;
+
+        return $this;
+    }
+
+    /**
+     * Get descript
+     *
+     * @return string 
+     */
+    public function getDescript()
+    {
+        return $this->descript;
+    }
 }
