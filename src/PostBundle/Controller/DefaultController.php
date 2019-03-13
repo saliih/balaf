@@ -154,5 +154,20 @@ class DefaultController extends Controller
         return new JsonResponse(array("views"=>array_values($data),"mobile"=>array_values($mobile)));
     }
 
+    public function listtoUpdateAction(){
+        $posts = $this->getDoctrine()->getRepository('PostBundle:Post')->findAll();
+        /**
+         * @var integer $key
+         * @var Post $post
+         */
+        foreach ($posts as $key => $post){
+            if($post->getIngredients()->count() || in_array($post->getCategory()->getId(), array(3,4,5,6))){
+                unset($posts[$key]);
+                continue;
+            }
+
+        }
+        return $this->render('PostBundle:Default:notingredient.html.twig', array('posts' => $posts));
+    }
 
 }

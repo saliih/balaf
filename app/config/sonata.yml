@@ -79,10 +79,14 @@ sonata_admin:
                     - admin.category
                     - admin.tags
                     - admin.recettes
+                    - route:        editingredient
+                      label:        edit tous les articles
             SEO:
                 label: Référencement
                 icon: '<i class="fa fa-globe" aria-hidden="true"></i>'
                 items:
+                    - route:        editingredient
+                      label:        edit tous les articles
 #                    - admin.alexa
             Configuration:
                 label: Configurations

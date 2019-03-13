@@ -10,6 +10,9 @@ jsonyoutube:
 pie_charts:
     path:     /pieCharts/{id}
     defaults: { _controller: PostBundle:Default:pieCharts }
+editingredient:
+    path:     /editingredients
+    defaults: { _controller: PostBundle:Default:listtoUpdate }
 
 image:
     path: /admin/image/{id}
