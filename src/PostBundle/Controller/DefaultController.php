@@ -163,9 +163,7 @@ class DefaultController extends Controller
         foreach ($posts as $key => $post){
             if($post->getIngredients()->count() || in_array($post->getCategory()->getId(), array(3,4,5,6))){
                 unset($posts[$key]);
-                continue;
             }
-
         }
         return $this->render('PostBundle:Default:notingredient.html.twig', array('posts' => $posts));
     }
