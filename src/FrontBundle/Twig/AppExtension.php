@@ -28,6 +28,7 @@ class AppExtension extends \Twig_Extension
             'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
             'expire' => new \Twig_Filter_Method($this, 'expireFilter'),
             'adsense' => new \Twig_Filter_Method($this, 'adsenseFilter'),
+            'pbalise' => new \Twig_Filter_Method($this, 'pbaliseFilter'),
             'sitemap' => new \Twig_Filter_Method($this, 'sitemap')
         );
     }
@@ -43,6 +44,10 @@ class AppExtension extends \Twig_Extension
         $str = str_replace("<h2>", $html, $str);
         $str = str_replace("<li>",'<li itemprop="recipeIngredient">', $str);
 
+        return $str;
+    }
+    public function pbaliseFilter($str){
+        $str = str_replace("<p>", '<p itemprop="recipeInstructions">', $str);
         return $str;
     }
     public function expireFilter($str){

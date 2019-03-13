@@ -73,7 +73,13 @@ class ArticleController extends Controller
             if ($i > 2) unset($related[$key]);
             ++$i;
         }
-        return $this->render('FrontBundle:Article:index.html.twig', array('article' => $article, 'related' => $related));
+        $template = 'FrontBundle:Article:index.html.twig';
+        if(in_array($article->getCategory()->getId(),array())){
+            $template = 'FrontBundle:Article:notrecipe.html.twig';
+        }elseif ($article->getIngredients()->count()){
+            $template = 'FrontBundle:Article:ingredient.html.twig';
+        }
+        return $this->render( $template, array('article' => $article, 'related' => $related));
     }
 
     public function toPrintAction($id)
