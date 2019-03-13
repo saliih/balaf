@@ -74,7 +74,7 @@ class ArticleController extends Controller
             ++$i;
         }
         $template = 'FrontBundle:Article:index.html.twig';
-        if(in_array($article->getCategory()->getId(),array())){
+        if(in_array($article->getCategory()->getId(),array(3,4,5,6))){
             $template = 'FrontBundle:Article:notrecipe.html.twig';
         }elseif ($article->getIngredients()->count()){
             $template = 'FrontBundle:Article:ingredient.html.twig';
