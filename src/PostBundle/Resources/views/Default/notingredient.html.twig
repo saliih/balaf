@@ -1,0 +1,8 @@
+{% extends ':Sonata:standard_layout.html.twig' %}
+{% block sonata_admin_content %}
+    {{ parent() }}
+    <p><strong>Total : </strong> {{ posts | length }}</p>
+    {% for item in posts %}
+    <p><a href="{{ path('admin_post_post_edit',{'id': item.id}) }}" target="_blank">{{ item }}</a></p>
+    {% endfor %}
+{% endblock sonata_admin_content %}
