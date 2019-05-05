@@ -27,14 +27,7 @@ class NewsServices
 
     public function sharePostTwitter($posts){
         $em = $this->container->get('doctrine')->getManager();
-        $credentials = array(
-            'consumer_key' => 'k8wNWmHoqs4iHIxAXBlIIQPSm',
-            'consumer_secret' => 'p2t1b0Vc47fjfs1y50Wrrzy77zcdrt4ZCDZNC6YOu0JIjRjpjK',
-            'oauth_token' => '745913210520375296-jJ00sOLElS3nA6y7XSrvSYzvItP4iUM',
-            'oauth_token_secret' => 'gEN2VT4DSZwAVPOiE7dws4jUKj2Ybfl0SwJjN5QlM91EY',
-        );
-        $serializer = new ArraySerializer();
-        $auth = new SingleUserAuth($credentials, $serializer);
+
         $year = $posts->getPublieddate()->format('Y');
         $month = $posts->getPublieddate()->format('m');
         $url = $this->container->get('router')->generate('front_article', array(
@@ -45,19 +38,32 @@ class NewsServices
             'categoryname' => $posts->getCategory()->getSlug(),
         ));
         $url = "https://www.tounsia.net" . $url;
+        $fb = new \Facebook\Facebook([
+            'app_id' => '{1788355211393444}',
+            'app_secret' => '{23266e22b93f16d130253b99b4bac1ac}',
+            'default_graph_version' => 'v2.10'
+        ]);
 
-        $params = array(
-            'status' => '#Recette : ' . $posts->getTitle() . "\n  " . $url,
-            //'media_ids' => implode(',', $media_ids),
-        );
-        if (strlen('#Recette : ' . $posts->getTitle() . "\n  " . $url) < 140)
-            $response = $auth->post('statuses/update', $params);
+        $linkData = [
+            'link' => $url,
+            'message' => $posts->getTitle(),
+        ];
+        $helper = $fb->getPageTabHelper();
+        try {
+            print_r($linkData);
+            $response = $fb->post('/172776089786299/feed', $linkData, '{64b9413ca10992cc5ac3556822c1c342}');
+        } catch(\Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch(\Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+        $graphNode = $response->getGraphNode();
 
-        $posts->setTwitter(true);
-        if (isset($response['entities']['urls'][0]['url']))
-            $posts->setShortlink($response['entities']['urls'][0]['url']);
-        $em->persist($posts);
-        $em->flush();
+        echo 'Posted with id: ' . $graphNode['id'];
+
+
     }
 
     public function slugify($text)

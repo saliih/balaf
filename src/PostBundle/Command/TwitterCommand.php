@@ -33,6 +33,7 @@ class TwitterCommand extends ContainerAwareCommand
         /** @var Post $posts */
         $posts = $this->getContainer()->get('doctrine')->getRepository('PostBundle:Post')->findOneBy(array('twitter' => false, 'enabled' => true), array('id' => 'DESC'));//'ramadan2017'=>true,
         $autoshare =$this->getContainer()->get('doctrine')->getRepository('PostBundle:Settings')->find(1);
+        $servicePost->sharePostTwitter($posts);exit;
         if($autoshare->getAct()) {
             try {
                 if ($posts != null) {

@@ -31,7 +31,8 @@
 		"liip/imagine-bundle": "^1.9",
         "leafo/scssphp": "~0.1.5",
         "imagine/imagine": "^0.6.3",
-        "patchwork/jsqueeze" : "v2.0.5"
+        "patchwork/jsqueeze" : "v2.0.5",
+        "facebook/graph-sdk": "^5.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
