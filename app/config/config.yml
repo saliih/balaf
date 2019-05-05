@@ -36,9 +36,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            - 'SonataCoreBundle:Form:datepicker.html.twig'
+    form_themes:
+        - 'SonataCoreBundle:Form:datepicker.html.twig'
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -91,7 +90,9 @@ fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  admin
     user_class:     Application\Sonata\UserBundle\Entity\User
-
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "Tounsia"
 
     group:
         group_class:   Application\Sonata\UserBundle\Entity\Group

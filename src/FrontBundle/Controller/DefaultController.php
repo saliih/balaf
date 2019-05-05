@@ -3,6 +3,7 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -42,10 +43,10 @@ class DefaultController extends Controller
         return $this->render('FrontBundle:Default:sidebar.html.twig', array());
     }
 
-    public function headerAction()
+    public function headerAction(Request $request)
     {
 
-        $locale = $this->get('request')->getLocale();
+        $locale = $request->getLocale();
 
 
         $category = $this->getDoctrine()->getRepository('PostBundle:Category')->findBy(array(
@@ -59,10 +60,10 @@ class DefaultController extends Controller
         ));
     }
 
-    public function header2Action()
+    public function header2Action(Request $request)
     {
 
-        $locale = $this->get('request')->getLocale();
+        $locale = $request->getLocale();
 
 
         $category = $this->getDoctrine()->getRepository('PostBundle:Category')->findBy(array(

@@ -55,7 +55,7 @@ class ArticleController extends Controller
             $url = $this->generateUrl("front_article",$params);
             return $this->redirect($url, 301);
         }
-        $request = $this->get('request');
+        $request = $this->get('request_stack');
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
@@ -84,7 +84,7 @@ class ArticleController extends Controller
 
     public function toPrintAction($id)
     {
-        $request = $this->get('request');
+        $request = $this->get('request_stack');
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->find($id);
         return $this->render('FrontBundle:Article:print.html.twig', array('article' => $article, 'related' => array()));
     }

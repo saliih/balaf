@@ -40,7 +40,7 @@ class CategoryAdmin extends Admin
 
     public function prePersist($object)
     {
-        $locale = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
+        $locale = $this->getConfigurationPool()->getContainer()->get('request_stack')->getLocale();
         $service = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $object->setLocale($locale);
         $object->setSlug($service->slugify($object->getTitle()));

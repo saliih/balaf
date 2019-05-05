@@ -84,7 +84,7 @@ class DefaultController extends Controller
 
     public function youtubeAction()
     {
-        $request = $this->get('request');
+        $request = $this->get('request_stack');
         $url = $request->request->get('url');
         $tab = explode('=', $url);
         $id = $tab[1];

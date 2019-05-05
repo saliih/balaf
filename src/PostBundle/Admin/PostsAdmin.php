@@ -74,7 +74,7 @@ class PostsAdmin extends Admin
                 "preview" => array('template' => "PostBundle:Post:linkpreview.html.twig"),
                 //"pie" => array('template' => "PostBundle:Post:pie.html.twig"),
                 //"image" => array('template' => "PostBundle:Post:image.html.twig"),
-                 //'delete' => array('template' => "PostBundle:Post:deletebt.html.twig"),
+                 'delete' => array('template' => "PostBundle:Post:deletebt.html.twig"),
             )
         ));
 
@@ -83,7 +83,7 @@ class PostsAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('batch');
-        $collection->remove('delete');
+        //$collection->remove('delete');
         //$collection->remove('edit');
     }
 
@@ -138,7 +138,7 @@ class PostsAdmin extends Admin
     public function prePersist($object)
     {
         $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
-        $local = $this->getConfigurationPool()->getContainer()->get('request')->getLocale();
+        $local = "fr"; // TODO : $this->getConfigurationPool()->getContainer()->get('request_stack')->getLocale();
         $service = $this->getConfigurationPool()->getContainer()->get('Tools.utils');
         $object->setLocale($local);
         $object->setAlias($service->slugify($object->getTitle()));

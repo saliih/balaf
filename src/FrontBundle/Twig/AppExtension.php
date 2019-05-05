@@ -10,6 +10,8 @@ namespace FrontBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use PostBundle\Entity\Sitemap;
+use Twig_SimpleFilter;
+
 class AppExtension extends \Twig_Extension
 {
     private $container;
@@ -25,11 +27,11 @@ class AppExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'shortdesc' => new \Twig_Filter_Method($this, 'shortdesc'),
-            'expire' => new \Twig_Filter_Method($this, 'expireFilter'),
-            'adsense' => new \Twig_Filter_Method($this, 'adsenseFilter'),
-            'pbalise' => new \Twig_Filter_Method($this, 'pbaliseFilter'),
-            'sitemap' => new \Twig_Filter_Method($this, 'sitemap')
+            new Twig_SimpleFilter('shortdesc', array($this, 'shortdesc')),
+            new Twig_SimpleFilter('expire', array($this, 'expireFilter')),
+            new Twig_SimpleFilter('adsense', array($this, 'adsenseFilter')),
+            new Twig_SimpleFilter('pbalise', array($this, 'pbaliseFilter')),
+            new Twig_SimpleFilter('sitemap', array($this, 'sitemap')),
         );
     }
     public function adsenseFilter($str){

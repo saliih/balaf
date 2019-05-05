@@ -49,7 +49,7 @@ class CategoryController extends Controller
     public function searchAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request');
+        $request = $this->get('request_stack');
         $search = $request->query->get('s');
         $page = $request->query->get('page');
         // history search

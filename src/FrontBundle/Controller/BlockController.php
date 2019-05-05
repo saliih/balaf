@@ -103,7 +103,7 @@ class BlockController extends Controller
 
     public function visitedAction()
     {
-        $request = $this->get('request');
+        $request = $this->get('request_stack');
         $session = $request->getSession();
         $pageView = $session->get('pageView');
         if (!is_array($pageView)) $pageView = array();

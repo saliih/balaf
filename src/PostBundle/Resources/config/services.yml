@@ -5,74 +5,74 @@ services:
 
     sonata.block.service.posts:
         class: PostBundle\Block\PostsBlockService
-        arguments: [ "sonata.block.service.posts", @templating, @service_container ]
+        arguments: [ "sonata.block.service.posts", '@templating', '@service_container' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.share:
         class: PostBundle\Block\ShareBlockService
-        arguments: [ "sonata.block.service.posts", @templating, @service_container ]
+        arguments: [ "sonata.block.service.posts", '@templating', '@service_container' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.month:
         class: PostBundle\Block\MonthsBlockService
-        arguments: [ "sonata.block.service.month", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.month", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.short1:
         class: PostBundle\Block\ShortBlockService
-        arguments: [ "sonata.block.service.short1", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.short1", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.short2:
         class: PostBundle\Block\ShortAlexaBlockService
-        arguments: [ "sonata.block.service.short1", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.short1", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.viewweek:
         class: PostBundle\Block\ViewWeekBlockService
-        arguments: [ "sonata.block.service.viewweek", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.viewweek", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.alexa:
         class: PostBundle\Block\AlexaBlockService
-        arguments: [ "sonata.block.service.alexa", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.alexa", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.monthuser:
         class: PostBundle\Block\MonthsUsersBlockService
-        arguments: [ "sonata.block.service.monthuser", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.monthuser", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.monthrefer:
         class: PostBundle\Block\MonthsReferBlockService
-        arguments: [ "sonata.block.service.monthrefer", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.monthrefer", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.viewuser:
         class: PostBundle\Block\ViewUsersBlockService
-        arguments: [ "sonata.block.service.viewuser", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.viewuser", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
 
     sonata.block.service.tablecompare:
         class: PostBundle\Block\TableBlockService
-        arguments: [ "sonata.block.service.tablecompare", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.tablecompare", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.refer:
         class: PostBundle\Block\ReferBlockService
-        arguments: [ "sonata.block.service.refer", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.refer", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
 
     sonata.block.service.viewposts:
         class: PostBundle\Block\ViewPostsBlockService
-        arguments: [ "sonata.block.service.viewposts", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.viewposts", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
     sonata.block.service.viewsmonths:
         class: PostBundle\Block\ViewMonthsBlockService
-        arguments: [ "sonata.block.service.viewsmonths", @templating, @doctrine.orm.entity_manager ]
+        arguments: [ "sonata.block.service.viewsmonths", '@templating', '@doctrine.orm.entity_manager' ]
         tags:
             - { name: sonata.block }
 
