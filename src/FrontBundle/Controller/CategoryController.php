@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
     public function indexAction($locale, $slug)
     {
-        $request = $this->get("request_stack");
+        $request = $this->get("request_stack")->getCurrentRequest();
         $category = $this->getDoctrine()->getRepository('PostBundle:Category')->findOneBy(array('slug' => $slug, 'locale' => $locale));
         if ($category == null) return $this->redirect($this->generateUrl('front_homepage'));
         $posts = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array('category' => $category, 'enabled' => true), array('publieddate' => 'DESC', 'id' => 'DESC'));
@@ -46,10 +46,9 @@ class CategoryController extends Controller
         return $this->render('FrontBundle:Category:index.html.twig', array("category" => $category, 'posts' => $pagination));
     }
 
-    public function searchAction()
+    public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request_stack');
         $search = $request->query->get('s');
         $page = $request->query->get('page');
         // history search
