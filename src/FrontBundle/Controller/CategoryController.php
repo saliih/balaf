@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
     public function indexAction($locale, $slug)
     {
-        $request = $this->get("request");
+        $request = $this->get("request_stack");
         $category = $this->getDoctrine()->getRepository('PostBundle:Category')->findOneBy(array('slug' => $slug, 'locale' => $locale));
         if ($category == null) return $this->redirect($this->generateUrl('front_homepage'));
         $posts = $this->getDoctrine()->getRepository("PostBundle:Post")->findBy(array('category' => $category, 'enabled' => true), array('publieddate' => 'DESC', 'id' => 'DESC'));
