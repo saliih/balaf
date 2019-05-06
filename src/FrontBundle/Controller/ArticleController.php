@@ -55,7 +55,7 @@ class ArticleController extends Controller
             $url = $this->generateUrl("front_article",$params);
             return $this->redirect($url, 301);
         }
-        $request = $this->get('request_stack');
+        $request = $this->get('request_stack')->getCurrentRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $article = $this->getDoctrine()->getRepository('PostBundle:Post')->findOneBy(array('alias' => $slug));
         $ip = $request->getClientIp();
