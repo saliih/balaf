@@ -10,7 +10,9 @@ class RecettesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $dt = new \DateTime();
-        $recette = $this->getDoctrine()->getRepository("PostBundle:Recettes")->findOneBy(array('datepub'=>$dt));
+        //$recette = $this->getDoctrine()->getRepository("PostBundle:Recettes")->findOneBy(array('datepub'=>$dt));
+        $recette = $this->getDoctrine()->getRepository("PostBundle:Recettes")->find(362);
+
         $recette->setView($recette->getView()+1);
         $em->persist($recette);
         $em->flush();
