@@ -43,11 +43,8 @@ assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ PostBundle ]
-    node: /usr/bin/nodejs
     #java: /usr/bin/java
     filters:
-        uglifyjs2:
-            bin: '/var/www/tounsia/app/Resources/node_modules/uglify-js/bin/uglifyjs'
         jsqueeze: ~
         scssphp:
            formatter: 'Leafo\ScssPhp\Formatter\Crunched'
