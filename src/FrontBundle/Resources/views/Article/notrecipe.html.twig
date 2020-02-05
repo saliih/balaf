@@ -59,11 +59,23 @@
                 </header>
 
                 <div class="post-content clearfix">
+                {% article.descript !== "" %}
+                 <div>{{ article.descript | raw }}</div>
+                    <ins class="adsbygoogle"
+                               style="display:block"
+                               data-ad-client="ca-pub-6877324570550574"
+                               data-ad-slot="9868401699"
+                               data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    {% endif %}
                 {% if article.ingredients | length > 0 %}
+                
                 <h2>Ingrédients</h2>
                     <ul>
                         {% for item in article.ingredients %}
-                        <li itemprop="recipeIngredient">{{ item }}</li>
+                        <li>{{ item }}</li>
                         {% endfor %}
                     </ul>
                     <ins class="adsbygoogle"
