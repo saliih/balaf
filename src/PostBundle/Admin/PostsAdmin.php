@@ -51,7 +51,7 @@ class PostsAdmin extends Admin
             ->addIdentifier('title', null, array('label' => 'Titre'))
             //->add('publieddate', null, array('template' => 'PostBundle:Post:publieddate.html.twig'))
             ->add('category', null, array('label' => 'Catégorie'))
-            ->add('created')->add('updated')
+            ->add('created')->add('updated')->add('locale')
             ->add('nbview', null, array("label" => "real view"))
             /*->add('view', null, array(
                 'template' => 'PostBundle:Post:views.html.twig'
@@ -165,6 +165,7 @@ class PostsAdmin extends Admin
             ->tab('Article')
             ->with('Artcile', array('class' => 'col-md-8'))
             ->add('title')
+            ->add('locale')
             ->add('alias', null, array('required' => false))
             ->add('descript', null, array('required' => false))
             ->add('ingredients', "sonata_type_collection", array(
